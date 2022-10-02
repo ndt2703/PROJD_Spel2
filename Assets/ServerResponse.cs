@@ -8,6 +8,8 @@ public class ServerResponse : MBJson.JSONDeserializeable,MBJson.JSONTypeConverte
   
   public  int whichPlayer;
 
+    public bool cardPlayed = false; 
+
     public Type GetType(int IntegerToConvert)
     {
         return (typeof(ServerResponse));

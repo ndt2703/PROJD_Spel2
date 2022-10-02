@@ -12,6 +12,9 @@ public class Server
 {
     System.Net.Sockets.TcpListener m_Listener;
     bool m_Stopping = false;
+
+    public Dictionary<int, bool> hasPLayedCard  = new Dictionary<int, bool>(); 
+
     public static Int32 ParseBigEndianInteger(byte[] BytesToParse, int ByteOffset)
     {
         Int32 ReturnValue = 0;
@@ -103,7 +106,17 @@ public class Server
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
- 
+        if(requestToHandle.hasPlayedCard)
+        {
+            hasPLayedCard.Add(requestToHandle.whichPlayer, true);
+        }
+        if(requestToHandle.isPolling)
+        {
+            if (hasPLayedCard.ContainsKey( requestToHandle.whichPlayer == 0 ? 1  : 0))
+            {
+                response.cardPlayed = true; 
+            }
+        }
 
         return response;
     }

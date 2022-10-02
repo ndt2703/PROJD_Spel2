@@ -9,6 +9,10 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
 
     public bool createScene = false;
 
+    public bool isPolling = false;
+
+    public bool hasPlayedCard = false; 
+
     public Type GetType(int IntegerToConvert)
     {
         return (typeof(ClientRequest));

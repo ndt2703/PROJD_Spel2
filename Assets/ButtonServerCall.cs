@@ -31,7 +31,11 @@ public class ButtonServerCall : MonoBehaviour
     {
         ClientRequest request = new ClientRequest();
 
-        request.whichPlayer = connection.playerId; 
+        request.whichPlayer = connection.playerId;
+
+        request.isPolling = true;
+
+        request.hasPlayedCard = true;
 
         connection.AddRequest(request,CallTestInternet);
 

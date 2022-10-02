@@ -15,6 +15,8 @@ public class TestInternet : MonoBehaviour
     public GameObject sceneToDeActivate;
 
     ClientConnection clientConnection;
+
+    int sendRequest = 60;
  //   public int LocalPlayerNumber; 
 
     // Start is called before the first frame update
@@ -42,9 +44,9 @@ public class TestInternet : MonoBehaviour
         }
     }
 
-    public void playCard(int whichPlayer)
+    public void playCard(ServerResponse response)
     {
-        if(whichPlayer == 0)
+        if(response.whichPlayer == 0)
         {
             gameObjectToDeActivatePlayer1.SetActive(false);
             gameObjectToActivatePlayer1.SetActive(true);
@@ -58,8 +60,22 @@ public class TestInternet : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        sendRequest -= 1;
+
+        if(sendRequest < 0)
+        {
+            sendRequest = 60;
+
+            ClientRequest request = new ClientRequest();
+
+            request.isPolling = true;
+
+            request.whichPlayer = clientConnection.playerId;
+
+            clientConnection.AddRequest(request, playCard);
+        }
         
     }
 
