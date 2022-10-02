@@ -45,10 +45,12 @@ public class IpAdressInputField : MonoBehaviour
             if(clientConnection.isHost)
             {
                 request.whichPlayer = 0;
+                clientConnection.playerId = 0; 
             }
             else
             {
-                request.whichPlayer = 1; 
+                request.whichPlayer = 1;
+                clientConnection.playerId = 1;
             }
             request.createScene = true;
 
