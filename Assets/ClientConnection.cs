@@ -31,7 +31,7 @@ public class ClientConnection : MonoBehaviour
 
     public void ConnectToServer(string Adress,int port)
     {
-        m_TCPClient.Connect(System.Net.IPAddress.Parse(Adress), port);
+        m_TCPClient.Connect("192.168.0.16", port);
     }
     private void messageLoop()
     {   
@@ -60,7 +60,7 @@ public class ClientConnection : MonoBehaviour
     {
         lock(recievedRespones)
         {
-            if(queuedRequests.Count > 0)
+            if(recievedRespones.Count > 0)
             {
                 Tuple<ServerResponse, Action<ServerResponse>> response = recievedRespones.Dequeue();
                 response.Item2(response.Item1);
