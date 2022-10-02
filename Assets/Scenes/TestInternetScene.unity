@@ -2261,6 +2261,7 @@ MonoBehaviour:
   gameObjectToActivatePlayer2: {fileID: 850264572}
   gameObjectToDeActivatePlayer2: {fileID: 176822259}
   sceneToActivate: {fileID: 1855952470}
+  sceneToDeActivate: {fileID: 178669073}
 --- !u!4 &2127124445
 Transform:
   m_ObjectHideFlags: 0

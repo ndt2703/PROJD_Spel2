@@ -8,21 +8,21 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEditor.TerrainTools;
 using UnityEngine.SearchService;
 
-public class Server 
+public class Server
 {
     System.Net.Sockets.TcpListener m_Listener;
-
-    public static Int32 ParseBigEndianInteger(byte[] BytesToParse,int ByteOffset)
+    bool m_Stopping = false;
+    public static Int32 ParseBigEndianInteger(byte[] BytesToParse, int ByteOffset)
     {
         Int32 ReturnValue = 0;
         if (BytesToParse.Length < ByteOffset + 4)
         {
             throw new Exception("Unsufficient bytes to parse big endian integer");
         }
-        for(int i = 0; i < 4;i++)
+        for (int i = 0; i < 4; i++)
         {
             ReturnValue <<= 8;
-            ReturnValue += BytesToParse[ByteOffset+i];
+            ReturnValue += BytesToParse[ByteOffset + i];
         }
 
         return (ReturnValue);
@@ -39,7 +39,7 @@ public class Server
         MBJson.JSONObject ReturnValue = new MBJson.JSONObject();
         byte[] LengthBuffer = new byte[4];
         int ReadBytes = Stream.Read(LengthBuffer, 0, 4);
-        if(ReadBytes < 4)
+        if (ReadBytes < 4)
         {
             throw new Exception("Insufficient bytes to parse JSON object length");
         }
@@ -58,7 +58,7 @@ public class Server
     void p_HandleConnection(object ConnectionToHandle)
     {
         System.Net.Sockets.TcpClient Connection = (System.Net.Sockets.TcpClient)ConnectionToHandle;
-        while(Connection.Connected)
+        while (Connection.Connected)
         {
             ClientRequest NewRequest = MBJson.JSONObject.DeserializeObject<ClientRequest>(ParseJsonObject(Connection.GetStream()));
             ServerResponse Response = HandleClientRequest(NewRequest);
@@ -70,9 +70,12 @@ public class Server
     void p_Listen()
     {
         m_Listener.Start();
-        System.Net.Sockets.TcpClient NewConnection = m_Listener.AcceptTcpClient();
-        Thread ConnectionThread = new Thread(this.p_HandleConnection);
-        ConnectionThread.Start(NewConnection);
+        while (!m_Stopping)
+        {
+            System.Net.Sockets.TcpClient NewConnection = m_Listener.AcceptTcpClient();
+            Thread ConnectionThread = new Thread(this.p_HandleConnection);
+            ConnectionThread.Start(NewConnection);
+        }
     }
     public void StartServer(int Port)
     {
@@ -80,7 +83,7 @@ public class Server
         Thread ListenerThread = new Thread(this.p_Listen);
         ListenerThread.Start();
 
-        
+
     }
 
 
@@ -88,20 +91,27 @@ public class Server
     {
         string ObjectString = ObjectToSerialize.ToString();
         byte[] ObjectBytes = System.Text.UTF8Encoding.UTF8.GetBytes(ObjectString);
-        byte[] ReturnValue = new byte[ObjectBytes.Length+4];
-        WriteBigEndianInteger(ReturnValue, (uint) ObjectBytes.Length, 0);
+        byte[] ReturnValue = new byte[ObjectBytes.Length + 4];
+        WriteBigEndianInteger(ReturnValue, (uint)ObjectBytes.Length, 0);
         ObjectBytes.CopyTo(ReturnValue, 4);
         return (ReturnValue);
     }
+    int playerId = 0; 
     public ServerResponse HandleClientRequest(ClientRequest requestToHandle)
     {
         ServerResponse response = new ServerResponse();
 
-        response.whichPlayer = requestToHandle.whichPlayer; 
+        response.whichPlayer = playerId;
 
-        
+        playerId += 1;
+
+        playerId %= 2; 
 
         return response;
+    }
+    ~Server()
+    {
+        m_Stopping = true;
     }
 
 

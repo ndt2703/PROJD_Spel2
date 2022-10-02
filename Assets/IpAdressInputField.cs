@@ -38,7 +38,7 @@ public class IpAdressInputField : MonoBehaviour
         {
             clientConnection.ConnectToServer(inputField.text, 60000);
 
-            clientConnection.playerId = 1;
+            clientConnection.playerId = 0;
 
             ClientRequest request = new ClientRequest();
             request.whichPlayer = clientConnection.playerId;
