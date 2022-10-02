@@ -12,6 +12,7 @@ public class IpAdressInputField : MonoBehaviour
 
     TestInternet testInternet;
 
+    bool isHost = false; 
  //   public  inputFieldText; 
 
     // Start is called before the first frame update
@@ -41,7 +42,14 @@ public class IpAdressInputField : MonoBehaviour
             clientConnection.playerId = 0;
 
             ClientRequest request = new ClientRequest();
-            request.whichPlayer = clientConnection.playerId;
+            if(clientConnection.isHost)
+            {
+                request.whichPlayer = 0;
+            }
+            else
+            {
+                request.whichPlayer = 1; 
+            }
             request.createScene = true;
 
             clientConnection.AddRequest(request, CreateScene);

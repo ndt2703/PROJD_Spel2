@@ -96,16 +96,14 @@ public class Server
         ObjectBytes.CopyTo(ReturnValue, 4);
         return (ReturnValue);
     }
-    int playerId = 0; 
+    
     public ServerResponse HandleClientRequest(ClientRequest requestToHandle)
     {
         ServerResponse response = new ServerResponse();
 
-        response.whichPlayer = playerId;
+        response.whichPlayer = requestToHandle.whichPlayer;
 
-        playerId += 1;
-
-        playerId %= 2; 
+ 
 
         return response;
     }

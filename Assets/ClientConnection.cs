@@ -19,7 +19,7 @@ public class ClientConnection : MonoBehaviour
     public int playerId = -1;
     private System.Net.Sockets.TcpClient m_TCPClient = new System.Net.Sockets.TcpClient();
 
-
+    public bool isHost = false; 
     // Start is called before the first frame update
     void Start()
     {
