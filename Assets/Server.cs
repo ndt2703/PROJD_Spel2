@@ -27,11 +27,11 @@ public class Server
 
         return (ReturnValue);
     }
-    public static void WriteBigEndianInteger(byte[] OutArray,uint IntegerToWrite,int BufferOffset)
+    public static void WriteBigEndianInteger(byte[] OutArray, uint IntegerToWrite, int BufferOffset)
     {
-        for(int i = 0; i < 4;i++)
+        for (int i = 0; i < 4; i++)
         {
-            OutArray[i + BufferOffset] =(byte)(IntegerToWrite >> (4 * 8 - (i + 1)));
+            OutArray[i + BufferOffset] = (byte)(IntegerToWrite >> (4 * 8 - ((i + 1) * 8)));
         }
     }
     public static MBJson.JSONObject ParseJsonObject(System.IO.Stream Stream)

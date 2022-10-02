@@ -27,6 +27,7 @@ public class IpAdressInputField : MonoBehaviour
 
     public void CreateScene(ServerResponse response)
     {
+        print("Creater den sccene");
         testInternet.CreateScene();
     }
 
