@@ -11,67 +11,64 @@ public class TestInternet : MonoBehaviour
     public GameObject gameObjectToActivatePlayer2;
     public GameObject gameObjectToDeActivatePlayer2;
 
-    public int LocalPlayerNumber; 
+    public GameObject sceneToActivate;
+
+    ClientConnection clientConnection;
+ //   public int LocalPlayerNumber; 
 
     // Start is called before the first frame update
     void Start()
     {
         // System.Threading.Thread.(sendRequest(new ClientRequest()));
 
-        ClientRequest test = new ClientRequest();
-
-        Thread starThread = new Thread(this.sendRequest);
-
-        starThread.Start();
+        clientConnection = FindObjectOfType<ClientConnection>();
     }
 
 
-
-    public void sendRequest(object data)
+    public void CreateScene()
     {
-
-  //      return null; 
+        if (clientConnection.playerId == 0)
+        {
+            gameObjectToDeActivatePlayer1.SetActive(true);
+        }
+        else
+        {
+            gameObjectToDeActivatePlayer2.SetActive(true);
+        }
     }
-    public ServerResponse sendRequest(ClientRequest data)
+
+    public void playCard(int whichPlayer)
     {
-
-        
-        return null; 
+        if(whichPlayer == 0)
+        {
+            gameObjectToDeActivatePlayer1.SetActive(false);
+            gameObjectToActivatePlayer1.SetActive(true);
+        }
+        else
+        { 
+            gameObjectToActivatePlayer2.SetActive(true);
+            gameObjectToDeActivatePlayer2.SetActive(false);
+        }
     }
+
 
     // Update is called once per frame
     void Update()
     {
         
     }
-    public ServerResponse HandleClientRequest(ClientRequest requestToHandle)
-    {   
-        if(requestToHandle.whichPlayer == 0)
-        {
-            if(requestToHandle.disableCard)
-            {
-                gameObjectToActivatePlayer1.SetActive(true);
-                gameObjectToDeActivatePlayer1.SetActive(false);
-            }
-        }        
-        if(requestToHandle.whichPlayer == 1)
-        {
-            if(requestToHandle.disableCard)
-            {
-                gameObjectToActivatePlayer2.SetActive(true);
-                gameObjectToDeActivatePlayer2.SetActive(false);
-            }
-        }
-        return null; 
-    }
-}
-public class ServerResponse
-{
 
 }
-public class ClientRequest
-{
-    public int type; 
-    public int whichPlayer; 
-    public bool disableCard; 
-}
+
+
+
+// public class ServerResponse
+// {
+// 
+// }
+// public class ClientRequest
+// {
+//     public int type;
+//     public int whichPlayer;
+//     public bool disableCard;
+// }

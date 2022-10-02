@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ButtonServerCall : MonoBehaviour
 {
-    public TestInternet testINternet; 
+    public ClientConnection connection;
+    public TestInternet testInternet;
     // Start is called before the first frame update
     void Start()
     {
-        
+        connection = FindObjectOfType<ClientConnection>();
+        testInternet = FindObjectOfType<TestInternet>();
     }
 
     // Update is called once per frame
@@ -17,9 +19,21 @@ public class ButtonServerCall : MonoBehaviour
         
     }
 
+    public void CallTestInternet(ServerResponse response)
+    {
+        testInternet.playCard(response.whichPlayer);
+
+
+    }
+    
+
     public void playCardOnBoard()
     {
-        testINternet.sendRequest(new ClientRequest());
+        ClientRequest request = new ClientRequest();
+
+        request.whichPlayer = connection.playerId; 
+
+        connection.AddRequest(request,CallTestInternet);
 
     }
 }

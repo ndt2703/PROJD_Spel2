@@ -4,8 +4,9 @@ using UnityEngine;
 using System.Threading;
 using System;
 using UnityEditor.PackageManager.Requests;
+using Unity.VisualScripting;
 
-public class serverHandler : MonoBehaviour
+public class ClientConnection : MonoBehaviour
 {
 
     Semaphore requestCount = new Semaphore(0,100);
@@ -15,7 +16,9 @@ public class serverHandler : MonoBehaviour
     public Queue<Tuple<ClientRequest, Action<ServerResponse>>> queuedRequests = new Queue<Tuple<ClientRequest, Action<ServerResponse>>>();
     public Queue<Tuple<ServerResponse, Action<ServerResponse>>> recievedRespones = new Queue<Tuple<ServerResponse, Action<ServerResponse>>>();
 
-    public ServerResponse SendClientRequest(ClientRequest request)
+    public int playerId;
+    private System.Net.Sockets.TcpClient m_TCPClient;
+    private ServerResponse SendClientRequest(ClientRequest request)
     {
         return null; 
     }
@@ -26,6 +29,10 @@ public class serverHandler : MonoBehaviour
         
     }
 
+    public void ConnectToServer(string Adress,int port)
+    {
+        m_TCPClient = new System.Net.Sockets.TcpClient(Adress,port);
+    }
     private void messageLoop()
     {   
         
@@ -69,4 +76,16 @@ public class serverHandler : MonoBehaviour
             requestCount.Release(); 
         }
     }
+
+    public ServerResponse sendRequest(ClientRequest data)
+    {
+        MBJson.JSONObject ObjectToSend = MBJson.JSONObject.SerializeObject(data);
+        byte[] DataToSend = Server.SerializeJsonObject(ObjectToSend);
+        m_TCPClient.GetStream().Write(DataToSend, 0, DataToSend.Length);
+
+        MBJson.JSONObject Response = Server.ParseJsonObject(m_TCPClient.GetStream());
+        ServerResponse ReturnValue = MBJson.JSONObject.DeserializeObject<ServerResponse>(Response);
+        return (ReturnValue);
+    }
 }
+
