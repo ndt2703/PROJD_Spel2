@@ -17,6 +17,8 @@ public class TestInternet : MonoBehaviour
     ClientConnection clientConnection;
 
     int sendRequest = 60;
+
+   public  bool hasJoinedLobby = false; 
  //   public int LocalPlayerNumber; 
 
     // Start is called before the first frame update
@@ -61,21 +63,24 @@ public class TestInternet : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-        sendRequest -= 1;
-
-        if(sendRequest < 0)
+    {   if(hasJoinedLobby)
         {
-            sendRequest = 60;
+            sendRequest -= 1;
 
-            ClientRequest request = new ClientRequest();
+            if (sendRequest < 0)
+            {
+                sendRequest = 60;
 
-            request.isPolling = true;
+                ClientRequest request = new ClientRequest();
 
-            request.whichPlayer = clientConnection.playerId;
+                request.isPolling = true;
 
-            clientConnection.AddRequest(request, playCard);
+                request.whichPlayer = clientConnection.playerId;
+
+                clientConnection.AddRequest(request, playCard);
+            }
         }
+
         
     }
 

@@ -21,7 +21,7 @@ public class ButtonServerCall : MonoBehaviour
 
     public void CallTestInternet(ServerResponse response)
     {
-        testInternet.playCard(response.whichPlayer);
+        testInternet.playCard(response);
 
 
     }
