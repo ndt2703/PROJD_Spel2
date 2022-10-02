@@ -17,7 +17,7 @@ public class ClientConnection : MonoBehaviour
     public Queue<Tuple<ServerResponse, Action<ServerResponse>>> recievedRespones = new Queue<Tuple<ServerResponse, Action<ServerResponse>>>();
 
     public int playerId = -1;
-    private System.Net.Sockets.TcpClient m_TCPClient;
+    private System.Net.Sockets.TcpClient m_TCPClient = new System.Net.Sockets.TcpClient();
     private ServerResponse SendClientRequest(ClientRequest request)
     {
         return null; 
@@ -31,7 +31,7 @@ public class ClientConnection : MonoBehaviour
 
     public void ConnectToServer(string Adress,int port)
     {
-        m_TCPClient = new System.Net.Sockets.TcpClient(Adress,port);
+        m_TCPClient.Connect(System.Net.IPAddress.Parse(Adress), port);
     }
     private void messageLoop()
     {   
