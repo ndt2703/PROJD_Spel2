@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class IpAdressInputField : MonoBehaviour
 {
-    InputField inputField;
+    public TextMeshProUGUI inputField;
 
     ClientConnection clientConnection;
 
@@ -17,9 +17,9 @@ public class IpAdressInputField : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inputField = GetComponent<InputField>();
+      //  inputField = GetComponent<InputField>();
 
-        clientConnection = GetComponent<ClientConnection>();
+        clientConnection = FindObjectOfType<ClientConnection>();
 
         testInternet = FindObjectOfType<TestInternet>();
         
@@ -33,7 +33,7 @@ public class IpAdressInputField : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.J))
         {
             clientConnection.ConnectToServer(inputField.text, 60000);
 
