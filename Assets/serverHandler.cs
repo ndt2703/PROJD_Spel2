@@ -64,7 +64,7 @@ public class serverHandler : MonoBehaviour
     {
         lock(queuedRequests)
         {
-            queuedRequests.Enqueue(new Tuple<ClientRequest, Action<ServerResponse>(request,action));
+            queuedRequests.Enqueue(new Tuple<ClientRequest, Action<ServerResponse>>(request,action));
 
             requestCount.Release(); 
         }

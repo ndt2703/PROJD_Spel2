@@ -62,7 +62,6 @@ public class TestInternet : MonoBehaviour
                 gameObjectToDeActivatePlayer2.SetActive(false);
             }
         }
-
         return null; 
     }
 }
