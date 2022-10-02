@@ -16,7 +16,7 @@ public class ClientConnection : MonoBehaviour
     public Queue<Tuple<ClientRequest, Action<ServerResponse>>> queuedRequests = new Queue<Tuple<ClientRequest, Action<ServerResponse>>>();
     public Queue<Tuple<ServerResponse, Action<ServerResponse>>> recievedRespones = new Queue<Tuple<ServerResponse, Action<ServerResponse>>>();
 
-    public int playerId;
+    public int playerId = -1;
     private System.Net.Sockets.TcpClient m_TCPClient;
     private ServerResponse SendClientRequest(ClientRequest request)
     {
@@ -49,6 +49,7 @@ public class ClientConnection : MonoBehaviour
             {
                 recievedRespones.Enqueue(new Tuple<ServerResponse, Action<ServerResponse>>(response, tuple.Item2));
             }
+
 
 
         }

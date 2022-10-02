@@ -33,7 +33,7 @@ public class IpAdressInputField : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.KeypadEnter))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             clientConnection.ConnectToServer(inputField.text, 60000);
 
@@ -44,6 +44,8 @@ public class IpAdressInputField : MonoBehaviour
             request.createScene = true;
 
             clientConnection.AddRequest(request, CreateScene);
+
+            print("keypad entererar den");
         }
     }
 }

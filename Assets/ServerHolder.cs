@@ -22,6 +22,8 @@ public class ServerHolder : MonoBehaviour
     {
         server.StartServer(60000);
 
-        clientConnection.playerId = 0; 
+        clientConnection.playerId = 0;
+
+        print("Server har startat");
     }
 }
