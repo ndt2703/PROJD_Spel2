@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
 {
-    public  int type = -1; 
-    public  int whichPlayer = -1;
+    public  int Type = 0; 
+    public  int whichPlayer = 1000;
 
     public bool createScene = false;
 

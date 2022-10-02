@@ -4,13 +4,13 @@ using System;
 
 public class ServerResponse : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
 {
-  public  int type;
+  public  int Type;
   
   public  int whichPlayer;
 
     public Type GetType(int IntegerToConvert)
     {
-        return (typeof(ClientRequest));
+        return (typeof(ServerResponse));
     }
     public object Deserialize(MBJson.JSONObject ObjectToParse)
     {

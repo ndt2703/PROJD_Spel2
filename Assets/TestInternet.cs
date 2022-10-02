@@ -12,6 +12,7 @@ public class TestInternet : MonoBehaviour
     public GameObject gameObjectToDeActivatePlayer2;
 
     public GameObject sceneToActivate;
+    public GameObject sceneToDeActivate;
 
     ClientConnection clientConnection;
  //   public int LocalPlayerNumber; 
@@ -27,6 +28,10 @@ public class TestInternet : MonoBehaviour
 
     public void CreateScene()
     {
+        print("kommer den till test internet");
+
+        sceneToActivate.SetActive(true);
+        sceneToDeActivate.SetActive(false);
         if (clientConnection.playerId == 0)
         {
             gameObjectToDeActivatePlayer1.SetActive(true);

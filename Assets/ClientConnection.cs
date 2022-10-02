@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 public class ClientConnection : MonoBehaviour
 {
 
-    Semaphore requestCount = new Semaphore(0,100);
+    Semaphore requestCount = new Semaphore(0, 100);
 
     bool notStopping = true;
 
@@ -18,25 +18,23 @@ public class ClientConnection : MonoBehaviour
 
     public int playerId = -1;
     private System.Net.Sockets.TcpClient m_TCPClient = new System.Net.Sockets.TcpClient();
-    private ServerResponse SendClientRequest(ClientRequest request)
-    {
-        return null; 
-    }
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Thread messageThread = new Thread(this.messageLoop);
+        messageThread.Start();
     }
 
-    public void ConnectToServer(string Adress,int port)
+    public void ConnectToServer(string Adress, int port)
     {
         m_TCPClient.Connect("192.168.0.16", port);
     }
     private void messageLoop()
-    {   
-        
-        while(notStopping)
+    {
+
+        while (notStopping)
         {
             requestCount.WaitOne();
             Tuple<ClientRequest, Action<ServerResponse>> tuple = null;
@@ -44,7 +42,7 @@ public class ClientConnection : MonoBehaviour
             {
                 tuple = queuedRequests.Dequeue();
             }
-            ServerResponse response = SendClientRequest(tuple.Item1);
+            ServerResponse response = sendRequest(tuple.Item1);
             lock (recievedRespones)
             {
                 recievedRespones.Enqueue(new Tuple<ServerResponse, Action<ServerResponse>>(response, tuple.Item2));
@@ -58,9 +56,9 @@ public class ClientConnection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lock(recievedRespones)
+        lock (recievedRespones)
         {
-            if(recievedRespones.Count > 0)
+            if (recievedRespones.Count > 0)
             {
                 Tuple<ServerResponse, Action<ServerResponse>> response = recievedRespones.Dequeue();
                 response.Item2(response.Item1);
@@ -70,11 +68,11 @@ public class ClientConnection : MonoBehaviour
 
     public void AddRequest(ClientRequest request, Action<ServerResponse> action)
     {
-        lock(queuedRequests)
+        lock (queuedRequests)
         {
-            queuedRequests.Enqueue(new Tuple<ClientRequest, Action<ServerResponse>>(request,action));
+            queuedRequests.Enqueue(new Tuple<ClientRequest, Action<ServerResponse>>(request, action));
 
-            requestCount.Release(); 
+            requestCount.Release();
         }
     }
 
@@ -89,4 +87,3 @@ public class ClientConnection : MonoBehaviour
         return (ReturnValue);
     }
 }
-

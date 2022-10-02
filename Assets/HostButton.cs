@@ -21,5 +21,7 @@ public class HostButton : MonoBehaviour
     public void HostServer()
     {
         FindObjectOfType<ServerHolder>().StartServer();
+
+        
     }
 }

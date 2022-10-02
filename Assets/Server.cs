@@ -15,7 +15,7 @@ public class Server
     public static Int32 ParseBigEndianInteger(byte[] BytesToParse,int ByteOffset)
     {
         Int32 ReturnValue = 0;
-        if(BytesToParse.Length <= ByteOffset+4)
+        if (BytesToParse.Length < ByteOffset + 4)
         {
             throw new Exception("Unsufficient bytes to parse big endian integer");
         }
@@ -86,7 +86,7 @@ public class Server
 
     public static byte[] SerializeJsonObject(MBJson.JSONObject ObjectToSerialize)
     {
-        string ObjectString = ObjectToSerialize.GetStringData();
+        string ObjectString = ObjectToSerialize.ToString();
         byte[] ObjectBytes = System.Text.UTF8Encoding.UTF8.GetBytes(ObjectString);
         byte[] ReturnValue = new byte[ObjectBytes.Length+4];
         WriteBigEndianInteger(ReturnValue, (uint) ObjectBytes.Length, 0);
