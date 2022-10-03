@@ -48,7 +48,11 @@ public class TestInternet : MonoBehaviour
 
     public void playCard(ServerResponse response)
     {
-        if(response.whichPlayer == 0)
+        if (!response.cardPlayed)
+        {
+            return;
+        }
+        if (response.whichPlayer == 0)
         {
             gameObjectToDeActivatePlayer1.SetActive(false);
             gameObjectToActivatePlayer1.SetActive(true);

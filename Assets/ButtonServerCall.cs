@@ -21,11 +21,11 @@ public class ButtonServerCall : MonoBehaviour
 
     public void CallTestInternet(ServerResponse response)
     {
-        testInternet.playCard(response);
-
-
+        if (response.cardPlayed)
+        {
+            testInternet.playCard(response);
+        }
     }
-    
 
     public void playCardOnBoard()
     {
