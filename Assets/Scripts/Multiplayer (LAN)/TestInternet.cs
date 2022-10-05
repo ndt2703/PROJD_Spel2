@@ -42,6 +42,7 @@ public class TestInternet : MonoBehaviour
         {
             if(action.cardPlayed)
             {
+                print("Skiter det sig i perform oppnent action " + action.cardId);
                 PlayCard(action.cardId);
                 Destroy(GameObject.Find("Card (1)"));
             }
