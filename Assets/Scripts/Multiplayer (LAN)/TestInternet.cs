@@ -44,6 +44,7 @@ public class TestInternet : MonoBehaviour
             {
                 print("Skiter det sig i perform oppnent action " + action.cardId);
                 PlayCard(action.cardId);
+
                 Destroy(GameObject.Find("Card (1)"));
             }
         }
@@ -58,6 +59,7 @@ public class TestInternet : MonoBehaviour
     {
         print("Vilket id ar det " + cardId);
         Instantiate(cards[cardId], GameObject.Find("CardHolder").transform); //WIP
+        print("kom den forbi instantiate ");
     }
 
     public void CreateScene()
