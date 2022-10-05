@@ -6,7 +6,7 @@ public class ServerResponse : MBJson.JSONDeserializeable,MBJson.JSONTypeConverte
 {
     public  int Type = 0;
   
-    public  int whichPlayer;
+    public  int whichPlayer = 100;
 
     public bool cardPlayed = false;
 
