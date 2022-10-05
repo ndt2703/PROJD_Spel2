@@ -16,11 +16,12 @@ public class TestInternet : MonoBehaviour
 
     ClientConnection clientConnection;
 
+
     int sendRequest = 60;
 
     public Dictionary<int, GameObject> cards  = new Dictionary<int, GameObject>();
 
-
+    public GameObject cardToPlay; 
 
    public  bool hasJoinedLobby = false; 
  //   public int LocalPlayerNumber; 
@@ -28,6 +29,7 @@ public class TestInternet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cards.Add(1, cardToPlay);
         // System.Threading.Thread.(sendRequest(new ClientRequest()));
 
         clientConnection = FindObjectOfType<ClientConnection>();
@@ -41,7 +43,7 @@ public class TestInternet : MonoBehaviour
             if(action.cardPlayed)
             {
                 PlayCard(action.cardId);
-
+                Destroy(GameObject.Find("Card (1)"));
             }
         }
     }
@@ -119,6 +121,8 @@ public class TestInternet : MonoBehaviour
 
         
     }
+    
+
 
 }
 
