@@ -113,7 +113,9 @@ public class Server
         {
             return HandleRequestActions(requestToHandle);
         }
-        return null;
+
+        ServerResponse blank = new ServerResponse();
+        return blank;
     }
 
     private ServerResponse HandlePlayCard(ClientRequest requestToHandle)

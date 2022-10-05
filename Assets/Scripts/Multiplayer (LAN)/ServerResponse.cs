@@ -4,7 +4,7 @@ using System;
 
 public class ServerResponse : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
 {
-    public  int Type;
+    public  int Type = 0;
   
     public  int whichPlayer;
 
