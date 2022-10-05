@@ -105,52 +105,63 @@ public class Server
     
     public ServerResponse HandleClientRequest(ClientRequest requestToHandle)
     {
+        if(requestToHandle.hasPlayedCard)
+        {
+            return HandlePlayCard(requestToHandle);
+        }     
+        if(requestToHandle.requestOpponentActions)
+        {
+            return HandleRequestActions(requestToHandle);
+        }
+        return null;
+    }
+
+    private ServerResponse HandlePlayCard(ClientRequest requestToHandle)
+    {
         ServerResponse response = new ServerResponse();
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
         response.cardId = requestToHandle.cardId;
-
-
-        if(requestToHandle.hasPlayedCard)
+        if (requestToHandle.hasPlayedCard)
         {
-            if(response.whichPlayer == 1)
-            {
+            GameAction gameAction = new GameAction();
+            gameAction.cardId = requestToHandle.cardId;
+            gameAction.cardPlayed = true;
 
+            if (response.whichPlayer == 1)
+            {
+                player2Actions.Add(gameAction);
             }
             else
             {
-
+                player1Actions.Add(gameAction);
             }
         }
 
-    //    if(requestToHandle.hasPlayedCard)
-    //    {
-    //        hasPLayedCard.Add(requestToHandle.whichPlayer, true);
-    //    }
-    //    if(requestToHandle.isPolling)
-    //    {
-    //        if (hasPLayedCard.ContainsKey( requestToHandle.whichPlayer == 0 ? 1  : 0))
-    //        {
-    //            response.cardPlayed = true; 
-    //        }
-    //    }
-        if(requestToHandle.requestOpponentActions)
+        return response; 
+    }
+
+    private ServerResponse HandleRequestActions(ClientRequest requestToHandle)
+    {
+        ServerResponse response = new ServerResponse();
+
+        
+        int player = requestToHandle.whichPlayer == 0 ? 1 : 0;
+        if (player == 1)
         {
-            int player = requestToHandle.whichPlayer == 0 ? 1 : 0;
-            if (player == 1)
-            {
-                response.OpponentActions = new List<GameAction>(player2Actions);
-                player2Actions.Clear();
-            }
-            else
-            {
-                response.OpponentActions = new List<GameAction>(player1Actions);
-                player1Actions.Clear();
-            }
+            response.OpponentActions = new List<GameAction>(player2Actions);
+            player2Actions.Clear();
         }
+        else
+        {
+            response.OpponentActions = new List<GameAction>(player1Actions);
+            player1Actions.Clear();
+        }
+
         return response;
     }
+
     ~Server()
     {
         m_Stopping = true;
