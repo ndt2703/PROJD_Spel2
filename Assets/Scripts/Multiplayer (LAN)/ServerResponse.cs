@@ -10,7 +10,7 @@ public class ServerResponse : MBJson.JSONDeserializeable,MBJson.JSONTypeConverte
 
     public bool cardPlayed = false;
 
-    public List<GameAction> OpponentActions;
+    public List<GameAction> OpponentActions = new List<GameAction>();
 
     public string message = "";
 

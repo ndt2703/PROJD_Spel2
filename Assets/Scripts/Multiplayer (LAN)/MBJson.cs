@@ -402,6 +402,8 @@ namespace MBJson
                 int hej = 2;
             }
             JSONObject ReturnValue = null;
+
+            
             Type ObjectType = ObjectToSerialize.GetType();
             if (ObjectToSerialize is string)
             {
