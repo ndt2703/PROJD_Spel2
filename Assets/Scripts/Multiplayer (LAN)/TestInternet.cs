@@ -55,6 +55,7 @@ public class TestInternet : MonoBehaviour
 
     public void PlayCard(int cardId)
     {
+        print("Vilket id ar det " + cardId);
         Instantiate(cards[cardId], GameObject.Find("CardHolder").transform); //WIP
     }
 
