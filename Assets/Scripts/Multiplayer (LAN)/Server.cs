@@ -13,7 +13,10 @@ public class Server
     System.Net.Sockets.TcpListener m_Listener;
     bool m_Stopping = false;
 
-    public Dictionary<int, bool> hasPLayedCard  = new Dictionary<int, bool>(); 
+    public Dictionary<int, bool> hasPLayedCard  = new Dictionary<int, bool>();
+
+    public List<GameAction> player1Actions = new List<GameAction>(); 
+    public List<GameAction> player2Actions = new List<GameAction>(); 
 
     public static Int32 ParseBigEndianInteger(byte[] BytesToParse, int ByteOffset)
     {
@@ -106,18 +109,46 @@ public class Server
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
+        response.cardId = requestToHandle.cardId;
+
+
         if(requestToHandle.hasPlayedCard)
         {
-            hasPLayedCard.Add(requestToHandle.whichPlayer, true);
-        }
-        if(requestToHandle.isPolling)
-        {
-            if (hasPLayedCard.ContainsKey( requestToHandle.whichPlayer == 0 ? 1  : 0))
+            if(response.whichPlayer == 1)
             {
-                response.cardPlayed = true; 
+
+            }
+            else
+            {
+
             }
         }
 
+    //    if(requestToHandle.hasPlayedCard)
+    //    {
+    //        hasPLayedCard.Add(requestToHandle.whichPlayer, true);
+    //    }
+    //    if(requestToHandle.isPolling)
+    //    {
+    //        if (hasPLayedCard.ContainsKey( requestToHandle.whichPlayer == 0 ? 1  : 0))
+    //        {
+    //            response.cardPlayed = true; 
+    //        }
+    //    }
+        if(requestToHandle.requestOpponentActions)
+        {
+            int player = requestToHandle.whichPlayer == 0 ? 1 : 0;
+            if (player == 1)
+            {
+                response.OpponentActions = new List<GameAction>(player2Actions);
+                player2Actions.Clear();
+            }
+            else
+            {
+                response.OpponentActions = new List<GameAction>(player1Actions);
+                player1Actions.Clear();
+            }
+        }
         return response;
     }
     ~Server()

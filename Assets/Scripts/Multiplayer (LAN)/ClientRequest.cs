@@ -11,10 +11,16 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
 
     public bool isPolling = false;
 
-    public bool hasPlayedCard = false; 
+    public bool hasPlayedCard = false;
+
+    public bool requestOpponentActions = false;
+
+
+    public int cardId  = 0; 
+
 
     public Type GetType(int IntegerToConvert)
-    {
+    {   
         return (typeof(ClientRequest));
     }
     public object Deserialize(MBJson.JSONObject ObjectToParse)

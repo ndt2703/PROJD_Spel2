@@ -18,6 +18,10 @@ public class TestInternet : MonoBehaviour
 
     int sendRequest = 60;
 
+    public Dictionary<int, GameObject> cards  = new Dictionary<int, GameObject>();
+
+
+
    public  bool hasJoinedLobby = false; 
  //   public int LocalPlayerNumber; 
 
@@ -29,6 +33,28 @@ public class TestInternet : MonoBehaviour
         clientConnection = FindObjectOfType<ClientConnection>();
     }
 
+
+    public void PerformOpponentsActions(ServerResponse response)
+    {
+        foreach(GameAction action in response.OpponentActions)
+        {
+            if(action.cardPlayed)
+            {
+                PlayCard(action.cardId);
+
+            }
+        }
+    }
+
+    public void PlayCardCallback(ServerResponse response)
+    {
+        PlayCard(response.cardId);
+    }
+
+    public void PlayCard(int cardId)
+    {
+        Instantiate(cards[cardId], GameObject.Find("CardHolder").transform); //WIP
+    }
 
     public void CreateScene()
     {
@@ -73,15 +99,21 @@ public class TestInternet : MonoBehaviour
 
             if (sendRequest < 0)
             {
-                sendRequest = 60;
+                //            sendRequest = 60;
+                //
+                //            ClientRequest request = new ClientRequest();
+                //
+                //            request.isPolling = true;
+                //
+                //            request.whichPlayer = clientConnection.playerId;
+                //
+                //            clientConnection.AddRequest(request, playCard);
 
                 ClientRequest request = new ClientRequest();
 
-                request.isPolling = true;
+                request.requestOpponentActions = true;
 
-                request.whichPlayer = clientConnection.playerId;
-
-                clientConnection.AddRequest(request, playCard);
+                clientConnection.AddRequest(request, PerformOpponentsActions);
             }
         }
 
