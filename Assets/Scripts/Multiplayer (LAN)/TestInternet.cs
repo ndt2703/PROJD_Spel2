@@ -38,8 +38,10 @@ public class TestInternet : MonoBehaviour
 
     public void PerformOpponentsActions(ServerResponse response)
     {
-        foreach(GameAction action in response.OpponentActions)
+        print("kommder den till if satsen");
+        foreach (GameAction action in response.OpponentActions)
         {
+            
             if(action.cardPlayed)
             {
                 print("Skiter det sig i perform oppnent action " + action.cardId);
@@ -118,8 +120,9 @@ public class TestInternet : MonoBehaviour
                 ClientRequest request = new ClientRequest();
 
                 request.requestOpponentActions = true;
-
+                print("kommer den till add request");
                 clientConnection.AddRequest(request, PerformOpponentsActions);
+                print("den klarade det");
             }
         }
 
