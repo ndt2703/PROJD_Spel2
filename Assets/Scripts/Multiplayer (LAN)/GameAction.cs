@@ -11,6 +11,9 @@ public class GameAction : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
    
    public bool cardPlayed = false;
 
+
+
+    public GameAction() { }// denna far inte tas bort, kravs for parsingen 
     public Type GetType(int IntegerToConvert)
     {
         return (typeof(GameAction));

@@ -19,6 +19,8 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
     public int cardId  = 0; 
 
 
+    public ClientRequest() { } //Denna far inte tas bort kravs for parsingen 
+
     public Type GetType(int IntegerToConvert)
     {   
         return (typeof(ClientRequest));
