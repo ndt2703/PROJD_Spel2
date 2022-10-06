@@ -37,7 +37,7 @@ public class IpAdressInputField : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.J))
         {
-            clientConnection.ConnectToServer("193.10.9.96", 60000);
+            clientConnection.ConnectToServer("192.168.0.16", 60000);
 
             clientConnection.playerId = 0;
 
