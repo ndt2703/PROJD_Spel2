@@ -6,4 +6,9 @@ using UnityEngine;
 public class DefendSpell : Spells
 {
     public int defence;
+
+    public override void PlaySpell()
+    {
+        
+    }
 }
