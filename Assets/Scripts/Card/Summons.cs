@@ -6,4 +6,9 @@ public abstract class Summons : Card
 {
     public int minionHealth;
     public int minionDamage;
+
+    public override void PlayCard()
+    {
+        
+    }
 }

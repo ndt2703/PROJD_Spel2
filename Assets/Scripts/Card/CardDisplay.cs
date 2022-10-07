@@ -17,12 +17,29 @@ public class CardDisplay : MonoBehaviour
 
     private RectTransform rectTransform;
 
+    private Vector3 offset;
+    private Camera mainCamera;
     //public TMP_Text damageText;
 
+
+    private void OnMouseDown()
+    {
+        card.PlayCard();     
+    }
+
+    private void OnMouseDrag()
+    {
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, 8));
+
+        //Vector3 offset = transform.position - mousePosition;
+
+        transform.position = mousePosition;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = Camera.main;
         rectTransform = GetComponent<RectTransform>();
         nameText.text = card.name;
         descriptionText.text = card.description;    
