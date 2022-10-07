@@ -32,7 +32,7 @@ public class TestInternet : MonoBehaviour
         cards.Add(1, cardToPlay);
         // System.Threading.Thread.(sendRequest(new ClientRequest()));
 
-        clientConnection = FindObjectOfType<ClientConnection>();
+        clientConnection = ClientConnection.Instance;
     }
 
 

@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class ClientConnection : MonoBehaviour
 {
-
+    private static ClientConnection instance;
     Semaphore requestCount = new Semaphore(0, 100);
 
     bool notStopping = true;
@@ -19,7 +19,22 @@ public class ClientConnection : MonoBehaviour
     public int playerId = -1;
     private System.Net.Sockets.TcpClient m_TCPClient = new System.Net.Sockets.TcpClient();
 
-    public bool isHost = false; 
+    public bool isHost = false;
+
+    public static ClientConnection Instance { get; set; }
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(Instance);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
