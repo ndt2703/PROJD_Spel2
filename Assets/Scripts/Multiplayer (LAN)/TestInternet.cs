@@ -39,6 +39,8 @@ public class TestInternet : MonoBehaviour
     public void PerformOpponentsActions(ServerResponse response)
     {
         print("vilket player id har man " + ClientConnection.Instance.playerId) ;
+
+        print("listan av game actions  " + response.OpponentActions.Count);
         foreach (GameAction action in response.OpponentActions)
         {
             
