@@ -19,25 +19,25 @@ public class ButtonServerCall : MonoBehaviour
         
     }
 
-    public void CallTestInternet(ServerResponse response)
-    {
-        if (response.cardPlayed)
-        {
-            testInternet.playCard(response);
-        }
-    }
-
-    public void playCardOnBoard()
-    {
-        ClientRequest request = new ClientRequest();
-
-        request.whichPlayer = connection.playerId;
-
-        request.isPolling = true;
-
-        request.hasPlayedCard = true;
-
-        connection.AddRequest(request,CallTestInternet);
-
-    }
+  //  public void CallTestInternet(ServerResponse response)
+  //  {
+  //      if (response.cardPlayed)
+  //      {
+  //         // testInternet.PlayCard(response);
+  //      }
+  //  }
+  //
+  //  public void playCardOnBoard()
+  //  {
+  //      ClientRequest request = new ClientRequest();
+  //
+  //      request.whichPlayer = connection.playerId;
+  //
+  //      request.isPolling = true;
+  //
+  //      request.hasPlayedCard = true;
+  //
+  //      connection.AddRequest(request,CallTestInternet);
+  //
+  //  }
 }

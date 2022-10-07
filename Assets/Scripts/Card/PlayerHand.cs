@@ -21,6 +21,7 @@ public class PlayerHand : MonoBehaviour
         ClientRequest request = new ClientRequest();
         request.cardId = 1;
         request.hasPlayedCard = true;
+        request.whichPlayer = ClientConnection.Instance.playerId;  
 
         FindObjectOfType<ClientConnection>().AddRequest(request, testInternet.PlayCardCallback);
     }

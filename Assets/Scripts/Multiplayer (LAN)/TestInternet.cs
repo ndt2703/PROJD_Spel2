@@ -44,9 +44,9 @@ public class TestInternet : MonoBehaviour
             
             if(action.cardPlayed)
             {
-                print("Skiter det sig i perform oppnent action " + action.cardId);
+                //print("Skiter det sig i perform oppnent action " + action.cardId);
                 PlayCard(action.cardId);
-
+                print("har motstandaren gjort en action");
                 Destroy(GameObject.Find("Card (1)"));
             }
         }
@@ -80,23 +80,23 @@ public class TestInternet : MonoBehaviour
     //    }
     }
 
-    public void playCard(ServerResponse response)
-    {
-        if (!response.cardPlayed)
-        {
-            return;
-        }
-        if (response.whichPlayer == 0)
-        {
-            gameObjectToDeActivatePlayer1.SetActive(false);
-            gameObjectToActivatePlayer1.SetActive(true);
-        }
-        else
-        { 
-            gameObjectToActivatePlayer2.SetActive(true);
-            gameObjectToDeActivatePlayer2.SetActive(false);
-        }
-    }
+//    public void playCard(ServerResponse response)
+//    {
+//        if (!response.cardPlayed)
+//        {
+//            return;
+//        }
+//        if (response.whichPlayer == 0)
+//        {
+//            gameObjectToDeActivatePlayer1.SetActive(false);
+//            gameObjectToActivatePlayer1.SetActive(true);
+//        }
+//        else
+//        { 
+//            gameObjectToActivatePlayer2.SetActive(true);
+//            gameObjectToDeActivatePlayer2.SetActive(false);
+//        }
+//    }
 
 
     // Update is called once per frame
