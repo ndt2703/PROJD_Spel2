@@ -117,9 +117,7 @@ public class TestInternet : MonoBehaviour
                 //
                 //            clientConnection.AddRequest(request, playCard);
 
-                ClientRequest request = new ClientRequest();
-                request.whichPlayer = ClientConnection.Instance.playerId; 
-                request.requestOpponentActions = true;
+                RequestOpponentActions request = new RequestOpponentActions(ClientConnection.Instance.playerId, true); 
                 print("kommer den till add request");
                 clientConnection.AddRequest(request, PerformOpponentsActions);
                 print("den klarade det");

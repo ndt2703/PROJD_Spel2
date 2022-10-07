@@ -13,7 +13,7 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
 
     public bool hasPlayedCard = false;
 
-    public bool requestOpponentActions = false;
+   
 
 
     public int cardId  = 0; 
@@ -22,7 +22,16 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
     public ClientRequest() { } //Denna far inte tas bort kravs for parsingen 
 
     public Type GetType(int IntegerToConvert)
-    {   
+    {   if(Type == 0)
+        {
+            return (typeof(ClientRequest));
+        }
+        if(Type == 1)
+        {
+            return (typeof(RequestOpponentActions));
+        }
+
+
         return (typeof(ClientRequest));
     }
     public object Deserialize(MBJson.JSONObject ObjectToParse)
