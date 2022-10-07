@@ -39,7 +39,7 @@ public class IpAdressInputField : MonoBehaviour
         {
             clientConnection.ConnectToServer("193.10.9.96", 60000);
 
-            clientConnection.playerId = 0;
+         
 
             ClientRequest request = new ClientRequest();
             if(clientConnection.isHost)
@@ -57,6 +57,8 @@ public class IpAdressInputField : MonoBehaviour
             clientConnection.AddRequest(request, CreateScene);
             testInternet.hasJoinedLobby = true;
             print("keypad entererar den");
+
+            print("vilken player id har man  " + ClientConnection.Instance.playerId); 
         }
     }
 }
