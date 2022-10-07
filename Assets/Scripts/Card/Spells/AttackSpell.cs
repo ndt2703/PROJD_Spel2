@@ -6,21 +6,9 @@ using UnityEngine;
 public class AttackSpell : Spells
 {
     public int damage;
-    private Champion targetChampion;
-    private bool firstTime = true;
 
     public override void PlaySpell()
     {
-        if (firstTime)
-        {
-            FindChampion();
-        }
-        targetChampion.TakeDamage(damage);
-    }
-
-    private void FindChampion()
-    {
-        targetChampion = FindObjectOfType<Champion>();
-        firstTime = false;
+        FindObjectOfType<Champion>().TakeDamage(damage);
     }
 }

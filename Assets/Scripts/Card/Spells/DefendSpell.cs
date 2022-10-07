@@ -9,6 +9,6 @@ public class DefendSpell : Spells
 
     public override void PlaySpell()
     {
-        
+        FindObjectOfType<Champion>().GainShield(defence);
     }
 }
