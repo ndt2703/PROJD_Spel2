@@ -109,7 +109,7 @@ public class Server
         {
             return HandlePlayCard(requestToHandle);
         }     
-        if(requestToHandle.requestOpponentActions)
+        if(requestToHandle.GetType(requestToHandle.Type) == typeof(ClientConnection))
         {
             return HandleRequestActions(requestToHandle);
         }
