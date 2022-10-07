@@ -38,7 +38,7 @@ public class TestInternet : MonoBehaviour
 
     public void PerformOpponentsActions(ServerResponse response)
     {
-        print("kommder den till if satsen");
+        print("vilket player id har man " + ClientConnection.Instance.playerId) ;
         foreach (GameAction action in response.OpponentActions)
         {
             

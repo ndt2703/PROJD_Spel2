@@ -58,7 +58,7 @@ public class IpAdressInputField : MonoBehaviour
             testInternet.hasJoinedLobby = true;
             print("keypad entererar den");
 
-            print("vilken player id har man  " + ClientConnection.Instance.playerId); 
+         
         }
     }
 }
