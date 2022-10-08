@@ -10,21 +10,22 @@ public class CardDisplay : MonoBehaviour
 
     public TMP_Text nameText;
     public TMP_Text descriptionText;
+    public TMP_Text manaText;
 
     public Image artworkImage;
 
-    public TMP_Text manaText;
 
-    private RectTransform rectTransform;
 
     private Vector3 offset;
     private Camera mainCamera;
     //public TMP_Text damageText;
 
+    private GameState gameState;
+
 
     private void OnMouseDown()
     {
-        card.PlayCard();     
+        gameState.CheckIfCanPlayCard(card);
     }
 
     private void OnMouseDrag()
@@ -39,8 +40,9 @@ public class CardDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameState = GameState.Instance;
         mainCamera = Camera.main;
-        rectTransform = GetComponent<RectTransform>();
+
         nameText.text = card.name;
         descriptionText.text = card.description;    
         artworkImage.sprite = card.artwork;

@@ -33,6 +33,11 @@ public class Champion : MonoBehaviour
             Debug.Log("Enemy died");
         }
     }
+
+    public void HealChampion(int amountToHeal)
+    {
+        health += amountToHeal;
+    }
     public void GainShield(int amountToBlock)
     {
         shield += amountToBlock;

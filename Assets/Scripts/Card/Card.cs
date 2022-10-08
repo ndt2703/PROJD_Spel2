@@ -10,5 +10,6 @@ public abstract class Card : ScriptableObject
     public Sprite artwork;
     public int manaCost; 
 
-    public abstract void PlayCard();   
+    public abstract void PlayCard();
+
 }

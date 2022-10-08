@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameState : MonoBehaviour
+{
+    public int playerMana;
+
+    private static GameState instance;
+
+    public static GameState Instance { get { return instance; } set { instance = value; } }
+    private int cardCost;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void CheckIfCanPlayCard(Card card)
+    {
+        cardCost = card.manaCost;
+        if (playerMana >= cardCost)
+        {
+            playerMana -= cardCost;
+            card.PlayCard();
+            card = null;
+        }
+        else
+        {
+            Debug.Log("You don't have enough Mana");
+        }
+    }
+}
