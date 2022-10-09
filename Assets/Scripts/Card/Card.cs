@@ -8,7 +8,10 @@ public abstract class Card : ScriptableObject
     public string description;
 
     public Sprite artwork;
-    public int manaCost; 
+    public int manaCost;
+
+    private Champion target;
+    public Champion Target { get { return target; } set { target = value; } }
 
     public abstract void PlayCard();
 

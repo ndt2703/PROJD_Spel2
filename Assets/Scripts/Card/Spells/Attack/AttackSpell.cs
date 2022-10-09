@@ -7,8 +7,9 @@ public class AttackSpell : Spells
 {
     public int damage;
 
+
     public override void PlaySpell()
     {
-        FindObjectOfType<Champion>().TakeDamage(damage);
+        Target.TakeDamage(damage);
     }
 }

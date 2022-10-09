@@ -21,27 +21,48 @@ public class CardDisplay : MonoBehaviour
     //public TMP_Text damageText;
 
     private GameState gameState;
+    private Vector3 mousePosition;
 
 
     private void OnMouseDown()
     {
-        gameState.CheckIfCanPlayCard(card);
+        offset = transform.position - mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 12)); 
     }
 
     private void OnMouseDrag()
     {
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, 8));
+        mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 12));
 
-        //Vector3 offset = transform.position - mousePosition;
-
-        transform.position = mousePosition;
+        transform.position = mousePosition + offset;
     }
+
+    private void OnMouseUp()
+    {
+        RaycastHit hitEnemy;
+        Physics.Raycast(mousePosition, Vector3.forward * 5f, out hitEnemy, 10f);
+        if (hitEnemy.collider == null) return;
+        if (hitEnemy.collider.gameObject.tag.Equals("Champion"))
+        {
+            GameObject enemyTargeted = hitEnemy.transform.gameObject;
+
+            if (enemyTargeted.tag.Equals("Champion"))
+            {
+                card.Target = enemyTargeted.GetComponent<Champion>();
+                gameState.CheckIfCanPlayCard(card);
+            }
+            /*            else if (enemyTargeted.tag.Equals("Landmark"))
+                            card.Target = enemyTargeted.GetComponent<>();*/
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
         gameState = GameState.Instance;
         mainCamera = Camera.main;
+
+        if (card == null) return;
 
         nameText.text = card.name;
         descriptionText.text = card.description;    
