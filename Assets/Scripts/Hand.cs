@@ -5,17 +5,34 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     public List<GameObject> cardSlotsInHand = new List<GameObject>();
+    public Deck deck;
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void FixedUpdate()
     {
         foreach (GameObject cardSlot in cardSlotsInHand)
         {
             CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
             if (cardDisplay.card != null) continue;
             cardSlot.SetActive(false);
+        }
+    }
+
+    public void DrawCard(int amountToDraw)
+    {
+        int drawnCards = 0;
+        foreach (GameObject cardSlot in cardSlotsInHand)
+        {           
+            CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
+            if (cardDisplay.card != null) continue;
+
+            if (!cardSlot.activeInHierarchy)
+            {
+                if (drawnCards >= amountToDraw) break;
+
+                cardDisplay.card = deck.WhichCardToDraw();
+                cardSlot.SetActive(true);
+                drawnCards++;
+            }
         }
     }
 

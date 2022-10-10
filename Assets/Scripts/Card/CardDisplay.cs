@@ -31,6 +31,7 @@ public class CardDisplay : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if (gameObject.tag.Equals("LandmarkSlot")) return;
         mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 12));
 
         transform.position = mousePosition + offset;
@@ -40,19 +41,41 @@ public class CardDisplay : MonoBehaviour
     {
         RaycastHit hitEnemy;
         Physics.Raycast(mousePosition, Vector3.forward * 5f, out hitEnemy, 10f);
+        Debug.DrawRay(mousePosition, Vector3.forward * 5f, Color.red, 100f);
+        
         if (hitEnemy.collider == null) return;
-        if (hitEnemy.collider.gameObject.tag.Equals("Champion"))
-        {
-            GameObject enemyTargeted = hitEnemy.transform.gameObject;
 
-            if (enemyTargeted.tag.Equals("Champion"))
-            {
-                card.Target = enemyTargeted.GetComponent<Champion>();
+        GameObject gameobjectHit = hitEnemy.transform.gameObject;
+
+        switch (gameobjectHit.tag)
+        {
+            case "Champion":
+                card.Target = gameobjectHit.GetComponent<Champion>();
                 gameState.CheckIfCanPlayCard(card);
-            }
-            /*            else if (enemyTargeted.tag.Equals("Landmark"))
-                            card.Target = enemyTargeted.GetComponent<>();*/
-        }
+                card = null;
+                break;
+            case "LandmarkSlot":
+                Debug.Log("Runs");
+                CardDisplay landmark = gameobjectHit.GetComponent<CardDisplay>();
+                landmark.card = card;
+                card = null;
+                break;
+        }                                 
+    }
+
+    private void UpdateTextOnCard()
+    {
+        if (card == null) return;
+
+        nameText.text = card.name;
+        descriptionText.text = card.description;
+        artworkImage.sprite = card.artwork;
+        manaText.text = card.manaCost.ToString();
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateTextOnCard();
     }
 
 
@@ -61,12 +84,5 @@ public class CardDisplay : MonoBehaviour
     {
         gameState = GameState.Instance;
         mainCamera = Camera.main;
-
-        if (card == null) return;
-
-        nameText.text = card.name;
-        descriptionText.text = card.description;    
-        artworkImage.sprite = card.artwork;
-        manaText.text = card.manaCost.ToString();
     }
 }

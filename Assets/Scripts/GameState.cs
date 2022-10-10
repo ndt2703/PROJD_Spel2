@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameState : MonoBehaviour
 {
     public int playerMana;
+    public Hand hand;
 
     private static GameState instance;
 
@@ -23,6 +24,11 @@ public class GameState : MonoBehaviour
         }
     }
 
+    public void DrawCardToHand(int amountToDraw)
+    {
+        hand.DrawCard(amountToDraw);
+    }
+
     public void CheckIfCanPlayCard(Card card)
     {
         cardCost = card.manaCost;
@@ -30,7 +36,7 @@ public class GameState : MonoBehaviour
         {
             playerMana -= cardCost;
             card.PlayCard();
-            card = null;
+            
         }
         else
         {
