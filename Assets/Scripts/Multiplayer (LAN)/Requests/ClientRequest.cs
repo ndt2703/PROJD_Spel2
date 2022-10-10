@@ -30,7 +30,10 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
         {
             return (typeof(RequestOpponentActions));
         }
-
+        if( Type == 2)
+        {
+            return (typeof(RequestEndTurn));
+        }
 
         return (typeof(ClientRequest));
     }

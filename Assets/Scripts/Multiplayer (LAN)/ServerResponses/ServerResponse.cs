@@ -17,7 +17,14 @@ public class ServerResponse : MBJson.JSONDeserializeable,MBJson.JSONTypeConverte
     public int cardId  = 0; 
 
     public Type GetType(int IntegerToConvert)
-    {
+    {   if(Type == 0)
+        {
+            return (typeof(ServerResponse));
+        }
+        if (Type == 1)
+        {
+            return (typeof(ResponseEndTurn));
+        }
         return (typeof(ServerResponse));
     }
     public ServerResponse() { } //Denna ska inte tas bort, behovs for parsingen 

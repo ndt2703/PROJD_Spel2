@@ -15,7 +15,15 @@ public class GameAction : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
 
     public GameAction() { }// denna far inte tas bort, kravs for parsingen 
     public Type GetType(int IntegerToConvert)
-    {
+    {   
+        if(Type == 0)
+        {
+            return typeof(GameAction);
+        }
+        if(Type == 1)
+        {
+            return typeof(GameActionEndTurn); 
+        }
         return (typeof(GameAction));
     }
     public object Deserialize(MBJson.JSONObject ObjectToParse)

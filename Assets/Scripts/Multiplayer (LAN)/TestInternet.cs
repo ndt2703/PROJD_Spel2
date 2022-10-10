@@ -17,8 +17,6 @@ public class TestInternet : MonoBehaviour
     ClientConnection clientConnection;
 
 
-    int sendRequest = 60;
-
     public Dictionary<int, GameObject> cards  = new Dictionary<int, GameObject>();
 
     public GameObject cardToPlay; 
@@ -50,6 +48,11 @@ public class TestInternet : MonoBehaviour
                 PlayCard(action.cardId);
                 print("har motstandaren gjort en action");
                 Destroy(GameObject.Find("Card (1)"));
+            }
+
+            if(typeof(GameAction) == typeof(GameActionEndTurn))
+            {
+                GameState.Instance.SwitchTurn(response);
             }
         }
     }
@@ -105,30 +108,30 @@ public class TestInternet : MonoBehaviour
     void FixedUpdate()
     {   if(hasJoinedLobby)
         {
-            sendRequest -= 1;
-
-            if (sendRequest < 0)
-            {
-                //            sendRequest = 60;
-                //
-                //            ClientRequest request = new ClientRequest();
-                //
-                //            request.isPolling = true;
-                //
-                //            request.whichPlayer = clientConnection.playerId;
-                //
-                //            clientConnection.AddRequest(request, playCard);
-
-                RequestOpponentActions request = new RequestOpponentActions(ClientConnection.Instance.playerId, true); 
-                print("kommer den till add request");
-                clientConnection.AddRequest(request, PerformOpponentsActions);
-                print("den klarade det");
-            }
+            InvokeRepeating(nameof(SendRequest), 0, 1);
         }
 
         
     }
-    
+
+
+    private IEnumerator SendRequest()
+    {
+        //
+        //            ClientRequest request = new ClientRequest();
+        //
+        //            request.isPolling = true;
+        //
+        //            request.whichPlayer = clientConnection.playerId;
+        //
+        //            clientConnection.AddRequest(request, playCard);
+
+        RequestOpponentActions request = new RequestOpponentActions(ClientConnection.Instance.playerId, true);
+        print("kommer den till add request");
+        clientConnection.AddRequest(request, PerformOpponentsActions);
+        print("den klarade det");
+        yield return new WaitForSeconds(0);
+    }
 
 
 }

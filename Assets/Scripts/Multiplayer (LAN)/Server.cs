@@ -131,18 +131,23 @@ public class Server
             gameAction.cardId = requestToHandle.cardId;
             gameAction.cardPlayed = true;
 
-            if (response.whichPlayer == 1)
-            {
-                player2Actions.Add(gameAction);
-            }
-            else
-            {
-                player1Actions.Add(gameAction);
-            }
+            AddGameAction(response, gameAction);
         }
 
         return response; 
     }
+    private ServerResponse HandleEndTurn(ClientRequest requestToHandle)
+    {
+        ResponseEndTurn response = new ResponseEndTurn(requestToHandle.whichPlayer);
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionEndTurn gameAction = new GameActionEndTurn(0);
+
+        AddGameAction(response, gameAction);
+        return response;
+    }
+
 
     private ServerResponse HandleRequestActions(ClientRequest requestToHandle)
     {
@@ -162,6 +167,17 @@ public class Server
         }
 
         return response;
+    }
+    private void AddGameAction(ServerResponse response, GameAction gameAction)
+    {
+        if (response.whichPlayer == 1)
+        {
+            player2Actions.Add(gameAction);
+        }
+        else
+        {
+            player1Actions.Add(gameAction);
+        }
     }
 
     ~Server()

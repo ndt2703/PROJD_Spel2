@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-    public int currentPlayerTurn = 0;
+    public int currentPlayerID = 0;
     public bool hasPriority = true;
 
     public int playerOneMana;
@@ -39,12 +39,39 @@ public class GameState : MonoBehaviour
         
     }
 
-    public void SwitchTurn()
+    public bool LegalEndTurn()
     {
-        switch (currentPlayerTurn)
+        if(hasPriority && currentPlayerID == ClientConnection.Instance.playerId)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SwitchTurn(ServerResponse response)
+    {
+        //TriggerEndStep();
+        // spelaren med priority end of turn effects triggrar aka EndOfTurnEffects(Player player1)
+
+        //TriggerUpKeep();
+        // spelaren med priority upkeep effects triggrar aka UpkeepEffects(Player player2)
+
+    }
+
+    public void TriggerEndStep(ServerResponse response)
+    {
+        //Trigger Champion EndStep
+        //Trigger Landmark EndStep
+    }
+
+    public void TriggerUpKeep(ServerResponse response)
+    {
+        //Trigger Champion Upkeep
+        //Trigger Landmark Upkeep
+        switch (currentPlayerID)
         {
             case 0:
-                currentPlayerTurn = 1;
+                currentPlayerID = 1;
                 if (playerTwoMana < maxMana)
                 {
                     playerTwoMana++;
@@ -53,7 +80,7 @@ public class GameState : MonoBehaviour
                 break;
 
             case 1:
-                currentPlayerTurn = 0;
+                currentPlayerID = 0;
                 if (playerOneMana < maxMana)
                 {
                     playerOneMana++;
@@ -61,7 +88,8 @@ public class GameState : MonoBehaviour
                 currentMana = playerOneMana;
                 break;
         }
-        //Send request
+        //Gain a mana
+        //Draw a card
     }
 
     public void OnChampionDeath(ServerResponse response)
@@ -76,7 +104,5 @@ public class GameState : MonoBehaviour
         {
             hasPriority = false;
         }
-
-        // Adds into the graveyard
      }
 }
