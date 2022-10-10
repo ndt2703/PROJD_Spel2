@@ -55,7 +55,6 @@ public class CardDisplay : MonoBehaviour
                 card = null;
                 break;
             case "LandmarkSlot":
-                Debug.Log("Runs");
                 CardDisplay landmark = gameobjectHit.GetComponent<CardDisplay>();
                 landmark.card = card;
                 card = null;
