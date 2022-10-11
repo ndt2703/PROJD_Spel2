@@ -52,7 +52,7 @@ public class TestInternet : MonoBehaviour
                 Destroy(GameObject.Find("Card (1)"));
             }
 
-            if(typeof(GameAction) == typeof(GameActionEndTurn))
+            if(action.GetType(action.Type) == typeof(GameActionEndTurn))
             {
                 GameState.Instance.SwitchTurn(response);
 
