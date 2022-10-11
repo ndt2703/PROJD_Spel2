@@ -60,6 +60,11 @@ public class TestInternet : MonoBehaviour
 
                 print("skickar den en gameAction end turn");
             }
+
+            if(!action.errorMessage.Equals(""))
+            {
+                print(action.errorMessage); 
+            }
         }
     }
 

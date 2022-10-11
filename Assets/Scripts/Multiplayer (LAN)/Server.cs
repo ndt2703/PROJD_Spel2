@@ -120,6 +120,12 @@ public class Server
             return HandleEndTurn(requestToHandle);
         }
 
+        GameAction errorMessage = new GameAction();
+        errorMessage.errorMessage = "den kommer inte till ratt handle";
+        ServerResponse errorResponse = new ServerResponse();
+        AddGameAction(errorResponse, errorMessage); 
+
+
         ServerResponse blank = new ServerResponse();
         return blank;
     }
