@@ -154,7 +154,7 @@ public class TestInternet : MonoBehaviour
 
             }*/
         }
-
+        print("Vilken spelar id har man " + clientConnection.playerId);
     }
     
 

@@ -189,7 +189,7 @@ public class Server
         response.whichPlayer = requestToHandle.whichPlayer;
 
         GameActionDrawCard gameAction = new GameActionDrawCard(requestToHandle.amountToDraw);
-
+        
         AddGameAction(response, gameAction);
         return response;
     }
