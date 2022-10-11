@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : MonoBehaviour
+public class GameLoop : MonoBehaviour
 {
     public int playerMana;
     public Hand hand;
@@ -12,9 +12,9 @@ public class GameState : MonoBehaviour
 
     public bool playerOneStarted;
 
-    private static GameState instance;
+    private static GameLoop instance;
 
-    public static GameState Instance { get { return instance; } set { instance = value; } }
+    public static GameLoop Instance { get { return instance; } set { instance = value; } }
     private int cardCost;
 
     private void Awake()
