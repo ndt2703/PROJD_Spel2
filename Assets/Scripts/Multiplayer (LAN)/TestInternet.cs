@@ -63,7 +63,7 @@ public class TestInternet : MonoBehaviour
 
             if(!action.errorMessage.Equals(""))
             {
-                print(action.GetType());
+                print(action.GetType(action.Type));
                 print(action.errorMessage); 
             }
         }
