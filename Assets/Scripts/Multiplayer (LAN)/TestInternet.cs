@@ -40,9 +40,7 @@ public class TestInternet : MonoBehaviour
 
     public void PerformOpponentsActions(ServerResponse response)
     {
-        print("vilket player id har man " + ClientConnection.Instance.playerId) ;
 
-        print("listan av game actions  " + response.OpponentActions.Count);
         foreach (GameAction action in response.OpponentActions)
         {
             
@@ -50,7 +48,7 @@ public class TestInternet : MonoBehaviour
             {
                 //print("Skiter det sig i perform oppnent action " + action.cardId);
                 PlayCard(action.cardId);
-                print("har motstandaren gjort en action");
+
                 Destroy(GameObject.Find("Card (1)"));
             }
 
