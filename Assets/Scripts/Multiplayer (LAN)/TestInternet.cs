@@ -70,9 +70,9 @@ public class TestInternet : MonoBehaviour
 
     public void PlayCard(int cardId)
     {
-        print("Vilket id ar det " + cardId);
+
         Instantiate(cards[cardId], GameObject.Find("CardHolder").transform); //WIP
-        print("kom den forbi instantiate ");
+       
     }
 
     public void CreateScene()
@@ -116,20 +116,20 @@ public class TestInternet : MonoBehaviour
         {                        //InvokeRepeating(nameof(SendRequest), 0, 1);
                                  // hasEstablishedEnemurator = true;
                                  // 
-                                 //    StartCoroutine(SendRequest());
+                                 StartCoroutine(SendRequest());
                                  //    hasEstablishedEnemurator = true;
                                  //    
 
-            waitTime -= 1;
+        
 
-            if (waitTime < 0)
+            /*if (waitTime < 0)
             {
                 waitTime = 60;
                 RequestOpponentActions request = new RequestOpponentActions(ClientConnection.Instance.playerId, true);
-                print("kommer den till add request");
+
                 clientConnection.AddRequest(request, PerformOpponentsActions);
-                print("den klarade det");
-            }
+
+            }*/
         }
 
     }
@@ -147,10 +147,10 @@ public class TestInternet : MonoBehaviour
         //            clientConnection.AddRequest(request, playCard);
 
         RequestOpponentActions request = new RequestOpponentActions(ClientConnection.Instance.playerId, true);
-        print("kommer den till add request");
+
         clientConnection.AddRequest(request, PerformOpponentsActions);
         print("den klarade det");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0);
     }
 
 
