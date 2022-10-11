@@ -121,7 +121,8 @@ public class Server
         }
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDrawCard))
         {
-            RequestDrawCard castedRequest = new RequestDrawCard(2); 
+            RequestDrawCard castedRequest = new RequestDrawCard(2);
+            castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDrawCard(castedRequest);
         }
 
