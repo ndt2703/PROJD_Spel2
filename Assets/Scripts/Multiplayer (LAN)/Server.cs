@@ -121,7 +121,7 @@ public class Server
         }
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDrawCard))
         {
-            return HandleEndTurn(requestToHandle);
+            return HandleDrawCard(requestToHandle);
         }
 
         GameAction errorMessage = new GameAction();
