@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a71013c73a1cd4d9c34f6215f751ac, type: 3}
   m_Name: DefenceSpell
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  artwork: {fileID: 0}
-  manaCost: 0
-  defence: 0
+  name: Spell of Defence
+  description: Gain 4 shield
+  artwork: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  manaCost: 5
+  amountOfCardsToDraw: 2
+  defence: 4

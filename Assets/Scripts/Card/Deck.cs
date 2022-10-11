@@ -6,15 +6,15 @@ public class Deck : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public List<Card> deckOfCards = new List<Card>();
-    void Start()
+    [SerializeField] public Stack<Card> deckOfCards = new Stack<Card>();
+
+    public void AddCardToDeck(Card cardToAdd)
     {
-        
+        deckOfCards.Push(cardToAdd);
     }
 
-    // Update is called once per frame
-    void Update()
+    public Card WhichCardToDraw()
     {
-        
+        return deckOfCards.Pop();
     }
 }
