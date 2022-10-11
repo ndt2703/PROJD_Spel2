@@ -66,7 +66,7 @@ public class GameLoop : MonoBehaviour
 
     public void DrawCardToHand(int amountToDraw)
     {
-        hand.DrawCard(amountToDraw);
+        DrawCard(amountToDraw);
     }
 
     public void MakeCardSpellTag()
@@ -86,6 +86,30 @@ public class GameLoop : MonoBehaviour
         else
         {
             Debug.Log("You don't have enough Mana");
+        }
+    }
+
+    public void DrawCardRequest(ServerResponse response)
+    {
+
+        DrawCard(2);
+    }
+    public void DrawCard(int amountToDraw)
+    {
+        int drawnCards = 0;
+        foreach (GameObject cardSlot in hand.cardSlotsInHand)
+        {
+            CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
+            if (cardDisplay.card != null) continue;
+
+            if (!cardSlot.activeInHierarchy)
+            {
+                if (drawnCards >= amountToDraw) break;
+
+                cardDisplay.card = hand.deck.WhichCardToDraw();
+                cardSlot.SetActive(true);
+                drawnCards++;
+            }
         }
     }
 }

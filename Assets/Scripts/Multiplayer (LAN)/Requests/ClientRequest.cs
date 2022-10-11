@@ -34,6 +34,10 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
         {
             return (typeof(RequestEndTurn));
         }
+        if (Type == 3)
+        {
+            return (typeof(RequestDrawCard));
+        }
 
         return (typeof(ClientRequest));
     }

@@ -17,24 +17,8 @@ public class Hand : MonoBehaviour
         }
     }
 
-    public void DrawCard(int amountToDraw)
-    {
-        int drawnCards = 0;
-        foreach (GameObject cardSlot in cardSlotsInHand)
-        {           
-            CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
-            if (cardDisplay.card != null) continue;
 
-            if (!cardSlot.activeInHierarchy)
-            {
-                if (drawnCards >= amountToDraw) break;
 
-                cardDisplay.card = deck.WhichCardToDraw();
-                cardSlot.SetActive(true);
-                drawnCards++;
-            }
-        }
-    }
 
     // Update is called once per frame
     void Update()

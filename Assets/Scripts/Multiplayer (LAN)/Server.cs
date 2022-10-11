@@ -119,6 +119,10 @@ public class Server
         {
             return HandleEndTurn(requestToHandle);
         }
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDrawCard))
+        {
+            return HandleEndTurn(requestToHandle);
+        }
 
         GameAction errorMessage = new GameAction();
         errorMessage.errorMessage = "den kommer inte till ratt handle";
@@ -173,6 +177,17 @@ public class Server
         response.whichPlayer = requestToHandle.whichPlayer;
 
         GameActionEndTurn gameAction = new GameActionEndTurn(0);
+
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandleDrawCard(RequestDrawCard requestToHandle)
+    {
+        ResponseEndTurn response = new ResponseEndTurn(requestToHandle.whichPlayer);
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionDrawCard gameAction = new GameActionDrawCard(requestToHandle.amountToDraw);
 
         AddGameAction(response, gameAction);
         return response;

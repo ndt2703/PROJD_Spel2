@@ -15,7 +15,11 @@ public abstract class Spells : Card
 
     private void DrawCard()
     {
-        GameLoop.Instance.DrawCardToHand(amountOfCardsToDraw);
+        //  GameLoop.Instance.DrawCard(amountOfCardsToDraw);
+
+        RequestDrawCard request = new RequestDrawCard(amountOfCardsToDraw);
+
+        ClientConnection.Instance.AddRequest(request, GameLoop.Instance.DrawCardRequest);
     }
 
 

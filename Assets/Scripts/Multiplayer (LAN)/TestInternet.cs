@@ -63,8 +63,34 @@ public class TestInternet : MonoBehaviour
                 GameState.Instance.hasPriority = true;
 
             }
+            if (action.GetType(action.Type).Equals(typeof(GameActionDrawCard)))
+            {
+                print("skickar den en gameAction draw card");
+                GameActionDrawCard theAction = (GameActionDrawCard)action;
 
-            if(!action.errorMessage.Equals(""))
+                if(theAction.amountToDrawOpponent >0)
+                {
+                    GameLoop.Instance.DrawCard(theAction.amountToDrawOpponent); 
+                }
+                GameLoop.Instance.DrawCard(theAction.amountToDraw);
+
+            }
+
+
+
+            //Discard game action
+
+            //Remove card from graveyard 
+
+            // heal game action
+            // shield game action
+            //add specific card to hand action bn
+
+            //Switch active champion action
+
+            //destroy landmark game action 
+
+            if (!action.errorMessage.Equals(""))
             {
                 print(action.GetType());
                 print(action.errorMessage); 
