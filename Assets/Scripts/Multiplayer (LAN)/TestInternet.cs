@@ -113,11 +113,10 @@ public class TestInternet : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {   if(hasJoinedLobby && !hasEstablishedEnemurator)
-        {
-            //InvokeRepeating(nameof(SendRequest), 0, 1);
-            // hasEstablishedEnemurator = true;
-            // 
-            SendRequest();
+        {                        //InvokeRepeating(nameof(SendRequest), 0, 1);
+                                 // hasEstablishedEnemurator = true;
+                                 // 
+            StartCoroutine(SendRequest());
         }
 
         
