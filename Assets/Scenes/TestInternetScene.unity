@@ -15090,6 +15090,7 @@ GameObject:
   - component: {fileID: 5280378130029087509}
   - component: {fileID: 5280378130029087498}
   - component: {fileID: 5280378130029087499}
+  - component: {fileID: 5280378130029087510}
   m_Layer: 5
   m_Name: EndTurn
   m_TagString: Untagged
@@ -15171,8 +15172,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameState, Assembly-CSharp
+      - m_Target: {fileID: 5280378130029087510}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
         m_MethodName: EndTurn
         m_Mode: 1
         m_Arguments:
@@ -15191,6 +15192,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5280378130029087497}
   m_CullTransparentMesh: 1
+--- !u!114 &5280378130029087510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5280378130029087497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce3d54451992f64999fcea88e37ee7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5280378130038052377
 Transform:
   m_ObjectHideFlags: 0
