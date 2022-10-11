@@ -6,6 +6,11 @@ public class GameState : MonoBehaviour
 {
     public int playerMana;
     public Hand hand;
+    public bool isPlayerOnesTurn;
+
+    public int amountOfTurns;
+
+    public bool playerOneStarted;
 
     private static GameState instance;
 
@@ -21,6 +26,41 @@ public class GameState : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+    private void Start()
+    {
+        float random = Random.Range(0,1);
+
+        if (random == 0)
+            playerOneStarted = true;
+        else if (random == 1)
+            playerOneStarted = false;
+    }
+
+    public void AmountOfManaToGivePlayer()
+    {
+        playerMana = amountOfTurns;
+    }
+
+    public void EndTurn()
+    {
+        if (isPlayerOnesTurn)
+        {
+            isPlayerOnesTurn = false;
+            if (!playerOneStarted)
+            {
+                amountOfTurns++;
+            }
+        }
+        else
+        {
+            isPlayerOnesTurn = true;
+            if (playerOneStarted)
+            {
+                amountOfTurns++;
+            }
+            
         }
     }
 
