@@ -57,7 +57,6 @@ public class CardDisplay : MonoBehaviour
         {
             case "Champion":
                 card.Target = gameobjectHit.GetComponent<Champion>();
-                print(gameLoop);
                 gameLoop.CheckIfCanPlayCard(card);
                 card = null;
                 break;
