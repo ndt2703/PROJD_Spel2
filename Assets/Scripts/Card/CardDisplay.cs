@@ -57,6 +57,7 @@ public class CardDisplay : MonoBehaviour
         {
             case "Champion":
                 card.Target = gameobjectHit.GetComponent<Champion>();
+                print(gameLoop);
                 gameLoop.CheckIfCanPlayCard(card);
                 card = null;
                 break;
@@ -91,6 +92,11 @@ public class CardDisplay : MonoBehaviour
             gameObjectRectTransform = GetComponent<RectTransform>();
             startposition = gameObjectRectTransform.anchoredPosition;
         }
+
+    }
+
+    private void Start()
+    {
         gameLoop = GameLoop.Instance;
         mainCamera = Camera.main;
     }
