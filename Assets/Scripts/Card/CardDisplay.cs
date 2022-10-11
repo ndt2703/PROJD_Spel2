@@ -20,7 +20,7 @@ public class CardDisplay : MonoBehaviour
     private Camera mainCamera;
     //public TMP_Text damageText;
 
-    private GameState gameState;
+    private GameLoop GameLoop;
     private Vector3 mousePosition;
 
 
@@ -51,7 +51,7 @@ public class CardDisplay : MonoBehaviour
         {
             case "Champion":
                 card.Target = gameobjectHit.GetComponent<Champion>();
-                gameState.CheckIfCanPlayCard(card);
+                GameLoop.CheckIfCanPlayCard(card);
                 card = null;
                 break;
             case "LandmarkSlot":
@@ -82,7 +82,7 @@ public class CardDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameState = GameState.Instance;
+        GameLoop = GameLoop.Instance;
         mainCamera = Camera.main;
     }
 }

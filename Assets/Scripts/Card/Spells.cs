@@ -14,7 +14,7 @@ public abstract class Spells : Card
 
     private void DrawCard()
     {
-        GameState.Instance.DrawCardToHand(amountOfCardsToDraw);
+        GameLoop.Instance.DrawCardToHand(amountOfCardsToDraw);
     }
 
     public abstract void PlaySpell();
