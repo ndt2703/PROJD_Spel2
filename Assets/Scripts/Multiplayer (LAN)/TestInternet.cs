@@ -52,12 +52,10 @@ public class TestInternet : MonoBehaviour
                 Destroy(GameObject.Find("Card (1)"));
             }
 
-            print(action.GetType(action.Type));
-            print(typeof(GameActionEndTurn));
 
             if (action.GetType(action.Type).Equals(typeof(GameActionEndTurn)) )
             {
-                print("skickar den en gameAction end turn");
+               // print("skickar den en gameAction end turn");
                 GameState.Instance.SwitchTurn(response);
 
                 GameState.Instance.hasPriority = true;
