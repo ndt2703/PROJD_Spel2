@@ -55,6 +55,7 @@ public class CardDisplay : MonoBehaviour
                 card = null;
                 break;
             case "LandmarkSlot":
+                if (!gameObject.tag.Equals("Landmark")) return;
                 CardDisplay landmark = gameobjectHit.GetComponent<CardDisplay>();
                 landmark.card = card;
                 card = null;
