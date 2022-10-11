@@ -113,6 +113,10 @@ public class Server
         {
             return HandleRequestActions(requestToHandle);
         }
+        if(requestToHandle.GetType(requestToHandle.Type) == typeof(RequestEndTurn))
+        {
+            return HandleEndTurn(requestToHandle);
+        }
 
         ServerResponse blank = new ServerResponse();
         return blank;

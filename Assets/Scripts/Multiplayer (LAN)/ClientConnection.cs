@@ -51,7 +51,9 @@ public class ClientConnection : MonoBehaviour
 
         while (notStopping)
         {
+            
             requestCount.WaitOne();
+            print("HUr ofta client requestar den");
             Tuple<ClientRequest, Action<ServerResponse>> tuple = null;
             lock (queuedRequests)
             {

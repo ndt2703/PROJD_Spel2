@@ -21,8 +21,8 @@ public class TestInternet : MonoBehaviour
 
     public Dictionary<int, GameObject> cards  = new Dictionary<int, GameObject>();
 
-    public GameObject cardToPlay; 
-
+    public GameObject cardToPlay;
+    int waitTime = 60; 
    public  bool hasJoinedLobby = false; 
  //   public int LocalPlayerNumber; 
 
@@ -116,12 +116,24 @@ public class TestInternet : MonoBehaviour
         {                        //InvokeRepeating(nameof(SendRequest), 0, 1);
                                  // hasEstablishedEnemurator = true;
                                  // 
-            StartCoroutine(SendRequest());
+                                 //    StartCoroutine(SendRequest());
+                                 //    hasEstablishedEnemurator = true;
+                                 //    
+
+            waitTime -= 1;
+
+            if (waitTime < 0)
+            {
+                waitTime = 60;
+                RequestOpponentActions request = new RequestOpponentActions(ClientConnection.Instance.playerId, true);
+                print("kommer den till add request");
+                clientConnection.AddRequest(request, PerformOpponentsActions);
+                print("den klarade det");
+            }
         }
 
-        
     }
-
+    
 
     private IEnumerator SendRequest()
     {
@@ -138,7 +150,7 @@ public class TestInternet : MonoBehaviour
         print("kommer den till add request");
         clientConnection.AddRequest(request, PerformOpponentsActions);
         print("den klarade det");
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(1);
     }
 
 
