@@ -20,6 +20,8 @@ public class HostButton : MonoBehaviour
 
     public void HostServer()
     {
+
+        print("Hostar den flera gangar");
         FindObjectOfType<ServerHolder>().StartServer();
 
         clientConnection.isHost = true; 

@@ -20,7 +20,7 @@ public class ServerHolder : MonoBehaviour
 
     public void StartServer()
     {
-        server.StartServer(60000);
+        server.StartServer(61000);
 
         clientConnection.playerId = 0;
 
