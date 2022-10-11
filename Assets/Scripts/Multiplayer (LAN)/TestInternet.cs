@@ -64,13 +64,13 @@ public class TestInternet : MonoBehaviour
             if (action.GetType(action.Type).Equals(typeof(GameActionDrawCard)))
             {
                 print("skickar den en gameAction draw card");
-                GameActionDrawCard theAction = (GameActionDrawCard)action;
+            //    GameActionDrawCard theAction = (GameActionDrawCard)action;
 
-                if(theAction.amountToDrawOpponent >0)
-                {
-                    GameLoop.Instance.DrawCard(theAction.amountToDrawOpponent); 
-                }
-                GameLoop.Instance.DrawCard(theAction.amountToDraw);
+            //    if(theAction.amountToDrawOpponent >0)
+            //    {
+            //        GameLoop.Instance.DrawCard(2); 
+            //    }
+                GameLoop.Instance.DrawCard(2);
 
             }
 
