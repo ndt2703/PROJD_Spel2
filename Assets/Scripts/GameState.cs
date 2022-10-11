@@ -50,6 +50,7 @@ public class GameState : MonoBehaviour
 
     public void SwitchTurn(ServerResponse response)
     {
+        print("switchar eden tur");
         TriggerEndStep(response);
         // spelaren med priority end of turn effects triggrar aka EndOfTurnEffects(Player player1)
 

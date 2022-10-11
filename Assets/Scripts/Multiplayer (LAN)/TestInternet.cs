@@ -114,8 +114,10 @@ public class TestInternet : MonoBehaviour
     void FixedUpdate()
     {   if(hasJoinedLobby && !hasEstablishedEnemurator)
         {
-            InvokeRepeating(nameof(SendRequest), 0, 1);
-            hasEstablishedEnemurator = true; 
+            //InvokeRepeating(nameof(SendRequest), 0, 1);
+            // hasEstablishedEnemurator = true;
+            // 
+            SendRequest();
         }
 
         

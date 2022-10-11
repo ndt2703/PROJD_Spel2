@@ -21,11 +21,12 @@ public class PlayerUI : MonoBehaviour
 
     public void EndTurn()
     {
+        print("kommer den till knapp trycket"); 
         if (GameState.Instance.LegalEndTurn())
         {
             RequestEndTurn request = new RequestEndTurn(ClientConnection.Instance.playerId);
             ClientConnection.Instance.AddRequest(request, GameState.Instance.SwitchTurn);
-
+            print("kommer den till if statementet");
         }
     }
 }
