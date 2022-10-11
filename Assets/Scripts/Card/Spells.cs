@@ -19,6 +19,8 @@ public abstract class Spells : Card
 
         RequestDrawCard request = new RequestDrawCard(amountOfCardsToDraw);
 
+        request.whichPlayer = ClientConnection.Instance.playerId;
+
         ClientConnection.Instance.AddRequest(request, GameLoop.Instance.DrawCardRequest);
     }
 
