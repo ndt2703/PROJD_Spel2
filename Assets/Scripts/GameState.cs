@@ -61,6 +61,7 @@ public class GameState : MonoBehaviour
 
     public void TriggerEndStep(ServerResponse response)
     {
+        print("Den triggrar endstep");
         //Trigger Champion EndStep
         //Trigger Landmark EndStep
     }
