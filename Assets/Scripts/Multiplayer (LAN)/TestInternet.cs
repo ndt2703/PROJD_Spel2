@@ -52,18 +52,18 @@ public class TestInternet : MonoBehaviour
                 Destroy(GameObject.Find("Card (1)"));
             }
 
+                print(action.GetType(action.Type));
             if(action.GetType(action.Type) == typeof(GameActionEndTurn))
             {
+                print("skickar den en gameAction end turn");
                 GameState.Instance.SwitchTurn(response);
 
                 GameState.Instance.hasPriority = true;
 
-                print("skickar den en gameAction end turn");
             }
 
             if(!action.errorMessage.Equals(""))
             {
-                print(action.GetType(action.Type));
                 print(action.GetType());
                 print(action.errorMessage); 
             }
