@@ -55,7 +55,7 @@ public class TestInternet : MonoBehaviour
             print(action.GetType(action.Type));
             print(typeof(GameActionEndTurn));
 
-            if (action.GetType(action.Type) == typeof(GameActionEndTurn))
+            if (action.GetType(action.Type).Equals(typeof(GameActionEndTurn)) )
             {
                 print("skickar den en gameAction end turn");
                 GameState.Instance.SwitchTurn(response);
