@@ -22,10 +22,14 @@ public class CardDisplay : MonoBehaviour
 
     private GameLoop GameLoop;
     private Vector3 mousePosition;
+    private Vector3 startposition;
+    private RectTransform gameObjectRectTransform;
+
 
 
     private void OnMouseDown()
-    {
+    {        
+        startposition = gameObjectRectTransform.anchoredPosition;
         offset = transform.position - mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 12)); 
     }
 
@@ -42,9 +46,12 @@ public class CardDisplay : MonoBehaviour
         RaycastHit hitEnemy;
         Physics.Raycast(mousePosition, Vector3.forward * 5f, out hitEnemy, 10f);
         Debug.DrawRay(mousePosition, Vector3.forward * 5f, Color.red, 100f);
-        
-        if (hitEnemy.collider == null) return;
 
+        if (hitEnemy.collider == null)
+        {
+            gameObjectRectTransform.anchoredPosition = startposition;
+            return;
+        }
         GameObject gameobjectHit = hitEnemy.transform.gameObject;
 
         switch (gameobjectHit.tag)
@@ -78,11 +85,12 @@ public class CardDisplay : MonoBehaviour
         UpdateTextOnCard();
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        if (!gameObject.tag.Equals("LandmarkSlot"))
+            gameObjectRectTransform = GetComponent<RectTransform>();
         GameLoop = GameLoop.Instance;
         mainCamera = Camera.main;
     }
+
 }
