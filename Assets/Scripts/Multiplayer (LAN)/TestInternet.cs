@@ -56,7 +56,9 @@ public class TestInternet : MonoBehaviour
             {
                 GameState.Instance.SwitchTurn(response);
 
-                GameState.Instance.hasPriority = true; 
+                GameState.Instance.hasPriority = true;
+
+                print("skickar den en gameAction end turn");
             }
         }
     }
@@ -147,7 +149,7 @@ public class TestInternet : MonoBehaviour
         RequestOpponentActions request = new RequestOpponentActions(ClientConnection.Instance.playerId, true);
 
         clientConnection.AddRequest(request, PerformOpponentsActions);
-        print("den klarade det");
+       
         yield return new WaitForSeconds(0);
     }
 

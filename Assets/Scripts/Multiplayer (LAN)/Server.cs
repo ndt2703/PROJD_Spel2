@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor.TerrainTools;
 using UnityEngine.SearchService;
+using System.Text; 
 
 public class Server
 {
@@ -105,6 +106,7 @@ public class Server
     
     public ServerResponse HandleClientRequest(ClientRequest requestToHandle)
     {
+        
         if(requestToHandle.hasPlayedCard)
         {
             return HandlePlayCard(requestToHandle);
