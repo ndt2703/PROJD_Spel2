@@ -69,6 +69,11 @@ public class GameLoop : MonoBehaviour
         hand.DrawCard(amountToDraw);
     }
 
+    public void MakeCardSpellTag()
+    {
+
+    }
+
     public void CheckIfCanPlayCard(Card card)
     {
         cardCost = card.manaCost;

@@ -20,7 +20,7 @@ public class CardDisplay : MonoBehaviour
     private Camera mainCamera;
     //public TMP_Text damageText;
 
-    private GameLoop GameLoop;
+    private GameLoop gameLoop;
     private Vector3 mousePosition;
     private Vector3 startposition;
     private RectTransform gameObjectRectTransform;
@@ -29,7 +29,6 @@ public class CardDisplay : MonoBehaviour
 
     private void OnMouseDown()
     {        
-        startposition = gameObjectRectTransform.anchoredPosition;
         offset = transform.position - mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 12)); 
     }
 
@@ -58,7 +57,7 @@ public class CardDisplay : MonoBehaviour
         {
             case "Champion":
                 card.Target = gameobjectHit.GetComponent<Champion>();
-                GameLoop.CheckIfCanPlayCard(card);
+                gameLoop.CheckIfCanPlayCard(card);
                 card = null;
                 break;
             case "LandmarkSlot":
@@ -88,8 +87,11 @@ public class CardDisplay : MonoBehaviour
     private void Awake()
     {
         if (!gameObject.tag.Equals("LandmarkSlot"))
+        {
             gameObjectRectTransform = GetComponent<RectTransform>();
-        GameLoop = GameLoop.Instance;
+            startposition = gameObjectRectTransform.anchoredPosition;
+        }
+        gameLoop = GameLoop.Instance;
         mainCamera = Camera.main;
     }
 
