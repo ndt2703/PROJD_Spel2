@@ -86,18 +86,8 @@ public class TestInternet : MonoBehaviour
 
     public void CreateScene()
     {
-    //    print("kommer den till test internet");
-    //
-    //    sceneToActivate.SetActive(true);
-    //    sceneToDeActivate.SetActive(false);
-    //    if (clientConnection.playerId == 0)
-    //    {
-    //        gameObjectToDeActivatePlayer1.SetActive(true);
-    //    }
-    //    else
-    //    {
-    //        gameObjectToDeActivatePlayer2.SetActive(true);
-    //    }
+        sceneToActivate.SetActive(true);
+        sceneToDeActivate.SetActive(false); 
     }
 
 //    public void playCard(ServerResponse response)

@@ -148,6 +148,24 @@ public class Server
 
         return response; 
     }
+    private ServerResponse HandleCreateScene(ClientRequest requestToHandle)
+    {
+        ServerResponse response = new ServerResponse();
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        response.cardId = requestToHandle.cardId;
+        if (requestToHandle.hasPlayedCard)
+        {
+            GameAction gameAction = new GameAction();
+            gameAction.cardId = requestToHandle.cardId;
+            gameAction.cardPlayed = true;
+
+            AddGameAction(response, gameAction);
+        }
+
+        return response;
+    }
     private ServerResponse HandleEndTurn(ClientRequest requestToHandle)
     {
         ResponseEndTurn response = new ResponseEndTurn(requestToHandle.whichPlayer);
