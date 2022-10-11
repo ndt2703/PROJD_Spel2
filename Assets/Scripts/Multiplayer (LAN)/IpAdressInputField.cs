@@ -54,11 +54,12 @@ public class IpAdressInputField : MonoBehaviour
             }
             request.createScene = true;
 
-            clientConnection.AddRequest(request, CreateScene);
+           
             testInternet.hasJoinedLobby = true;
             print("keypad entererar den");
 
-         
+
+            clientConnection.AddRequest(request, CreateScene);
         }
     }
 }
