@@ -50,12 +50,12 @@ public class GameState : MonoBehaviour
 
     public void SwitchTurn(ServerResponse response)
     {
-        //TriggerEndStep();
+        TriggerEndStep(response);
         // spelaren med priority end of turn effects triggrar aka EndOfTurnEffects(Player player1)
 
-        //TriggerUpKeep();
+        TriggerUpKeep(response);
         // spelaren med priority upkeep effects triggrar aka UpkeepEffects(Player player2)
-
+        hasPriority = false;
     }
 
     public void TriggerEndStep(ServerResponse response)
@@ -68,6 +68,8 @@ public class GameState : MonoBehaviour
     {
         //Trigger Champion Upkeep
         //Trigger Landmark Upkeep
+
+        print("Den triggrar upkeep");
         switch (currentPlayerID)
         {
             case 0:

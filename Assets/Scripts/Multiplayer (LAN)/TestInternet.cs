@@ -16,6 +16,8 @@ public class TestInternet : MonoBehaviour
 
     ClientConnection clientConnection;
 
+    bool hasEstablishedEnemurator = false; 
+
 
     public Dictionary<int, GameObject> cards  = new Dictionary<int, GameObject>();
 
@@ -31,6 +33,8 @@ public class TestInternet : MonoBehaviour
         // System.Threading.Thread.(sendRequest(new ClientRequest()));
 
         clientConnection = ClientConnection.Instance;
+        
+        
     }
 
 
@@ -53,6 +57,8 @@ public class TestInternet : MonoBehaviour
             if(typeof(GameAction) == typeof(GameActionEndTurn))
             {
                 GameState.Instance.SwitchTurn(response);
+
+                GameState.Instance.hasPriority = true; 
             }
         }
     }
@@ -106,9 +112,10 @@ public class TestInternet : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {   if(hasJoinedLobby)
+    {   if(hasJoinedLobby && !hasEstablishedEnemurator)
         {
             InvokeRepeating(nameof(SendRequest), 0, 1);
+            hasEstablishedEnemurator = true; 
         }
 
         

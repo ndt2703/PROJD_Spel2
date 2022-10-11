@@ -23,8 +23,9 @@ public class PlayerUI : MonoBehaviour
     {
         if (GameState.Instance.LegalEndTurn())
         {
+            RequestEndTurn request = new RequestEndTurn(ClientConnection.Instance.playerId);
+            ClientConnection.Instance.AddRequest(request, GameState.Instance.SwitchTurn);
 
-            //GameState.Instance.SwitchTurn();
         }
     }
 }
