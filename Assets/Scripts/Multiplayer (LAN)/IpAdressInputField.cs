@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI; 
+
 
 public class IpAdressInputField : MonoBehaviour
 {
@@ -36,29 +38,37 @@ public class IpAdressInputField : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.J))
         {
-            clientConnection.ConnectToServer("193.10.9.89", 61000);
+            Thread messageThread = new Thread(this.ConnectToServer);
+            messageThread.Start();
 
-         
-
-            ClientRequest request = new ClientRequest();
-            if(clientConnection.isHost)
-            {
-                request.whichPlayer = 0;
-                clientConnection.playerId = 0; 
-            }
-            else
-            {
-                request.whichPlayer = 1;
-                clientConnection.playerId = 1;
-            }
-            request.createScene = true;
-
-           
-            testInternet.hasJoinedLobby = true;
-            print("keypad entererar den");
-
-
-            clientConnection.AddRequest(request, CreateScene);
         }
     }
+
+    public void ConnectToServer()
+    {
+        clientConnection.ConnectToServer("193.10.9.89", 61000);
+
+
+
+        ClientRequest request = new ClientRequest();
+        if (clientConnection.isHost)
+        {
+            request.whichPlayer = 0;
+            clientConnection.playerId = 0;
+        }
+        else
+        {
+            request.whichPlayer = 1;
+            clientConnection.playerId = 1;
+        }
+        request.createScene = true;
+
+
+        testInternet.hasJoinedLobby = true;
+        print("keypad entererar den");
+
+
+        clientConnection.AddRequest(request, CreateScene);
+    }
+
 }
