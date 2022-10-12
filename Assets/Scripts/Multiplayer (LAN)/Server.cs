@@ -119,9 +119,9 @@ public class Server
         {
             return HandleEndTurn(requestToHandle);
         }
-        if (requestToHandle is RequestDrawCard)
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestEndTurn))
         {
-            RequestDrawCard castedRequest = (RequestDrawCard)requestToHandle;
+            RequestDrawCard castedRequest = new RequestDrawCard(2);
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDrawCard(castedRequest);
         }
