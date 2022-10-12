@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bonk
   description: Deal 20 damage
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: a82d22969bb64ad4ebbb756ab87e89f4, type: 3}
   manaCost: 0
   amountOfCardsToDraw: 0
   damage: 20
