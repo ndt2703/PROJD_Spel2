@@ -28,6 +28,10 @@ public class GameAction : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
         {
             return typeof(GameActionDrawCard);
         }
+        if (Type == 3)
+        {
+            return typeof(GameActionHeal);
+        }
         return (typeof(GameAction));
     }
     public object Deserialize(MBJson.JSONObject ObjectToParse)
