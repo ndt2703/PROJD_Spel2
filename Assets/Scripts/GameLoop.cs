@@ -35,13 +35,12 @@ public class GameLoop : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        handGO = GameObject.Find("Hand");
-        handOponentGO = GameObject.Find("OponentHand");
+        handPlayer = handGO.GetComponent<Hand>();
+        handOpponent = handOponentGO.GetComponent<Hand>();
+
     }
     private void Start()
     {
-        handPlayer = handGO.GetComponent<Hand>();
-        handOpponent = handOponentGO.GetComponent<Hand>();
         float random = Random.Range(0,1);
 
         if (random == 0)
