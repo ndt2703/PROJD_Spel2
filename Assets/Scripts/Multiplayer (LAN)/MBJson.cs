@@ -399,7 +399,7 @@ namespace MBJson
         {
             if (ObjectToSerialize == null)
             {
-                int hej = 2;
+                //int hej = 2;
             }
             JSONObject ReturnValue = null;
 

@@ -22,7 +22,6 @@ public class TestInternet : MonoBehaviour
     public Dictionary<int, GameObject> cards  = new Dictionary<int, GameObject>();
 
     public GameObject cardToPlay;
-    int waitTime = 60; 
    public  bool hasJoinedLobby = false; 
  //   public int LocalPlayerNumber; 
 
