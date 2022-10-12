@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestInternet : MonoBehaviour
 {
@@ -114,7 +115,9 @@ public class TestInternet : MonoBehaviour
     public void CreateScene()
     {
         sceneToActivate.SetActive(true);
-        sceneToDeActivate.SetActive(false); 
+        //  sceneToDeActivate.SetActive(false); 
+
+        SceneManager.LoadScene("MarcusHedenberg");
     }
 
 //    public void playCard(ServerResponse response)
