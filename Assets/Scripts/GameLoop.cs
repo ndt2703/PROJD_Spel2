@@ -108,17 +108,10 @@ public class GameLoop : MonoBehaviour
 
         DrawCard(2);
     }
+
     public void DrawCard(int amountToDraw)
     {
-        if (playerShouldDraw && !opponentShouldDraw)
-            DrawCardPlayer(amountToDraw);
-        else if (opponentShouldDraw && !playerShouldDraw)
-            DrawCardOpponent(amountToDraw);
-        else
-        {
-            DrawCardPlayer(amountToDraw);
-            DrawCardOpponent(amountToDraw);
-        }
+        DrawCard(amountToDraw);
     }
 
     private void DrawCardPlayer(int amountToDraw)
