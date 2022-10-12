@@ -210,7 +210,6 @@ public class Server
         else
         {
             response.OpponentActions = new List<GameAction>(player1Actions);
-
             player1Actions.Clear();
         }
 
