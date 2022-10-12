@@ -12,11 +12,11 @@ public class TestInternet : MonoBehaviour
     public GameObject gameObjectToActivatePlayer2;
     public GameObject gameObjectToDeActivatePlayer2;
 
-    public GameObject sceneToActivate;
-    public GameObject sceneToDeActivate;
+   private Scene gameplayScene;
 
     ClientConnection clientConnection;
 
+    [SerializeField] private string loadScene;
     bool hasEstablishedEnemurator = false; 
 
 
@@ -37,7 +37,6 @@ public class TestInternet : MonoBehaviour
         // System.Threading.Thread.(sendRequest(new ClientRequest()));
 
         clientConnection = ClientConnection.Instance;
-        
         
     }
 
@@ -114,10 +113,7 @@ public class TestInternet : MonoBehaviour
 
     public void CreateScene()
     {
-        sceneToActivate.SetActive(true);
-        //  sceneToDeActivate.SetActive(false); 
-
-        SceneManager.LoadScene("MarcusHedenberg");
+        SceneManager.LoadScene(loadScene);
     }
 
 //    public void playCard(ServerResponse response)
