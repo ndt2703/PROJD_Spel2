@@ -111,7 +111,7 @@ public class GameLoop : MonoBehaviour
 
     public void DrawCard(int amountToDraw)
     {
-        DrawCard(amountToDraw);
+        DrawCardPlayer(amountToDraw);
     }
 
     private void DrawCardPlayer(int amountToDraw)
