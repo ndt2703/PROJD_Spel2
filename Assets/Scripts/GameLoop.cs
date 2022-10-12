@@ -9,6 +9,7 @@ public class GameLoop : MonoBehaviour
     public bool isPlayerOnesTurn;
 
     public int amountOfTurns;
+    [SerializeField] private int amountOfCardsToStartWith;
 
     public bool playerOneStarted;
 
@@ -36,6 +37,7 @@ public class GameLoop : MonoBehaviour
             playerOneStarted = true;
         else if (random == 1)
             playerOneStarted = false;
+        Invoke(nameof(DrawStartingCards), 0.1f);
     }
 
     public void AmountOfManaToGivePlayer()
@@ -62,6 +64,11 @@ public class GameLoop : MonoBehaviour
             }
             
         }
+    }
+
+    public void DrawStartingCards()
+    {
+        DrawCard(amountOfCardsToStartWith);
     }
 
     public void DrawCardToHand(int amountToDraw)

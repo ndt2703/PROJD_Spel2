@@ -8,6 +8,23 @@ public class Deck : MonoBehaviour
 
     [SerializeField] public Stack<Card> deckOfCards = new Stack<Card>();
 
+    public List<Card> allCardsAvailable = new List<Card>();
+
+
+    private void Start()
+    {
+        while (deckOfCards.Count < 30)
+        {
+            foreach (Card card in allCardsAvailable)
+            {
+                deckOfCards.Push(card);
+            }
+        }
+
+    }
+
+
+
     public void AddCardToDeck(Card cardToAdd)
     {
         deckOfCards.Push(cardToAdd);
