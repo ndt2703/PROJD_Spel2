@@ -14,7 +14,6 @@ public class IpAdressInputField : MonoBehaviour
 
     TestInternet testInternet;
 
-    bool isHost = false; 
  //   public  inputFieldText; 
 
     // Start is called before the first frame update
