@@ -87,9 +87,8 @@ public class TestInternet : MonoBehaviour
 
             //destroy landmark game action 
 
-            if (!action.errorMessage.Equals(""))
+            if (!action.errorMessage.Equals("") /*&& !action.errorMessage == null*/)
             {
-                print(action.GetType());
                 print(action.errorMessage); 
             }
         }
