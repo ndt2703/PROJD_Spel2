@@ -60,7 +60,7 @@ public class TestInternet : MonoBehaviour
                 GameState.Instance.hasPriority = true;
 
             }
-            if (action.GetType(action.Type).Equals(typeof(GameActionDrawCard)))
+            if (action is GameActionDrawCard)
             {
                 print("skickar den en gameAction draw card");
             //    GameActionDrawCard theAction = (GameActionDrawCard)action;
