@@ -11,7 +11,10 @@ public class ServerHolder : MonoBehaviour
     {
         clientConnection = FindObjectOfType<ClientConnection>();
     }
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     // Update is called once per frame
     void Update()
     {

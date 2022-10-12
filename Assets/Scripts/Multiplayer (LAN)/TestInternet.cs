@@ -22,9 +22,13 @@ public class TestInternet : MonoBehaviour
     public Dictionary<int, GameObject> cards  = new Dictionary<int, GameObject>();
 
     public GameObject cardToPlay;
-   public  bool hasJoinedLobby = false; 
- //   public int LocalPlayerNumber; 
+   public  bool hasJoinedLobby = false;
+    //   public int LocalPlayerNumber; 
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     // Start is called before the first frame update
     void Start()
     {

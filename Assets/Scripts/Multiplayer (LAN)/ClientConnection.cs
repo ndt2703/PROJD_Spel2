@@ -33,6 +33,7 @@ public class ClientConnection : MonoBehaviour
         {
             Destroy(Instance);
         }
+        DontDestroyOnLoad(this);
     }
 
     // Start is called before the first frame update
