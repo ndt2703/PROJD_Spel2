@@ -6211,11 +6211,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMana: 10
-  hand: {fileID: 0}
+  handGO: {fileID: 3385235574114862281}
+  handOponentGO: {fileID: 5280378129252596566}
   isPlayerOnesTurn: 0
   amountOfTurns: 0
   amountOfCardsToStartWith: 0
   playerOneStarted: 0
+  playerShouldDraw: 1
+  opponentShouldDraw: 1
 --- !u!1 &5280378129207690317
 GameObject:
   m_ObjectHideFlags: 0
