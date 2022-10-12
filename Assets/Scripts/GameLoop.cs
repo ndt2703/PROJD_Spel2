@@ -5,13 +5,20 @@ using UnityEngine;
 public class GameLoop : MonoBehaviour
 {
     public int playerMana;
-    public Hand hand;
+    public GameObject handGO;
+    public GameObject handOponentGO;
     public bool isPlayerOnesTurn;
+
+    private Hand handPlayer;
+    private Hand handOpponent;
 
     public int amountOfTurns;
     [SerializeField] private int amountOfCardsToStartWith;
 
     public bool playerOneStarted;
+
+    public bool playerShouldDraw;
+    public bool opponentShouldDraw;
 
     private static GameLoop instance;
 
@@ -32,6 +39,9 @@ public class GameLoop : MonoBehaviour
     private void Start()
     {
         float random = Random.Range(0,1);
+
+        handPlayer = handGO.GetComponent<Hand>();
+        handOpponent = handOponentGO.GetComponent<Hand>();
 
         if (random == 0)
             playerOneStarted = true;
@@ -103,8 +113,21 @@ public class GameLoop : MonoBehaviour
     }
     public void DrawCard(int amountToDraw)
     {
+        if (playerShouldDraw && !opponentShouldDraw)
+            DrawCardPlayer(amountToDraw);
+        else if (opponentShouldDraw && !playerShouldDraw)
+            DrawCardOpponent(amountToDraw);
+        else
+        {
+            DrawCardPlayer(amountToDraw);
+            DrawCardOpponent(amountToDraw);
+        }
+    }
+
+    private void DrawCardPlayer(int amountToDraw)
+    {
         int drawnCards = 0;
-        foreach (GameObject cardSlot in hand.cardSlotsInHand)
+        foreach (GameObject cardSlot in handPlayer.cardSlotsInHand)
         {
             CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
             if (cardDisplay.card != null) continue;
@@ -113,7 +136,26 @@ public class GameLoop : MonoBehaviour
             {
                 if (drawnCards >= amountToDraw) break;
 
-                cardDisplay.card = hand.deck.WhichCardToDraw();
+                cardDisplay.card = handPlayer.deck.WhichCardToDraw();
+                cardSlot.SetActive(true);
+                drawnCards++;
+            }
+        }
+    }
+
+    private void DrawCardOpponent(int amountToDraw)
+    {
+        int drawnCards = 0;
+        foreach (GameObject cardSlot in handOpponent.cardSlotsInHand)
+        {
+            CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
+            if (cardDisplay.card != null) continue;
+
+            if (!cardSlot.activeInHierarchy)
+            {
+                if (drawnCards >= amountToDraw) break;
+
+                cardDisplay.card = handOpponent.deck.WhichCardToDraw();
                 cardSlot.SetActive(true);
                 drawnCards++;
             }
