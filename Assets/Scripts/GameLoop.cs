@@ -17,9 +17,6 @@ public class GameLoop : MonoBehaviour
 
     public bool playerOneStarted;
 
-    public bool playerShouldDraw;
-    public bool opponentShouldDraw;
-
     private static GameLoop instance;
 
     public static GameLoop Instance { get { return instance; } set { instance = value; } }
