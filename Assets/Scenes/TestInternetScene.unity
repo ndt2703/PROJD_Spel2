@@ -1745,6 +1745,11 @@ Transform:
   m_Father: {fileID: 792709500}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 2.37, y: 40.69, z: -173.333}
+--- !u!1 &719137612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2791900219130773865, guid: f031f3c0e2986e54c9e4c7ac1ccae35d, type: 3}
+  m_PrefabInstance: {fileID: 1831338832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &733627382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,6 +1957,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850264572}
   m_CullTransparentMesh: 1
+--- !u!1 &917815061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2791900220303206372, guid: f031f3c0e2986e54c9e4c7ac1ccae35d, type: 3}
+  m_PrefabInstance: {fileID: 1831338832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1007616723
 GameObject:
   m_ObjectHideFlags: 0
@@ -3212,6 +3222,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 2791900220697222667, guid: f031f3c0e2986e54c9e4c7ac1ccae35d, type: 3}
+      propertyPath: handGO
+      value: 
+      objectReference: {fileID: 719137612}
+    - target: {fileID: 2791900220697222667, guid: f031f3c0e2986e54c9e4c7ac1ccae35d, type: 3}
+      propertyPath: handOponentGO
+      value: 
+      objectReference: {fileID: 917815061}
     - target: {fileID: 2791900220730780460, guid: f031f3c0e2986e54c9e4c7ac1ccae35d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
