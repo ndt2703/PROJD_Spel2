@@ -25,8 +25,6 @@ public class CardDisplay : MonoBehaviour
     private Vector3 startposition;
     private RectTransform gameObjectRectTransform;
 
-
-
     private void OnMouseDown()
     {        
         offset = transform.position - mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 12)); 
@@ -91,6 +89,7 @@ public class CardDisplay : MonoBehaviour
             gameObjectRectTransform = GetComponent<RectTransform>();
             startposition = gameObjectRectTransform.anchoredPosition;
         }
+        artworkSpriteRenderer = GetComponent<SpriteRenderer>();
 
     }
 
