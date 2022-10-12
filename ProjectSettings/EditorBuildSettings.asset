@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MarcusHedenberg.unity
+    guid: 874803d695e9ca9438ec5143ea2252b8
   m_configObjects: {}
