@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3312,11 +3312,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f031f3c0e2986e54c9e4c7ac1ccae35d, type: 3}
---- !u!1 &1831338833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2791900220573207090, guid: f031f3c0e2986e54c9e4c7ac1ccae35d, type: 3}
-  m_PrefabInstance: {fileID: 1831338832}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1855952470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3815,8 +3810,7 @@ MonoBehaviour:
   gameObjectToActivatePlayer1: {fileID: 559662397}
   gameObjectToActivatePlayer2: {fileID: 850264572}
   gameObjectToDeActivatePlayer2: {fileID: 176822259}
-  sceneToActivate: {fileID: 1831338833}
-  sceneToDeActivate: {fileID: 792709499}
+  loadScene: MarcusHedenberg
   cardToPlay: {fileID: 700673075}
   hasJoinedLobby: 0
 --- !u!4 &2127124445
