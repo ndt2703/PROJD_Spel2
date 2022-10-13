@@ -106,8 +106,9 @@ public class GameLoop : MonoBehaviour
 
     public void DrawCardRequest(ServerResponse response)
     {
+        ResponseDrawCard castedReponse = (ResponseDrawCard)response;
 
-        DrawCard(2);
+        DrawCard(castedReponse.amountToDraw);
     }
 
     public void DrawCard(int amountToDraw)

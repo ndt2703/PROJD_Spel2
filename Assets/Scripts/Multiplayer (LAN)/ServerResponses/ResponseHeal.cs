@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameActionHeal : GameAction
+public class ResponseHeal : ServerResponse
 {
-
     public int amountToHeal = 0; 
-
-    public GameActionHeal() 
+    public ResponseHeal()
     {
-        Type = 3; 
-    } 
+        Type = 4; 
+    }
 
-    public GameActionHeal(int amountToHeal)
+    public ResponseHeal(int amountToHeal)
     {
+        Type = 4;
         this.amountToHeal = amountToHeal;
-
-        Type = 3; 
     }
 }
