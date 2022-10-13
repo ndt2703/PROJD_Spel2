@@ -10,8 +10,9 @@ public abstract class Spells : Card
         PlaySpell();
         if (amountOfCardsToDraw != 0)
             DrawCard();
-        GameLoop.Instance.MakeCardSpellTag();
     }
+
+
 
     private void DrawCard()
     {
