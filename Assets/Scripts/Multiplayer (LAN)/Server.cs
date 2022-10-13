@@ -106,11 +106,6 @@ public class Server
     
     public ServerResponse HandleClientRequest(ClientRequest requestToHandle)
     {
-        
-        if(requestToHandle.hasPlayedCard)
-        {
-            return HandlePlayCard(requestToHandle);
-        }     
         if(requestToHandle.GetType(requestToHandle.Type) == typeof(RequestOpponentActions))
         {
             return HandleRequestActions(requestToHandle);
@@ -119,7 +114,7 @@ public class Server
         {
             return HandleEndTurn(requestToHandle);
         }
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestEndTurn))
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDrawCard))
         {
             RequestDrawCard castedRequest = new RequestDrawCard(2);
             castedRequest.whichPlayer = requestToHandle.whichPlayer;

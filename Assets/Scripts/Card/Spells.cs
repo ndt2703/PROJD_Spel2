@@ -23,6 +23,7 @@ public abstract class Spells : Card
         request.whichPlayer = ClientConnection.Instance.playerId;
 
         ClientConnection.Instance.AddRequest(request, GameLoop.Instance.DrawCardRequest);
+        Debug.Log(request.Type);
     }
 
 
