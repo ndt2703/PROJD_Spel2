@@ -65,11 +65,11 @@ public class TestInternet : MonoBehaviour
 
             }
             print("Vilken type har actionen" + action.Type);
-            if (action is GameActionDrawCard || action.Type == 2)
+            if (action.GetType(action.Type).Equals(typeof(GameActionEndTurn)))
             {
                 print("skickar den en gameAction draw card");
-            //    GameActionDrawCard theAction = (GameActionDrawCard)action;
-
+                GameActionDrawCard theAction = (GameActionDrawCard)action;
+                
             //    if(theAction.amountToDrawOpponent >0)
             //    {
             //        GameLoop.Instance.DrawCard(2); 
