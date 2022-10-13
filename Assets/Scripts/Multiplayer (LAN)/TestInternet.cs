@@ -65,7 +65,7 @@ public class TestInternet : MonoBehaviour
 
             }
             print("Vilken type har actionen" + action.Type);
-            if (action is GameActionDrawCard)
+            if (action is GameActionDrawCard || action.Type == 2)
             {
                 print("skickar den en gameAction draw card");
             //    GameActionDrawCard theAction = (GameActionDrawCard)action;
