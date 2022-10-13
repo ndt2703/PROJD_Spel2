@@ -16,5 +16,6 @@ MonoBehaviour:
   description: Deal 80 damage
   artwork: {fileID: 21300000, guid: ffab18bf3a2711e4d9cd9867449d5972, type: 3}
   manaCost: 6
+  tag: Spell
   amountOfCardsToDraw: 0
   damage: 80

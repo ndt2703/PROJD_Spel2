@@ -16,5 +16,6 @@ MonoBehaviour:
   description: Gain 20 Shield
   artwork: {fileID: 21300000, guid: 719a91a3b2b379a4c8de51ba3931e908, type: 3}
   manaCost: 3
+  tag: Spell
   amountOfCardsToDraw: 0
   defence: 20

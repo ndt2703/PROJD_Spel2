@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameLoop : MonoBehaviour
@@ -20,6 +21,7 @@ public class GameLoop : MonoBehaviour
     private static GameLoop instance;
 
     public static GameLoop Instance { get { return instance; } set { instance = value; } }
+    private Card cardToPlay;
     private int cardCost;
 
     private void Awake()
@@ -83,23 +85,22 @@ public class GameLoop : MonoBehaviour
         DrawCard(amountToDraw);
     }
 
-    public void MakeCardSpellTag()
+    public bool CheckIfCanPlayCard(Card card)
     {
-
-    }
-
-    public void CheckIfCanPlayCard(Card card)
-    {
+        
         cardCost = card.manaCost;
         if (playerMana >= cardCost)
         {
             playerMana -= cardCost;
+            cardToPlay = card;
             card.PlayCard();
+            return true;
             
         }
         else
         {
             Debug.Log("You don't have enough Mana");
+            return false;
         }
     }
 
