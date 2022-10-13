@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1494,7 +1494,7 @@ GameObject:
   - component: {fileID: 215213669}
   - component: {fileID: 215213668}
   - component: {fileID: 215213667}
-  - component: {fileID: 215213666}
+  - component: {fileID: 215213671}
   m_Layer: 6
   m_Name: EnemyChampion
   m_TagString: Champion
@@ -1502,20 +1502,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &215213666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215213665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0814981228a1ef4bb0f7691f16d53a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  shield: 0
 --- !u!136 &215213667
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1595,6 +1581,24 @@ Transform:
   m_Father: {fileID: 832026172}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &215213671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215213665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff497d023b8b234b9f898dbb20edf6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  champion: {fileID: 11400000, guid: a320bb6d4064fcb47b7c74848a43bac2, type: 2}
+  name: 
+  health: 100
+  description: {fileID: 0}
+  shield: 0
+  artwork: {fileID: 0}
 --- !u!1 &220195550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,7 +1611,7 @@ GameObject:
   - component: {fileID: 220195555}
   - component: {fileID: 220195554}
   - component: {fileID: 220195553}
-  - component: {fileID: 220195552}
+  - component: {fileID: 220195556}
   m_Layer: 0
   m_Name: MyChampion
   m_TagString: Champion
@@ -1630,20 +1634,6 @@ Transform:
   m_Father: {fileID: 832026172}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &220195552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220195550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0814981228a1ef4bb0f7691f16d53a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  shield: 0
 --- !u!136 &220195553
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1708,6 +1698,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220195550}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &220195556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220195550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff497d023b8b234b9f898dbb20edf6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  champion: {fileID: 0}
+  name: 
+  health: 0
+  description: {fileID: 0}
+  shield: 0
+  artwork: {fileID: 0}
 --- !u!1 &236878358
 GameObject:
   m_ObjectHideFlags: 0
@@ -13499,8 +13507,6 @@ MonoBehaviour:
   amountOfTurns: 0
   amountOfCardsToStartWith: 5
   playerOneStarted: 0
-  playerShouldDraw: 1
-  opponentShouldDraw: 1
 --- !u!1 &1634207076
 GameObject:
   m_ObjectHideFlags: 0

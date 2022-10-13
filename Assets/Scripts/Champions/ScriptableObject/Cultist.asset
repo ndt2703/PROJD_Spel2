@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0814981228a1ef4bb0f7691f16d53a7, type: 3}
-  m_Name: Culltist
+  m_Script: {fileID: 11500000, guid: ec66b2f0ab2156c46b4b41517baf2a02, type: 3}
+  m_Name: Cultist
   m_EditorClassIdentifier: 
-  health: 0
+  name: The Cultist
+  description: {fileID: 0}
+  health: 100
   shield: 0
+  artwork: {fileID: 21300000, guid: 4b58be4769a067a459b0e5442042cb74, type: 3}
+  perMissingHP: 0
+  damagePerMissingHP: 0

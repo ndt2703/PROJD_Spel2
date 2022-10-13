@@ -1,22 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-//[CreateAssetMenu(fileName = "Champions", menuName = "Champions", order = 1)]
-public class Champion : MonoBehaviour //ScriptableObject
+public abstract class Champion : ScriptableObject
 {
+    public new string name;
+    public Text description;
     public int health;
-    private int maxHealth;
+    protected int maxHealth;
     public int shield;
+    public Sprite artwork;
 
-    private int differenceAfterShieldDamage;
 
-	public void Start()
+	public virtual void Start()
 	{
         maxHealth = health;
 	}
 
-	public void TakeDamage(int damage)
+	public virtual void TakeDamage(int damage)
     {
         if (shield == 0)
         {
@@ -26,7 +28,7 @@ public class Champion : MonoBehaviour //ScriptableObject
         {
             if (damage > shield)
             {
-                differenceAfterShieldDamage = damage - shield;
+                int differenceAfterShieldDamage = damage - shield;
                 shield = 0;
                 health -= differenceAfterShieldDamage;
             }
@@ -42,7 +44,7 @@ public class Champion : MonoBehaviour //ScriptableObject
         }
     }
 
-    public void HealChampion(int amountToHeal)
+    public virtual void HealChampion(int amountToHeal)
     {
         health += amountToHeal;
         if (health > maxHealth)
@@ -50,8 +52,18 @@ public class Champion : MonoBehaviour //ScriptableObject
             health = maxHealth;
         }
     }
-    public void GainShield(int amountToBlock)
+    public virtual void GainShield(int amountToBlock)
     {
         shield += amountToBlock;
     }
+
+    public virtual void DealDamageAttack(int damage) {}
+
+    public virtual void UpKeep() {/* Draw a card???? */}
+
+    public virtual void EndStep() {}
+
+    public virtual void WhenCurrentChampion () {}
+
+
 }
