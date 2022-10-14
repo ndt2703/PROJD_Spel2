@@ -6,9 +6,20 @@ using UnityEngine;
 public class DefendSpell : Spells
 {
     public int defence;
+    public bool allChampions;
 
     public override void PlaySpell()
     {
-        FindObjectOfType<Champion>().GainShield(defence);
+        if (allChampions)
+        {
+            foreach (Champion champ in FindObjectsOfType<Champion>())
+            {
+                champ.GainShield(defence);
+            }
+        }
+        else
+        {
+            Target.GainShield(defence);
+        }       
     }
 }
