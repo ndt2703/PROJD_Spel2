@@ -13,8 +13,8 @@ public class Graveyard : MonoBehaviour
 
 
 
-    public Card FindCardInGraveyard(Card cardToReturn)
-    {
+    public Card FindAndRemoveCardInGraveyard(Card cardToReturn)
+    {       
         foreach (Card card in graveyardCardList)
         {
             if (card == cardToReturn)
