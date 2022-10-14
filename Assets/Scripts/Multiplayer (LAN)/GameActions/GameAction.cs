@@ -11,7 +11,7 @@ public class GameAction : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
    
    public bool cardPlayed = false;
 
-    public string errorMessage = "Empty message";
+    public string errorMessage = "";
 
     public GameAction() { }// denna far inte tas bort, kravs for parsingen 
     public Type GetType(int IntegerToConvert)
@@ -31,6 +31,10 @@ public class GameAction : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
         if (Type == 3)
         {
             return typeof(GameActionHeal);
+        }
+        if (Type == 4)
+        {
+            return typeof(GameActionDiscardCard);
         }
         return (typeof(GameAction));
     }

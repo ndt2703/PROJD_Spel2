@@ -65,27 +65,48 @@ public class TestInternet : MonoBehaviour
 
             }
             print("Vilken type har actionen" + action.Type);
-            if (action is GameActionDrawCard)
+            if (action.GetType(action.Type).Equals(typeof(GameActionDrawCard)))
             {
                 print("skickar den en gameAction draw card");
-            //    GameActionDrawCard theAction = (GameActionDrawCard)action;
+                GameActionDrawCard theAction = (GameActionDrawCard)action;
+                
+                if(theAction.amountToDrawOpponent > 0)
+                {
+                    GameLoop.Instance.DrawCard(theAction.amountToDrawOpponent); 
+                }
+                //Draw card opponents
 
-            //    if(theAction.amountToDrawOpponent >0)
-            //    {
-            //        GameLoop.Instance.DrawCard(2); 
-            //    }
-                GameLoop.Instance.DrawCard(2);
+            }
+            if (action.GetType(action.Type).Equals(typeof(GameActionDiscardCard)))
+            {
+                print("skickar den en gameAction draw card");
+                GameActionDiscardCard theAction = (GameActionDiscardCard)action;
+
+                GameState.Instance.DiscardCard(theAction.listOfCardsDiscarded);
+                //Draw card opponents
+
+            }
+            if (action.GetType(action.Type).Equals(typeof(GameActionHeal)))
+            {
+                print("skickar den en gameAction draw card");
+                GameActionHeal theAction = (GameActionHeal)action;
+
+                GameState.Instance.Heal(theAction.amountToHeal);
+                //Draw card opponents
 
             }
 
 
 
-            //Discard game action
+
+        
 
             //Remove card from graveyard 
 
-            // heal game action
+         
+
             // shield game action
+
             //add specific card to hand action bn
 
             //Switch active champion action

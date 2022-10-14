@@ -110,4 +110,37 @@ public class GameState : MonoBehaviour
             hasPriority = false;
         }
      }
+
+
+
+    public void RequestDiscardCard(ServerResponse response)
+    {
+        ResponseDiscardCard castedResponse = (ResponseDiscardCard)response;
+
+        DiscardCard(castedResponse.listOfCardsDiscarded);
+    }
+    public void DiscardCard(List<int> listOfCardsDiscarded)
+    {
+
+    }
+    public void RequestHeal(ServerResponse response)
+    {
+        ResponseDiscardCard castedResponse = (ResponseDiscardCard)response;
+
+        DiscardCard(castedResponse.listOfCardsDiscarded);
+    }
+    public void Heal(int amountToHeal)
+    {
+
+    }
+    public void RequestDamage(ServerResponse response)
+    {
+        ResponseDiscardCard castedResponse = (ResponseDiscardCard)response;
+
+        DiscardCard(castedResponse.listOfCardsDiscarded);
+    }
+    public void Damage(int amountToHeal)
+    {
+
+    }
 }

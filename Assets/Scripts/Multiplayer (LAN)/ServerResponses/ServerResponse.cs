@@ -25,6 +25,18 @@ public class ServerResponse : MBJson.JSONDeserializeable,MBJson.JSONTypeConverte
         {
             return (typeof(ResponseEndTurn));
         }
+        if (Type == 2)
+        {
+            return (typeof(ResponseDrawCard));
+        }
+        if (Type == 3)
+        {
+            return (typeof(ResponseDiscardCard));
+        }
+        if (Type == 4)
+        {
+            return (typeof(ResponseHeal));
+        }
         return (typeof(ServerResponse));
     }
     public ServerResponse() { } //Denna ska inte tas bort, behovs for parsingen 

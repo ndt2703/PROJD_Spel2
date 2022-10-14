@@ -5,9 +5,12 @@ using UnityEngine;
 public class GameActionHeal : GameAction
 {
 
-    int amountToHeal = 0; 
+    public int amountToHeal = 0; 
 
-    public GameActionHeal() { } // ta ej bort
+    public GameActionHeal() 
+    {
+        Type = 3; 
+    } 
 
     public GameActionHeal(int amountToHeal)
     {

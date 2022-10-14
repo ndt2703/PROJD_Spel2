@@ -106,11 +106,6 @@ public class Server
     
     public ServerResponse HandleClientRequest(ClientRequest requestToHandle)
     {
-        
-        if(requestToHandle.hasPlayedCard)
-        {
-            return HandlePlayCard(requestToHandle);
-        }     
         if(requestToHandle.GetType(requestToHandle.Type) == typeof(RequestOpponentActions))
         {
             return HandleRequestActions(requestToHandle);
@@ -119,11 +114,23 @@ public class Server
         {
             return HandleEndTurn(requestToHandle);
         }
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestEndTurn))
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDrawCard))
         {
-            RequestDrawCard castedRequest = new RequestDrawCard(2);
+            RequestDrawCard castedRequest = (RequestDrawCard)requestToHandle;
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDrawCard(castedRequest);
+        }
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDiscardCard))
+        {
+            RequestDiscardCard castedRequest = (RequestDiscardCard)requestToHandle;
+            castedRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandleDiscardCard(castedRequest);
+        }
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestHealing))
+        {
+            RequestHealing castedRequest = (RequestHealing)requestToHandle;
+            castedRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandleHeal(castedRequest);
         }
 
         GameAction errorMessage = new GameAction();
@@ -191,6 +198,28 @@ public class Server
 
         GameActionDrawCard gameAction = new GameActionDrawCard(requestToHandle.amountToDraw);
         
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandleDiscardCard(RequestDiscardCard requestToHandle)
+    {
+        ServerResponse response = new ServerResponse();
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionDiscardCard gameAction = new GameActionDiscardCard(requestToHandle.listOfCardsDiscarded);
+
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandleHeal(RequestHealing requestToHandle)
+    {
+        ServerResponse response = new ServerResponse();
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionHeal gameAction = new GameActionHeal(requestToHandle.amountToHeal);
+
         AddGameAction(response, gameAction);
         return response;
     }

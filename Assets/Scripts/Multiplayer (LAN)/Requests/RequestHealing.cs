@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class RequestHealing : ClientRequest
 {
-    int amountToHeal = 0;
+    public int amountToHeal = 0;
     
     // Start is called before the first frame update
-    public RequestHealing() { }// ta ej bortr
+    public RequestHealing() 
+    {
+        Type = 4;
+    }// ta ej bortr
     public RequestHealing(int amountToHeal)
     {
         this.amountToHeal = amountToHeal;
