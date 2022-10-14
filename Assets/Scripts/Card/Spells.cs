@@ -12,8 +12,6 @@ public abstract class Spells : Card
             DrawCard();
     }
 
-
-
     private void DrawCard()
     {
         //  GameLoop.Instance.DrawCard(amountOfCardsToDraw);

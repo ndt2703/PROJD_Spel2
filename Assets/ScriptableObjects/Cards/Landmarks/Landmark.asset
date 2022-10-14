@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Landmark
   description: Place a card
-  artwork: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  artwork: {fileID: 21300000, guid: 6e6312d2963d309409996913fbf07de0, type: 3}
   manaCost: 2
+  tag: Landmark
   minionHealth: 4
   minionDamage: 5
