@@ -41,7 +41,14 @@ public class CardTargeting : MonoBehaviour
                     card = null;
                 break;
             case "LandmarkSlot":
-                if (!gameObject.tag.Equals("Landmark")) return;
+                if (card.tag.Equals("DestroyLandmark"))
+                {
+                    CardDisplay landmarkToDestroy = gameObjectHit.GetComponent<CardDisplay>();
+                    landmarkToDestroy.card = null;
+                    return;
+                }
+                else if (!card.tag.Equals("Landmark")) return;
+                
                 CardDisplay landmark = gameObjectHit.GetComponent<CardDisplay>();
                 landmark.card = card;
                 card = null;

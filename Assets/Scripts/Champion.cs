@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[CreateAssetMenu(fileName = "Champions", menuName = "Champions", order = 1)]
-public class Champion : MonoBehaviour //ScriptableObject
+[CreateAssetMenu(fileName = "Champions", menuName = "Champions", order = 1)]
+public class Champion : ScriptableObject
 {
     public int health;
     private int maxHealth;
