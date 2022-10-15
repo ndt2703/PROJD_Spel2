@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public abstract class Champion : ScriptableObject
 {
     public new string name;
-    public Text description;
+    public string description;
     public int health;
     protected int maxHealth;
     public int shield;
     public Sprite artwork;
+    public string passiveEffect;
 
 
-	public virtual void Start()
+    public virtual void Awake()
 	{
         maxHealth = health;
-	}
+        Debug.Log("wallahs");
+    }
 
 	public virtual void TakeDamage(int damage)
     {

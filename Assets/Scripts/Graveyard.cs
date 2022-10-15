@@ -11,7 +11,10 @@ public class Graveyard : MonoBehaviour
         graveyardCardList.Add(cardToAdd);
     }
 
-
+    public Card RandomizeCardFromGraveyard()
+    {
+        return FindAndRemoveCardInGraveyard(graveyardCardList[Random.Range(0, graveyardCardList.Count)]);
+    }
 
     public Card FindAndRemoveCardInGraveyard(Card cardToReturn)
     {       

@@ -8,9 +8,9 @@ public class Gravedigger : Champion
 {
 	public override void EndStep()
 	{
-		int i = Random.Range(0, 3 + 1);
 		// Take a random card from Graveyard (removed from graveyard)
-
 		base.EndStep();
+		Card card = FindObjectOfType<Graveyard>().RandomizeCardFromGraveyard();
+		// Add card to hand
 	}
 }
