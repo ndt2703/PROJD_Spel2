@@ -13,6 +13,8 @@ public class CardTargeting : MonoBehaviour
     private Vector3 mousePosition;
     private Card card;
 
+    private GameObject gameObjectHit;
+
     private void OnMouseUp()
     {
         mousePosition = cardMovement.mousePosition;
@@ -27,11 +29,11 @@ public class CardTargeting : MonoBehaviour
             CardGoBackToStartingPosition();
             return;
         }
-
-        WhatToDoWhenTargeted(hitEnemy.transform.gameObject);
+        gameObjectHit = hitEnemy.transform.gameObject;
+        WhatToDoWhenTargeted();
     }
 
-    private void WhatToDoWhenTargeted(GameObject gameObjectHit)
+    private void WhatToDoWhenTargeted()
     {
         switch (gameObjectHit.tag)
         {
@@ -41,19 +43,24 @@ public class CardTargeting : MonoBehaviour
                     card = null;
                 break;
             case "LandmarkSlot":
-                if (card.tag.Equals("DestroyLandmark"))
-                {
-                    CardDisplay landmarkToDestroy = gameObjectHit.GetComponent<CardDisplay>();
-                    landmarkToDestroy.card = null;
-                    return;
-                }
-                else if (!card.tag.Equals("Landmark")) return;
-                
-                CardDisplay landmark = gameObjectHit.GetComponent<CardDisplay>();
-                landmark.card = card;
-                card = null;
+                WhatToDoWhenLandmarkSlotTargeted();
                 break;
         }
+    }
+
+    private void WhatToDoWhenLandmarkSlotTargeted()
+    {
+        if (card.tag.Equals("DestroyLandmark"))
+        {
+            CardDisplay landmarkToDestroy = gameObjectHit.GetComponent<CardDisplay>();
+            landmarkToDestroy.card = null;
+            return;
+        }
+        else if (!card.tag.Equals("Landmark")) return;
+
+        CardDisplay landmark = gameObjectHit.GetComponent<CardDisplay>();
+        landmark.card = card;
+        card = null;
     }
 
     private void CardGoBackToStartingPosition()
