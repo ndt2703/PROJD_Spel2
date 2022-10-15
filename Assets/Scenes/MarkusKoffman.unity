@@ -7800,7 +7800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff497d023b8b234b9f898dbb20edf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  champion: {fileID: 11400000, guid: a320bb6d4064fcb47b7c74848a43bac2, type: 2}
+  champion: {fileID: 11400000, guid: 129231e8214ccb1429653ab87e0edd82, type: 2}
   name: 
   health: {fileID: 1835331353}
   description: {fileID: 642715100}
