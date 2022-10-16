@@ -6,10 +6,10 @@ using System.Linq;
 [CreateAssetMenu(fileName = "Gravedigger", menuName = "Champion/Gravedigger", order = 1)]
 public class Gravedigger : Champion
 {
-	public override void EndStep()
+	public override void EndStepEffect()
 	{
 		// Take a random card from Graveyard (removed from graveyard)
-		base.EndStep();
+		base.EndStepEffect();
 		Card card = FindObjectOfType<Graveyard>().RandomizeCardFromGraveyard();
 		// Add card to hand
 	}

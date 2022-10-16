@@ -16,29 +16,21 @@ public class Cultist : Champion
 		passiveEffect = currentBonusDamage + "+";
 	}
 
-	public override void DealDamageAttack(int damage)
+	public override int DealDamageEffect()
 	{
-		damage += currentBonusDamage;
-		base.DealDamageAttack(damage);
+		return currentBonusDamage;
 	}
 
-	public override void TakeDamage(int damage)
+	public override void AfterEffectTriggered()
 	{
-		base.TakeDamage(damage);
-		ChangeBonusDamage();
-	}
-
-	public override void HealChampion(int amountToHeal)
-	{
-		base.HealChampion(amountToHeal);
 		ChangeBonusDamage();
 	}
 
 	private void ChangeBonusDamage()
 	{
-		int difference = (maxHealth - health) / perMissingHP;
-		Mathf.Floor(difference);
-		currentBonusDamage = damagePerMissingHP * difference;
-		passiveEffect = currentBonusDamage + "+";
+		//int difference = (maxHealth - health) / perMissingHP;
+		//Mathf.Floor(difference);
+		//currentBonusDamage = damagePerMissingHP * difference;
+		//passiveEffect = currentBonusDamage + "+";
 	}
 }
