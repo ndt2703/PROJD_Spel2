@@ -37,15 +37,23 @@ public class GameLoop : MonoBehaviour
     }
     private void Start()
     {
-        float random = Random.Range(0,1);
+        int random = Random.Range(0,100);
 
         handPlayer = handGO.GetComponent<Hand>();
         handOpponent = handOponentGO.GetComponent<Hand>();
 
-        if (random == 0)
+        if (random % 2 == 0)
+        {
             playerOneStarted = true;
-        else if (random == 1)
+            isPlayerOnesTurn = true;
+        }
+            
+        else if (random % 2 == 1)
+        {
             playerOneStarted = false;
+            isPlayerOnesTurn = false;
+        }
+            
         Invoke(nameof(DrawStartingCards), 0.1f);
     }
 
@@ -62,6 +70,7 @@ public class GameLoop : MonoBehaviour
             if (!playerOneStarted)
             {
                 amountOfTurns++;
+                playerMana++;
             }
         }
         else
@@ -70,6 +79,7 @@ public class GameLoop : MonoBehaviour
             if (playerOneStarted)
             {
                 amountOfTurns++;
+                playerMana++;
             }
             
         }

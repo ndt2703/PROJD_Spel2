@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c95b3c776c0a394b892ed1a7a5a4e37, type: 3}
   m_Name: Rain Of Life
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  artwork: {fileID: 0}
-  manaCost: 0
-  tag: 
+  name: Rain of Life
+  description: Heals all champions 20
+  artwork: {fileID: 21300000, guid: 535e133dbcfee8a47ae30b4f5dab7b9f, type: 3}
+  manaCost: 5
+  tag: Spell
   amountOfCardsToDraw: 0
-  amountToHeal: 0
-  allChampions: 0
+  amountToHeal: 20
+  allChampions: 1
