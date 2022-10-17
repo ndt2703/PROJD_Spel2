@@ -41,6 +41,7 @@ public class IpAdressInputField : MonoBehaviour
             Thread messageThread = new Thread(this.ConnectToServer);
             messageThread.Start();
 
+
         }
     }
 
@@ -65,10 +66,10 @@ public class IpAdressInputField : MonoBehaviour
 
 
         testInternet.hasJoinedLobby = true;
-        print("keypad entererar den");
+        
 
 
-        clientConnection.AddRequest(request, CreateScene);
+       // clientConnection.AddRequest(request, CreateScene);
     }
 
 }
