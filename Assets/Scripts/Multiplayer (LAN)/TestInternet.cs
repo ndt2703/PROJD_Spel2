@@ -79,26 +79,26 @@ public class TestInternet : MonoBehaviour
             }
             if (action.GetType(action.Type).Equals(typeof(GameActionDiscardCard)))
             {
-                print("skickar den en gameAction draw card");
-                GameActionDiscardCard theAction = (GameActionDiscardCard)action;
+                print("skickar den en gameAction discard");
+                //GameActionDiscardCard theAction = (GameActionDiscardCard)action;
 
-                GameState.Instance.DiscardCard(theAction.listOfCardsDiscarded);
+                //GameState.Instance.DiscardCard(theAction.listOfCardsDiscarded);
                 //Draw card opponents
 
             }
             if (action.GetType(action.Type).Equals(typeof(GameActionHeal)))
             {
-                print("skickar den en gameAction draw card");
-                GameActionHeal theAction = (GameActionHeal)action;
+                print("skickar den en gameAction heal");
+                //GameActionHeal theAction = (GameActionHeal)action;
 
-                GameState.Instance.Heal(theAction.targetsToHeal);
+                //GameState.Instance.Heal(theAction.targetsToHeal);
                 //Draw card opponents
 
             }
             if (action.GetType(action.Type).Equals(typeof(GameActionDamage)))
             {
                 print("skickar den en gameAction damage");
-                GameActionDamage theAction = (GameActionDamage)action;
+                //GameActionDamage theAction = (GameActionDamage)action;
 
                 //Draw card opponents
 
@@ -106,7 +106,7 @@ public class TestInternet : MonoBehaviour
             if (action.GetType(action.Type).Equals(typeof(GameActionShield)))
             {
                 print("skickar den en gameAction Shield");
-                GameActionDamage theAction = (GameActionDamage)action;
+                //GameActionDamage theAction = (GameActionDamage)action;
 
                 //Draw card opponents
 
@@ -114,7 +114,7 @@ public class TestInternet : MonoBehaviour
             if (action.GetType(action.Type).Equals(typeof(GameActionSwitchActiveChamp)))
             {
                 print("skickar den en gameAction switch active champion");
-                GameActionSwitchActiveChamp theAction = (GameActionSwitchActiveChamp)action;
+                //GameActionSwitchActiveChamp theAction = (GameActionSwitchActiveChamp)action;
 
                 //Draw card opponents
 
@@ -122,7 +122,7 @@ public class TestInternet : MonoBehaviour
             if (action.GetType(action.Type).Equals(typeof(GameActionDestroyLandmark)))
             {
                 print("skickar den en gameAction destroylandmark");
-                GameActionDestroyLandmark theAction = (GameActionDestroyLandmark)action;
+                //GameActionDestroyLandmark theAction = (GameActionDestroyLandmark)action;
 
                 //Draw card opponents
 
@@ -130,7 +130,7 @@ public class TestInternet : MonoBehaviour
             if (action.GetType(action.Type).Equals(typeof(GameActionRemoveCardsGraveyard)))
             {
                 print("skickar den en gameAction remove card graveyard");
-                GameActionRemoveCardsGraveyard theAction = (GameActionRemoveCardsGraveyard)action;
+                //GameActionRemoveCardsGraveyard theAction = (GameActionRemoveCardsGraveyard)action;
 
                 //Draw card opponents
 
@@ -138,15 +138,15 @@ public class TestInternet : MonoBehaviour
             if (action.GetType(action.Type).Equals(typeof(GameActionPlayCard)))
             {
                 print("skickar den en gameAction play card");
-                GameActionPlayCard theAction = (GameActionPlayCard)action;
+                //GameActionPlayCard theAction = (GameActionPlayCard)action;
 
                 //Draw card opponents
 
             }            
-            if (action.GetType() == typeof(GameActionAddSpecificCardToHand))
+            if (action.GetType(action.Type).Equals(typeof(GameActionPlayCard)))
             {
                 print("skickar den en gameAction add specific card");
-                GameActionAddSpecificCardToHand theAction = (GameActionAddSpecificCardToHand)action;
+                //GameActionAddSpecificCardToHand theAction = (GameActionAddSpecificCardToHand)action;
 
                 //Draw card opponents
 
