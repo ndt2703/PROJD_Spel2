@@ -64,7 +64,7 @@ public class TestInternet : MonoBehaviour
                 GameState.Instance.hasPriority = true;
 
             }
-            print("Vilken type har actionen" + action.Type);
+
             if (action.GetType(action.Type).Equals(typeof(GameActionDrawCard)))
             {
                 print("skickar den en gameAction draw card");
@@ -143,7 +143,7 @@ public class TestInternet : MonoBehaviour
                 //Draw card opponents
 
             }
-            print("vad blir if satsen " + action.GetType(action.Type)+ "  " + typeof(GameActionPlayCard));
+           
             if (action.GetType(action.Type).Equals(typeof(GameActionAddSpecificCardToHand)))
             {
                 print("skickar den en gameAction add specific card");
