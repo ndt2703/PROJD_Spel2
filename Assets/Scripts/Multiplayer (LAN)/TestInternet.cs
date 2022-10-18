@@ -143,7 +143,7 @@ public class TestInternet : MonoBehaviour
                 //Draw card opponents
 
             }            
-            if (action.GetType(action.Type).Equals(typeof(GameActionAddSpecificCardToHand)))
+            if (action is GameActionAddSpecificCardToHand)
             {
                 print("skickar den en gameAction add specific card");
                 GameActionAddSpecificCardToHand theAction = (GameActionAddSpecificCardToHand)action;

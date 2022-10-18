@@ -181,7 +181,6 @@ public class Server
         ServerResponse errorResponse = new ServerResponse();
         AddGameAction(errorResponse, errorMessage); 
 
-
         ServerResponse blank = new ServerResponse();
         return blank;
     }
