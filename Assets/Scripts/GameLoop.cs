@@ -24,6 +24,8 @@ public class GameLoop : MonoBehaviour
     private Card cardToPlay;
     private int cardCost;
 
+    public Card cardInstantiated;
+
     private void Awake()
     {
         if (instance == null)
@@ -36,19 +38,19 @@ public class GameLoop : MonoBehaviour
         }
     }
     private void Start()
-    {
-        int random = Random.Range(0,100);
+    {    
+        int random = Random.Range(0,2);
 
         handPlayer = handGO.GetComponent<Hand>();
         handOpponent = handOponentGO.GetComponent<Hand>();
 
-        if (random % 2 == 0)
+        if (random == 1)
         {
             playerOneStarted = true;
             isPlayerOnesTurn = true;
         }
             
-        else if (random % 2 == 1)
+        else if (random == 0)
         {
             playerOneStarted = false;
             isPlayerOnesTurn = false;
@@ -104,6 +106,7 @@ public class GameLoop : MonoBehaviour
             playerMana -= cardCost;
             cardToPlay = card;
             card.PlayCard();
+            card = null;
             return true;
             
         }

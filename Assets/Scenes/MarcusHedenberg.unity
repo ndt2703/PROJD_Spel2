@@ -1654,6 +1654,7 @@ GameObject:
   - component: {fileID: 215213669}
   - component: {fileID: 215213668}
   - component: {fileID: 215213667}
+  - component: {fileID: 215213671}
   m_Layer: 6
   m_Name: EnemyChampion
   m_TagString: Champion
@@ -1740,6 +1741,20 @@ Transform:
   m_Father: {fileID: 832026172}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &215213671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215213665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0814981228a1ef4bb0f7691f16d53a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  shield: 0
 --- !u!1 &216745322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,6 +1902,7 @@ GameObject:
   - component: {fileID: 220195555}
   - component: {fileID: 220195554}
   - component: {fileID: 220195553}
+  - component: {fileID: 220195556}
   m_Layer: 0
   m_Name: MyChampion
   m_TagString: Champion
@@ -1973,6 +1989,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220195550}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &220195556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220195550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0814981228a1ef4bb0f7691f16d53a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  shield: 0
 --- !u!1 &236878358
 GameObject:
   m_ObjectHideFlags: 0
@@ -14102,13 +14132,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347eae74a56fb4c4186c8daeda76823b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMana: 1
+  playerMana: 10000
   handGO: {fileID: 236878358}
   handOponentGO: {fileID: 1618785752}
   isPlayerOnesTurn: 0
   amountOfTurns: 0
   amountOfCardsToStartWith: 5
   playerOneStarted: 0
+  cardInstantiated: {fileID: 0}
 --- !u!1 &1634207076
 GameObject:
   m_ObjectHideFlags: 0
@@ -16351,6 +16382,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1813444284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1813444285}
+  m_Layer: 0
+  m_Name: ActiveChampion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1813444285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813444284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.817668, y: 9.999157, z: -5.683094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1820216332
 GameObject:
   m_ObjectHideFlags: 0
