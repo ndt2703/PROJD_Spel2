@@ -17,19 +17,28 @@ public abstract class Champion : ScriptableObject
 
     public virtual void Awake() { }
 
-    public virtual int TakeDamageEffect() { return 0; }
+    public virtual void DrawCard() { AfterEffectTriggered(); }
 
-    public virtual int HealChampionEffect() { return 0; }
-    public virtual int GainShieldEffect() { return 0; }
+    public virtual void PlayCardEffect() { AfterEffectTriggered(); }
 
-    public virtual int DealDamageEffect() { return 0; }
+    public virtual int TakeDamageEffect() { AfterEffectTriggered(); return 0; }
 
-    public virtual void UpKeepEffect() { }
+    public virtual int HealChampionEffect() { AfterEffectTriggered(); return 0; }
 
-    public virtual void EndStepEffect() { }
+    public virtual int GainShieldEffect() { AfterEffectTriggered(); return 0; }
 
-    public virtual void WhenCurrentChampionEffect() { }
+    public virtual int DealDamageEffect() { AfterEffectTriggered(); return 0; }
 
-    public virtual void AfterEffectTriggered() { }
-    public virtual void AfterEffectTriggered(int health) { }
+    public virtual void UpKeepEffect() { AfterEffectTriggered(); }
+
+    public virtual void EndStepEffect() { AfterEffectTriggered(); }
+
+    public virtual void WhenCurrentChampionEffect() { AfterEffectTriggered(); }
+
+    public virtual void WhenLandmarksDie() { AfterEffectTriggered(); }
+
+    public virtual void AfterEffectTriggered() { AfterEffectTriggered(); }
+
+    public virtual void Death() { }
+
 }

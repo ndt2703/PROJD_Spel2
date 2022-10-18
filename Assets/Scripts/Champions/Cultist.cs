@@ -23,6 +23,7 @@ public class Cultist : Champion
 
 	public override void AfterEffectTriggered()
 	{
+		base.AfterEffectTriggered();
 		ChangeBonusDamage();
 	}
 

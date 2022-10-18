@@ -10,6 +10,6 @@ public class Gravedigger : Champion
 	{
 		base.EndStepEffect();
 		Card card = FindObjectOfType<Graveyard>().RandomizeCardFromGraveyard();
-		// Add card to hand
+		// Add the card to playerhand
 	}
 }

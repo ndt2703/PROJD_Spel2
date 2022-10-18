@@ -23,15 +23,9 @@ public class AvailableChampion : MonoBehaviour
 
 	private void Awake()
 	{
+        champion = (Champion)ScriptableObject.CreateInstance(champion.name);
+		champion.Awake();
         name = champion.name;
-        foreach (Champion c in AllChampions.Instance.SubClasses)
-        {
-            if (champion.name == c.name)
-            {
-                champion = (Champion)ScriptableObject.CreateInstance(c.name);
-                break;
-            }
-        }
 		description.text = champion.description;
 		healthText.text = champion.health.ToString();
 		shield = champion.shield;
@@ -39,8 +33,7 @@ public class AvailableChampion : MonoBehaviour
 		maxHealth = champion.health;
 		passiveEffect.text = champion.passiveEffect;
 
-		champion.Awake();
-		InvokeRepeating(nameof(Deal5Damage), 2, 20);
+		//InvokeRepeating(nameof(Deal5Damage), 2, 20);
 	}
 
     private void Deal5Damage()
@@ -102,13 +95,21 @@ public class AvailableChampion : MonoBehaviour
         champion.AfterEffectTriggered();
     }
 
-    public virtual void DealDamageAttack(int damage) { damage += champion.DealDamageEffect(); champion.AfterEffectTriggered(); }
+    public virtual void DrawCard() { champion.DrawCard(); }
 
-    public virtual void UpKeep() { champion.UpKeepEffect(); champion.AfterEffectTriggered(); }
+    public virtual void PlayCardEffect() { champion.PlayCardEffect(); }
 
-    public virtual void EndStep() { champion.EndStepEffect(); champion.AfterEffectTriggered(); }
+    public virtual void DealDamageAttack(int damage) { damage += champion.DealDamageEffect(); }
 
-    public virtual void WhenCurrentChampion() { champion.WhenCurrentChampionEffect(); champion.AfterEffectTriggered(); }
+    public virtual void UpKeep() { champion.UpKeepEffect(); }
+
+    public virtual void EndStep() { champion.EndStepEffect(); }
+
+    public virtual void WhenCurrentChampion() { champion.WhenCurrentChampionEffect(); }
+
+    public virtual void WhenLandmarksDie() { champion.WhenLandmarksDie(); }
+
+    public virtual void Death() { champion.Death(); }
 
 
     public void FixedUpdate()
