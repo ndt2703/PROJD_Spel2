@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea74547ccb6dfba42b432917931fe8db, type: 3}
   m_Name: Duelist
   m_EditorClassIdentifier: 
-  name: 
+  name: Duelist
   description: 
   health: 0
   shield: 0

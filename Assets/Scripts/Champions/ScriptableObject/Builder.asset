@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b277c908d0b9ffb42a216f9bb7884959, type: 3}
   m_Name: Builder
   m_EditorClassIdentifier: 
-  name: 
+  name: Builder
   description: 
   health: 0
   shield: 0
-  artwork: {fileID: 0}
-  passiveEffect: 0/0
+  artwork: {fileID: 21300000, guid: 9d6a5ae66861bc94cb05868eebb56d0e, type: 3}
+  passiveEffect: 0/2

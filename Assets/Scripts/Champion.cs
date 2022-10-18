@@ -9,8 +9,8 @@ public abstract class Champion : ScriptableObject
 {
     public new string name;
     public string description;
-    public int health;
-    public int shield;
+    public int health = 100;
+    public int shield = 0;
     public Sprite artwork;
     public string passiveEffect;
 

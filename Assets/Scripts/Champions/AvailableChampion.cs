@@ -23,13 +23,13 @@ public class AvailableChampion : MonoBehaviour
 
 	private void Awake()
 	{
-        champion = (Champion)ScriptableObject.CreateInstance(champion.name);
 		champion.Awake();
         name = champion.name;
+        artwork.sprite = champion.artwork;
+        champion = (Champion) ScriptableObject.CreateInstance(champion.name);
 		description.text = champion.description;
 		healthText.text = champion.health.ToString();
 		shield = champion.shield;
-		artwork.sprite = champion.artwork;
 		maxHealth = champion.health;
 		passiveEffect.text = champion.passiveEffect;
 
@@ -77,7 +77,6 @@ public class AvailableChampion : MonoBehaviour
         {
             Debug.Log("Enemy died");
         }
-        champion.AfterEffectTriggered();
     }
 
     public virtual void HealChampion(int amountToHeal)
@@ -87,12 +86,10 @@ public class AvailableChampion : MonoBehaviour
         {
             health = maxHealth;
         }
-        champion.AfterEffectTriggered();
     }
     public virtual void GainShield(int amountToBlock)
     {
         shield += amountToBlock + champion.GainShieldEffect();
-        champion.AfterEffectTriggered();
     }
 
     public virtual void DrawCard() { champion.DrawCard(); }

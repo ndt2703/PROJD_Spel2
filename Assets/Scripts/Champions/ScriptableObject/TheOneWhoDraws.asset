@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc2bf7f38365cb4b92a0fa23f2ebd7e, type: 3}
   m_Name: TheOneWhoDraws
   m_EditorClassIdentifier: 
-  name: 
+  name: TheOneWhoDraws
   description: 
   health: 0
   shield: 0
