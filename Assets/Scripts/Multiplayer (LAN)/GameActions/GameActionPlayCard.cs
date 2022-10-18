@@ -8,11 +8,11 @@ public class GameActionPlayCard : GameAction
 
     public GameActionPlayCard()
     {
-        Type = 10; 
+        Type = 11; 
     }
     public GameActionPlayCard(Tuple<string, TargetInfo> cardToPlay)
     {
-        Type = 10;
+        Type = 11;
 
         this.cardToPlay = cardToPlay;
     }
