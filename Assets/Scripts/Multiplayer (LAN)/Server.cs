@@ -122,49 +122,50 @@ public class Server
         }
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDiscardCard))
         {
-            RequestDiscardCard castedRequest = (RequestDiscardCard)requestToHandle;
+            RequestDiscardCard castedRequest = new RequestDiscardCard();
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDiscardCard(castedRequest);
         }
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestHealing))
         {
-            RequestHealing castedRequest = (RequestHealing)requestToHandle;
+            RequestHealing castedRequest = new RequestHealing();
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleHeal(castedRequest);
         }
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDamage))
         {
-            RequestDamage castedRequest = (RequestDamage)requestToHandle;
+            RequestDamage castedRequest = new RequestDamage();
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDamage(castedRequest);
         }       
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestShield))
         {
-            RequestShield castedRequest = (RequestShield)requestToHandle;
+            RequestShield castedRequest = new RequestShield();
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleShield(castedRequest);
         }       
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestSwitchActiveChamps))
         {
-            RequestSwitchActiveChamps castedRequest = (RequestSwitchActiveChamps)requestToHandle;
+            RequestSwitchActiveChamps castedRequest = new RequestSwitchActiveChamps();
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleSwitchActiveChamp(castedRequest);
         }       
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDestroyLandmark))
         {
-            RequestDestroyLandmark castedRequest = (RequestDestroyLandmark)requestToHandle;
+            RequestDestroyLandmark castedRequest = new RequestDestroyLandmark();
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDestroyLandmark(castedRequest);
         }       
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestRemoveCardsGraveyard))
         {
-            RequestRemoveCardsGraveyard castedRequest = (RequestRemoveCardsGraveyard)requestToHandle;
+            RequestRemoveCardsGraveyard castedRequest = new RequestRemoveCardsGraveyard();
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleRemoveCardsGraveyard(castedRequest);
         }       
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestPlayCard))
         {
-            RequestPlayCard castedRequest = (RequestPlayCard)requestToHandle;
+            //  RequestPlayCard castedRequest = (RequestPlayCard)requestToHandle;
+            RequestPlayCard castedRequest = new RequestPlayCard();
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandlePlayCard(castedRequest);
         }       
