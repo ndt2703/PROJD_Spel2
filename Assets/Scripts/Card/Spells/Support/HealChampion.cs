@@ -11,14 +11,14 @@ public class HealChampion : Spells
     {
         if (allChampions)
         {
-            foreach (Champion champ in FindObjectsOfType<Champion>())
+            foreach (AvailableChampion champ in FindObjectsOfType<AvailableChampion>())
             {
                 champ.HealChampion(amountToHeal);
             }
         }
         else
         {
-            Target.HealChampion(amountToHeal);
+            FindObjectOfType<AvailableChampion>().HealChampion(amountToHeal);
         }
     }
 }

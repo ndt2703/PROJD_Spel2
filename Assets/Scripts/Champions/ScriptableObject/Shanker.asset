@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0814981228a1ef4bb0f7691f16d53a7, type: 3}
-  m_Name: Culltist
+  m_Script: {fileID: 11500000, guid: c584da311c2b271499976e6b2ed3e0fa, type: 3}
+  m_Name: Shanker
   m_EditorClassIdentifier: 
+  name: 
+  description: 
   health: 0
   shield: 0
+  artwork: {fileID: 0}
+  passiveEffect: 

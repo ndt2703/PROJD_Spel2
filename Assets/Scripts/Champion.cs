@@ -1,57 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
+using TMPro;
 
-[CreateAssetMenu(fileName = "Champions", menuName = "Champions", order = 1)]
-public class Champion : MonoBehaviour // scriptable object
+public abstract class Champion : ScriptableObject
 {
+    public new string name;
+    public string description;
     public int health;
-    private int maxHealth;
     public int shield;
+    public Sprite artwork;
+    public string passiveEffect;
 
-    private int differenceAfterShieldDamage;
 
-	public void Start()
-	{
-        maxHealth = health;
-	}
+    public virtual void Awake() { }
 
-	public void TakeDamage(int damage)
-    {
-        if (shield == 0)
-        {
-            health -= damage;           
-        }
-        else
-        {
-            if (damage > shield)
-            {
-                differenceAfterShieldDamage = damage - shield;
-                shield = 0;
-                health -= differenceAfterShieldDamage;
-            }
-            else
-            {
-                shield -= damage;
-            }
-        }
-        
-        if (health <= 0)
-        {
-            Debug.Log("Enemy died");
-        }
-    }
+    public virtual void DrawCard() { AfterEffectTriggered(); }
 
-    public void HealChampion(int amountToHeal)
-    {
-        health += amountToHeal;
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
-    }
-    public void GainShield(int amountToBlock)
-    {
-        shield += amountToBlock;
-    }
+    public virtual void PlayCardEffect() { AfterEffectTriggered(); }
+
+    public virtual int TakeDamageEffect() { AfterEffectTriggered(); return 0; }
+
+    public virtual int HealChampionEffect() { AfterEffectTriggered(); return 0; }
+
+    public virtual int GainShieldEffect() { AfterEffectTriggered(); return 0; }
+
+    public virtual int DealDamageEffect() { AfterEffectTriggered(); return 0; }
+
+    public virtual void UpKeepEffect() { AfterEffectTriggered(); }
+
+    public virtual void EndStepEffect() { AfterEffectTriggered(); }
+
+    public virtual void WhenCurrentChampionEffect() { AfterEffectTriggered(); }
+
+    public virtual void WhenLandmarksDie() { AfterEffectTriggered(); }
+
+    public virtual void AfterEffectTriggered() { AfterEffectTriggered(); }
+
+    public virtual void Death() { }
+
 }

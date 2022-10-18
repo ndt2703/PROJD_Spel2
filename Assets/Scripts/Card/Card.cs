@@ -12,8 +12,8 @@ public abstract class Card : ScriptableObject
 
     public string tag;
 
-    private Champion target;
-    public Champion Target { get { return target; } set { target = value; } }
+    private AvailableChampion target;
+    public AvailableChampion Target { get { return target; } set { target = value; } }
 
     public abstract void PlayCard();
 }

@@ -38,7 +38,7 @@ public class CardTargeting : MonoBehaviour
         switch (gameObjectHit.tag)
         {
             case "Champion":
-                card.Target = gameObjectHit.GetComponent<Champion>();
+                card.Target = gameObjectHit.GetComponent<AvailableChampion>();
                 gameLoop.CheckIfCanPlayCard(card);                  
                 break;
             case "LandmarkSlot":
