@@ -316,7 +316,7 @@ public class Server
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
-        GameActionDestroyLandmark gameAction = new GameActionDestroyLandmark( requestToHandle.cardsToRemoveGraveyard);
+        GameActionRemoveCardsGraveyard gameAction = new GameActionRemoveCardsGraveyard( requestToHandle.cardsToRemoveGraveyard);
 
         AddGameAction(response, gameAction);
         return response;
