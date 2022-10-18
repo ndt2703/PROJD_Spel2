@@ -170,9 +170,10 @@ public class Server
         }       
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestAddSpecificCardToHand))
         {
-        //    RequestAddSpecificCardToHand castedRequest = (RequestAddSpecificCardToHand)requestToHandle;
-        //    castedRequest.whichPlayer = requestToHandle.whichPlayer;
-        //    return HandleAddSpecificCardToHand(castedRequest);
+            //RequestAddSpecificCardToHand castedRequest = (RequestAddSpecificCardToHand)requestToHandle;
+            RequestAddSpecificCardToHand testRequest = new RequestAddSpecificCardToHand();
+            testRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandleAddSpecificCardToHand(testRequest);
         }
 
         GameAction errorMessage = new GameAction();
