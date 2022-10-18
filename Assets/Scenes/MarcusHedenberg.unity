@@ -13922,13 +13922,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347eae74a56fb4c4186c8daeda76823b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMana: 1
+  playerMana: 10
   handGO: {fileID: 236878358}
   handOponentGO: {fileID: 1618785752}
   isPlayerOnesTurn: 0
   amountOfTurns: 0
   amountOfCardsToStartWith: 5
   playerOneStarted: 0
+  cardInstantiated: {fileID: 0}
 --- !u!1 &1634207076
 GameObject:
   m_ObjectHideFlags: 0
