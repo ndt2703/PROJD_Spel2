@@ -46,6 +46,10 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
         {
             return (typeof(RequestDiscardCard));
         }
+        if (Type == 6)
+        {
+            return (typeof(RequestDamage));
+        }
 
         return (typeof(ClientRequest));
     }

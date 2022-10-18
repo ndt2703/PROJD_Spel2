@@ -13,16 +13,16 @@ public class Deck : MonoBehaviour
 
     private void Start()
     {
-        string ha = "D:/Skola/PROJD/PROJD_Spel2/Assets/ScriptableObjects";
-
-
-        while (deckOfCards.Count < 30)
-        {
-            foreach (Card card in allCardsAvailable)
-            {
-                deckOfCards.Push(card);
-            }
-        }
+       //string ha = "D:/Skola/PROJD/PROJD_Spel2/Assets/ScriptableObjects";
+       //
+       //
+       while (deckOfCards.Count < 30)
+       {
+           foreach (Card card in allCardsAvailable)
+           {
+               deckOfCards.Push(card);
+           }
+       }
 
     }
 

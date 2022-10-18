@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Metor
   m_EditorClassIdentifier: 
   name: Metor
-  description: 
-  artwork: {fileID: 0}
-  manaCost: 0
-  tag: 
+  description: Destroy a landmark
+  artwork: {fileID: 21300000, guid: 989921e894ecb1a4dbaf25a8bcd0b399, type: 3}
+  manaCost: 2
+  tag: Spell
   amountOfCardsToDraw: 0
