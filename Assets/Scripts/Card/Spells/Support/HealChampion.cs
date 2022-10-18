@@ -18,7 +18,7 @@ public class HealChampion : Spells
         }
         else
         {
-            FindObjectOfType<Champion>().HealChampion(amountToHeal);
+            Target.HealChampion(amountToHeal);
         }
     }
 }

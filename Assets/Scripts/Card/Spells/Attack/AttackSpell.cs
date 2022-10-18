@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Card/Spells/AttackSpell")]
 public class AttackSpell : Spells
 {
-    public int damage;
+    public int damage = 10;
 
 
     public override void PlaySpell()

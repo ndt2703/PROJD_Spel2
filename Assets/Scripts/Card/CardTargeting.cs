@@ -39,8 +39,7 @@ public class CardTargeting : MonoBehaviour
         {
             case "Champion":
                 card.Target = gameObjectHit.GetComponent<Champion>();
-                if (gameLoop.CheckIfCanPlayCard(card))
-                    card = null;
+                gameLoop.CheckIfCanPlayCard(card);                  
                 break;
             case "LandmarkSlot":
                 WhatToDoWhenLandmarkSlotTargeted();
@@ -79,7 +78,7 @@ public class CardTargeting : MonoBehaviour
         if (!gameObject.tag.Equals("LandmarkSlot"))
         {
             gameObjectRectTransform = GetComponent<RectTransform>();
-            startposition = gameObjectRectTransform.anchoredPosition;
+            startposition = gameObjectRectTransform.position;
         }
     }
 }
