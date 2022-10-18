@@ -176,7 +176,7 @@ public class Server
         }
 
         GameAction errorMessage = new GameAction();
-        errorMessage.errorMessage = "den kommer inte till ratt handle " + requestToHandle.Type + requestToHandle.GetType();
+        errorMessage.errorMessage = "den kommer inte till ratt handle " + requestToHandle.Type +" " + requestToHandle.GetType() + " "+ (requestToHandle is RequestAddSpecificCardToHand);
         ServerResponse errorResponse = new ServerResponse();
         AddGameAction(errorResponse, errorMessage); 
 
@@ -363,7 +363,8 @@ public class Server
     }
 
     private void AddGameAction(ServerResponse response, GameAction gameAction)
-    {
+    {   
+        
         if (response.whichPlayer == 1)
         {
             player2Actions.Add(gameAction);
