@@ -69,7 +69,7 @@ public class IpAdressInputField : MonoBehaviour
         
 
 
-       // clientConnection.AddRequest(request, CreateScene);
+        clientConnection.AddRequest(request, CreateScene);
     }
 
 }
