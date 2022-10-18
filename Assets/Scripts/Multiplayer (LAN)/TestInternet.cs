@@ -144,19 +144,15 @@ public class TestInternet : MonoBehaviour
 
             }
             print("vad blir if satsen " + action.GetType(action.Type)+ "  " + typeof(GameActionPlayCard));
-            if (action.GetType(action.Type).Equals(typeof(GameActionPlayCard)))
+            if (action.GetType(action.Type).Equals(typeof(GameActionAddSpecificCardToHand)))
             {
                 print("skickar den en gameAction add specific card");
-                //GameActionAddSpecificCardToHand theAction = (GameActionAddSpecificCardToHand)action;
+                GameActionAddSpecificCardToHand theAction = (GameActionAddSpecificCardToHand)action;
 
                 //Draw card opponents
 
             }
 
-            if(action.Type == 11)
-            {
-                print("skickar den en gameaction add specific card");
-            }
             
 
 
