@@ -13,7 +13,8 @@ public class RequestRemoveCardsGraveyard : ClientRequest
 
     public RequestRemoveCardsGraveyard(List<TargetInfo> cardsToRemoveGraveyard)
     {
-        this.cardsToRemoveGraveyard = cardsToRemoveGraveyard; 
+        this.cardsToRemoveGraveyard = cardsToRemoveGraveyard;
+        Type = 10; 
     }
 
 
