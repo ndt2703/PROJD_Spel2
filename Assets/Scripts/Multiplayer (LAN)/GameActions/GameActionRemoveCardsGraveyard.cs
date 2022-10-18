@@ -12,6 +12,7 @@ public class GameActionRemoveCardsGraveyard : GameAction
     }
     public GameActionRemoveCardsGraveyard(List<TargetInfo> cardsToRemoveGraveyard)
     {
-        this.cardsToRemoveGraveyard = cardsToRemoveGraveyard; 
+        this.cardsToRemoveGraveyard = cardsToRemoveGraveyard;
+        Type = 9;
     }
 }

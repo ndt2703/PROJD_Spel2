@@ -74,6 +74,14 @@ public class TestCallback : MonoBehaviour
         testRequest.whichPlayer = ClientConnection.Instance.playerId;
         ClientConnection.Instance.AddRequest(testRequest, DummyCallback);
     }
+    public void destroyLandmarkTest()
+    {
+        List<TargetInfo> testList = new List<TargetInfo>();
+        RequestDestroyLandmark testRequest = new RequestDestroyLandmark(testList);
+
+        testRequest.whichPlayer = ClientConnection.Instance.playerId;
+        ClientConnection.Instance.AddRequest(testRequest, DummyCallback);
+    }
     public void playCardTest()
     {
         Tuple<string,TargetInfo> testList = new Tuple<string,TargetInfo>("", new TargetInfo());
