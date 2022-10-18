@@ -51,7 +51,7 @@ public class TestCallback : MonoBehaviour
         List<String> testList = new List<string>();
         RequestDiscardCard requestDiscard = new RequestDiscardCard(testList);
 
-        testRequest.whichPlayer = ClientConnection.Instance.playerId;
+        requestDiscard.whichPlayer = ClientConnection.Instance.playerId;
         ClientConnection.Instance.AddRequest(requestDiscard, DummyCallback);
     }
 
