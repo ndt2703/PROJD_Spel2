@@ -36,6 +36,34 @@ public class GameAction : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
         {
             return typeof(GameActionDiscardCard);
         }
+        if (Type == 5)
+        {
+            return typeof(GameActionDamage);
+        }       
+        if (Type == 6)
+        {
+            return typeof(GameActionShield);
+        }       
+        if (Type == 7)
+        {
+            return typeof(GameActionSwitchActiveChamp);
+        }     
+        if (Type == 8)
+        {
+            return typeof(GameActionDestroyLandmark);
+        }     
+        if (Type == 9)
+        {
+            return typeof(GameActionRemoveCardsGraveyard);
+        }    
+        if (Type == 10)
+        {
+            return typeof(GameActionPlayCard);
+        }   
+        if (Type == 11)
+        {
+            return typeof(GameActionAddSpecificCardToHand);
+        }
         return (typeof(GameAction));
     }
     public object Deserialize(MBJson.JSONObject ObjectToParse)

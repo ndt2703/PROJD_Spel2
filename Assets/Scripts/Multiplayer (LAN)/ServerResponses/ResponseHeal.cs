@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System; 
 public class ResponseHeal : ServerResponse
 {
-    public int amountToHeal = 0; 
+    public List<Tuple<TargetInfo, int>> targetsToHeal =  new List<Tuple<TargetInfo, int>>(); 
     public ResponseHeal()
     {
         Type = 4; 
     }
 
-    public ResponseHeal(int amountToHeal)
+    public ResponseHeal(List<Tuple<TargetInfo, int>> targetsToHeal)
     {
         Type = 4;
-        this.amountToHeal = amountToHeal;
+        this.targetsToHeal = targetsToHeal;
     }
 }

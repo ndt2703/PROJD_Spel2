@@ -132,6 +132,48 @@ public class Server
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleHeal(castedRequest);
         }
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDamage))
+        {
+            RequestDamage castedRequest = (RequestDamage)requestToHandle;
+            castedRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandleDamage(castedRequest);
+        }       
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestShield))
+        {
+            RequestShield castedRequest = (RequestShield)requestToHandle;
+            castedRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandleShield(castedRequest);
+        }       
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestSwitchActiveChamps))
+        {
+            RequestSwitchActiveChamps castedRequest = (RequestSwitchActiveChamps)requestToHandle;
+            castedRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandleSwitchActiveChamp(castedRequest);
+        }       
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDestroyLandmark))
+        {
+            RequestDestroyLandmark castedRequest = (RequestDestroyLandmark)requestToHandle;
+            castedRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandleDestroyLandmark(castedRequest);
+        }       
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestRemoveCardsGraveyard))
+        {
+            RequestRemoveCardsGraveyard castedRequest = (RequestRemoveCardsGraveyard)requestToHandle;
+            castedRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandleRemoveCardsGraveyard(castedRequest);
+        }       
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestPlayCard))
+        {
+            RequestPlayCard castedRequest = (RequestPlayCard)requestToHandle;
+            castedRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandlePlayCard(castedRequest);
+        }       
+        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestAddSpecificCardToHand))
+        {
+            RequestAddSpecificCardToHand castedRequest = (RequestAddSpecificCardToHand)requestToHandle;
+            castedRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandleAddSpecificCardToHand(castedRequest);
+        }
 
         GameAction errorMessage = new GameAction();
         errorMessage.errorMessage = "den kommer inte till ratt handle";
@@ -192,8 +234,8 @@ public class Server
     }
     private ServerResponse HandleDrawCard(RequestDrawCard requestToHandle)
     {
-        ServerResponse response = new ServerResponse();
-
+        ResponseDrawCard response = new ResponseDrawCard(requestToHandle.amountToDraw);
+        
         response.whichPlayer = requestToHandle.whichPlayer;
 
         GameActionDrawCard gameAction = new GameActionDrawCard(requestToHandle.amountToDraw);
@@ -203,28 +245,103 @@ public class Server
     }
     private ServerResponse HandleDiscardCard(RequestDiscardCard requestToHandle)
     {
-        ServerResponse response = new ServerResponse();
+        ResponseDiscardCard response = new ResponseDiscardCard(new List<string>( requestToHandle.listOfCardsDiscarded));
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
-        GameActionDiscardCard gameAction = new GameActionDiscardCard(requestToHandle.listOfCardsDiscarded);
+        GameActionDiscardCard gameAction = new GameActionDiscardCard(new List<string>(requestToHandle.listOfCardsDiscarded));
 
         AddGameAction(response, gameAction);
         return response;
     }
     private ServerResponse HandleHeal(RequestHealing requestToHandle)
     {
-        ServerResponse response = new ServerResponse();
+        ResponseHeal response = new ResponseHeal(requestToHandle.targetsToHeal);
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
-        GameActionHeal gameAction = new GameActionHeal(requestToHandle.amountToHeal);
+        GameActionHeal gameAction = new GameActionHeal(requestToHandle.targetsToHeal);
 
         AddGameAction(response, gameAction);
         return response;
     }
+    private ServerResponse HandleDamage(RequestDamage requestToHandle)
+    {
+        ResponseDamage response = new ResponseDamage(requestToHandle.targetsToDamage);
 
+        response.whichPlayer = requestToHandle.whichPlayer;
 
+        GameActionDamage gameAction = new GameActionDamage(new List<Tuple<TargetInfo, int>>(requestToHandle.targetsToDamage));
+
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandleShield(RequestShield requestToHandle)
+    {
+        ResponseShield response = new ResponseShield(requestToHandle.targetsToShield);
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionShield gameAction = new GameActionShield(new List<Tuple<TargetInfo, int>>(requestToHandle.targetsToShield));
+
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandleSwitchActiveChamp(RequestSwitchActiveChamps requestToHandle)
+    {
+        ResponseSwitchActiveChamp response = new ResponseSwitchActiveChamp(new Tuple<TargetInfo,TargetInfo>(requestToHandle.targetsToSwitch.Item1,requestToHandle.targetsToSwitch.Item2));
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionSwitchActiveChamp gameAction = new GameActionSwitchActiveChamp(new Tuple<TargetInfo, TargetInfo>(requestToHandle.targetsToSwitch.Item1, requestToHandle.targetsToSwitch.Item2));
+
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandleDestroyLandmark(RequestDestroyLandmark requestToHandle)
+    {
+        ResponseDestroyLandmark response = new ResponseDestroyLandmark(new List<TargetInfo>(requestToHandle.landmarksToDestroy));
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionDestroyLandmark gameAction = new GameActionDestroyLandmark( requestToHandle.landmarksToDestroy);
+
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandleRemoveCardsGraveyard(RequestRemoveCardsGraveyard requestToHandle)
+    {
+        ResponseRemoveCardsGraveyard response = new ResponseRemoveCardsGraveyard(new List<TargetInfo>(requestToHandle.cardsToRemoveGraveyard));
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionDestroyLandmark gameAction = new GameActionDestroyLandmark( requestToHandle.cardsToRemoveGraveyard);
+
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandlePlayCard(RequestPlayCard requestToHandle)
+    {
+        ResponsePlayCard response = new ResponsePlayCard(requestToHandle.cardToPlay);
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionPlayCard gameAction = new GameActionPlayCard( requestToHandle.cardToPlay);
+
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandleAddSpecificCardToHand(RequestAddSpecificCardToHand requestToHandle)
+    {
+        ResponseAddSpecificCardToHand response = new ResponseAddSpecificCardToHand(requestToHandle.cardToAdd);
+
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionAddSpecificCardToHand gameAction = new GameActionAddSpecificCardToHand( requestToHandle.cardToAdd);
+
+        AddGameAction(response, gameAction);
+        return response;
+    }
     private ServerResponse HandleRequestActions(ClientRequest requestToHandle)
     {
         ServerResponse response = new ServerResponse();
@@ -244,6 +361,7 @@ public class Server
 
         return response;
     }
+
     private void AddGameAction(ServerResponse response, GameAction gameAction)
     {
         if (response.whichPlayer == 1)

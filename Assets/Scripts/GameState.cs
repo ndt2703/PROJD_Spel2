@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System; 
 public class GameState : MonoBehaviour
 {
     public int currentPlayerID = 0;
@@ -119,7 +119,7 @@ public class GameState : MonoBehaviour
 
         DiscardCard(castedResponse.listOfCardsDiscarded);
     }
-    public void DiscardCard(List<int> listOfCardsDiscarded)
+    public void DiscardCard(List<string> listOfCardsDiscarded)
     {
 
     }
@@ -129,7 +129,7 @@ public class GameState : MonoBehaviour
 
         DiscardCard(castedResponse.listOfCardsDiscarded);
     }
-    public void Heal(int amountToHeal)
+    public void Heal(List<Tuple<TargetInfo, int>> targetsToHeal)
     {
 
     }
@@ -139,7 +139,7 @@ public class GameState : MonoBehaviour
 
         DiscardCard(castedResponse.listOfCardsDiscarded);
     }
-    public void Damage(int amountToHeal)
+    public void Damage(List<Tuple<TargetInfo, int>> targetsToDamage)
     {
 
     }

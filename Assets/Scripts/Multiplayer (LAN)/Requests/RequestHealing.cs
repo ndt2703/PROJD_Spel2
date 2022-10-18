@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System; 
 public class RequestHealing : ClientRequest
 {
-    public int amountToHeal = 0;
+    public List<Tuple<TargetInfo, int>> targetsToHeal = new List<Tuple<TargetInfo, int>>(); 
     
     // Start is called before the first frame update
     public RequestHealing() 
     {
         Type = 4;
     }// ta ej bortr
-    public RequestHealing(int amountToHeal)
+    public RequestHealing(List<Tuple<TargetInfo, int>> targetsToHeal)
     {
-        this.amountToHeal = amountToHeal;
+        this.targetsToHeal = targetsToHeal; 
         Type = 4; 
     }
 }

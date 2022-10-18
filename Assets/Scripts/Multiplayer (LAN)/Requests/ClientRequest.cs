@@ -50,6 +50,30 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
         {
             return (typeof(RequestDamage));
         }
+        if (Type == 7)
+        {
+            return (typeof(RequestShield));
+        }
+        if (Type == 8)
+        {
+            return (typeof(RequestSwitchActiveChamps));
+        }
+        if (Type == 9)
+        {
+            return (typeof(RequestDestroyLandmark));
+        }
+        if (Type == 10)
+        {
+            return (typeof(RequestRemoveCardsGraveyard));
+        }
+        if (Type == 11)
+        {
+            return (typeof(RequestPlayCard));
+        }
+        if (Type == 12)
+        {
+            return (typeof(RequestAddSpecificCardToHand));
+        }
 
         return (typeof(ClientRequest));
     }

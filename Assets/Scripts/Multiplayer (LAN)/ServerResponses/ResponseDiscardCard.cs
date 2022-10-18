@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ResponseDiscardCard : ServerResponse
 {
-    public List<int> listOfCardsDiscarded = new List<int>(); 
+    public List<string> listOfCardsDiscarded = new List<string>(); 
     
     public ResponseDiscardCard()
     {
         Type = 3; 
     }
-    public ResponseDiscardCard(List<int> listOfCardsDiscarded)
+    public ResponseDiscardCard(List<string> listOfCardsDiscarded)
     {
         Type = 3;
 
-        this.listOfCardsDiscarded = new List<int>(listOfCardsDiscarded); 
+        this.listOfCardsDiscarded = new List<string>(listOfCardsDiscarded); 
     }
 }

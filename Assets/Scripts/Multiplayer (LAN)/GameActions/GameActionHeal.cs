@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System; 
 public class GameActionHeal : GameAction
 {
 
-    public int amountToHeal = 0; 
+    public List<Tuple<TargetInfo,int>> targetsToHeal = new List<Tuple<TargetInfo, int>>(); 
 
     public GameActionHeal() 
     {
         Type = 3; 
     } 
 
-    public GameActionHeal(int amountToHeal)
+    public GameActionHeal(List<Tuple<TargetInfo, int>> targetsToHeal)
     {
-        this.amountToHeal = amountToHeal;
+        this.targetsToHeal = targetsToHeal;
 
         Type = 3; 
     }

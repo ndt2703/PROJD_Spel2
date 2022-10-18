@@ -91,7 +91,63 @@ public class TestInternet : MonoBehaviour
                 print("skickar den en gameAction draw card");
                 GameActionHeal theAction = (GameActionHeal)action;
 
-                GameState.Instance.Heal(theAction.amountToHeal);
+                GameState.Instance.Heal(theAction.targetsToHeal);
+                //Draw card opponents
+
+            }
+            if (action.GetType(action.Type).Equals(typeof(GameActionDamage)))
+            {
+                print("skickar den en gameAction damage");
+                GameActionDamage theAction = (GameActionDamage)action;
+
+                //Draw card opponents
+
+            }            
+            if (action.GetType(action.Type).Equals(typeof(GameActionShield)))
+            {
+                print("skickar den en gameAction Shield");
+                GameActionDamage theAction = (GameActionDamage)action;
+
+                //Draw card opponents
+
+            }            
+            if (action.GetType(action.Type).Equals(typeof(GameActionSwitchActiveChamp)))
+            {
+                print("skickar den en gameAction switch active champion");
+                GameActionSwitchActiveChamp theAction = (GameActionSwitchActiveChamp)action;
+
+                //Draw card opponents
+
+            }            
+            if (action.GetType(action.Type).Equals(typeof(GameActionDestroyLandmark)))
+            {
+                print("skickar den en gameAction destroylandmark");
+                GameActionDestroyLandmark theAction = (GameActionDestroyLandmark)action;
+
+                //Draw card opponents
+
+            }            
+            if (action.GetType(action.Type).Equals(typeof(GameActionRemoveCardsGraveyard)))
+            {
+                print("skickar den en gameAction remove card graveyard");
+                GameActionRemoveCardsGraveyard theAction = (GameActionRemoveCardsGraveyard)action;
+
+                //Draw card opponents
+
+            }            
+            if (action.GetType(action.Type).Equals(typeof(GameActionPlayCard)))
+            {
+                print("skickar den en gameAction play card");
+                GameActionPlayCard theAction = (GameActionPlayCard)action;
+
+                //Draw card opponents
+
+            }            
+            if (action.GetType(action.Type).Equals(typeof(GameActionAddSpecificCardToHand)))
+            {
+                print("skickar den en gameAction add specific card");
+                GameActionPlayCard theAction = (GameActionPlayCard)action;
+
                 //Draw card opponents
 
             }
@@ -99,19 +155,8 @@ public class TestInternet : MonoBehaviour
 
 
 
-        
 
-            //Remove card from graveyard 
 
-         
-
-            // shield game action
-
-            //add specific card to hand action bn
-
-            //Switch active champion action
-
-            //destroy landmark game action 
 
             if (!action.errorMessage.Equals("") /*&& !action.errorMessage == null*/)
             {

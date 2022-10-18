@@ -37,6 +37,34 @@ public class ServerResponse : MBJson.JSONDeserializeable,MBJson.JSONTypeConverte
         {
             return (typeof(ResponseHeal));
         }
+        if (Type == 5)
+        {
+            return (typeof(ResponseDamage));
+        }
+        if (Type == 6)
+        {
+            return (typeof(ResponseShield));
+        }
+        if (Type == 7)
+        {
+            return (typeof(ResponseSwitchActiveChamp));
+        }
+        if (Type == 8)
+        {
+            return (typeof(ResponseDestroyLandmark));
+        }
+        if (Type == 9)
+        {
+            return (typeof(ResponseRemoveCardsGraveyard));
+        }
+        if (Type == 10)
+        {
+            return (typeof(ResponsePlayCard));
+        }
+        if (Type == 11)
+        {
+            return (typeof(ResponseAddSpecificCardToHand));
+        }
         return (typeof(ServerResponse));
     }
     public ServerResponse() { } //Denna ska inte tas bort, behovs for parsingen 
