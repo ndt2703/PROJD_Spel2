@@ -79,9 +79,9 @@ public class TestCallback : MonoBehaviour
     public void addSpecificCardToHandTest()
     {
         string cardToAdd = "";
-
-        RequestAddSpecificCardToHand testRequest = new RequestAddSpecificCardToHand(cardToAdd);
         
+        RequestAddSpecificCardToHand testRequest = new RequestAddSpecificCardToHand(cardToAdd);
+        print("vilken typ har testRequest " + testRequest.Type + " " + testRequest.GetType());
 
         ClientConnection.Instance.AddRequest(testRequest, DummyCallback);
     }

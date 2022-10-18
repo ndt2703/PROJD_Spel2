@@ -170,13 +170,13 @@ public class Server
         }       
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestAddSpecificCardToHand))
         {
-            RequestAddSpecificCardToHand castedRequest = (RequestAddSpecificCardToHand)requestToHandle;
-            castedRequest.whichPlayer = requestToHandle.whichPlayer;
-            return HandleAddSpecificCardToHand(castedRequest);
+        //    RequestAddSpecificCardToHand castedRequest = (RequestAddSpecificCardToHand)requestToHandle;
+        //    castedRequest.whichPlayer = requestToHandle.whichPlayer;
+        //    return HandleAddSpecificCardToHand(castedRequest);
         }
 
         GameAction errorMessage = new GameAction();
-        errorMessage.errorMessage = "den kommer inte till ratt handle";
+        errorMessage.errorMessage = "den kommer inte till ratt handle " + requestToHandle.Type + requestToHandle.GetType();
         ServerResponse errorResponse = new ServerResponse();
         AddGameAction(errorResponse, errorMessage); 
 
