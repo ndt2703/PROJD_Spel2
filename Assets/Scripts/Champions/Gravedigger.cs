@@ -8,7 +8,6 @@ public class Gravedigger : Champion
 {
 	public override void EndStepEffect()
 	{
-		// Take a random card from Graveyard (removed from graveyard)
 		base.EndStepEffect();
 		Card card = FindObjectOfType<Graveyard>().RandomizeCardFromGraveyard();
 		// Add card to hand

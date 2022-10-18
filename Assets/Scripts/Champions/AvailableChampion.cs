@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class AvailableChampion : MonoBehaviour
 {
@@ -22,7 +23,15 @@ public class AvailableChampion : MonoBehaviour
 
 	private void Awake()
 	{
-		name = champion.name;
+        name = champion.name;
+        foreach (Champion c in AllChampions.Instance.SubClasses)
+        {
+            if (champion.name == c.name)
+            {
+                champion = (Champion)ScriptableObject.CreateInstance(c.name);
+                break;
+            }
+        }
 		description.text = champion.description;
 		healthText.text = champion.health.ToString();
 		shield = champion.shield;
@@ -31,8 +40,13 @@ public class AvailableChampion : MonoBehaviour
 		passiveEffect.text = champion.passiveEffect;
 
 		champion.Awake();
-		//InvokeRepeating(nameof(Deal5Damage), 2, 20);
+		InvokeRepeating(nameof(Deal5Damage), 2, 20);
 	}
+
+    private void Deal5Damage()
+    {
+        TakeDamage(5);
+    }
 
 	private void UpdateTextOnCard()
 	{
