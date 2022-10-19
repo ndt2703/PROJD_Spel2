@@ -17,6 +17,21 @@ public class Hand : MonoBehaviour
         }
     }
 
+    public void DiscardCardInHand()
+    {
+        List<Card> cardsThatAreActive = new List<Card>();
+        foreach (GameObject cardSlot in cardSlotsInHand)
+        {
+            CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
+            if (cardDisplay.card != null)
+                cardsThatAreActive.Add(cardDisplay.card);
+        }
+        int cardIndex = Random.Range(0, cardsThatAreActive.Count);
+
+
+
+    }
+
 
 
 
