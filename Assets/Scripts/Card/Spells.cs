@@ -5,11 +5,24 @@ using UnityEngine;
 public abstract class Spells : Card
 {
     public int amountOfCardsToDraw;
+    public int amountOfCardsToDiscard;
     public override void PlayCard()
     {
         PlaySpell();
         if (amountOfCardsToDraw != 0)
             DrawCard();
+        if (amountOfCardsToDiscard != 0)
+            DiscardCard();
+    }
+
+    private void DiscardCard()
+    {
+        GameLoop gameLoop = GameLoop.Instance;
+        for (int i = 0; i < amountOfCardsToDiscard; i++)
+        {
+            gameLoop.DiscardCard();
+        }
+        
     }
 
     private void DrawCard()

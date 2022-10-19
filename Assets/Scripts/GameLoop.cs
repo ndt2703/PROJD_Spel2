@@ -98,7 +98,7 @@ public class GameLoop : MonoBehaviour
         DrawCard(amountToDraw);
     }
 
-    public bool CheckIfCanPlayCard(Card card)
+    public bool CheckIfCanPlayCard(Card card, CardDisplay cardDisplay)
     {
         
         cardCost = card.manaCost;
@@ -107,7 +107,7 @@ public class GameLoop : MonoBehaviour
             playerMana -= cardCost;
             cardToPlay = card;
             card.PlayCard();
-            GetComponent<CardDisplay>().card = null;
+            cardDisplay.card = null;
             return true;
             
         }
@@ -120,7 +120,7 @@ public class GameLoop : MonoBehaviour
 
     public void DiscardCard()
     {
-        handPlayer.DiscardCardInHand();
+        handPlayer.DiscardRandomCardInHand();
     }
 
     public void DrawCardRequest(ServerResponse response)

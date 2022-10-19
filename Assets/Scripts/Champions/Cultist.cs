@@ -22,18 +22,17 @@ public class Cultist : Champion
 	}
 
 	public override void AfterEffectTriggered()
-	{
-		base.AfterEffectTriggered();
+	{		
 		ChangeBonusDamage();
 	}
 
 	private void ChangeBonusDamage()
 	{
-		/*
-		int difference = (health - FindObjectOfType<Cultist>().health) / perMissingHP;
+		
+		int difference = (health - FindObjectOfType<AvailableChampion>().health) / perMissingHP;
 		Mathf.Floor(difference);
 		currentBonusDamage = damagePerMissingHP * difference;
 		passiveEffect = currentBonusDamage + "+";
-		*/
+		
 	}
 }

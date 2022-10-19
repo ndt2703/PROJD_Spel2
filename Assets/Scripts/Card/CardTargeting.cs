@@ -39,7 +39,7 @@ public class CardTargeting : MonoBehaviour
         {
             case "Champion":
                 card.Target = gameObjectHit.GetComponent<AvailableChampion>();               
-                gameLoop.CheckIfCanPlayCard(card);                  
+                gameLoop.CheckIfCanPlayCard(card, cardDisplay);                  
                 break;
             case "LandmarkSlot":
                 WhatToDoWhenLandmarkSlotTargeted();
