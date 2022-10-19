@@ -17,23 +17,23 @@ public abstract class Spells : Card
 
     private void DiscardCard()
     {
-        GameLoop gameLoop = GameLoop.Instance;
+        GameState gameState = GameState.Instance;
         for (int i = 0; i < amountOfCardsToDiscard; i++)
         {
-            gameLoop.DiscardCard();
+            gameState.DiscardCard();
         }
         
     }
 
     private void DrawCard()
     {
-        //  GameLoop.Instance.DrawCard(amountOfCardsToDraw);
+        //  ActionOfPlayer.Instance.DrawCard(amountOfCardsToDraw);
 
         RequestDrawCard request = new RequestDrawCard(amountOfCardsToDraw);
 
         request.whichPlayer = ClientConnection.Instance.playerId;
 
-        ClientConnection.Instance.AddRequest(request, GameLoop.Instance.DrawCardRequest);
+        ClientConnection.Instance.AddRequest(request, GameState.Instance.DrawCardRequest);
         Debug.Log(request.Type);
     }
 
