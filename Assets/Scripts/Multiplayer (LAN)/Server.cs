@@ -164,7 +164,7 @@ public class Server
         }       
         if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestPlayCard))
         {
-            //  RequestPlayCard castedRequest = (RequestPlayCard)requestToHandle;
+             RequestPlayCard castedRequestTest = (RequestPlayCard)requestToHandle;
             RequestPlayCard castedRequest = new RequestPlayCard();
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandlePlayCard(castedRequest);

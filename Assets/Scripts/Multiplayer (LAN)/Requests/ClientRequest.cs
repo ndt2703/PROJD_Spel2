@@ -22,55 +22,55 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
     public ClientRequest() { } //Denna far inte tas bort kravs for parsingen 
 
     public Type GetType(int IntegerToConvert)
-    {   if(Type == 0)
+    {   if(IntegerToConvert == 0)
         {
             return (typeof(ClientRequest));
         }
-        if(Type == 1)
+        if(IntegerToConvert == 1)
         {
             return (typeof(RequestOpponentActions));
         }
-        if( Type == 2)
+        if(IntegerToConvert == 2)
         {
             return (typeof(RequestEndTurn));
         }
-        if (Type == 3)
+        if (IntegerToConvert == 3)
         {
             return (typeof(RequestDrawCard));
         }
-        if (Type == 4)
+        if (IntegerToConvert == 4)
         {
             return (typeof(RequestHealing));
         }
-        if (Type == 5)
+        if (IntegerToConvert == 5)
         {
             return (typeof(RequestDiscardCard));
         }
-        if (Type == 6)
+        if (IntegerToConvert == 6)
         {
             return (typeof(RequestDamage));
         }
-        if (Type == 7)
+        if (IntegerToConvert == 7)
         {
             return (typeof(RequestShield));
         }
-        if (Type == 8)
+        if (IntegerToConvert == 8)
         {
             return (typeof(RequestSwitchActiveChamps));
         }
-        if (Type == 9)
+        if (IntegerToConvert == 9)
         {
             return (typeof(RequestDestroyLandmark));
         }
-        if (Type == 10)
+        if (IntegerToConvert == 10)
         {
             return (typeof(RequestRemoveCardsGraveyard));
         }
-        if (Type == 11)
+        if (IntegerToConvert == 11)
         {
             return (typeof(RequestPlayCard));
         }
-        if (Type == 12)
+        if (IntegerToConvert == 12)
         {
             return (typeof(RequestAddSpecificCardToHand));
         }
