@@ -18,4 +18,5 @@ MonoBehaviour:
   manaCost: 1
   tag: Spell
   amountOfCardsToDraw: 0
+  amountOfCardsToDiscard: 2
   damage: 10

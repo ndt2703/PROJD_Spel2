@@ -72,7 +72,7 @@ public class TestInternet : MonoBehaviour
                 
                 if(theAction.amountToDrawOpponent > 0)
                 {
-                    GameLoop.Instance.DrawCard(theAction.amountToDrawOpponent); 
+                    GameState.Instance.DrawCard(theAction.amountToDrawOpponent); 
                 }
                 //Draw card opponents
 

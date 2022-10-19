@@ -7,10 +7,22 @@ public class GameState : MonoBehaviour
     public int currentPlayerID = 0;
     public bool hasPriority = true;
 
+    public bool isPlayerOnesTurn;
+    public bool playerOneStarted;
+
+    public int amountOfTurns;
+
+    private ActionOfPlayer actionOfPlayer;
+
+    [SerializeField] private int amountOfCardsToStartWith = 5;
+
+
     public int playerOneMana;
     public int playerTwoMana;
     public int maxMana = 10;
     public int currentMana;
+
+
 
     private static GameState instance;
     public static GameState Instance { get; set; }
@@ -25,19 +37,48 @@ public class GameState : MonoBehaviour
         {
             Destroy(Instance);
         }
+        
         DontDestroyOnLoad(this);
     }
-    
-    // Start is called before the first frame update
     void Start()
     {
-        
+        actionOfPlayer = ActionOfPlayer.Instance;
+
+        int random = UnityEngine.Random.Range(0, 2);
+        if (random == 1)
+        {
+            playerOneStarted = true;
+            isPlayerOnesTurn = true;
+        }
+
+        else if (random == 0)
+        {
+            playerOneStarted = false;
+            isPlayerOnesTurn = false;
+        }
+
+        Invoke(nameof(DrawStartingCards), 0.01f);
+    }
+    private void DrawStartingCards()
+    {
+        DrawCard(amountOfCardsToStartWith);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DiscardCard()
     {
-        
+        actionOfPlayer.handPlayer.DiscardRandomCardInHand();
+    }
+
+    public void DrawCardRequest(ServerResponse response)
+    {
+        ResponseDrawCard castedReponse = (ResponseDrawCard)response;
+
+        DrawCard(castedReponse.amountToDraw);
+    }
+
+    public void DrawCard(int amountToDraw)
+    {
+        DrawCardPlayer(amountToDraw);
     }
 
     public bool LegalEndTurn()
@@ -48,6 +89,29 @@ public class GameState : MonoBehaviour
         }
         return false;
     }
+
+
+
+
+    private void DrawCardPlayer(int amountToDraw)
+    {
+        int drawnCards = 0;
+        foreach (GameObject cardSlot in actionOfPlayer.handPlayer.cardSlotsInHand)
+        {
+            CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
+            if (cardDisplay.card != null) continue;
+
+            if (!cardSlot.activeInHierarchy)
+            {
+                if (drawnCards >= amountToDraw) break;
+
+                cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
+                cardSlot.SetActive(true);
+                drawnCards++;
+            }
+        }
+    }
+
 
     public void SwitchTurn(ServerResponse response)
     {
@@ -67,32 +131,38 @@ public class GameState : MonoBehaviour
         //Trigger Landmark EndStep
     }
 
+
+    public void EndTurn()
+    {
+        if (isPlayerOnesTurn)
+        {
+            isPlayerOnesTurn = false;
+            if (!playerOneStarted)
+            {
+                amountOfTurns++;
+                actionOfPlayer.playerMana++;
+            }
+        }
+        else
+        {
+            isPlayerOnesTurn = true;
+            if (playerOneStarted)
+            {
+                amountOfTurns++;
+                actionOfPlayer.playerMana++;
+            }
+        }
+
+        DrawCard(1);
+    }
+
     public void TriggerUpKeep(ServerResponse response)
     {
         //Trigger Champion Upkeep
         //Trigger Landmark Upkeep
 
         print("Den triggrar upkeep");
-        switch (currentPlayerID)
-        {
-            case 0:
-                currentPlayerID = 1;
-                if (playerTwoMana < maxMana)
-                {
-                    playerTwoMana++;
-                }
-                currentMana = playerTwoMana;
-                break;
-
-            case 1:
-                currentPlayerID = 0;
-                if (playerOneMana < maxMana)
-                {
-                    playerOneMana++;
-                }
-                currentMana = playerOneMana;
-                break;
-        }
+        EndTurn();
         //Gain a mana
         //Draw a card
     }
@@ -110,6 +180,8 @@ public class GameState : MonoBehaviour
             hasPriority = false;
         }
      }
+
+
 
 
 

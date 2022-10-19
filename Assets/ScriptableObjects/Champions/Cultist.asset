@@ -17,7 +17,7 @@ MonoBehaviour:
   health: 100
   shield: 0
   artwork: {fileID: 21300000, guid: 4b58be4769a067a459b0e5442042cb74, type: 3}
-  passiveEffect: 0
+  passiveEffect: 0+
   perMissingHP: 20
   damagePerMissingHP: 10
   currentBonusDamage: 0

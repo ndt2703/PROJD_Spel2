@@ -6,7 +6,7 @@ public class CardTargeting : MonoBehaviour
 {
     private Vector3 startposition;
     private RectTransform gameObjectRectTransform;
-    private GameLoop gameLoop;
+    private ActionOfPlayer actionofPlayer;
 
     private CardDisplay cardDisplay;
     private CardMovement cardMovement;
@@ -14,6 +14,19 @@ public class CardTargeting : MonoBehaviour
     private Card card;
 
     private GameObject gameObjectHit;
+
+    void Start()
+    {
+        actionofPlayer = ActionOfPlayer.Instance;
+        cardDisplay = GetComponent<CardDisplay>();
+        cardMovement = GetComponent<CardMovement>();
+
+        if (!gameObject.tag.Equals("LandmarkSlot"))
+        {
+            gameObjectRectTransform = GetComponent<RectTransform>();
+            startposition = gameObjectRectTransform.position;
+        }
+    }
 
     private void OnMouseUp()
     {
@@ -39,7 +52,7 @@ public class CardTargeting : MonoBehaviour
         {
             case "Champion":
                 card.Target = gameObjectHit.GetComponent<AvailableChampion>();
-                gameLoop.CheckIfCanPlayCard(card);                  
+                actionofPlayer.CheckIfCanPlayCard(card, cardDisplay);                  
                 break;
             case "LandmarkSlot":
                 WhatToDoWhenLandmarkSlotTargeted();
@@ -65,20 +78,5 @@ public class CardTargeting : MonoBehaviour
     private void CardGoBackToStartingPosition()
     {
         gameObjectRectTransform.anchoredPosition = startposition;
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameLoop = GameLoop.Instance;
-        cardDisplay = GetComponent<CardDisplay>();
-        cardMovement = GetComponent<CardMovement>();
-
-        if (!gameObject.tag.Equals("LandmarkSlot"))
-        {
-            gameObjectRectTransform = GetComponent<RectTransform>();
-            startposition = gameObjectRectTransform.position;
-        }
     }
 }
