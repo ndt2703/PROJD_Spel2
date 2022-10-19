@@ -153,9 +153,9 @@ Material:
     m_Floats:
     - Vector1_07c7e8e7d10440d5935e667592de04b0: 1
     - Vector1_5acea928966b4808bcc9e8edcfa55ef7: 0
-    - Vector1_c920e0e415e74df68e76c29da4a0ea43: 0.114
+    - Vector1_c920e0e415e74df68e76c29da4a0ea43: 1.7
     - Vector1_cefc9a67aeef4138acd6ebe7f8d75c9f: 0.14
-    - Vector1_d9489324db7b46be88c803ade2859447: 2.09
+    - Vector1_d9489324db7b46be88c803ade2859447: 2.86
     - Vector1_df9a8efd6aef4481b104152a984bbc18: 0
     - Vector1_ecc532a8fc024480a4a11541d13b579f: 0
     - _AORemapMax: 1
@@ -232,7 +232,7 @@ Material:
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
     - _RenderQueueType: 4
-    - _ScrollSpeed: 0.178
+    - _ScrollSpeed: 0.08
     - _Scroll_Speed: 0.137
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
