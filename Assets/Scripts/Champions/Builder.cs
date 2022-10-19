@@ -23,12 +23,11 @@ public class Builder : Champion
 		{
 			landmarkCount++;
 			passiveEffect = landmarkCount + "/" + landmarkNeeded;
-		}
-
-		if (landmarkCount >= landmarkNeeded)
-		{
-			//every card in hand 
-			//minus two
+			if (landmarkCount >= landmarkNeeded)
+			{
+				//every card in hand 
+				//minus two
+			}
 		}
 	}
 

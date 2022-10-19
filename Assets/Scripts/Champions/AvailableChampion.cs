@@ -23,10 +23,10 @@ public class AvailableChampion : MonoBehaviour
 
 	private void Awake()
 	{
+        champion = (Champion) ScriptableObject.CreateInstance(champion.name);
 		champion.Awake();
         name = champion.name;
         artwork.sprite = champion.artwork;
-        champion = (Champion) ScriptableObject.CreateInstance(champion.name);
 		description.text = champion.description;
 		healthText.text = champion.health.ToString();
 		shield = champion.shield;
@@ -75,7 +75,7 @@ public class AvailableChampion : MonoBehaviour
 
         if (health <= 0)
         {
-            Debug.Log("Enemy died");
+            Death();
         }
     }
 
