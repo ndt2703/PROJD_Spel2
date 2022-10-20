@@ -95,13 +95,18 @@ public class GameState : MonoBehaviour
 
     private void DrawCardPlayer(int amountToDraw)
     {
+        if (actionOfPlayer.handPlayer.cardsInHand.Count > 0)
+        {
+            ChangeCardOrder();
+        }
+
         int drawnCards = 0;
         foreach (GameObject cardSlot in actionOfPlayer.handPlayer.cardSlotsInHand)
         {
             CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
             if (cardDisplay.card != null) continue;
 
-            if (!cardSlot.activeInHierarchy)
+            if (!cardSlot.activeSelf)
             {
                 if (drawnCards >= amountToDraw) break;
 
@@ -110,8 +115,34 @@ public class GameState : MonoBehaviour
                 drawnCards++;
             }
         }
+
     }
 
+    private void ChangeCardOrder()
+    {
+        Hand hand = actionOfPlayer.handPlayer;
+        for (int i = 0; i < actionOfPlayer.handPlayer.cardSlotsInHand.Count; i++)
+        {
+            if (hand.cardSlotsInHand[i].activeSelf == false)
+            {
+                for (int j = i; j < hand.cardSlotsInHand.Count - 1; j++)
+                {
+                    hand.cardSlotsInHand[j].GetComponent<CardDisplay>().card = hand.cardSlotsInHand[j + 1].GetComponent<CardDisplay>().card;
+                    print(j + " " + (j + 1));
+                }
+
+            }
+
+            if (i < hand.cardsInHand.Count)
+            {
+                hand.cardSlotsInHand[i].SetActive(true);
+            }
+            else
+            {
+                hand.cardSlotsInHand[i].SetActive(false);
+            }
+        }
+    }
 
     public void SwitchTurn(ServerResponse response)
     {
@@ -163,6 +194,7 @@ public class GameState : MonoBehaviour
 
         print("Den triggrar upkeep");
         EndTurn();
+
         //Gain a mana
         //Draw a card
     }
