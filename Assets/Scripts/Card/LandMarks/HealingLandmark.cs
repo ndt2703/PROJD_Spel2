@@ -29,7 +29,10 @@ public class HealingLandmark : Landmarks
     {
         if (doubleHealingEffect)
         {
-            Target.landmarkEffect = 2;
+            foreach (AvailableChampion champ in FindObjectsOfType<AvailableChampion>())
+            {
+                champ.landmarkEffect += 2;
+            }
         }
     }
 

@@ -23,6 +23,7 @@ public class LandmarkDisplay : MonoBehaviour
         if (health <= 0)
         {
             card = null;
+            artworkSpriteRenderer.sprite = null;
         }
     }
 

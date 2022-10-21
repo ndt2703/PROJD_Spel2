@@ -70,7 +70,7 @@ public class CardTargeting : MonoBehaviour
     {
         if (card.tag.Equals("DestroyLandmark"))
         {
-            CardDisplay landmarkToDestroy = gameObjectHit.GetComponent<CardDisplay>();
+            LandmarkDisplay landmarkToDestroy = gameObjectHit.GetComponent<LandmarkDisplay>();
             landmarkToDestroy.card = null;
             return;
         }
@@ -81,6 +81,7 @@ public class CardTargeting : MonoBehaviour
             {
                 card.PlayCard();
                 cardDisplay.card = null;
+                return;
             }
         }
 
