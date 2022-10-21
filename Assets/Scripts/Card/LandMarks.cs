@@ -2,16 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Landmarks : Card
+public class Landmarks : Card
 {
     public int minionHealth;
-    public int minionDamage;
+
+    public Landmarks(int mH, string name, string desc, Sprite art, int mana, string tag) : base()
+    {
+        this.minionHealth = mH;
+        this.name = name;
+        this.description = desc;
+        this.artwork = art;
+        this.manaCost = mana;
+        this.tag = tag;
+    }
 
     public override void PlayCard()
     {
         PlaceLandmark();
     }
 
-    public abstract void PlaceLandmark();
+    public void TakeDamage(int damageToTake)
+    {
+        minionHealth -= damageToTake;
+    }
+
+    public virtual void PlaceLandmark() { }
 
 }

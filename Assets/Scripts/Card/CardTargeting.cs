@@ -43,6 +43,7 @@ public class CardTargeting : MonoBehaviour
             return;
         }
         gameObjectHit = hitEnemy.transform.gameObject;
+        GameState.Instance.ShowPlayedCard(card);
         WhatToDoWhenTargeted();
     }
 
@@ -62,6 +63,7 @@ public class CardTargeting : MonoBehaviour
                 WhatToDoWhenLandmarkSlotTargeted();
                 break;
         }
+        
     }
 
     private void WhatToDoWhenLandmarkSlotTargeted()
@@ -72,11 +74,29 @@ public class CardTargeting : MonoBehaviour
             landmarkToDestroy.card = null;
             return;
         }
-        else if (!card.tag.Equals("Landmark")) return;
+        else if (!card.tag.Equals("Landmark"))
+        {
+            card.LandmarkTarget = gameObjectHit.GetComponent<LandmarkDisplay>();
+            if (actionofPlayer.CheckIfCanPlayCard(card, true))
+            {
+                card.PlayCard();
+                cardDisplay.card = null;
+            }
+        }
 
-        CardDisplay landmark = gameObjectHit.GetComponent<CardDisplay>();
-        landmark.card = card;
-        card = null;
+        LandmarkDisplay landmarkSlot = gameObjectHit.GetComponent<LandmarkDisplay>();
+        Landmarks landmark = null;
+        
+        switch (card.name)
+        {
+            case "Unicorn Glade":
+                landmark = new HealingLandmark( (HealingLandmark)card );
+                break;
+        }
+
+        landmarkSlot.health = landmark.minionHealth;    
+        landmarkSlot.card = landmark;
+        cardDisplay.card = null;
     }
 
     private void CardGoBackToStartingPosition()

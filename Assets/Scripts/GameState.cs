@@ -21,7 +21,7 @@ public class GameState : MonoBehaviour
     public int playerTwoMana;
     public int maxMana = 10;
     public int currentMana;
-
+    public SpriteRenderer playedCardSpriteRenderer;
 
 
     private static GameState instance;
@@ -88,6 +88,16 @@ public class GameState : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void ShowPlayedCard(Card card)
+    {
+        playedCardSpriteRenderer.sprite = card.artwork;
+        Invoke(nameof(HideCardPlayed), 1.5f);
+    }
+    private void HideCardPlayed()
+    {
+        playedCardSpriteRenderer.sprite = null;
     }
 
 

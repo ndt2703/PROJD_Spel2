@@ -10,6 +10,9 @@ public class AttackSpell : Spells
 
     public override void PlaySpell()
     {
-        Target.TakeDamage(damage);
+        if (Target != null)
+            Target.TakeDamage(damage);
+        
+            
     }
 }

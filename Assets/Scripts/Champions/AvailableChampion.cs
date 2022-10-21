@@ -14,6 +14,7 @@ public class AvailableChampion : MonoBehaviour
     public int health;
 	private int maxHealth;
     public int shield;
+    public int landmarkEffect = 1;
 
     public TMP_Text healthText;
 	public TMP_Text description;
@@ -81,7 +82,7 @@ public class AvailableChampion : MonoBehaviour
 
     public virtual void HealChampion(int amountToHeal)
     {
-        health += amountToHeal + champion.HealChampionEffect();
+        health += amountToHeal + champion.HealChampionEffect() * landmarkEffect;
         if (health > maxHealth)
         {
             health = maxHealth;
@@ -89,7 +90,7 @@ public class AvailableChampion : MonoBehaviour
     }
     public virtual void GainShield(int amountToBlock)
     {
-        shield += amountToBlock + champion.GainShieldEffect();
+        shield += amountToBlock + champion.GainShieldEffect() * landmarkEffect;
     }
 
     public virtual void DrawCard() { champion.DrawCard(); }

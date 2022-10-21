@@ -397,10 +397,6 @@ namespace MBJson
 
         public static JSONObject SerializeObject(object ObjectToSerialize)
         {
-            if (ObjectToSerialize == null)
-            {
-                int hej = 2;
-            }
             JSONObject ReturnValue = null;
 
             

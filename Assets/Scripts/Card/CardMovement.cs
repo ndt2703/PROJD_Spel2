@@ -48,9 +48,4 @@ public class CardMovement : MonoBehaviour
             cardDisplay.border.SetActive(false);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        print("HEj");
-    }
 }
