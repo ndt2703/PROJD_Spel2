@@ -78,8 +78,8 @@ public class GameState : MonoBehaviour
 
     public void DrawCard(int amountToDraw)
     {
-        DrawCardPlayer(amountToDraw);
-    }
+		StartCoroutine(DrawCardPlayer(amountToDraw));
+	}
 
     public bool LegalEndTurn()
     {
@@ -93,11 +93,12 @@ public class GameState : MonoBehaviour
 
 
 
-    private void DrawCardPlayer(int amountToDraw)
+    private IEnumerator DrawCardPlayer(int amountToDraw)
     {
         if (actionOfPlayer.handPlayer.cardsInHand.Count > 0)
         {
             ChangeCardOrder();
+            yield return new WaitForSeconds(0.01f); 
         }
 
         int drawnCards = 0;
@@ -121,25 +122,23 @@ public class GameState : MonoBehaviour
     private void ChangeCardOrder()
     {
         Hand hand = actionOfPlayer.handPlayer;
-        for (int i = 0; i < actionOfPlayer.handPlayer.cardSlotsInHand.Count; i++)
+        for (int i = 0; i < hand.cardSlotsInHand.Count; i++)
         {
-            if (hand.cardSlotsInHand[i].activeSelf == false)
+            if (hand.cardSlotsInHand[i].activeSelf == true)
             {
-                for (int j = i; j < hand.cardSlotsInHand.Count - 1; j++)
+                for (int j = 0; j < i; j++)
                 {
-                    hand.cardSlotsInHand[j].GetComponent<CardDisplay>().card = hand.cardSlotsInHand[j + 1].GetComponent<CardDisplay>().card;
-                    print(j + " " + (j + 1));
+                    if (hand.cardSlotsInHand[j].activeSelf == false)
+                    {
+                        hand.cardSlotsInHand[j].GetComponent<CardDisplay>().card = hand.cardSlotsInHand[i].GetComponent<CardDisplay>().card;
+                        hand.cardsInHand.Remove(hand.cardSlotsInHand[i]);
+                        hand.cardsInHand.Add(hand.cardSlotsInHand[j]);
+                        hand.cardSlotsInHand[i].SetActive(false);
+                        hand.cardSlotsInHand[j].SetActive(true);
+                        break;
+                    }
                 }
 
-            }
-
-            if (i < hand.cardsInHand.Count)
-            {
-                hand.cardSlotsInHand[i].SetActive(true);
-            }
-            else
-            {
-                hand.cardSlotsInHand[i].SetActive(false);
             }
         }
     }
