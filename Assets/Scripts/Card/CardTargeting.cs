@@ -30,7 +30,7 @@ public class CardTargeting : MonoBehaviour
 
     private void OnMouseUp()
     {
-        mousePosition = cardMovement.mousePosition;
+        mousePosition = GetComponent<CardMovement>().mousePosition;
         card = cardDisplay.card;
 
         RaycastHit hitEnemy;
@@ -52,7 +52,11 @@ public class CardTargeting : MonoBehaviour
         {
             case "Champion":
                 card.Target = gameObjectHit.GetComponent<AvailableChampion>();
-                actionofPlayer.CheckIfCanPlayCard(card, cardDisplay);                  
+                if (actionofPlayer.CheckIfCanPlayCard(card, true))
+                {                    
+                    card.PlayCard();
+                    cardDisplay.card = null;
+                }
                 break;
             case "LandmarkSlot":
                 WhatToDoWhenLandmarkSlotTargeted();

@@ -9,7 +9,6 @@ public class ActionOfPlayer : MonoBehaviour
     public Hand handPlayer;
     public Hand handOpponent;
 
-    private Card cardToPlay;
     private int cardCost;
     public int playerMana;
 
@@ -43,17 +42,14 @@ public class ActionOfPlayer : MonoBehaviour
         }
     }
 
-    public bool CheckIfCanPlayCard(Card card, CardDisplay cardDisplay)
+    public bool CheckIfCanPlayCard(Card card, bool shouldUseMana)
     {
         cardCost = card.manaCost;
         if (playerMana >= cardCost)
         {
-            playerMana -= cardCost;
-            cardToPlay = card;
-            card.PlayCard();
-            cardDisplay.card = null;
+            if (shouldUseMana)
+                playerMana -= cardCost;
             return true;
-
         }
         else
         {

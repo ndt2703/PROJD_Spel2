@@ -14,6 +14,8 @@ public class CardDisplay : MonoBehaviour
 
     public SpriteRenderer artworkSpriteRenderer;
 
+    public GameObject border;
+
     private void UpdateTextOnCard()
     {
         if (card == null) return;
