@@ -23,6 +23,16 @@ public class GameState : MonoBehaviour
     public int currentMana;
     public SpriteRenderer playedCardSpriteRenderer;
 
+    public Champion playerChampion;
+    public Champion opponentChampion;
+
+    public List<Champion> playerChampions = new List<Champion>();
+    public List<Champion> opponentChampions = new List<Champion>();
+
+    public List<Landmarks> playerLandmarks = new List<Landmarks>();
+    public List<Landmarks> opponentLandmarks = new List<Landmarks>();
+
+
 
     private static GameState instance;
     public static GameState Instance { get; set; }
@@ -37,6 +47,18 @@ public class GameState : MonoBehaviour
         {
             Destroy(Instance);
         }
+
+        List<Champion> championsTemp = new List<Champion>();
+        AvailableChampion[] aC = GameObject.Find("PlayerChampions").GetComponentsInChildren<AvailableChampion>();
+		for (int i = 0; i < playerChampions.Count; i++)
+        {
+            Champion champ = (Champion)ScriptableObject.CreateInstance(playerChampions[i].name);
+            champ.name = playerChampions[i].name;
+            championsTemp.Add(champ);
+            aC[i].champion = champ;
+        }
+        playerChampions = championsTemp;
+        playerChampion = championsTemp[0];
         
         DontDestroyOnLoad(this);
     }
@@ -56,6 +78,7 @@ public class GameState : MonoBehaviour
             playerOneStarted = false;
             isPlayerOnesTurn = false;
         }
+
 
         Invoke(nameof(DrawStartingCards), 0.01f);
     }
@@ -212,19 +235,55 @@ public class GameState : MonoBehaviour
     {
         if (response.whichPlayer == ClientConnection.Instance.playerId)
         {
+
             //Choose Champion
             //Pass priority
-            hasPriority = true;
+            //hasPriority = true;
         }
         else
         {
-            hasPriority = false;
+            //hasPriority = false;
         }
-     }
+    }
 
+    public void ChampionDeath(AvailableChampion chapionDeath)
+    {
+        if (playerChampion == chapionDeath)
+        {
+            playerChampions.Remove(playerChampion);
+            playerChampion = null;
+        }
+        else if (opponentChampion == chapionDeath)
+        {
+            opponentChampions.Remove(opponentChampion);
+            opponentChampion = null;
+        }
+        else
+        {
+            SearchDeadChampion(chapionDeath);
+        }
 
+        if (playerChampions.Count <= 0)
+        {
+            //Defeat
+        }
+        else if (opponentChampions.Count <= 0)
+        {
+            //Victory
+        }
+    }
 
-
+    private void SearchDeadChampion(AvailableChampion champion)
+    {
+        if (playerChampions.Contains(champion.champion))
+        {
+            playerChampions.Remove(champion.champion);
+        }
+        else if (opponentChampions.Contains(champion.champion))
+        {
+            opponentChampions.Remove(champion.champion);
+        }
+    }
 
     public void RequestDiscardCard(ServerResponse response)
     {
