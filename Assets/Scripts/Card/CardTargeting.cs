@@ -74,7 +74,7 @@ public class CardTargeting : MonoBehaviour
             landmarkToDestroy.card = null;
             return;
         }
-        else if (!card.tag.Equals("Landmark"))
+        else if (card.tag.Equals("Spell"))
         {
             card.LandmarkTarget = gameObjectHit.GetComponent<LandmarkDisplay>();
             if (actionofPlayer.CheckIfCanPlayCard(card, true))

@@ -16,7 +16,6 @@ public class ActionOfPlayer : MonoBehaviour
 
     public static ActionOfPlayer Instance { get { return instance; } set { instance = value; } }
 
-
     private void Awake()
     {
         if (instance == null)
@@ -28,7 +27,6 @@ public class ActionOfPlayer : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 
     private void FixedUpdate()
     {
