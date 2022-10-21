@@ -12,7 +12,7 @@ public class AvailableChampion : MonoBehaviour
 
 	public new string name;
     public int health;
-	private int maxHealth;
+	public int maxHealth;
     public int shield;
 
     public TMP_Text healthText;
@@ -23,20 +23,15 @@ public class AvailableChampion : MonoBehaviour
 
 	private void Awake()
 	{
-        champion = (Champion) ScriptableObject.CreateInstance(champion.name);
-		champion.Awake();
-        name = champion.name;
-        artwork.sprite = champion.artwork;
-		description.text = champion.description;
-		healthText.text = champion.health.ToString();
-		shield = champion.shield;
-		maxHealth = champion.health;
-		passiveEffect.text = champion.passiveEffect;
-
 		//InvokeRepeating(nameof(Deal5Damage), 2, 20);
 	}
 
-    private void Deal5Damage()
+	private void Start()
+	{
+        maxHealth = health;
+	}
+
+	private void Deal5Damage()
     {
         TakeDamage(5);
     }
@@ -49,6 +44,9 @@ public class AvailableChampion : MonoBehaviour
 		description.text = champion.description;
 		artwork.sprite = champion.artwork;
 		passiveEffect.text = champion.passiveEffect;
+        health = champion.health;
+        maxHealth = champion.maxHealth;
+        healthText.text = champion.health + "/" + maxHealth;
 	}
 
 
@@ -106,7 +104,11 @@ public class AvailableChampion : MonoBehaviour
 
     public virtual void WhenLandmarksDie() { champion.WhenLandmarksDie(); }
 
-    public virtual void Death() { champion.Death(); }
+    public virtual void Death()
+    {
+        champion.Death();
+        GameState.Instance.ChampionDeath(this);
+    }
 
 
     public void FixedUpdate()

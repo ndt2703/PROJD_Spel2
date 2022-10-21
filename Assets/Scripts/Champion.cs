@@ -10,12 +10,12 @@ public abstract class Champion : ScriptableObject
     public new string name;
     public string description;
     public int health = 100;
+    public int maxHealth;
     public int shield = 0;
     public Sprite artwork;
     public string passiveEffect;
 
-
-    public virtual void Awake() { }
+    public virtual void Awake() { maxHealth = health; }
 
     public virtual void DrawCard() { AfterEffectTriggered(); }
 
@@ -37,7 +37,7 @@ public abstract class Champion : ScriptableObject
 
     public virtual void WhenLandmarksDie() { AfterEffectTriggered(); }
 
-    public virtual void AfterEffectTriggered() { AfterEffectTriggered(); }
+    public virtual void AfterEffectTriggered() {}
 
     public virtual void Death() { }
 
