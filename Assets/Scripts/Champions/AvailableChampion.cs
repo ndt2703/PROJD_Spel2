@@ -17,14 +17,14 @@ public class AvailableChampion : MonoBehaviour
     public int landmarkEffect = 1;
 
     public TMP_Text healthText;
-	public TMP_Text description;
 	public TMP_Text passiveEffect;
 
 	public SpriteRenderer artwork;
 
 	private void Awake()
 	{
-		//InvokeRepeating(nameof(Deal5Damage), 2, 20);
+        health = champion.maxHealth;
+		InvokeRepeating(nameof(Deal5Damage), 5, 2);
 	}
 
 	private void Start()
@@ -42,11 +42,9 @@ public class AvailableChampion : MonoBehaviour
 		if (champion == null) return;
 
 		name = champion.name;
-		description.text = champion.description;
 		artwork.sprite = champion.artwork;
 		passiveEffect.text = champion.passiveEffect;
-        health = champion.health;
-        maxHealth = champion.maxHealth;
+        champion.health = health;
         healthText.text = champion.health + "/" + maxHealth;
 	}
 

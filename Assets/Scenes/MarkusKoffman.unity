@@ -1897,7 +1897,6 @@ MonoBehaviour:
   shield: 0
   landmarkEffect: 1
   healthText: {fileID: 1587850527}
-  description: {fileID: 2122567919}
   passiveEffect: {fileID: 872145451}
   artwork: {fileID: 328259046}
 --- !u!1 &220195550
@@ -2014,12 +2013,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   champion: {fileID: 11400000, guid: a320bb6d4064fcb47b7c74848a43bac2, type: 2}
   name: Cultist
-  health: 0
+  health: 19
   maxHealth: 0
   shield: 0
   landmarkEffect: 1
   healthText: {fileID: 928276974}
-  description: {fileID: 2068116782}
   passiveEffect: {fileID: 1645652658}
   artwork: {fileID: 1232275805}
 --- !u!1 &236878358
@@ -12161,7 +12159,6 @@ MonoBehaviour:
   shield: 0
   landmarkEffect: 1
   healthText: {fileID: 67854294}
-  description: {fileID: 1020992557}
   passiveEffect: {fileID: 1206689168}
   artwork: {fileID: 654849340}
 --- !u!136 &1097853603
@@ -12283,7 +12280,6 @@ MonoBehaviour:
   shield: 0
   landmarkEffect: 1
   healthText: {fileID: 1191971256}
-  description: {fileID: 2030618335}
   passiveEffect: {fileID: 2065338993}
   artwork: {fileID: 624008420}
 --- !u!136 &1104487797
@@ -13375,7 +13371,6 @@ MonoBehaviour:
   shield: 0
   landmarkEffect: 1
   healthText: {fileID: 1274902211}
-  description: {fileID: 239795675}
   passiveEffect: {fileID: 689538487}
   artwork: {fileID: 725214113}
 --- !u!136 &1248677192
@@ -15169,7 +15164,6 @@ MonoBehaviour:
   shield: 0
   landmarkEffect: 1
   healthText: {fileID: 2007933326}
-  description: {fileID: 1861462347}
   passiveEffect: {fileID: 669069530}
   artwork: {fileID: 1116234670}
 --- !u!136 &1492365356

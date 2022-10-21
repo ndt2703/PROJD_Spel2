@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System; 
+using System;
 public class GameState : MonoBehaviour
 {
     public int currentPlayerID = 0;
@@ -20,14 +20,14 @@ public class GameState : MonoBehaviour
     private readonly int maxMana = 10;
     public SpriteRenderer playedCardSpriteRenderer;
 
-    public Champion playerChampion;
-    public Champion opponentChampion;
+    public AvailableChampion playerChampion;
+    public AvailableChampion opponentChampion;
 
     public List<Champion> playerChampions = new List<Champion>();
     public List<Champion> opponentChampions = new List<Champion>();
 
-    public List<Landmarks> playerLandmarks = new List<Landmarks>();
-    public List<Landmarks> opponentLandmarks = new List<Landmarks>();
+    public Landmarks[] playerLandmarks = new Landmarks[4];
+    public Landmarks[] opponentLandmarks = new Landmarks[4];
 
 
 
@@ -45,18 +45,14 @@ public class GameState : MonoBehaviour
             Destroy(Instance);
         }
 
-        List<Champion> championsTemp = new List<Champion>();
         AvailableChampion[] aC = GameObject.Find("PlayerChampions").GetComponentsInChildren<AvailableChampion>();
 		for (int i = 0; i < playerChampions.Count; i++)
         {
-            Champion champ = (Champion)ScriptableObject.CreateInstance(playerChampions[i].name);
-            champ.name = playerChampions[i].name;
-            championsTemp.Add(champ);
-            aC[i].champion = champ;
+            playerChampions[i] = (Champion) ScriptableObject.CreateInstance(playerChampions[i].name);
+            playerChampions[i].name = playerChampions[i].name;
+            aC[i].champion = playerChampions[i];
         }
-        playerChampions = championsTemp;
-        playerChampion = championsTemp[0];
-        
+        playerChampion = aC[0];
         DontDestroyOnLoad(this);
     }
     void Start()
@@ -243,42 +239,51 @@ public class GameState : MonoBehaviour
         }
     }
 
-    public void ChampionDeath(AvailableChampion chapionDeath)
+    public void ChampionDeath(AvailableChampion championDeath)
     {
-        if (playerChampion == chapionDeath)
-        {
-            playerChampions.Remove(playerChampion);
-            playerChampion = null;
-        }
-        else if (opponentChampion == chapionDeath)
-        {
-            opponentChampions.Remove(opponentChampion);
-            opponentChampion = null;
-        }
-        else
-        {
-            SearchDeadChampion(chapionDeath);
-        }
+        SearchDeadChampion(championDeath);
 
         if (playerChampions.Count <= 0)
         {
             //Defeat
+            print("Defeat");
         }
         else if (opponentChampions.Count <= 0)
         {
             //Victory
+            print("Victory");
+        }
+
+        if (playerChampion == null)
+        {
+            playerChampion.champion = playerChampions[0];
+        }
+        else if(opponentChampion == null) 
+        {
+            opponentChampion.champion = opponentChampions[0];
         }
     }
 
-    private void SearchDeadChampion(AvailableChampion champion)
+    private void SearchDeadChampion(AvailableChampion championDeath)
     {
-        if (playerChampions.Contains(champion.champion))
+        if (playerChampions.Contains(championDeath.champion))
         {
-            playerChampions.Remove(champion.champion);
+            playerChampions.Remove(championDeath.champion);
         }
-        else if (opponentChampions.Contains(champion.champion))
+        else if (opponentChampions.Contains(championDeath.champion))
         {
-            opponentChampions.Remove(champion.champion);
+            opponentChampions.Remove(championDeath.champion);
+        }
+
+        if (playerChampion.champion.GetType() == championDeath.champion.GetType())
+        {
+            playerChampion.champion = null;
+            Destroy(playerChampion.champion);
+        }
+        else if (opponentChampion.champion.GetType() == championDeath.champion.GetType())
+        {
+            opponentChampion.champion = null;
+            Destroy(opponentChampion.champion);
         }
     }
 
