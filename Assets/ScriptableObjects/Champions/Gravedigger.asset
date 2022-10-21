@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Gravedigger
   description: 
   health: 100
+  maxHealth: 100
   shield: 0
   artwork: {fileID: 21300000, guid: 9e1358374dae0f442bf0191f554172b2, type: 3}
   passiveEffect: 
