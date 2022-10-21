@@ -78,8 +78,8 @@ public class GameState : MonoBehaviour
 
     public void DrawCard(int amountToDraw)
     {
-        DrawCardPlayer(amountToDraw);
-    }
+		StartCoroutine(DrawCardPlayer(amountToDraw));
+	}
 
     public bool LegalEndTurn()
     {
@@ -93,15 +93,21 @@ public class GameState : MonoBehaviour
 
 
 
-    private void DrawCardPlayer(int amountToDraw)
+    private IEnumerator DrawCardPlayer(int amountToDraw)
     {
+        if (actionOfPlayer.handPlayer.cardsInHand.Count > 0)
+        {
+            ChangeCardOrder();
+            yield return new WaitForSeconds(0.01f); 
+        }
+
         int drawnCards = 0;
         foreach (GameObject cardSlot in actionOfPlayer.handPlayer.cardSlotsInHand)
         {
             CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
             if (cardDisplay.card != null) continue;
 
-            if (!cardSlot.activeInHierarchy)
+            if (!cardSlot.activeSelf)
             {
                 if (drawnCards >= amountToDraw) break;
 
@@ -110,8 +116,32 @@ public class GameState : MonoBehaviour
                 drawnCards++;
             }
         }
+
     }
 
+    private void ChangeCardOrder()
+    {
+        Hand hand = actionOfPlayer.handPlayer;
+        for (int i = 0; i < hand.cardSlotsInHand.Count; i++)
+        {
+            if (hand.cardSlotsInHand[i].activeSelf == true)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (hand.cardSlotsInHand[j].activeSelf == false)
+                    {
+                        hand.cardSlotsInHand[j].GetComponent<CardDisplay>().card = hand.cardSlotsInHand[i].GetComponent<CardDisplay>().card;
+                        hand.cardsInHand.Remove(hand.cardSlotsInHand[i]);
+                        hand.cardsInHand.Add(hand.cardSlotsInHand[j]);
+                        hand.cardSlotsInHand[i].SetActive(false);
+                        hand.cardSlotsInHand[j].SetActive(true);
+                        break;
+                    }
+                }
+
+            }
+        }
+    }
 
     public void SwitchTurn(ServerResponse response)
     {
@@ -163,6 +193,7 @@ public class GameState : MonoBehaviour
 
         print("Den triggrar upkeep");
         EndTurn();
+
         //Gain a mana
         //Draw a card
     }
