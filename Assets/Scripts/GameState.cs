@@ -7,20 +7,17 @@ public class GameState : MonoBehaviour
     public int currentPlayerID = 0;
     public bool hasPriority = true;
 
-    public bool isPlayerOnesTurn;
-    public bool playerOneStarted;
+    private bool isPlayerOnesTurn;
+    private bool playerOneStarted;
 
-    public int amountOfTurns;
+    private int amountOfTurns;
 
     private ActionOfPlayer actionOfPlayer;
+    private int amountOfCardsToStartWith = 5;
 
-    [SerializeField] private int amountOfCardsToStartWith = 5;
 
-
-    public int playerOneMana;
-    public int playerTwoMana;
-    public int maxMana = 10;
     public int currentMana;
+    private readonly int maxMana = 10;
     public SpriteRenderer playedCardSpriteRenderer;
 
     public Champion playerChampion;
