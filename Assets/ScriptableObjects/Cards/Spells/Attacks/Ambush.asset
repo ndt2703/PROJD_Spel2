@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Ambush
   description: Deal 80 damage
-  artwork: {fileID: 21300000, guid: ffab18bf3a2711e4d9cd9867449d5972, type: 3}
+  artwork: {fileID: 21300000, guid: a0826bf54f9c2e34cbc7d006104b95d2, type: 3}
   manaCost: 6
   tag: Spell
   amountOfCardsToDraw: 0
-  amountOfCardsToDiscard: 2
+  amountOfCardsToDiscard: 0
   damage: 80

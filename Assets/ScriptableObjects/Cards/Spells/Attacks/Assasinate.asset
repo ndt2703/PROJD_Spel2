@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Assasinate
   description: Deal 150 damage
-  artwork: {fileID: 21300000, guid: d7e73f8006354f840959aab41ea89fb1, type: 3}
+  artwork: {fileID: 21300000, guid: 6a04690bd32d9474a8c2b74584271f9a, type: 3}
   manaCost: 10
   tag: Spell
   amountOfCardsToDraw: 0
-  amountOfCardsToDiscard: 9
+  amountOfCardsToDiscard: 0
   damage: 150

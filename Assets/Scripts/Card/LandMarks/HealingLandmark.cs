@@ -31,7 +31,7 @@ public class HealingLandmark : Landmarks
         {
             foreach (AvailableChampion champ in FindObjectsOfType<AvailableChampion>())
             {
-                champ.landmarkEffect += 2;
+                champ.landmarkEffect *= 2;
             }
         }
     }
