@@ -1870,6 +1870,7 @@ MonoBehaviour:
   champion: {fileID: 11400000, guid: a320bb6d4064fcb47b7c74848a43bac2, type: 2}
   name: Cultist
   health: 0
+  maxHealth: 0
   shield: 0
   landmarkEffect: 1
   healthText: {fileID: 928276974}
@@ -9450,6 +9451,18 @@ MonoBehaviour:
   maxMana: 10
   currentMana: 0
   playedCardSpriteRenderer: {fileID: 657647870}
+  playerChampion: {fileID: 0}
+  opponentChampion: {fileID: 0}
+  playerChampions:
+  - {fileID: 11400000, guid: a320bb6d4064fcb47b7c74848a43bac2, type: 2}
+  - {fileID: 11400000, guid: 79dc933db5193344d82e1df0654f32c8, type: 2}
+  - {fileID: 11400000, guid: 7063f1f7341533d4b91b372d62269698, type: 2}
+  opponentChampions:
+  - {fileID: 11400000, guid: 129231e8214ccb1429653ab87e0edd82, type: 2}
+  - {fileID: 11400000, guid: 4660b01868ff88541964f8117d530e82, type: 2}
+  - {fileID: 11400000, guid: 71f4e33a083fa3649896310249374f97, type: 2}
+  playerLandmarks: []
+  opponentLandmarks: []
 --- !u!4 &897437568
 Transform:
   m_ObjectHideFlags: 0

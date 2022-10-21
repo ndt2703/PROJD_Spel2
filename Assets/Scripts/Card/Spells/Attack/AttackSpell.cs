@@ -12,7 +12,8 @@ public class AttackSpell : Spells
     {
         if (Target != null)
             Target.TakeDamage(damage);
-        
-            
+
+        if (LandmarkTarget != null)
+            LandmarkTarget.TakeDamage(damage);
     }
 }

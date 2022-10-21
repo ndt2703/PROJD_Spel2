@@ -16,6 +16,16 @@ public class LandmarkDisplay : MonoBehaviour
         artworkSpriteRenderer.sprite = card.artwork;
     }
 
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+        {
+            card = null;
+        }
+    }
+
     private void FixedUpdate()
     {
         UpdateTextOnCard();
