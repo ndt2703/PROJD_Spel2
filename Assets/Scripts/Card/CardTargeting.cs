@@ -14,6 +14,7 @@ public class CardTargeting : MonoBehaviour
     private Card card;
 
     private GameObject gameObjectHit;
+    
 
     void Start()
     {
@@ -49,6 +50,20 @@ public class CardTargeting : MonoBehaviour
 
     private void WhatToDoWhenTargeted()
     {
+        if (ActionOfPlayer.Instance.tauntPlaced)
+        {
+            if (gameObjectHit.tag.Equals("TauntCard"))
+            {
+                card.LandmarkTarget = gameObjectHit.GetComponent<LandmarkDisplay>();
+                if (actionofPlayer.CheckIfCanPlayCard(card, true))
+                {
+                    card.PlayCard();
+                    cardDisplay.card = null;
+                }
+            }
+            return;
+        }
+
         switch (gameObjectHit.tag)
         {
             case "Champion":
@@ -92,6 +107,15 @@ public class CardTargeting : MonoBehaviour
         {
             case "Unicorn Glade":
                 landmark = new HealingLandmark( (HealingLandmark)card );
+                break;
+            case "Protective Walls":
+                landmark = new TauntLandmark((TauntLandmark)card);
+                break;
+            case "Healing Spring":
+                landmark = new HealingLandmark((HealingLandmark)card);
+                break;
+            case "Mage Tower":
+                landmark = new DamageLandmark((DamageLandmark)card);
                 break;
         }
 

@@ -8,15 +8,25 @@ using UnityEngine;
 public class HealingLandmark : Landmarks
 {
     public bool doubleHealingEffect = false;
+    public bool healEachRound = false;
 
     public HealingLandmark(HealingLandmark card) : base(card.minionHealth,card.name,card.description,card.artwork,card.manaCost,card.tag)
     {
         doubleHealingEffect = card.doubleHealingEffect;
+        healEachRound = card.healEachRound;
     }
 
     public override void PlaceLandmark()
     {
         if (doubleHealingEffect)
+        {
+            foreach (Champion champ in GameState.Instance.playerChampions)
+            {
+                champ.GetComponent<AvailableChampion>().landmarkEffect *= 2;
+            }
+        }
+        
+        if (healEachRound)
         {
             foreach (Champion champ in GameState.Instance.playerChampions)
             {

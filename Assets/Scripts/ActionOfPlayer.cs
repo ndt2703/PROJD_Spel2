@@ -11,6 +11,7 @@ public class ActionOfPlayer : MonoBehaviour
 
     private int cardCost;
     public int playerMana;
+    public bool tauntPlaced = false;
 
     private static ActionOfPlayer instance;
 
@@ -27,6 +28,8 @@ public class ActionOfPlayer : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
 
     private void FixedUpdate()
     {

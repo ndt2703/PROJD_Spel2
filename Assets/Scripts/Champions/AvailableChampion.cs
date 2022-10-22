@@ -22,6 +22,8 @@ public class AvailableChampion : MonoBehaviour
 
 	public SpriteRenderer artwork;
 
+    public bool healEachRound = false;
+
 	private void Awake()
 	{
 		//InvokeRepeating(nameof(Deal5Damage), 2, 20);
@@ -78,6 +80,14 @@ public class AvailableChampion : MonoBehaviour
         }
     }
 
+    public void HealEachRound()
+    {
+        if (healEachRound)
+        {
+            HealChampion(10);
+        }
+    }
+
     public virtual void HealChampion(int amountToHeal)
     {
         health += amountToHeal + champion.HealChampionEffect() * landmarkEffect;
@@ -97,7 +107,7 @@ public class AvailableChampion : MonoBehaviour
 
     public virtual void DealDamageAttack(int damage) { damage += champion.DealDamageEffect(); }
 
-    public virtual void UpKeep() { champion.UpKeepEffect(); }
+    public virtual void UpKeep() { champion.UpKeepEffect(); /* */ HealEachRound(); /* */ } // Osäker på om jag gjort rätt när jag la in den här
 
     public virtual void EndStep() { champion.EndStepEffect(); }
 
