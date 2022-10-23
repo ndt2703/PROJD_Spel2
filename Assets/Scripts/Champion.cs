@@ -8,7 +8,6 @@ using TMPro;
 public abstract class Champion : ScriptableObject
 {
     public new string name;
-    public string description;
     public int health = 100;
     public int maxHealth;
     public int shield = 0;

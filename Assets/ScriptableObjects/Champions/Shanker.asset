@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Shanker
   m_EditorClassIdentifier: 
   name: Shanker
-  description: 
   health: 100
   maxHealth: 100
   shield: 0

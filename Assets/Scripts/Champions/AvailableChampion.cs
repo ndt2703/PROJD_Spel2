@@ -17,7 +17,8 @@ public class AvailableChampion : MonoBehaviour
     public int landmarkEffect = 1;
 
     public TMP_Text healthText;
-	public TMP_Text passiveEffect;
+    public TMP_Text shieldText;
+    public TMP_Text passiveEffect;
 
 	public SpriteRenderer artwork;
 
@@ -25,7 +26,12 @@ public class AvailableChampion : MonoBehaviour
 
 	private void Awake()
 	{
-        health = champion.maxHealth;
+        name = champion.name;
+        artwork.sprite = champion.artwork;
+        passiveEffect.text = champion.passiveEffect;
+        health = champion.health;
+        maxHealth = champion.maxHealth;
+
 		InvokeRepeating(nameof(Deal5Damage), 5, 2);
 	}
 
@@ -39,15 +45,19 @@ public class AvailableChampion : MonoBehaviour
         TakeDamage(5);
     }
 
-	private void UpdateTextOnCard()
-	{
-		if (champion == null) return;
+    public void ChangeChampion(Champion champion, int currentHealth, int currentShield)
+    {
+        this.champion = champion;
+        Awake();
+        health = currentHealth;
+        shield = currentShield;
+    }
 
-		name = champion.name;
-		artwork.sprite = champion.artwork;
+	private void UpdateTextOnCard()
+    {
 		passiveEffect.text = champion.passiveEffect;
-        champion.health = health;
-        healthText.text = champion.health + "/" + maxHealth;
+        healthText.text = health + "/" + maxHealth;
+        //shieldText.text = shield + "";
 	}
 
 
@@ -116,8 +126,9 @@ public class AvailableChampion : MonoBehaviour
     public virtual void Death()
     {
         champion.Death();
-        GameState.Instance.ChampionDeath(this);
-    }
+        CancelInvoke();
+		GameState.Instance.ChampionDeath(this);
+	}
 
 
     public void FixedUpdate()

@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Gravedigger
   m_EditorClassIdentifier: 
   name: Gravedigger
-  description: 
   health: 100
   maxHealth: 100
   shield: 0

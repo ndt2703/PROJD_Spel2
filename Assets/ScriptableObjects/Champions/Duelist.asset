@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Duelist
   m_EditorClassIdentifier: 
   name: Duelist
-  description: 
   health: 120
   maxHealth: 120
   shield: 0
