@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c95b3c776c0a394b892ed1a7a5a4e37, type: 3}
-  m_Name: Health Potion
+  m_Script: {fileID: 11500000, guid: ff18907f8af932a45b18e0496e27c5c7, type: 3}
+  m_Name: Decieve
   m_EditorClassIdentifier: 
-  name: Health Potion
-  description: Heal 20 hp
-  artwork: {fileID: 21300000, guid: b0e62d79637a6c24284433734bb2d775, type: 3}
-  manaCost: 2
+  name: Decieve
+  description: Your opponent must sacrifice a landmark
+  artwork: {fileID: 21300000, guid: c9a30c51d944a7d41b2b954965c4663a, type: 3}
+  manaCost: 5
   tag: Spell
   amountOfCardsToDraw: 0
   amountOfCardsToDiscard: 0
-  amountToHeal: 20
-  allChampions: 0
+  damage: 50
+  destroyLandmark: 1
+  damageEqualsToYourChampionHP: 0

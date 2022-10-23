@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
+
 public class GameState : MonoBehaviour
 {
     public int currentPlayerID = 0;
@@ -117,6 +119,14 @@ public class GameState : MonoBehaviour
     }
 
 
+    public void DestroyLandmark()
+    {
+        int indexToDestroy = UnityEngine.Random.Range(0, opponentLandmarks.Count);
+
+        opponentLandmarks[indexToDestroy].GetComponent<LandmarkDisplay>().DestroyLandmark();
+
+        opponentLandmarks.RemoveAt(indexToDestroy);
+    }
 
 
     private IEnumerator DrawCardPlayer(int amountToDraw)

@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Rain of Life
   description: Heals all champions 20
-  artwork: {fileID: 21300000, guid: 535e133dbcfee8a47ae30b4f5dab7b9f, type: 3}
+  artwork: {fileID: 21300000, guid: f8b1cd0f70ec8e04cb65f0cec489827e, type: 3}
   manaCost: 5
   tag: Spell
   amountOfCardsToDraw: 0
+  amountOfCardsToDiscard: 0
   amountToHeal: 20
   allChampions: 1

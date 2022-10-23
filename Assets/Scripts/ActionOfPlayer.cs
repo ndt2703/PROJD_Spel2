@@ -11,11 +11,11 @@ public class ActionOfPlayer : MonoBehaviour
 
     private int cardCost;
     public int playerMana;
+    public bool tauntPlaced = false;
 
     private static ActionOfPlayer instance;
 
     public static ActionOfPlayer Instance { get { return instance; } set { instance = value; } }
-
 
     private void Awake()
     {
@@ -28,6 +28,7 @@ public class ActionOfPlayer : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
 
     private void FixedUpdate()

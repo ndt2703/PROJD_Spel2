@@ -17,5 +17,5 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   shield: 0
-  artwork: {fileID: 21300000, guid: 0123a012a906a374f8997db54f5181c7, type: 3}
+  artwork: {fileID: 21300000, guid: 0a69ea6564f7a40489ce976328766845, type: 3}
   passiveEffect: 

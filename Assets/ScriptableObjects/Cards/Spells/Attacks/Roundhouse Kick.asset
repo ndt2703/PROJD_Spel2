@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Roundhouse Kick
   description: Deal 50 damage
-  artwork: {fileID: 21300000, guid: 5316f2848c26a164cb4516a78ab031b1, type: 3}
+  artwork: {fileID: 21300000, guid: c0adad666dc29334bbae13f47b1dee38, type: 3}
   manaCost: 4
   tag: Spell
   amountOfCardsToDraw: 0
-  amountOfCardsToDiscard: 2
+  amountOfCardsToDiscard: 0
   damage: 50
