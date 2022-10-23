@@ -35,5 +35,24 @@ public class HealingLandmark : Landmarks
         }
     }
 
-    
+    public override void LandmarkEffectTakeBack()
+    {
+        base.LandmarkEffectTakeBack();
+
+        if (doubleHealingEffect)
+        {
+            foreach (Champion champ in GameState.Instance.playerChampions)
+            {
+                champ.GetComponent<AvailableChampion>().landmarkEffect /= 2;
+            }
+        }
+
+        if (healEachRound)
+        {
+            foreach (Champion champ in GameState.Instance.playerChampions)
+            {
+                champ.GetComponent<AvailableChampion>().landmarkEffect /= 2;
+            }
+        }
+    }
 }

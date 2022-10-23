@@ -21,12 +21,18 @@ public class LandmarkDisplay : MonoBehaviour
         card = null;
     }
 
+    private void LandmarkDead()
+    {
+        card.LandmarkEffectTakeBack();
+    }
+
     public void TakeDamage(int amount)
     {
         health -= amount;
 
         if (health <= 0)
         {
+            LandmarkDead();
             card = null;
             artworkSpriteRenderer.sprite = null;
         }
