@@ -29,9 +29,9 @@ public class HealingLandmark : Landmarks
     {
         if (doubleHealingEffect)
         {
-            foreach (AvailableChampion champ in FindObjectsOfType<AvailableChampion>())
+            foreach (Champion champ in GameState.Instance.playerChampions)
             {
-                champ.landmarkEffect += 2;
+                champ.GetComponent<AvailableChampion>().landmarkEffect *= 2;
             }
         }
     }
