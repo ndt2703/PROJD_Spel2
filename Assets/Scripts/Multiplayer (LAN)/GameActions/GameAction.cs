@@ -12,55 +12,55 @@ public class GameAction : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
    public bool cardPlayed = false;
 
     public string errorMessage = "";
-
+    
     public GameAction() { }// denna far inte tas bort, kravs for parsingen 
     public Type GetType(int IntegerToConvert)
     {   
-        if(Type == 0)
+        if(IntegerToConvert == 0)
         {
             return typeof(GameAction);
         }
-        if(Type == 1)
+        if(IntegerToConvert == 1)
         {
             return typeof(GameActionEndTurn); 
         }
-        if (Type == 2)
+        if (IntegerToConvert == 2)
         {
             return typeof(GameActionDrawCard);
         }
-        if (Type == 3)
+        if (IntegerToConvert == 3)
         {
             return typeof(GameActionHeal);
         }
-        if (Type == 4)
+        if (IntegerToConvert == 4)
         {
             return typeof(GameActionDiscardCard);
         }
-        if (Type == 5)
+        if (IntegerToConvert == 5)
         {
             return typeof(GameActionDamage);
         }       
-        if (Type == 6)
+        if (IntegerToConvert == 6)
         {
             return typeof(GameActionShield);
         }       
-        if (Type == 7)
+        if (IntegerToConvert == 7)
         {
             return typeof(GameActionSwitchActiveChamp);
         }     
-        if (Type == 8)
+        if (IntegerToConvert == 8)
         {
             return typeof(GameActionDestroyLandmark);
         }     
-        if (Type == 9)
+        if (IntegerToConvert == 9)
         {
             return typeof(GameActionRemoveCardsGraveyard);
         }    
-        if (Type == 10)
+        if (IntegerToConvert == 10)
         {
             return typeof(GameActionPlayCard);
         }   
-        if (Type == 11)
+        if (IntegerToConvert == 11)
         {
             return typeof(GameActionAddSpecificCardToHand);
         }

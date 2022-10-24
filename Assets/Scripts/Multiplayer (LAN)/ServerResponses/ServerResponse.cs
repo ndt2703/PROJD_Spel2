@@ -17,51 +17,51 @@ public class ServerResponse : MBJson.JSONDeserializeable,MBJson.JSONTypeConverte
     public int cardId  = 0; 
 
     public Type GetType(int IntegerToConvert)
-    {   if(Type == 0)
+    {   if(IntegerToConvert == 0)
         {
             return (typeof(ServerResponse));
         }
-        if (Type == 1)
+        if (IntegerToConvert == 1)
         {
             return (typeof(ResponseEndTurn));
         }
-        if (Type == 2)
+        if (IntegerToConvert == 2)
         {
             return (typeof(ResponseDrawCard));
         }
-        if (Type == 3)
+        if (IntegerToConvert == 3)
         {
             return (typeof(ResponseDiscardCard));
         }
-        if (Type == 4)
+        if (IntegerToConvert == 4)
         {
             return (typeof(ResponseHeal));
         }
-        if (Type == 5)
+        if (IntegerToConvert == 5)
         {
             return (typeof(ResponseDamage));
         }
-        if (Type == 6)
+        if (IntegerToConvert == 6)
         {
             return (typeof(ResponseShield));
         }
-        if (Type == 7)
+        if (IntegerToConvert == 7)
         {
             return (typeof(ResponseSwitchActiveChamp));
         }
-        if (Type == 8)
+        if (IntegerToConvert == 8)
         {
             return (typeof(ResponseDestroyLandmark));
         }
-        if (Type == 9)
+        if (IntegerToConvert == 9)
         {
             return (typeof(ResponseRemoveCardsGraveyard));
         }
-        if (Type == 10)
+        if (IntegerToConvert == 10)
         {
             return (typeof(ResponsePlayCard));
         }
-        if (Type == 11)
+        if (IntegerToConvert == 11)
         {
             return (typeof(ResponseAddSpecificCardToHand));
         }

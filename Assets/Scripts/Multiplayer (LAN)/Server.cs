@@ -106,7 +106,7 @@ public class Server
     
     public ServerResponse HandleClientRequest(ClientRequest requestToHandle)
     {
-        if(requestToHandle.GetType(requestToHandle.Type) == typeof(RequestOpponentActions))
+        if(requestToHandle is RequestOpponentActions)
         {
             return HandleRequestActions(requestToHandle);
         }
@@ -114,65 +114,65 @@ public class Server
         {
             return HandleEndTurn(requestToHandle);
         }
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDrawCard))
+        if (requestToHandle is RequestDrawCard)
         {
             RequestDrawCard castedRequest = (RequestDrawCard)requestToHandle;
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDrawCard(castedRequest);
         }
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDiscardCard))
+        if (requestToHandle is RequestDiscardCard)
         {
-            RequestDiscardCard castedRequest = new RequestDiscardCard();
+            RequestDiscardCard castedRequest = (RequestDiscardCard)requestToHandle;
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDiscardCard(castedRequest);
         }
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestHealing))
+        if (requestToHandle is RequestHealing)
         {
-            RequestHealing castedRequest = new RequestHealing();
+            RequestHealing castedRequest = (RequestHealing)requestToHandle;
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleHeal(castedRequest);
         }
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDamage))
+        if (requestToHandle is RequestDamage)
         {
-            RequestDamage castedRequest = new RequestDamage();
+            RequestDamage castedRequest = (RequestDamage)requestToHandle;
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDamage(castedRequest);
         }       
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestShield))
+        if (requestToHandle is RequestShield)
         {
-            RequestShield castedRequest = new RequestShield();
+            RequestShield castedRequest = (RequestShield)requestToHandle;
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleShield(castedRequest);
         }       
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestSwitchActiveChamps))
+        if (requestToHandle is RequestSwitchActiveChamps )
         {
-            RequestSwitchActiveChamps castedRequest = new RequestSwitchActiveChamps();
+            RequestSwitchActiveChamps castedRequest = (RequestSwitchActiveChamps)requestToHandle;
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleSwitchActiveChamp(castedRequest);
         }       
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestDestroyLandmark))
+        if (requestToHandle is RequestDestroyLandmark)
         {
-            RequestDestroyLandmark castedRequest = new RequestDestroyLandmark();
+            RequestDestroyLandmark castedRequest = (RequestDestroyLandmark)requestToHandle;
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDestroyLandmark(castedRequest);
         }       
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestRemoveCardsGraveyard))
+        if (requestToHandle is RequestRemoveCardsGraveyard)
         {
-            RequestRemoveCardsGraveyard castedRequest = new RequestRemoveCardsGraveyard();
+            RequestRemoveCardsGraveyard castedRequest = (RequestRemoveCardsGraveyard)requestToHandle;
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleRemoveCardsGraveyard(castedRequest);
         }       
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestPlayCard))
+        if (requestToHandle is RequestPlayCard)
         {
              RequestPlayCard castedRequestTest = (RequestPlayCard)requestToHandle;
             RequestPlayCard castedRequest = new RequestPlayCard();
             castedRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandlePlayCard(castedRequest);
         }       
-        if (requestToHandle.GetType(requestToHandle.Type) == typeof(RequestAddSpecificCardToHand))
+        if (requestToHandle is RequestAddSpecificCardToHand)
         {
             //RequestAddSpecificCardToHand castedRequest = (RequestAddSpecificCardToHand)requestToHandle;
-            RequestAddSpecificCardToHand testRequest = new RequestAddSpecificCardToHand();
+            RequestAddSpecificCardToHand testRequest = (RequestAddSpecificCardToHand)requestToHandle;
             testRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleAddSpecificCardToHand(testRequest);
         }
