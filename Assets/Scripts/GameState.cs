@@ -21,10 +21,11 @@ public class GameState : MonoBehaviour
     private readonly int maxMana = 10;
     public int currentMana;
     public SpriteRenderer playedCardSpriteRenderer;
+    public Sprite backfaceCard;
 
     public AvailableChampion playerChampion;
     public AvailableChampion opponentChampion;
-    [System.NonSerialized] public bool drawCardsEachTurn = false;
+    [NonSerialized] public bool drawCardsEachTurn = false;
 
     public List<AvailableChampion> playerChampions = new List<AvailableChampion>();
     public List<AvailableChampion> opponentChampions = new List<AvailableChampion>();
@@ -105,13 +106,16 @@ public class GameState : MonoBehaviour
                     champ = new Duelist((Duelist)champions[i].champion);
                     break;
             }
+            print(champions[i].champion);
             champions[i].champion = champ;
+            print(champions[i].champion);
         }
     }
 
     private void DrawStartingCards()
     {
         DrawCard(amountOfCardsToStartWith);
+        StartCoroutine(DrawCardOpponent(amountOfCardsToStartWith, null));
     }
 
     public void DiscardCard()
@@ -190,6 +194,39 @@ public class GameState : MonoBehaviour
 
                 if (specificCard == null)
                     cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
+                else
+                    cardDisplay.card = specificCard;
+                cardSlot.SetActive(true);
+                drawnCards++;
+            }
+        }
+
+    }
+    private IEnumerator DrawCardOpponent(int amountToDraw, Card specificCard)
+    {
+        if (actionOfPlayer.handOpponent.cardsInHand.Count > 0)
+        {
+            ChangeCardOrder();
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        int drawnCards = 0;
+        foreach (GameObject cardSlot in actionOfPlayer.handOpponent.cardSlotsInHand)
+        {
+            CardDisplay cardDisplay = cardSlot.GetComponent<CardDisplay>();
+            if (cardDisplay.card != null) continue;
+
+            if (!cardSlot.activeSelf)
+            {
+                if (drawnCards >= amountToDraw) break;
+
+                if (specificCard == null)
+                {
+                    cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
+                    cardDisplay.card.opponentCard = true;
+                    cardDisplay.artworkSpriteRenderer.sprite = backfaceCard;
+                }
+
                 else
                     cardDisplay.card = specificCard;
                 cardSlot.SetActive(true);

@@ -31,7 +31,7 @@ public class CardTargeting : MonoBehaviour
 
     private void OnMouseUp()
     {
-        mousePosition = GetComponent<CardMovement>().mousePosition;
+        mousePosition = cardMovement.mousePosition;
         card = cardDisplay.card;
 
         RaycastHit hitEnemy;
@@ -67,7 +67,7 @@ public class CardTargeting : MonoBehaviour
         switch (gameObjectHit.tag)
         {
             case "Champion":
-                card.Target = gameObjectHit.GetComponent<AvailableChampion>().champion;
+                card.Target = gameObjectHit.GetComponent<Champion>();
                 if (actionOfPlayer.CheckIfCanPlayCard(card, true))
                 {                    
                     card.PlayCard();

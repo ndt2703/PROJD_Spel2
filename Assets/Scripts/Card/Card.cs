@@ -11,6 +11,7 @@ public abstract class Card : ScriptableObject
     public int manaCost;
 
     public string tag;
+    public bool opponentCard;
 
     private Champion target;
     private LandmarkDisplay landmarkTarget;

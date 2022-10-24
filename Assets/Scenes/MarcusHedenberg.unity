@@ -535,12 +535,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 888282527}
-  description: {fileID: 370887910}
+  shieldText: {fileID: 0}
   passiveEffect: {fileID: 1329228078}
   artwork: {fileID: 361223139}
-  healEachRound: 0
 --- !u!136 &61776359
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4091,7 +4089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ec1c50afd0c6041b828606a377b8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 8bb3f9a8cffd4214ba7266d7ebe68d7a, type: 2}
+  card: {fileID: 0}
   manaText: {fileID: 597962554}
   artworkSpriteRenderer: {fileID: 1038534795}
   border: {fileID: 0}
@@ -4368,12 +4366,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 1685387646}
-  description: {fileID: 1067732382}
+  shieldText: {fileID: 0}
   passiveEffect: {fileID: 673309918}
   artwork: {fileID: 745428766}
-  healEachRound: 0
 --- !u!136 &492601553
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7790,12 +7786,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 396520738}
-  description: {fileID: 1157147444}
+  shieldText: {fileID: 0}
   passiveEffect: {fileID: 966887271}
   artwork: {fileID: 300140021}
-  healEachRound: 0
 --- !u!136 &768530607
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9009,16 +9003,17 @@ MonoBehaviour:
   amountOfTurns: 0
   currentMana: 0
   playedCardSpriteRenderer: {fileID: 657647870}
+  backfaceCard: {fileID: 21300000, guid: a49bd06cf70e1af4d925316445a6ce01, type: 3}
   playerChampion: {fileID: 0}
   opponentChampion: {fileID: 0}
   playerChampions:
-  - {fileID: 11400000, guid: a320bb6d4064fcb47b7c74848a43bac2, type: 2}
-  - {fileID: 11400000, guid: 79dc933db5193344d82e1df0654f32c8, type: 2}
-  - {fileID: 11400000, guid: 7063f1f7341533d4b91b372d62269698, type: 2}
+  - {fileID: 492601552}
+  - {fileID: 768530606}
+  - {fileID: 1261635420}
   opponentChampions:
-  - {fileID: 11400000, guid: 129231e8214ccb1429653ab87e0edd82, type: 2}
-  - {fileID: 11400000, guid: 4660b01868ff88541964f8117d530e82, type: 2}
-  - {fileID: 11400000, guid: 71f4e33a083fa3649896310249374f97, type: 2}
+  - {fileID: 1578353462}
+  - {fileID: 2143253130}
+  - {fileID: 61776358}
   playerLandmarks: []
   opponentLandmarks: []
 --- !u!4 &897437568
@@ -11425,12 +11420,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 1572780690}
-  description: {fileID: 1871094176}
+  shieldText: {fileID: 0}
   passiveEffect: {fileID: 801951026}
   artwork: {fileID: 587184189}
-  healEachRound: 0
 --- !u!136 &1261635421
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13419,12 +13412,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 1980058087}
-  description: {fileID: 1915379228}
+  shieldText: {fileID: 0}
   passiveEffect: {fileID: 811528464}
   artwork: {fileID: 732469256}
-  healEachRound: 0
 --- !u!136 &1578353463
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14092,7 +14083,6 @@ MonoBehaviour:
   handPlayer: {fileID: 236878360}
   handOpponent: {fileID: 1618785754}
   playerMana: 320
-  tauntPlaced: 0
 --- !u!1 &1656743310
 GameObject:
   m_ObjectHideFlags: 0
@@ -20775,12 +20765,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 207811054}
-  description: {fileID: 2050346705}
+  shieldText: {fileID: 0}
   passiveEffect: {fileID: 1797538708}
   artwork: {fileID: 1327407387}
-  healEachRound: 0
 --- !u!136 &2143253131
 CapsuleCollider:
   m_ObjectHideFlags: 0
