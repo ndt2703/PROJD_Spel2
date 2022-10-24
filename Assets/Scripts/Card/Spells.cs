@@ -22,6 +22,8 @@ public abstract class Spells : Card
         {
             gameState.DiscardCard();
         }
+
+
         
     }
 
