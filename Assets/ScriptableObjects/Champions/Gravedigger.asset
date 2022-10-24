@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Gravedigger
   m_EditorClassIdentifier: 
   name: Gravedigger
-  description: 
   health: 100
   maxHealth: 100
   shield: 0
   artwork: {fileID: 21300000, guid: 7700b43f80e81de45b4b2277dfd58989, type: 3}
   passiveEffect: 
+  healEachRound: 0
+  landmarkEffect: 0

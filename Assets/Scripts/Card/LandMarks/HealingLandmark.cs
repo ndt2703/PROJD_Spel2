@@ -20,17 +20,17 @@ public class HealingLandmark : Landmarks
     {
         if (doubleHealingEffect)
         {
-            foreach (Champion champ in GameState.Instance.playerChampions)
+            foreach (AvailableChampion champ in GameState.Instance.playerChampions)
             {
-                champ.GetComponent<AvailableChampion>().landmarkEffect *= 2;
+                champ.champion.landmarkEffect *= 2;
             }
         }
         
         if (healEachRound)
         {
-            foreach (Champion champ in GameState.Instance.playerChampions)
+            foreach (AvailableChampion champ in GameState.Instance.playerChampions)
             {
-                champ.GetComponent<AvailableChampion>().landmarkEffect *= 2;
+                champ.champion.healEachRound = true;
             }
         }
     }
@@ -41,17 +41,17 @@ public class HealingLandmark : Landmarks
 
         if (doubleHealingEffect)
         {
-            foreach (Champion champ in GameState.Instance.playerChampions)
+            foreach (AvailableChampion champ in GameState.Instance.playerChampions)
             {
-                champ.GetComponent<AvailableChampion>().landmarkEffect /= 2;
+                champ.champion.landmarkEffect /= 2;
             }
         }
 
         if (healEachRound)
         {
-            foreach (Champion champ in GameState.Instance.playerChampions)
+            foreach (AvailableChampion champ in GameState.Instance.playerChampions)
             {
-                champ.GetComponent<AvailableChampion>().landmarkEffect /= 2;
+                champ.champion.healEachRound = false;
             }
         }
     }
