@@ -16,6 +16,11 @@ public class HealingLandmark : Landmarks
         healEachRound = card.healEachRound;
     }
 
+    public static void CreateInstance(HealingLandmark card)
+    {
+        new HealingLandmark(card);
+    }
+
     public override void PlaceLandmark()
     {
         if (doubleHealingEffect)
