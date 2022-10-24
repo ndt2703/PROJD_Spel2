@@ -6,7 +6,7 @@ public class CardTargeting : MonoBehaviour
 {
     private Vector3 startposition;
     private RectTransform gameObjectRectTransform;
-    private ActionOfPlayer actionofPlayer;
+    private ActionOfPlayer actionOfPlayer;
 
     private CardDisplay cardDisplay;
     private CardMovement cardMovement;
@@ -18,7 +18,7 @@ public class CardTargeting : MonoBehaviour
 
     void Start()
     {
-        actionofPlayer = ActionOfPlayer.Instance;
+        actionOfPlayer = ActionOfPlayer.Instance;
         cardDisplay = GetComponent<CardDisplay>();
         cardMovement = GetComponent<CardMovement>();
 
@@ -50,12 +50,12 @@ public class CardTargeting : MonoBehaviour
 
     private void WhatToDoWhenTargeted()
     {
-        if (ActionOfPlayer.Instance.tauntPlaced)
+        if (actionOfPlayer.tauntPlaced > 0)
         {
             if (gameObjectHit.tag.Equals("TauntCard"))
             {
                 card.LandmarkTarget = gameObjectHit.GetComponent<LandmarkDisplay>();
-                if (actionofPlayer.CheckIfCanPlayCard(card, true))
+                if (actionOfPlayer.CheckIfCanPlayCard(card, true))
                 {
                     card.PlayCard();
                     cardDisplay.card = null;
@@ -68,7 +68,7 @@ public class CardTargeting : MonoBehaviour
         {
             case "Champion":
                 card.Target = gameObjectHit.GetComponent<AvailableChampion>();
-                if (actionofPlayer.CheckIfCanPlayCard(card, true))
+                if (actionOfPlayer.CheckIfCanPlayCard(card, true))
                 {                    
                     card.PlayCard();
                     cardDisplay.card = null;
@@ -83,34 +83,24 @@ public class CardTargeting : MonoBehaviour
 
     private void WhatToDoWhenLandmarkSlotTargeted()
     {
-        if (card.tag.Equals("DestroyLandmark"))
-        {
-
-        }
-        else if (card.tag.Equals("Spell"))
-        {
-
-        }
-
         LandmarkDisplay landmarkSlot = gameObjectHit.GetComponent<LandmarkDisplay>();
         Landmarks landmark = null;
-        
+
         switch (card.tag)
         {
             case "DestroyLandmark":
-                LandmarkDisplay landmarkToDestroy = gameObjectHit.GetComponent<LandmarkDisplay>();
-                landmarkToDestroy.card = null;
+                landmarkSlot.card = null;
                 break;
             case "Spell":
-                card.LandmarkTarget = gameObjectHit.GetComponent<LandmarkDisplay>();
-                if (actionofPlayer.CheckIfCanPlayCard(card, true))
+                card.LandmarkTarget = landmarkSlot;
+                if (actionOfPlayer.CheckIfCanPlayCard(card, true))
                 {
                     card.PlayCard();
                     cardDisplay.card = null;                   
                 }
                 break;
             case "HealingLandmark":
-                landmark = new HealingLandmark( (HealingLandmark)card );
+                landmark = new HealingLandmark((HealingLandmark)card); 
                 break;
             case "TauntLandmark":
                 landmark = new TauntLandmark((TauntLandmark)card);

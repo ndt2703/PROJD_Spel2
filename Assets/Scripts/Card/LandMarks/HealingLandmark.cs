@@ -16,6 +16,11 @@ public class HealingLandmark : Landmarks
         healEachRound = card.healEachRound;
     }
 
+    public static void CreateInstance(HealingLandmark card)
+    {
+        new HealingLandmark(card);
+    }
+
     public override void PlaceLandmark()
     {
         if (doubleHealingEffect)
@@ -30,7 +35,7 @@ public class HealingLandmark : Landmarks
         {
             foreach (Champion champ in GameState.Instance.playerChampions)
             {
-                champ.GetComponent<AvailableChampion>().landmarkEffect *= 2;
+                champ.GetComponent<AvailableChampion>().healEachRound = true;
             }
         }
     }
@@ -51,7 +56,7 @@ public class HealingLandmark : Landmarks
         {
             foreach (Champion champ in GameState.Instance.playerChampions)
             {
-                champ.GetComponent<AvailableChampion>().landmarkEffect /= 2;
+                champ.GetComponent<AvailableChampion>().healEachRound = false;
             }
         }
     }

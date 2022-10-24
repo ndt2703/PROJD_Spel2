@@ -11,7 +11,7 @@ public class ActionOfPlayer : MonoBehaviour
 
     private int cardCost;
     public int playerMana;
-    public bool tauntPlaced = false;
+    [System.NonSerialized] public int tauntPlaced = 0;
 
     private static ActionOfPlayer instance;
 
