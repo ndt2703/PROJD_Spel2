@@ -76,7 +76,7 @@ public class TestInternet : MonoBehaviour
                 }
                 if(theAction.amountToDraw > 0)
                 {
-                 //   GameState.Instance.()
+                    StartCoroutine(GameState.Instance.DrawCardOpponent(theAction.amountToDraw,null));
                 }
                 //Draw card opponents
 

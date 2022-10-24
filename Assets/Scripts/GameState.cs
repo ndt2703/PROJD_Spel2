@@ -174,7 +174,7 @@ public class GameState : MonoBehaviour
     }
 
 
-    private IEnumerator DrawCardPlayer(int amountToDraw, Card specificCard)
+    public IEnumerator DrawCardPlayer(int amountToDraw, Card specificCard)
     {
         if (actionOfPlayer.handPlayer.cardsInHand.Count > 0)
         {
@@ -202,7 +202,7 @@ public class GameState : MonoBehaviour
         }
 
     }
-    private IEnumerator DrawCardOpponent(int amountToDraw, Card specificCard)
+    public IEnumerator DrawCardOpponent(int amountToDraw, Card specificCard)
     {
         if (actionOfPlayer.handOpponent.cardsInHand.Count > 0)
         {
