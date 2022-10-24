@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MarcusHedenberg.unity
     guid: 874803d695e9ca9438ec5143ea2252b8
+  - enabled: 1
+    path: Assets/Scenes/MarkusKoffman.unity
+    guid: 16130ce9efb83ed4fa5fbe057a6004c9
   m_configObjects: {}

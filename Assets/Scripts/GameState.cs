@@ -49,9 +49,9 @@ public class GameState : MonoBehaviour
         }
 
         AddChampions(playerChampions);
-        AddChampions(opponentChampions);
+        //AddChampions(opponentChampions);
         playerChampion = playerChampions[0];
-        opponentChampion = opponentChampions[0];
+        //opponentChampion = opponentChampions[0];
         DontDestroyOnLoad(this);
     }
     void Start()

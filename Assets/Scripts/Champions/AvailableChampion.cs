@@ -32,7 +32,7 @@ public class AvailableChampion : MonoBehaviour
         health = champion.health;
         maxHealth = champion.maxHealth;
 
-		InvokeRepeating(nameof(Deal5Damage), 5, 2);
+		//InvokeRepeating(nameof(Deal5Damage), 5, 2);
 	}
 
 	private void Start()

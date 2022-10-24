@@ -35,17 +35,17 @@ public class CardMovement : MonoBehaviour
 
         if (hit.collider == null)
         {
-            cardDisplay.border.SetActive(false);
+            //cardDisplay.border.SetActive(false);
             return;
         }
 
         if (hit.collider.gameObject.name.Equals("CardTriggerCollider"))
         {
-            cardDisplay.border.SetActive(true);
+          //  cardDisplay.border.SetActive(true);
         }
         else
         {
-            cardDisplay.border.SetActive(false);
+           // cardDisplay.border.SetActive(false);
         }
     }
 }
