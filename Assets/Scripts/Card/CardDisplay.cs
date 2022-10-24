@@ -16,9 +16,13 @@ public class CardDisplay : MonoBehaviour
     private void UpdateTextOnCard()
     {
         if (card == null) return;
-
-        if (!card.opponentCard)
+        
+        
+        //if (!card.opponentCard)
+        //{
             artworkSpriteRenderer.sprite = card.artwork;
+        //}
+       
         manaText.text = card.manaCost.ToString();
     }
 
