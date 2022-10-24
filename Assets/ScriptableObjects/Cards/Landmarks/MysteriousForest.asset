@@ -17,6 +17,6 @@ MonoBehaviour:
     card and draw 5 cards
   artwork: {fileID: 21300000, guid: 8a00930aef240fc408e9de77165e6d6a, type: 3}
   manaCost: 4
-  tag: Landmark
+  tag: DrawCardLandmark
   minionHealth: 20
   destroyOnRoundTen: 1

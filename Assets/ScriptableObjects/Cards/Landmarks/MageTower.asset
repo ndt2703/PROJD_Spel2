@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c02e45f7ca4496458ce2e9b2a4fd391, type: 3}
-  m_Name: Arena
+  m_Script: {fileID: 11500000, guid: 7eb6a23e29666644d901184da6c1283f, type: 3}
+  m_Name: MageTower
   m_EditorClassIdentifier: 
-  name: Arena
-  description: At the begining of your turn draw a card
-  artwork: {fileID: 21300000, guid: c6cfd2ae7db8cab4ab778c9ffd8f86ee, type: 3}
+  name: Mage Tower
+  description: All your attack spells deal 10 more damage
+  artwork: {fileID: 21300000, guid: ee3167bbbe651b3489fa08b07af3fbd1, type: 3}
   manaCost: 3
-  tag: DrawCardLandmark
+  tag: DamageLandmark
   minionHealth: 30
-  destroyOnRoundTen: 0
+  damage: 10

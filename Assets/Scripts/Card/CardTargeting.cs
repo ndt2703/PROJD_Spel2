@@ -85,37 +85,41 @@ public class CardTargeting : MonoBehaviour
     {
         if (card.tag.Equals("DestroyLandmark"))
         {
-            LandmarkDisplay landmarkToDestroy = gameObjectHit.GetComponent<LandmarkDisplay>();
-            landmarkToDestroy.card = null;
-            return;
+
         }
         else if (card.tag.Equals("Spell"))
         {
-            card.LandmarkTarget = gameObjectHit.GetComponent<LandmarkDisplay>();
-            if (actionofPlayer.CheckIfCanPlayCard(card, true))
-            {
-                card.PlayCard();
-                cardDisplay.card = null;
-                return;
-            }
+
         }
 
         LandmarkDisplay landmarkSlot = gameObjectHit.GetComponent<LandmarkDisplay>();
         Landmarks landmark = null;
         
-        switch (card.name)
+        switch (card.tag)
         {
-            case "Unicorn Glade":
+            case "DestroyLandmark":
+                LandmarkDisplay landmarkToDestroy = gameObjectHit.GetComponent<LandmarkDisplay>();
+                landmarkToDestroy.card = null;
+                break;
+            case "Spell":
+                card.LandmarkTarget = gameObjectHit.GetComponent<LandmarkDisplay>();
+                if (actionofPlayer.CheckIfCanPlayCard(card, true))
+                {
+                    card.PlayCard();
+                    cardDisplay.card = null;                   
+                }
+                break;
+            case "HealingLandmark":
                 landmark = new HealingLandmark( (HealingLandmark)card );
                 break;
-            case "Protective Walls":
+            case "TauntLandmark":
                 landmark = new TauntLandmark((TauntLandmark)card);
                 break;
-            case "Healing Spring":
-                landmark = new HealingLandmark((HealingLandmark)card);
-                break;
-            case "Mage Tower":
+            case "DamageLandmark":
                 landmark = new DamageLandmark((DamageLandmark)card);
+                break;
+            case "DrawCardLandmark":
+                landmark = new DrawCardLandmark((DrawCardLandmark)card);
                 break;
         }
 
