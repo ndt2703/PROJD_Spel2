@@ -17,8 +17,8 @@ public class CardDisplay : MonoBehaviour
     {
         if (card == null) return;
 
-
-        artworkSpriteRenderer.sprite = card.artwork;
+        if (!card.opponentCard)
+            artworkSpriteRenderer.sprite = card.artwork;
         manaText.text = card.manaCost.ToString();
     }
 
