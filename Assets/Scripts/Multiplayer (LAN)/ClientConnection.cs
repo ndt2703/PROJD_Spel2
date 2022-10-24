@@ -45,7 +45,7 @@ public class ClientConnection : MonoBehaviour
 
     public void ConnectToServer(string Adress, int port)
     {
-        m_TCPClient.Connect("127.0.0.1", port);
+        m_TCPClient.Connect("193.10.9.82", port);
         print("lyckas den connecta");
     }
     private void messageLoop()
