@@ -223,7 +223,7 @@ public class GameState : MonoBehaviour
                 if (specificCard == null)
                 {
                     cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
-                    cardDisplay.card.opponentCard = true;
+                 //   cardDisplay.card.opponentCard = true;
                     cardDisplay.artworkSpriteRenderer.sprite = backfaceCard;
                 }
 
