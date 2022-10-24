@@ -17,5 +17,9 @@ public class TauntLandmark : Landmarks
         ActionOfPlayer.Instance.tauntPlaced = true;
     }
 
-
+    public override void LandmarkEffectTakeBack()
+    {
+        base.LandmarkEffectTakeBack();
+        ActionOfPlayer.Instance.tauntPlaced = false;
+    }
 }

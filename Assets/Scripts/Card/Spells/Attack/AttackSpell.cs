@@ -8,6 +8,7 @@ public class AttackSpell : Spells
     public int damage = 10;
     public bool destroyLandmark = false;
     public bool damageEqualsToYourChampionHP = false;
+    public bool damageToBothActiveChampions = false;
 
 
     public override void PlaySpell()
@@ -22,6 +23,13 @@ public class AttackSpell : Spells
 
         if (destroyLandmark)
             GameState.Instance.DestroyLandmark();
+        if (damageToBothActiveChampions)
+        { // Funkar inte då inte någon åtkomst till ActiveChampion skriptet
+            GameState.Instance.playerChampion.TakeDamageEffect();
+            GameState.Instance.opponentChampion.TakeDamageEffect();
+        }
+            
+
     }
 
     private void DamageAsYourChampionHP()

@@ -18,4 +18,6 @@ public abstract class Card : ScriptableObject
     public LandmarkDisplay LandmarkTarget { get { return landmarkTarget; } set { landmarkTarget = value; } }
 
     public abstract void PlayCard();
+
+    
 }

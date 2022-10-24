@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f33a27f3ff8a6d4d8b7e35fb43ab65d, type: 3}
-  m_Name: Metor
+  m_Script: {fileID: 11500000, guid: ec5a896f3a6b1324798f09dfde2248c5, type: 3}
+  m_Name: Swap
   m_EditorClassIdentifier: 
-  name: Metor
-  description: Destroy a landmark
-  artwork: {fileID: 21300000, guid: ae445b1fe99153b40a0648c4bad3dbb0, type: 3}
-  manaCost: 2
-  tag: DestoryLandmark
-  amountOfCardsToDraw: 0
+  name: Swap
+  description: Swap your active champion and draw a card
+  artwork: {fileID: 21300000, guid: 90fabdbc8ea4a3e4e949154b76e22c7a, type: 3}
+  manaCost: 1
+  tag: Spell
+  amountOfCardsToDraw: 1
   amountOfCardsToDiscard: 0

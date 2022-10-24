@@ -12,18 +12,19 @@ public class GameState : MonoBehaviour
     private bool isPlayerOnesTurn;
     private bool playerOneStarted;
 
-    private int amountOfTurns;
+    public int amountOfTurns;
 
     private ActionOfPlayer actionOfPlayer;
     private int amountOfCardsToStartWith = 5;
 
 
-    public int currentMana;
     private readonly int maxMana = 10;
+    public int currentMana;
     public SpriteRenderer playedCardSpriteRenderer;
 
     public AvailableChampion playerChampion;
     public AvailableChampion opponentChampion;
+    [System.NonSerialized] public bool drawCardsEachTurn = false;
 
     public List<AvailableChampion> playerChampions = new List<AvailableChampion>();
     public List<AvailableChampion> opponentChampions = new List<AvailableChampion>();
@@ -89,8 +90,14 @@ public class GameState : MonoBehaviour
 
     public void DrawCard(int amountToDraw)
     {
-		StartCoroutine(DrawCardPlayer(amountToDraw));
+		StartCoroutine(DrawCardPlayer(amountToDraw, null));
 	}
+
+    public void DrawRandomCardFromGraveyard(int amountOfCards)
+    {
+        Card randomCardFromGraveyar = Graveyard.Instance.RandomizeCardFromGraveyard();
+        DrawCardPlayer(amountOfCards, randomCardFromGraveyar);
+    }
 
     public bool LegalEndTurn()
     {
@@ -125,7 +132,7 @@ public class GameState : MonoBehaviour
     }
 
 
-    private IEnumerator DrawCardPlayer(int amountToDraw)
+    private IEnumerator DrawCardPlayer(int amountToDraw, Card specificCard)
     {
         if (actionOfPlayer.handPlayer.cardsInHand.Count > 0)
         {
@@ -143,12 +150,21 @@ public class GameState : MonoBehaviour
             {
                 if (drawnCards >= amountToDraw) break;
 
-                cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
+                if (specificCard == null)
+                    cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
+                else
+                    cardDisplay.card = specificCard;
                 cardSlot.SetActive(true);
                 drawnCards++;
             }
         }
 
+    }
+
+    public void SwapActiveChampion()
+    {
+        int randomChamp = UnityEngine.Random.Range(0, 2);
+        playerChampion = playerChampions[randomChamp]; 
     }
 
     private void ChangeCardOrder()
@@ -201,6 +217,10 @@ public class GameState : MonoBehaviour
             isPlayerOnesTurn = false;
             if (!playerOneStarted)
             {
+                if (drawCardsEachTurn)
+                {
+                    DrawCard(1);
+                }
                 amountOfTurns++;
                 actionOfPlayer.playerMana++;
             }
@@ -210,6 +230,10 @@ public class GameState : MonoBehaviour
             isPlayerOnesTurn = true;
             if (playerOneStarted)
             {
+                if (drawCardsEachTurn)
+                {
+                    DrawCard(1);
+                }
                 amountOfTurns++;
                 actionOfPlayer.playerMana++;
             }

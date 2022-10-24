@@ -27,5 +27,5 @@ public class Landmarks : Card
     }
 
     public virtual void PlaceLandmark() { }
-
+    public virtual void LandmarkEffectTakeBack() { }
 }

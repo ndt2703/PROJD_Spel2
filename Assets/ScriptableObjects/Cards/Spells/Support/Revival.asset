@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f33a27f3ff8a6d4d8b7e35fb43ab65d, type: 3}
-  m_Name: Metor
+  m_Script: {fileID: 11500000, guid: a5a1fb59b8618eb4db146090b3f05d4c, type: 3}
+  m_Name: Revival
   m_EditorClassIdentifier: 
-  name: Metor
-  description: Destroy a landmark
-  artwork: {fileID: 21300000, guid: ae445b1fe99153b40a0648c4bad3dbb0, type: 3}
-  manaCost: 2
-  tag: DestoryLandmark
-  amountOfCardsToDraw: 0
+  name: Revival
+  description: Take a random card from your graveyard to your hand
+  artwork: {fileID: 21300000, guid: b8a5b9c25c37f08479b447863cc2788a, type: 3}
+  manaCost: 1
+  tag: Spell
+  amountOfCardsToDraw: 1
   amountOfCardsToDiscard: 0

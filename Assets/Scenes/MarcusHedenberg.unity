@@ -540,6 +540,7 @@ MonoBehaviour:
   description: {fileID: 370887910}
   passiveEffect: {fileID: 1329228078}
   artwork: {fileID: 361223139}
+  healEachRound: 0
 --- !u!136 &61776359
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4372,6 +4373,7 @@ MonoBehaviour:
   description: {fileID: 1067732382}
   passiveEffect: {fileID: 673309918}
   artwork: {fileID: 745428766}
+  healEachRound: 0
 --- !u!136 &492601553
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7793,6 +7795,7 @@ MonoBehaviour:
   description: {fileID: 1157147444}
   passiveEffect: {fileID: 966887271}
   artwork: {fileID: 300140021}
+  healEachRound: 0
 --- !u!136 &768530607
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9003,6 +9006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlayerID: 0
   hasPriority: 1
+  amountOfTurns: 0
   currentMana: 0
   playedCardSpriteRenderer: {fileID: 657647870}
   playerChampion: {fileID: 0}
@@ -11426,6 +11430,7 @@ MonoBehaviour:
   description: {fileID: 1871094176}
   passiveEffect: {fileID: 801951026}
   artwork: {fileID: 587184189}
+  healEachRound: 0
 --- !u!136 &1261635421
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13419,6 +13424,7 @@ MonoBehaviour:
   description: {fileID: 1915379228}
   passiveEffect: {fileID: 811528464}
   artwork: {fileID: 732469256}
+  healEachRound: 0
 --- !u!136 &1578353463
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14086,6 +14092,7 @@ MonoBehaviour:
   handPlayer: {fileID: 236878360}
   handOpponent: {fileID: 1618785754}
   playerMana: 320
+  tauntPlaced: 0
 --- !u!1 &1656743310
 GameObject:
   m_ObjectHideFlags: 0
@@ -20773,6 +20780,7 @@ MonoBehaviour:
   description: {fileID: 2050346705}
   passiveEffect: {fileID: 1797538708}
   artwork: {fileID: 1327407387}
+  healEachRound: 0
 --- !u!136 &2143253131
 CapsuleCollider:
   m_ObjectHideFlags: 0
