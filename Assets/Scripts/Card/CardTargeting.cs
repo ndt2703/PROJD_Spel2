@@ -12,12 +12,14 @@ public class CardTargeting : MonoBehaviour
     private CardMovement cardMovement;
     private Vector3 mousePosition;
     private Card card;
+    private Graveyard graveyard;
 
     private GameObject gameObjectHit;
     
 
     void Start()
     {
+        graveyard = Graveyard.Instance;
         actionOfPlayer = ActionOfPlayer.Instance;
         cardDisplay = GetComponent<CardDisplay>();
         cardMovement = GetComponent<CardMovement>();
@@ -44,8 +46,13 @@ public class CardTargeting : MonoBehaviour
             return;
         }
         gameObjectHit = hitEnemy.transform.gameObject;
-        GameState.Instance.ShowPlayedCard(card);
-        WhatToDoWhenTargeted();
+
+
+        if (actionOfPlayer.CheckIfCanPlayCard(card, true))
+        {
+            GameState.Instance.ShowPlayedCard(card);
+            WhatToDoWhenTargeted();
+        }            
     }
 
     private void WhatToDoWhenTargeted()
@@ -55,11 +62,9 @@ public class CardTargeting : MonoBehaviour
             if (gameObjectHit.tag.Equals("TauntCard"))
             {
                 card.LandmarkTarget = gameObjectHit.GetComponent<LandmarkDisplay>();
-                if (actionOfPlayer.CheckIfCanPlayCard(card, true))
-                {
-                    card.PlayCard();
-                    cardDisplay.card = null;
-                }
+                card.PlayCard();
+                graveyard.AddCardToGraveyard(card);
+                cardDisplay.card = null;                
             }
             return;
         }
@@ -68,11 +73,11 @@ public class CardTargeting : MonoBehaviour
         {
             case "Champion":
                 card.Target = gameObjectHit.GetComponent<AvailableChampion>().champion;
-                if (actionOfPlayer.CheckIfCanPlayCard(card, true))
-                {                    
-                    card.PlayCard();
-                    cardDisplay.card = null;
-                }
+                 
+                Graveyard.Instance.AddCardToGraveyard(card);
+                card.PlayCard();
+                cardDisplay.card = null;
+                
                 break;
             case "LandmarkSlot":
                 WhatToDoWhenLandmarkSlotTargeted();
@@ -89,16 +94,16 @@ public class CardTargeting : MonoBehaviour
         switch (card.tag)
         {
             case "DestroyLandmark":
+                graveyard.AddCardToGraveyard(card);
                 landmarkSlot.card = null;
-                break;
+                return;
             case "Spell":
                 card.LandmarkTarget = landmarkSlot;
-                if (actionOfPlayer.CheckIfCanPlayCard(card, true))
-                {
-                    card.PlayCard();
-                    cardDisplay.card = null;                   
-                }
-                break;
+
+                graveyard.AddCardToGraveyard(card);
+                card.PlayCard();
+                cardDisplay.card = null;
+                return;
             case "HealingLandmark":
                 landmark = new HealingLandmark((HealingLandmark)card); 
                 break;
@@ -110,6 +115,12 @@ public class CardTargeting : MonoBehaviour
                 break;
             case "DrawCardLandmark":
                 landmark = new DrawCardLandmark((DrawCardLandmark)card);
+                break;
+            case "CultistLandmark":
+                landmark = new CultistLandmark((CultistLandmark)card);
+                break;
+            case "BuilderLandmark":
+                landmark = new BuilderLandmark((BuilderLandmark)card);
                 break;
         }
 

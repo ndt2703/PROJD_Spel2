@@ -9160,6 +9160,7 @@ MonoBehaviour:
   allCardsAvailable:
   - {fileID: 11400000, guid: 689ee58c8e87ef343a1fb72d75f37321, type: 2}
   - {fileID: 11400000, guid: 6025628fbc5217742a490a2ad097945f, type: 2}
+  - {fileID: 11400000, guid: b5e5f3a4252fc654c8d44b307fbf810f, type: 2}
 --- !u!1 &919506704
 GameObject:
   m_ObjectHideFlags: 0

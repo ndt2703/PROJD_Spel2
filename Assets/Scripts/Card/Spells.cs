@@ -6,6 +6,7 @@ public abstract class Spells : Card
 {
     public int amountOfCardsToDraw;
     public int amountOfCardsToDiscard;
+    public bool discardCardsYourself = true;
     public override void PlayCard()
     {
         PlaySpell();
@@ -20,7 +21,7 @@ public abstract class Spells : Card
         GameState gameState = GameState.Instance;
         for (int i = 0; i < amountOfCardsToDiscard; i++)
         {
-            gameState.DiscardCard();
+            gameState.DiscardCard(discardCardsYourself);
         }
 
 

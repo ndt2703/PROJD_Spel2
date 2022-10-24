@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,16 @@ public class LandmarkDisplay : MonoBehaviour
     public Landmarks card;
     public SpriteRenderer artworkSpriteRenderer;
     public int health;
+    public bool occultGathering = false;
+    [NonSerialized] public int tenExtraDamage;
+    private GameState gameState;
+
+
+
+    private void Start()
+    {
+        gameState = GameState.Instance;
+    }
 
     private void UpdateTextOnCard()
     {
@@ -28,11 +39,26 @@ public class LandmarkDisplay : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        health -= amount;
+        if (gameState.slaughterhouse > 0)
+        {
+            for (int i = 0; i < gameState.playerLandmarks.Count; i++)
+            {
+                amount += 10 * gameState.slaughterhouse;
+            }
+        }
+
+
+        if (tenExtraDamage > 0)
+        {
+            amount += (10 * tenExtraDamage);
+        }
+
+        health -= amount + gameState.damageRamp;
 
         if (health <= 0)
         {
             LandmarkDead();
+            Graveyard.Instance.AddCardToGraveyard(card);
             card = null;
             artworkSpriteRenderer.sprite = null;
         }
@@ -40,6 +66,14 @@ public class LandmarkDisplay : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (gameState.amountOfTurns == 10)
+        {
+            if (card.name.Equals("Mysterious Forest"))
+            {
+                DestroyLandmark();
+                gameState.DrawCard(5);
+            }
+        }
         UpdateTextOnCard();
     }
 }

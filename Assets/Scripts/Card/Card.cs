@@ -10,8 +10,7 @@ public abstract class Card : ScriptableObject
     public Sprite artwork;
     public int manaCost;
 
-    public string tag;
-    public bool opponentCard;
+    public string tag;   
 
     private Champion target;
     private LandmarkDisplay landmarkTarget;

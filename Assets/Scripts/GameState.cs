@@ -26,14 +26,19 @@ public class GameState : MonoBehaviour
     public AvailableChampion playerChampion;
     public AvailableChampion opponentChampion;
     [NonSerialized] public bool drawCardsEachTurn = false;
+    [NonSerialized] public int occultGathering = 0;
 
     public List<AvailableChampion> playerChampions = new List<AvailableChampion>();
     public List<AvailableChampion> opponentChampions = new List<AvailableChampion>();
 
-    public Landmarks[] playerLandmarks = new Landmarks[4];
-    public Landmarks[] opponentLandmarks = new Landmarks[4];
+    public List<Landmarks> playerLandmarks = new List<Landmarks>();
+    public List<Landmarks> opponentLandmarks = new List<Landmarks>();
 
+    public List<Card> cardsPlayedThisTurn = new List<Card>();
 
+    [NonSerialized] public int damageRamp = 0;
+    [NonSerialized] public int slaughterhouse = 0;
+    [NonSerialized] public int factory = 0;
 
     private static GameState instance;
     public static GameState Instance { get; set; }
@@ -118,9 +123,12 @@ public class GameState : MonoBehaviour
         StartCoroutine(DrawCardOpponent(amountOfCardsToStartWith, null));
     }
 
-    public void DiscardCard()
+    public void DiscardCard(bool yourself)
     {
-        actionOfPlayer.handPlayer.DiscardRandomCardInHand();
+        if (yourself)
+            actionOfPlayer.handPlayer.DiscardRandomCardInHand();
+        else
+            actionOfPlayer.handOpponent.DiscardRandomCardInHand();
     }
 
     public void DrawCardRequest(ServerResponse response)
@@ -163,7 +171,7 @@ public class GameState : MonoBehaviour
 
     public void DestroyLandmark()
     {
-        int indexToDestroy = UnityEngine.Random.Range(0, opponentLandmarks.Length);
+        int indexToDestroy = UnityEngine.Random.Range(0, opponentLandmarks.Count);
 
         opponentLandmarks[indexToDestroy].GetComponent<LandmarkDisplay>().DestroyLandmark();
 
@@ -223,7 +231,7 @@ public class GameState : MonoBehaviour
                 if (specificCard == null)
                 {
                     cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
-                 //   cardDisplay.card.opponentCard = true;
+                    cardDisplay.opponentCard = true;
                     cardDisplay.artworkSpriteRenderer.sprite = backfaceCard;
                 }
 
@@ -313,8 +321,21 @@ public class GameState : MonoBehaviour
                 actionOfPlayer.playerMana++;
             }
         }
-
+        cardsPlayedThisTurn.Clear();
+        damageRamp = 0;
         DrawCard(1);
+    }
+
+    public void AddCardToPlayedCardsThisTurn(Card cardPlayed)
+    {
+        cardsPlayedThisTurn.Add(cardPlayed);
+        if (occultGathering > 0)
+        {
+            if (cardPlayed.GetType().Equals("AttackSpell"))
+            {
+                damageRamp += 10 * occultGathering;
+            }
+        }
     }
 
     public void TriggerUpKeep(ServerResponse response)

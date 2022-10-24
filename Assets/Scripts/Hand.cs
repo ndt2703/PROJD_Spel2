@@ -33,9 +33,7 @@ public class Hand : MonoBehaviour
     {
         
         int cardIndex = Random.Range(0, cardsInHand.Count);
-        print(cardsInHand.Count);
         CardDisplay cardDisplay = cardsInHand[cardIndex].GetComponent<CardDisplay>();
-        print(cardDisplay.card);
         Graveyard.Instance.AddCardToGraveyard(cardDisplay.card);
         cardDisplay.card = null;
     }
