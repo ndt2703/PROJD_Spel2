@@ -13,31 +13,87 @@ public abstract class Champion : ScriptableObject
     public int shield = 0;
     public Sprite artwork;
     public string passiveEffect;
+    public bool healEachRound = false;
+    public int landmarkEffect = 1;
+
+    public Champion(string name, int health, int maxHealth, int shield, Sprite artwork, string passiveEffect)
+    {
+        this.name = name;
+        this.health = health;
+        this.maxHealth = maxHealth;
+        this.shield = shield;
+        this.artwork = artwork;
+        this.passiveEffect = passiveEffect;
+    }
 
     public virtual void Awake() { maxHealth = health; }
 
-    public virtual void DrawCard() { AfterEffectTriggered(); }
+    public virtual void TakeDamage(int damage)
+    {
+        if (shield == 0)
+        {
+            health -= damage;
+        }
+        else
+        {
+            if (damage > shield)
+            {
+                int differenceAfterShieldDamage = damage - shield;
+                shield = 0;
+                health -= differenceAfterShieldDamage;
+            }
+            else
+            {
+                shield -= damage;
+            }
+        }
 
-    public virtual void PlayCardEffect() { AfterEffectTriggered(); }
+        if (health <= 0)
+        {
+            Death();
+        }
+    }
 
-    public virtual int TakeDamageEffect() { AfterEffectTriggered(); return 0; }
+    public void HealEachRound()
+    {
+        if (healEachRound)
+        {
+            HealChampion(10);
+        }
+    }
 
-    public virtual int HealChampionEffect() { AfterEffectTriggered(); return 0; }
+    public virtual void HealChampion(int amountToHeal)
+    {
+        health += amountToHeal * landmarkEffect;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+    }
+    public virtual void GainShield(int amountToBlock)
+    {
+        shield += amountToBlock * landmarkEffect;
+    }
 
-    public virtual int GainShieldEffect() { AfterEffectTriggered(); return 0; }
+    public virtual void DrawCard() { }
 
-    public virtual int DealDamageEffect() { AfterEffectTriggered(); return 0; }
+    public virtual void AmountOfCardsPlayed() { }
 
-    public virtual void UpKeepEffect() { AfterEffectTriggered(); }
+    public virtual int DealDamageAttack(int damage) { return damage; }
 
-    public virtual void EndStepEffect() { AfterEffectTriggered(); }
+    public virtual void UpKeep() { HealEachRound(); } // Osäker på om jag gjort rätt när jag la in den här
 
-    public virtual void WhenCurrentChampionEffect() { AfterEffectTriggered(); }
+    public virtual void EndStep() { }
 
-    public virtual void WhenLandmarksDie() { AfterEffectTriggered(); }
+    public virtual void WhenCurrentChampion() {}
 
-    public virtual void AfterEffectTriggered() {}
+    public virtual void WhenLandmarksDie() {}
 
-    public virtual void Death() { }
+    public virtual void Death()
+    {
+
+        //CancelInvoke();
+        GameState.Instance.ChampionDeath(this);
+    }
 
 }

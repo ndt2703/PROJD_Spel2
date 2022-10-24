@@ -12,9 +12,9 @@ public abstract class Card : ScriptableObject
 
     public string tag;
 
-    private AvailableChampion target;
+    private Champion target;
     private LandmarkDisplay landmarkTarget;
-    public AvailableChampion Target { get { return target; } set { target = value; } }
+    public Champion Target { get { return target; } set { target = value; } }
     public LandmarkDisplay LandmarkTarget { get { return landmarkTarget; } set { landmarkTarget = value; } }
 
     public abstract void PlayCard();

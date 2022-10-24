@@ -10,23 +10,29 @@ public class Shanker : Champion
 	private int attackCardsToDraw = 3;
 	private int cardsDrawn = 3;
 
-	public override void PlayCardEffect()
+	public Shanker(Shanker c) : base(c.name, c.health, c.maxHealth, c.shield, c.artwork, c.passiveEffect)
 	{
-		base.PlayCardEffect();
+		attackCardsPlayed = c.attackCardsPlayed;
+		attackCardsToDraw = c.attackCardsToDraw;
+		cardsDrawn = c.cardsDrawn;
+	}
+
+	public override void AmountOfCardsPlayed()
+	{
+		base.AmountOfCardsPlayed();
 		if(true /* Played an attack card */)
 		{
 			attackCardsPlayed++;
 		}
 	}
 
-	public override void EndStepEffect()
+	public override void EndStep()
 	{
-		base.EndStepEffect();
+		base.EndStep();
 		if (attackCardsPlayed >= attackCardsToDraw)
 		{
 			//Choice: do the player want to draw cards???
 			// if yes draw card
-			cardsDrawn += 0;
 		}
 		attackCardsPlayed = 0;
 	}

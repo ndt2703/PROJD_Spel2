@@ -67,7 +67,7 @@ public class CardTargeting : MonoBehaviour
         switch (gameObjectHit.tag)
         {
             case "Champion":
-                card.Target = gameObjectHit.GetComponent<AvailableChampion>();
+                card.Target = gameObjectHit.GetComponent<Champion>();
                 if (actionofPlayer.CheckIfCanPlayCard(card, true))
                 {                    
                     card.PlayCard();

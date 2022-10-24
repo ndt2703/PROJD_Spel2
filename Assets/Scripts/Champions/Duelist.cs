@@ -5,9 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Duelist", menuName = "Champion/Duelist", order = 1)]
 public class Duelist : Champion
 {
-	public override void WhenCurrentChampionEffect()
+	public Duelist(Duelist c) : base(c.name, c.health, c.maxHealth, c.shield, c.artwork, c.passiveEffect) {}
+
+	public override void WhenCurrentChampion()
 	{
-		base.WhenCurrentChampionEffect();
+		base.WhenCurrentChampion();
 		//Choose Opponent champion
 	}
 }

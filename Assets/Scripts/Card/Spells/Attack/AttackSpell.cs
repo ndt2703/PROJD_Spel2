@@ -25,8 +25,8 @@ public class AttackSpell : Spells
             GameState.Instance.DestroyLandmark();
         if (damageToBothActiveChampions)
         { // Funkar inte då inte någon åtkomst till ActiveChampion skriptet
-            GameState.Instance.playerChampion.TakeDamageEffect();
-            GameState.Instance.opponentChampion.TakeDamageEffect();
+            GameState.Instance.playerChampion.champion.TakeDamage(damage);
+            GameState.Instance.opponentChampion.champion.TakeDamage(damage);
         }
             
 

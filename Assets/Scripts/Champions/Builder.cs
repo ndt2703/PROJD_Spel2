@@ -10,15 +10,22 @@ public class Builder : Champion
 	private int landmarkNeeded = 2;
 	private int cardCostReduce = 2;
 
+	public Builder(Builder c) : base(c.name, c.health, c.maxHealth, c.shield, c.artwork, c.passiveEffect)
+	{
+		landmarkCount = c.landmarkCount;
+		landmarkNeeded = c.landmarkNeeded;
+		cardCostReduce = c.cardCostReduce;
+	}
+
 	public override void Awake()
 	{
 		base.Awake();
 		passiveEffect = landmarkCount + "/" + landmarkNeeded;
 	}
 
-	public override void PlayCardEffect()
+	public override void AmountOfCardsPlayed()
 	{
-		base.PlayCardEffect();
+		base.AmountOfCardsPlayed();
 		if (true /* if card played is a landmark */)
 		{
 			landmarkCount++;

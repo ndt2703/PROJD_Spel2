@@ -12,9 +12,9 @@ public class DefendSpell : Spells
     {
         if (allChampions)
         {
-            foreach (AvailableChampion champ in FindObjectsOfType<AvailableChampion>())
+            foreach (AvailableChampion champ in GameState.Instance.playerChampions)
             {
-                champ.GainShield(defence);
+                champ.champion.GainShield(defence);
             }
         }
         else

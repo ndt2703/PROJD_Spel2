@@ -47,6 +47,9 @@ public class GameState : MonoBehaviour
         {
             Destroy(Instance);
         }
+
+        AddChampions(playerChampions);
+        AddChampions(opponentChampions);
         playerChampion = playerChampions[0];
         opponentChampion = opponentChampions[0];
         DontDestroyOnLoad(this);
@@ -68,9 +71,44 @@ public class GameState : MonoBehaviour
             isPlayerOnesTurn = false;
         }
 
-
         Invoke(nameof(DrawStartingCards), 0.01f);
     }
+
+    private void AddChampions(List<AvailableChampion> champions)
+    {
+        for (int i = 0; i < champions.Count; i++)
+        {
+            Champion champ = null;
+            switch (champions[i].champion.name)
+            {
+                case "Cultist":
+                    champ = new Cultist((Cultist)champions[i].champion);
+                    break;
+
+                case "Builder":
+                    champ = new Builder((Builder)champions[i].champion);
+                    break;
+
+                case "Shanker":
+                    champ = new Shanker((Shanker)champions[i].champion);
+                    break;
+
+                case "Gravedigger":
+                    champ = new Gravedigger((Gravedigger)champions[i].champion);
+                    break;
+
+                case "TheOneWhoDraws":
+                    champ = new TheOneWhoDraws((TheOneWhoDraws)champions[i].champion);
+                    break;
+
+                case "Duelist":
+                    champ = new Duelist((Duelist)champions[i].champion);
+                    break;
+            }
+            champions[i].champion = champ;
+        }
+    }
+
     private void DrawStartingCards()
     {
         DrawCard(amountOfCardsToStartWith);
@@ -269,7 +307,7 @@ public class GameState : MonoBehaviour
         }
     }
 
-    public void ChampionDeath(AvailableChampion deadChampion)
+    public void ChampionDeath(Champion deadChampion)
     {
         SearchDeadChampion(deadChampion);
 
@@ -283,49 +321,59 @@ public class GameState : MonoBehaviour
         }
     }
 
-    private void SearchDeadChampion(AvailableChampion deadChampion)
+    private void SearchDeadChampion(Champion deadChampion)
     {
-        if (playerChampions.Contains(deadChampion))
+        foreach (AvailableChampion ac in playerChampions)
         {
-            playerChampions.Remove(deadChampion);
+            if (ac.champion == deadChampion)
+            {
+                playerChampions.Remove(ac);
+                break;
+            }
         }
-        else if (opponentChampions.Contains(deadChampion))
+        foreach (AvailableChampion ac in opponentChampions)
         {
-            opponentChampions.Remove(deadChampion);
+            if (ac.champion == deadChampion)
+            {
+                opponentChampions.Remove(ac);
+                break;
+            }
         }
 
-        if (playerChampion.champion.GetType() == deadChampion.champion.GetType())
+        if (playerChampion.champion.GetType() == deadChampion.GetType())
         {
             ChangeChampion(deadChampion, true);
         }
-        else if (opponentChampion.champion.GetType() == deadChampion.champion.GetType())
+        else if (opponentChampion.champion.GetType() == deadChampion.GetType())
         {
             ChangeChampion(deadChampion, false);
         }
     }
 
-    private void ChangeChampion(AvailableChampion deadChampion, bool isPlayer)
+    private void ChangeChampion(Champion deadChampion, bool isPlayer)
     {
         if (isPlayer)
         {
-            playerChampion.ChangeChampion(playerChampions[0].champion, playerChampions[0].health, playerChampions[0].shield);
-            playerChampion.transform.position = deadChampion.transform.position;
-            playerChampion.healthText = deadChampion.healthText;
-            playerChampion.passiveEffect = deadChampion.passiveEffect;
+            //playerChampion.ChangeChampion(playerChampions[0].champion, playerChampions[0].health, playerChampions[0].shield);
+            //playerChampion.transform.position = deadChampion.transform.position;
+            //playerChampion.healthText = deadChampion.healthText;
+            //playerChampion.passiveEffect = deadChampion.passiveEffect;
             
         }
         else if (false /*playerChampion == null*/)
         {
-            opponentChampion = opponentChampions[0];
-            opponentChampion.transform.position = deadChampion.transform.position;
-            opponentChampion.healthText = deadChampion.healthText;
-            opponentChampion.passiveEffect = deadChampion.passiveEffect;
+            //opponentChampion = opponentChampions[0];
+            //opponentChampion.transform.position = deadChampion.transform.position;
+            //opponentChampion.healthText = deadChampion.healthText;
+            //opponentChampion.passiveEffect = deadChampion.passiveEffect;
         }
 
+        /*
         foreach (Transform t in isPlayer ? playerChampions[0].GetComponentsInChildren<Transform>() : opponentChampions[0].GetComponentsInChildren<Transform>())
         {
             t.gameObject.SetActive(false);
         }
+        */
     }
 
     public void RequestDiscardCard(ServerResponse response)
