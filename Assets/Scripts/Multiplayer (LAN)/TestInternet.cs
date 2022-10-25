@@ -195,6 +195,7 @@ public class TestInternet : MonoBehaviour
                 }
 
                 RequestDiscardCard discardCardRequest = new RequestDiscardCard(discardedCards);
+                discardCardRequest.whichPlayer = clientConnection.playerId;
 
                 clientConnection.AddRequest(discardCardRequest, gameState.RequestDiscardCard);
 
