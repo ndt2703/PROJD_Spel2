@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a71013c73a1cd4d9c34f6215f751ac, type: 3}
   m_Name: Pot of Modesty
   m_EditorClassIdentifier: 
-  name: Pot of Modesty
+  cardName: Pot of Modesty
+  typeOfCard: 0
   description: Draw 2 Cards
   artwork: {fileID: 21300000, guid: c862b9cb1f654ac4685a05423a3c12b9, type: 3}
   manaCost: 3
   tag: Spell
   amountOfCardsToDraw: 2
   amountOfCardsToDiscard: 0
+  discardCardsYourself: 1
   defence: 0
   allChampions: 0

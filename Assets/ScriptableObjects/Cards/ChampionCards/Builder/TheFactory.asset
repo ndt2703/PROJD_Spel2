@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced456b41539488468acc706678c307b, type: 3}
   m_Name: TheFactory
   m_EditorClassIdentifier: 
-  name: The Factory
+  cardName: The Factory
+  typeOfCard: 0
   description: 
   artwork: {fileID: 21300000, guid: 7685d416a2ef76546aa684fb80458c5b, type: 3}
   manaCost: 6
   tag: BuilderLandmark
+  amountOfCardsToDraw: 0
+  amountOfCardsToDiscard: 0
+  discardCardsYourself: 0
   minionHealth: 30
   slaughterhouse: 0
   factory: 1

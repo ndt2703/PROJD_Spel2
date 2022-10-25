@@ -497,6 +497,10 @@ public class GameState : MonoBehaviour
 
     //    DiscardCard(castedResponse.listOfCardsDiscarded);
     }
+    public void RequestPlayCard(ServerResponse response)
+    {
+
+    }
     public void Damage(List<Tuple<TargetInfo, int>> targetsToDamage)
     {
 

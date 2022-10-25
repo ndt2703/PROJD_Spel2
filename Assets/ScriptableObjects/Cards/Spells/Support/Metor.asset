@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f33a27f3ff8a6d4d8b7e35fb43ab65d, type: 3}
   m_Name: Metor
   m_EditorClassIdentifier: 
-  name: Metor
+  cardName: Metor
+  typeOfCard: 0
   description: Destroy a landmark
   artwork: {fileID: 21300000, guid: ae445b1fe99153b40a0648c4bad3dbb0, type: 3}
   manaCost: 2
   tag: DestoryLandmark
   amountOfCardsToDraw: 0
   amountOfCardsToDiscard: 0
+  discardCardsYourself: 1

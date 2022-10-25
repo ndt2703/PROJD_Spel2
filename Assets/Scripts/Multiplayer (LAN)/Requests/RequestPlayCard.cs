@@ -4,17 +4,17 @@ using System;
 
 public class RequestPlayCard : ClientRequest
 {
-    public Tuple<string, TargetInfo> cardToPlay = new Tuple<string, TargetInfo>("", new TargetInfo());
+    public CardAndPlacement cardAndPlacement = new CardAndPlacement();
 
 
     public RequestPlayCard()
     {
         Type = 11; 
     }
-    public RequestPlayCard(Tuple<string, TargetInfo> cardToPlay)
+    public RequestPlayCard(CardAndPlacement cardToPlay)
     {
         Type = 11;
-        this.cardToPlay = cardToPlay; 
+        this.cardAndPlacement = cardToPlay; 
     }
 
 }

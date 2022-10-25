@@ -4,16 +4,16 @@ using System;
 
 public class GameActionPlayCard : GameAction
 {
-    public Tuple<string, TargetInfo> cardToPlay = new Tuple<string, TargetInfo>("", new TargetInfo());
+    public CardAndPlacement cardAndPlacement = new CardAndPlacement();
 
     public GameActionPlayCard()
     {
         Type = 10; 
     }
-    public GameActionPlayCard(Tuple<string, TargetInfo> cardToPlay)
+    public GameActionPlayCard(CardAndPlacement cardToPlay)
     {
         Type = 10;
 
-        this.cardToPlay = cardToPlay;
+        this.cardAndPlacement = cardToPlay;
     }
 }

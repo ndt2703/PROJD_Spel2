@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d276b9c4ffc14ab4aa9b82204bc7cc8f, type: 3}
   m_Name: Deluge
   m_EditorClassIdentifier: 
-  name: Deluge
+  cardName: Deluge
+  typeOfCard: 0
   description: This card deals damage to all your opponents landmarks and the active
     champ
   artwork: {fileID: 21300000, guid: 414382805f6cef944a57457f55b9035a, type: 3}

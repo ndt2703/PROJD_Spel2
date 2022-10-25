@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8130a8f51845284397e353f2d853c9a, type: 3}
   m_Name: GhastlyBackup
   m_EditorClassIdentifier: 
-  name: Ghastly Backup
+  cardName: Ghastly Backup
+  typeOfCard: 0
   description: Deal 20 damage for each attack in the top 3 cards of your graveyard
   artwork: {fileID: 21300000, guid: 89461812c24c87147b0ac02615bc7943, type: 3}
   manaCost: 2

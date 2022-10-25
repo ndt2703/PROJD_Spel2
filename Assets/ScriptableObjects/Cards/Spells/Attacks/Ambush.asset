@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff18907f8af932a45b18e0496e27c5c7, type: 3}
   m_Name: Ambush
   m_EditorClassIdentifier: 
-  name: Ambush
+  cardName: Ambush
+  typeOfCard: 0
   description: Deal 80 damage
   artwork: {fileID: 21300000, guid: a0826bf54f9c2e34cbc7d006104b95d2, type: 3}
   manaCost: 6
   tag: Spell
   amountOfCardsToDraw: 0
   amountOfCardsToDiscard: 0
+  discardCardsYourself: 1
   damage: 80
+  destroyLandmark: 0
+  damageEqualsToYourChampionHP: 0
+  damageToBothActiveChampions: 0

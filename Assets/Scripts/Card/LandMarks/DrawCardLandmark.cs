@@ -7,7 +7,7 @@ public class DrawCardLandmark : Landmarks
 {
 
     public bool destroyOnRoundTen = false;
-    public DrawCardLandmark(DrawCardLandmark card) : base(card.minionHealth, card.name, card.description, card.artwork, card.manaCost, card.tag)
+    public DrawCardLandmark(DrawCardLandmark card) : base(card.minionHealth, card.cardName, card.description, card.artwork, card.manaCost, card.tag)
     {
         destroyOnRoundTen = card.destroyOnRoundTen;
     }

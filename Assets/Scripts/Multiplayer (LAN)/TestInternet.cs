@@ -144,6 +144,20 @@ public class TestInternet : MonoBehaviour
             if (action  is GameActionPlayCard)
             {
                 print("skickar den en gameAction play card");
+
+
+                GameActionPlayCard castedAction = (GameActionPlayCard)action;
+
+
+                Card cardPlayed = CardRegister.Instance.cardRegister[castedAction.cardAndPlacement.cardName];
+
+                if (castedAction.cardAndPlacement.placement.whichList.myGraveyard)
+                {
+                    Graveyard.Instance.graveyardCardList.Add(cardPlayed);
+                }
+
+                Graveyard.Instance.graveyardCardList.Add(cardPlayed);
+
                 //GameActionPlayCard theAction = (GameActionPlayCard)action;
 
                 //Draw card opponents

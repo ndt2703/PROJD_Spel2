@@ -9,11 +9,12 @@ public class Landmarks : Card
     public Landmarks(int mH, string name, string desc, Sprite art, int mana, string tag) : base()
     {
         this.minionHealth = mH;
-        this.name = name;
+        this.cardName = name;
         this.description = desc;
         this.artwork = art;
         this.manaCost = mana;
         this.tag = tag;
+        this.typeOfCard = CardType.Landmark;
     }
 
     public override void PlayCard()

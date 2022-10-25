@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardRegister : MonoBehaviour
 {
     private static CardRegister instance;
-    public static CardRegister Instance { get { return instance; } set { value = instance; } }
+    public static CardRegister Instance { get; set; }
 
     [SerializeField] private List<Card> cards = new List<Card>();
     public Dictionary<string, Card> cardRegister = new Dictionary<string, Card>();
@@ -13,9 +13,10 @@ public class CardRegister : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance == null)
         {
-            instance = this;
+            
+            Instance = this;
         }
         else
         {
@@ -30,7 +31,7 @@ public class CardRegister : MonoBehaviour
     {
         foreach (Card card in cards)
         {
-            cardRegister.Add(card.name, card);
+            cardRegister.Add(card.cardName, card);
         }
     }
 }
