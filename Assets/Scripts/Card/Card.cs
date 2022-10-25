@@ -35,7 +35,7 @@ public abstract class Card : ScriptableObject
 
         Debug.Log("kommer den till play card");
         CardAndPlacement cardPlacement = new CardAndPlacement();
-
+        Debug.Log("Vilket namn hade kortet yo " + cardPlacement.cardName);
         cardPlacement.cardName = name;
         TargetInfo placement = new TargetInfo();
         placement.whichList = new ListEnum();
