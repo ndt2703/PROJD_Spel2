@@ -20,10 +20,10 @@ public class TestInternet : MonoBehaviour
     bool hasEstablishedEnemurator = false; 
 
 
-    public Dictionary<int, GameObject> cards  = new Dictionary<int, GameObject>();
+
     public GameState gameState;
     public CardRegister register;
-    public GameObject cardToPlay;
+
    public  bool hasJoinedLobby = false;
     //   public int LocalPlayerNumber; 
 
@@ -34,9 +34,7 @@ public class TestInternet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameState = GameState.Instance;
-        register = CardRegister.Instance;
-        cards.Add(1, cardToPlay);
+
         // System.Threading.Thread.(sendRequest(new ClientRequest()));
 
         clientConnection = ClientConnection.Instance;
@@ -45,7 +43,9 @@ public class TestInternet : MonoBehaviour
 
 
     public void PerformOpponentsActions(ServerResponse response)
-    {
+    {   
+        gameState = GameState.Instance;
+        register = CardRegister.Instance;
 
         foreach (GameAction action in response.OpponentActions)
         {
@@ -203,7 +203,7 @@ public class TestInternet : MonoBehaviour
     public void PlayCard(int cardId)
     {
 
-        Instantiate(cards[cardId], GameObject.Find("CardHolder").transform); //WIP
+      //  Instantiate(cards[cardId], GameObject.Find("CardHolder").transform); //WIP
        
     }
 
