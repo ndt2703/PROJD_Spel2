@@ -22,16 +22,16 @@ public class CardRegister : MonoBehaviour
         {
             Destroy(Instance);
         }
-
+        foreach (Card card in cards)
+        {
+            cardRegister.Add(card.cardName, card);
+        }
         DontDestroyOnLoad(this);
     }
 
 
     void Start()
     {
-        foreach (Card card in cards)
-        {
-            cardRegister.Add(card.cardName, card);
-        }
+
     }
 }
