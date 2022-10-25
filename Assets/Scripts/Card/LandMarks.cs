@@ -9,7 +9,7 @@ public class Landmarks : Card
     public Landmarks(int mH, string name, string desc, Sprite art, int mana, string tag) : base()
     {
         this.minionHealth = mH;
-        this.cardName = name;
+        this.name = name;
         this.description = desc;
         this.artwork = art;
         this.manaCost = mana;

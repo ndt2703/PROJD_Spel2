@@ -31,7 +31,7 @@ public class CardRegister : MonoBehaviour
     {
         foreach (Card card in cards)
         {
-            cardRegister.Add(card.cardName, card);
+            cardRegister.Add(card.name, card);
         }
     }
 }

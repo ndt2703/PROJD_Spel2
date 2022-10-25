@@ -10,7 +10,7 @@ public class HealingLandmark : Landmarks
     public bool doubleHealingEffect = false;
     public bool healEachRound = false;
 
-    public HealingLandmark(HealingLandmark card) : base(card.minionHealth,card.cardName,card.description,card.artwork,card.manaCost,card.tag)
+    public HealingLandmark(HealingLandmark card) : base(card.minionHealth,card.name,card.description,card.artwork,card.manaCost,card.tag)
     {
         doubleHealingEffect = card.doubleHealingEffect;
         healEachRound = card.healEachRound;

@@ -11,7 +11,7 @@ public enum CardType
 
 public abstract class Card : ScriptableObject
 {
-    public string cardName;
+    public new string name;
     public CardType typeOfCard;
     public string description;
 
@@ -36,7 +36,7 @@ public abstract class Card : ScriptableObject
         Debug.Log("kommer den till play card");
         CardAndPlacement cardPlacement = new CardAndPlacement();
         Debug.Log("Vilket namn hade kortet yo " + cardPlacement.cardName);
-        cardPlacement.cardName = cardName;
+        cardPlacement.cardName = name;
         TargetInfo placement = new TargetInfo();
         placement.whichList = new ListEnum();
         placement.index = 100;
