@@ -185,7 +185,7 @@ public class TestInternet : MonoBehaviour
             if (action  is GameActionOpponentDiscardCard)
             {
 
-
+                print("Game action opponent discard card");
 
                 GameActionOpponentDiscardCard castedAction = (GameActionOpponentDiscardCard)action;
                 List<string> discardedCards = new List<string>();

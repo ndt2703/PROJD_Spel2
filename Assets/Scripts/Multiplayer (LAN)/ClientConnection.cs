@@ -94,7 +94,7 @@ public class ClientConnection : MonoBehaviour
             requestCount.Release();
         }
 
-        print("Ar den ratt grej " + request.GetType());
+        
     }
 
     public ServerResponse sendRequest(ClientRequest data)
