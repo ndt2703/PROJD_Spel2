@@ -101,6 +101,8 @@ public class TestInternet : MonoBehaviour
             }
             if (action is GameActionDamage)
             {
+
+
                 print("skickar den en gameAction damage");
                 //GameActionDamage theAction = (GameActionDamage)action;
 

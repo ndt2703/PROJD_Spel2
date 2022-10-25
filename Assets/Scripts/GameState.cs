@@ -9,8 +9,8 @@ public class GameState : MonoBehaviour
     public int currentPlayerID = 0;
     public bool hasPriority = true;
 
-    private bool isPlayerOnesTurn;
-    private bool playerOneStarted;
+    private bool isItMyTurn;
+    private bool didIStart;
 
     public int amountOfTurns;
 
@@ -71,14 +71,14 @@ public class GameState : MonoBehaviour
         int random = UnityEngine.Random.Range(0, 2);
         if (random == 1)
         {
-            playerOneStarted = true;
-            isPlayerOnesTurn = true;
+            didIStart = true;
+            isItMyTurn = true;
         }
 
         else if (random == 0)
         {
-            playerOneStarted = false;
-            isPlayerOnesTurn = false;
+            didIStart = false;
+            isItMyTurn = false;
         }
 
         Invoke(nameof(DrawStartingCards), 0.01f);
@@ -299,10 +299,10 @@ public class GameState : MonoBehaviour
 
     public void EndTurn()
     {
-        if (isPlayerOnesTurn)
+        if (isItMyTurn)
         {
-            isPlayerOnesTurn = false;
-            if (!playerOneStarted)
+            isItMyTurn = false;
+            if (!didIStart)
             {
                 if (drawCardsEachTurn)
                 {
@@ -314,8 +314,8 @@ public class GameState : MonoBehaviour
         }
         else
         {
-            isPlayerOnesTurn = true;
-            if (playerOneStarted)
+            isItMyTurn = true;
+            if (didIStart)
             {
                 if (drawCardsEachTurn)
                 {
