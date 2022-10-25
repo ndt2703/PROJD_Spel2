@@ -163,8 +163,10 @@ public class TestInternet : MonoBehaviour
 
                 Graveyard.Instance.graveyardCardList.Add(cardPlayed);
 
-                gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
+                bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
 
+
+                print("tog den bort kort fran handen " + test);
                 //GameActionPlayCard theAction = (GameActionPlayCard)action;
 
                 //Draw card opponents
