@@ -14,11 +14,12 @@ public class GameState : MonoBehaviour
 
     public int amountOfTurns;
 
-    private ActionOfPlayer actionOfPlayer;
+   
     private int amountOfCardsToStartWith = 5;
 
 
     private readonly int maxMana = 10;
+    public ActionOfPlayer actionOfPlayer;
     public int currentMana;
     public SpriteRenderer playedCardSpriteRenderer;
     public Sprite backfaceCard;

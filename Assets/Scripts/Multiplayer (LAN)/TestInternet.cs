@@ -21,7 +21,8 @@ public class TestInternet : MonoBehaviour
 
 
     public Dictionary<int, GameObject> cards  = new Dictionary<int, GameObject>();
-
+    public GameState gameState;
+    public CardRegister register;
     public GameObject cardToPlay;
    public  bool hasJoinedLobby = false;
     //   public int LocalPlayerNumber; 
@@ -33,6 +34,8 @@ public class TestInternet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameState = GameState.Instance;
+        register = CardRegister.Instance;
         cards.Add(1, cardToPlay);
         // System.Threading.Thread.(sendRequest(new ClientRequest()));
 
@@ -58,10 +61,10 @@ public class TestInternet : MonoBehaviour
 
             if (action is GameActionEndTurn )
             {
-               // print("skickar den en gameAction end turn");
-                GameState.Instance.SwitchTurn(response);
+                // print("skickar den en gameAction end turn");
+                gameState.SwitchTurn(response);
 
-                GameState.Instance.hasPriority = true;
+                gameState.hasPriority = true;
 
             }
 
@@ -72,11 +75,12 @@ public class TestInternet : MonoBehaviour
                 
                 if(theAction.amountToDrawOpponent > 0)
                 {
-                    GameState.Instance.DrawCard(theAction.amountToDrawOpponent); 
+                    gameState.DrawCard(theAction.amountToDrawOpponent); 
                 }
                 if(theAction.amountToDraw > 0)
                 {
-                    StartCoroutine(GameState.Instance.DrawCardOpponent(theAction.amountToDraw,null));
+                    StartCoroutine(gameState.DrawCardOpponent(theAction.amountToDraw,null));
+
                 }
                 //Draw card opponents
 
@@ -86,7 +90,7 @@ public class TestInternet : MonoBehaviour
                 print("skickar den en gameAction discard");
                 //GameActionDiscardCard theAction = (GameActionDiscardCard)action;
 
-                //GameState.Instance.DiscardCard(theAction.listOfCardsDiscarded);
+                //gameState.DiscardCard(theAction.listOfCardsDiscarded);
                 //Draw card opponents
 
             }
@@ -95,7 +99,7 @@ public class TestInternet : MonoBehaviour
                 print("skickar den en gameAction heal");
                 //GameActionHeal theAction = (GameActionHeal)action;
 
-                //GameState.Instance.Heal(theAction.targetsToHeal);
+                //gameState.Heal(theAction.targetsToHeal);
                 //Draw card opponents
 
             }
@@ -149,7 +153,7 @@ public class TestInternet : MonoBehaviour
                 GameActionPlayCard castedAction = (GameActionPlayCard)action;
 
 
-                Card cardPlayed = CardRegister.Instance.cardRegister[castedAction.cardAndPlacement.cardName];
+                Card cardPlayed = register.cardRegister[castedAction.cardAndPlacement.cardName];
 
                 if (castedAction.cardAndPlacement.placement.whichList.myGraveyard)
                 {
@@ -157,6 +161,8 @@ public class TestInternet : MonoBehaviour
                 }
 
                 Graveyard.Instance.graveyardCardList.Add(cardPlayed);
+
+                gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
 
                 //GameActionPlayCard theAction = (GameActionPlayCard)action;
 
