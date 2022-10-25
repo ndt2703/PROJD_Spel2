@@ -26,13 +26,13 @@ public abstract class Card : ScriptableObject
     public int amountOfCardsToDraw = 0;
     public int amountOfCardsToDiscard = 0;
     public bool discardCardsYourself = true;
-    protected GameState gameState = GameState.Instance;
-
+  
     public Champion Target { get { return target; } set { target = value; } }
     public LandmarkDisplay LandmarkTarget { get { return landmarkTarget; } set { landmarkTarget = value; } }
 
     public virtual void PlayCard()
     {
+
         Debug.Log("kommer den till play card");
         CardAndPlacement cardPlacement = new CardAndPlacement();
 
@@ -45,9 +45,9 @@ public abstract class Card : ScriptableObject
             placement.index = -1;
         }
         RequestPlayCard playCardRequest = new RequestPlayCard(cardPlacement);
-        if (gameState.isOnline)
+        if (GameState.Instance.isOnline)
         {
-            ClientConnection.Instance.AddRequest(playCardRequest, gameState.RequestPlayCard);
+            ClientConnection.Instance.AddRequest(playCardRequest, GameState.Instance.RequestPlayCard);
         }
 
 
@@ -65,17 +65,17 @@ public abstract class Card : ScriptableObject
     private void DiscardCard()
     {
 
-        if (gameState.isOnline)
+        if (GameState.Instance.isOnline)
         {
             RequestDiscardCard request = new RequestDiscardCard();
             request.whichPlayer = ClientConnection.Instance.playerId;
-            ClientConnection.Instance.AddRequest(request, gameState.DrawCardRequest);
+            ClientConnection.Instance.AddRequest(request, GameState.Instance.DrawCardRequest);
         }
         else
         {
             for (int i = 0; i < amountOfCardsToDiscard; i++)
             {
-                gameState.DiscardCard(discardCardsYourself);
+                GameState.Instance.DiscardCard(discardCardsYourself);
             }
         }
     }
@@ -83,15 +83,15 @@ public abstract class Card : ScriptableObject
     private void DrawCard()
     {
         //  ActionOfPlayer.Instance.DrawCard(amountOfCardsToDraw);
-        if (gameState.isOnline)
+        if (GameState.Instance.isOnline)
         {
             RequestDrawCard request = new RequestDrawCard(amountOfCardsToDraw);
             request.whichPlayer = ClientConnection.Instance.playerId;
-            ClientConnection.Instance.AddRequest(request, gameState.DrawCardRequest);
+            ClientConnection.Instance.AddRequest(request, GameState.Instance.DrawCardRequest);
         }
         else
         {
-            gameState.DrawCard(amountOfCardsToDraw);
+            GameState.Instance.DrawCard(amountOfCardsToDraw);
         }
     }
 
