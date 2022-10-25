@@ -43,6 +43,10 @@ public class GameState : MonoBehaviour
     private static GameState instance;
     public static GameState Instance { get; set; }
 
+
+    public bool isOnline = false;
+
+
     private void Awake()
     {
         if (Instance == null)
