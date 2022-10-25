@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class CardTargeting : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CardTargeting : MonoBehaviour
     private Card card;
     private Graveyard graveyard;
 
+
     private GameObject gameObjectHit;
     
 
@@ -21,18 +23,18 @@ public class CardTargeting : MonoBehaviour
     {
         graveyard = Graveyard.Instance;
         actionOfPlayer = ActionOfPlayer.Instance;
-        cardDisplay = GetComponent<CardDisplay>();
-        cardMovement = GetComponent<CardMovement>();
+        cardDisplay = GetComponent<CardDisplay>();       
 
         if (!gameObject.tag.Equals("LandmarkSlot"))
         {
-            gameObjectRectTransform = GetComponent<RectTransform>();
-            startposition = gameObjectRectTransform.position;
+                gameObjectRectTransform = GetComponent<RectTransform>();           
+                startposition = gameObjectRectTransform.anchoredPosition;
         }
     }
 
     private void OnMouseUp()
     {
+        cardMovement = GetComponent<CardMovement>();
         mousePosition = cardMovement.mousePosition;
         card = cardDisplay.card;
 
@@ -55,6 +57,11 @@ public class CardTargeting : MonoBehaviour
             GameState.Instance.ShowPlayedCard(card);
             WhatToDoWhenTargeted();
         }            
+    }
+    private void CardGoBackToStartingPosition()
+    {
+        gameObjectRectTransform.anchoredPosition = startposition;
+        print(gameObjectRectTransform.anchoredPosition);
     }
 
     private void WhatToDoWhenTargeted()
@@ -131,8 +138,5 @@ public class CardTargeting : MonoBehaviour
         cardDisplay.card = null;
     }
 
-    private void CardGoBackToStartingPosition()
-    {
-        gameObjectRectTransform.anchoredPosition = startposition;
-    }
+
 }

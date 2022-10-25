@@ -150,9 +150,7 @@ public class GameState : MonoBehaviour
                     champ = new Duelist((Duelist)champions[i].champion);
                     break;
             }
-            print(champions[i].champion);
             champions[i].champion = champ;
-            print(champions[i].champion);
         }
     }
 
