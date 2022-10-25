@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ListEnum : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
+public class ListEnum 
 {
    
 
@@ -14,13 +14,5 @@ public class ListEnum : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
     public bool opponentChampions = false;
 
 
-    public object Deserialize(MBJson.JSONObject ObjectToParse)
-    {
-        object ReturnValue = new MBJson.DynamicJSONDeserializer(this).Deserialize(ObjectToParse);
-        return (ReturnValue);
-    }
-    public Type GetType(int integerToConvert)
-    {
-        return typeof(ListEnum);
-    }
+
 }

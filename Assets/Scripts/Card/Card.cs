@@ -38,13 +38,15 @@ public abstract class Card : ScriptableObject
 
         cardPlacement.cardName = name;
         TargetInfo placement = new TargetInfo();
+        placement.whichList = new ListEnum();
+        placement.index = 100;
 
         if (typeOfCard != CardType.Landmark)
         {
             ListEnum tempEnum = new ListEnum();
             tempEnum.myGraveyard = true;
             placement.whichList = tempEnum;
-            placement.index = -1;
+            placement.index = 100;
         }
         RequestPlayCard playCardRequest = new RequestPlayCard(cardPlacement);
         if (GameState.Instance.isOnline)
