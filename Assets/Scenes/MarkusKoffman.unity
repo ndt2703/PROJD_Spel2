@@ -5504,7 +5504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 0}
-  artworkSpriteRenderer: {fileID: 0}
+  artworkSpriteRenderer: {fileID: 1945577048}
   health: 0
   occultGathering: 0
 --- !u!1 &508946994
@@ -12342,7 +12342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 0}
-  artworkSpriteRenderer: {fileID: 0}
+  artworkSpriteRenderer: {fileID: 1733053389}
   health: 0
   occultGathering: 0
 --- !u!1 &1038534794
@@ -15519,7 +15519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 0}
-  artworkSpriteRenderer: {fileID: 0}
+  artworkSpriteRenderer: {fileID: 705313624}
   health: 0
   occultGathering: 0
 --- !u!1 &1369666672
@@ -23951,7 +23951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 0}
-  artworkSpriteRenderer: {fileID: 0}
+  artworkSpriteRenderer: {fileID: 394350080}
   health: 0
   occultGathering: 0
 --- !u!1 &1961259092

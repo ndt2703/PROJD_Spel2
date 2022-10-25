@@ -16,16 +16,19 @@ public class OpponentLandmarks : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-        if (landmarkDisplays[3].card != null) return;
-
+    {            
         if (gameState.opponentLandmarks.Count > 0)
         {
             for (int i = 0; i < gameState.opponentLandmarks.Count; i++)
             {
+                if (gameState.opponentLandmarks[i] == null)
+                {
+                    landmarkDisplays[i].card = null;
+                    return;
+                }
                 if (landmarkDisplays[i].card != null) continue;
-
-                landmarkDisplays[i].card = gameState.opponentLandmarks[i];
+                
+                landmarkDisplays[i].card = gameState.opponentLandmarks[i];                  
             }
         }
     }

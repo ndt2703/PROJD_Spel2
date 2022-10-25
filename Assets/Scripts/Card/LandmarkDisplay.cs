@@ -46,13 +46,13 @@ public class LandmarkDisplay : MonoBehaviour
             LandmarkDead();
             Graveyard.Instance.AddCardToGraveyard(card);
             card = null;
-            artworkSpriteRenderer.sprite = null;
         }
     }
 
     private void FixedUpdate()
     {
-
+        if (card == null)
+            artworkSpriteRenderer.sprite = null;
 
         if (gameState.amountOfTurns == 10)
         {
