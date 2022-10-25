@@ -36,6 +36,8 @@ public class CardTargeting : MonoBehaviour
         mousePosition = cardMovement.mousePosition;
         card = cardDisplay.card;
 
+        if (cardDisplay.opponentCard == true) return;
+
         RaycastHit hitEnemy;
         Physics.Raycast(mousePosition, Vector3.forward * 5f, out hitEnemy, 10f);
         Debug.DrawRay(mousePosition, Vector3.forward * 5f, Color.red, 100f);

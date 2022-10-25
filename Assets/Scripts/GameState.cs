@@ -36,6 +36,7 @@ public class GameState : MonoBehaviour
 
     public List<Card> cardsPlayedThisTurn = new List<Card>();
 
+    [NonSerialized] public int tenExtraDamage;
     [NonSerialized] public int damageRamp = 0;
     [NonSerialized] public int slaughterhouse = 0;
     [NonSerialized] public int factory = 0;
@@ -82,6 +83,40 @@ public class GameState : MonoBehaviour
         }
 
         Invoke(nameof(DrawStartingCards), 0.01f);
+    }
+
+    public void CalculateBonusDamage(int damage, Card cardUsed)
+    {
+        damage += damageRamp;
+
+        if (slaughterhouse > 0)
+        {
+            for (int i = 0; i < playerLandmarks.Count; i++)
+            {
+                damage += 10 * slaughterhouse;
+            }
+        }
+
+        if (tenExtraDamage > 0)
+        {
+            damage += (10 * tenExtraDamage);
+        }
+
+        TargetAndAmount tAA = null;
+
+        if (cardUsed.Target != null)
+            tAA = new TargetAndAmount(cardUsed.Target, damage);
+        else if (cardUsed.LandmarkTarget != null)
+            tAA = new TargetAndAmount(cardUsed.LandmarkTarget, damage);
+        DealDamage(tAA);
+    }
+
+    public void DealDamage(TargetAndAmount targetAndAmount) // TargetAndAmount
+    {
+        if (targetAndAmount.championTarget != null)
+            targetAndAmount.championTarget.TakeDamage(targetAndAmount.damage);
+        else if (targetAndAmount.landmarkTarget != null)
+            targetAndAmount.landmarkTarget.TakeDamage(targetAndAmount.damage);
     }
 
     private void AddChampions(List<AvailableChampion> champions)

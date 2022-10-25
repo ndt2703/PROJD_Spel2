@@ -24,6 +24,7 @@ public class CardMovement : MonoBehaviour
     private void OnMouseDrag()
     {
         if (gameObject.tag.Equals("LandmarkSlot")) return;
+        if (gameObject.GetComponent<CardDisplay>().opponentCard == true) return;
         mousePosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 12));
 
         transform.position = mousePosition + offset;
