@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced456b41539488468acc706678c307b, type: 3}
   m_Name: TheFactory
   m_EditorClassIdentifier: 
-  name: 
+  name: The Factory
   description: 
-  artwork: {fileID: 0}
-  manaCost: 0
-  tag: 
-  minionHealth: 0
+  artwork: {fileID: 21300000, guid: 7685d416a2ef76546aa684fb80458c5b, type: 3}
+  manaCost: 6
+  tag: BuilderLandmark
+  minionHealth: 30
   slaughterhouse: 0
-  factory: 0
+  factory: 1

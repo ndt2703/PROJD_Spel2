@@ -32,6 +32,8 @@ public abstract class Spells : Card
     {
         //  ActionOfPlayer.Instance.DrawCard(amountOfCardsToDraw);
 
+        RequestPlayCard playCardRequest = new RequestPlayCard();
+
         RequestDrawCard request = new RequestDrawCard(amountOfCardsToDraw);
 
         request.whichPlayer = ClientConnection.Instance.playerId;

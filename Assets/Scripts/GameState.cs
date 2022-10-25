@@ -149,8 +149,8 @@ public class GameState : MonoBehaviour
 
     public void DrawRandomCardFromGraveyard(int amountOfCards)
     {
-        Card randomCardFromGraveyar = Graveyard.Instance.RandomizeCardFromGraveyard();
-        DrawCardPlayer(amountOfCards, randomCardFromGraveyar);
+        Card randomCardFromGraveyard = Graveyard.Instance.RandomizeCardFromGraveyard();
+        DrawCardPlayer(amountOfCards, randomCardFromGraveyard);
     }
 
     public bool LegalEndTurn()

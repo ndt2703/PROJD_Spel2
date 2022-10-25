@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Card : ScriptableObject
@@ -14,10 +15,66 @@ public abstract class Card : ScriptableObject
 
     private Champion target;
     private LandmarkDisplay landmarkTarget;
+
+    public int amountOfCardsToDraw = 0;
+    public int amountOfCardsToDiscard = 0;
+    public bool discardCardsYourself = true;
+    protected GameState gameState;
+
     public Champion Target { get { return target; } set { target = value; } }
     public LandmarkDisplay LandmarkTarget { get { return landmarkTarget; } set { landmarkTarget = value; } }
 
-    public abstract void PlayCard();
+    private void Awake()
+    {
+        gameState = GameState.Instance;
+    }
 
-    
+    public virtual void PlayCard()
+    {
+        //Playcardrequest
+        RequestPlayCard playCardRequest = new RequestPlayCard();
+        if (amountOfCardsToDraw != 0)
+        {
+            DrawCard();
+        }
+        if (amountOfCardsToDiscard != 0)
+        {
+            DiscardCard();
+        }
+    }
+
+    private void DiscardCard()
+    {
+
+        if (gameState.isOnline)
+        {
+            RequestDiscardCard request = new RequestDiscardCard();
+            request.whichPlayer = ClientConnection.Instance.playerId;
+            ClientConnection.Instance.AddRequest(request, gameState.DrawCardRequest);
+        }
+        else
+        {
+            for (int i = 0; i < amountOfCardsToDiscard; i++)
+            {
+                gameState.DiscardCard(discardCardsYourself);
+            }
+        }
+    }
+
+    private void DrawCard()
+    {
+        //  ActionOfPlayer.Instance.DrawCard(amountOfCardsToDraw);
+        if (gameState.isOnline)
+        {
+            RequestDrawCard request = new RequestDrawCard(amountOfCardsToDraw);
+            request.whichPlayer = ClientConnection.Instance.playerId;
+            ClientConnection.Instance.AddRequest(request, gameState.DrawCardRequest);
+        }
+        else
+        {
+            gameState.DrawCard(amountOfCardsToDraw);
+        }
+    }
+
+
 }

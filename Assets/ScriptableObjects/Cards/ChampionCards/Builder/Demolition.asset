@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd020e63e4e84d458c8eed0b67b55b8, type: 3}
   m_Name: Demolition
   m_EditorClassIdentifier: 
-  name: 
+  name: Demolition
   description: 
-  artwork: {fileID: 0}
-  manaCost: 0
-  tag: 
+  artwork: {fileID: 21300000, guid: a36d39a82fa5f2b45949683971c46a8e, type: 3}
+  manaCost: 4
+  tag: AttackSpell
   amountOfCardsToDraw: 0
   amountOfCardsToDiscard: 0
   discardCardsYourself: 1
-  damage: 0
+  damage: 20
