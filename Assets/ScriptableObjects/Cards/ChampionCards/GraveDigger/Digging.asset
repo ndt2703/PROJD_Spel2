@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8130a8f51845284397e353f2d853c9a, type: 3}
   m_Name: Digging
   m_EditorClassIdentifier: 
-  name: Digging
+  cardName: Digging
+  typeOfCard: 0
   description: Return 2 cards from your graveyard to your hand
   artwork: {fileID: 21300000, guid: 5f4ade5d31a51d84795294d4f224b57a, type: 3}
   manaCost: 2
