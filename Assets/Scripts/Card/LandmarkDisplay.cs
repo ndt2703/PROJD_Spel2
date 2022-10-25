@@ -39,21 +39,7 @@ public class LandmarkDisplay : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (gameState.slaughterhouse > 0)
-        {
-            for (int i = 0; i < gameState.playerLandmarks.Count; i++)
-            {
-                amount += 10 * gameState.slaughterhouse;
-            }
-        }
-
-
-        if (tenExtraDamage > 0)
-        {
-            amount += (10 * tenExtraDamage);
-        }
-
-        health -= amount + gameState.damageRamp;
+        health -= amount;
 
         if (health <= 0)
         {
@@ -66,6 +52,8 @@ public class LandmarkDisplay : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+
         if (gameState.amountOfTurns == 10)
         {
             if (card.cardName.Equals("Mysterious Forest"))
