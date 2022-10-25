@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 public enum CardType
 {
@@ -37,7 +38,7 @@ public abstract class Card : ScriptableObject
 
     public virtual void PlayCard()
     {
-        //Playcardrequest
+        Debug.Log("kommer den till play card");
         CardAndPlacement cardPlacement = new CardAndPlacement();
 
         cardPlacement.cardName = name;

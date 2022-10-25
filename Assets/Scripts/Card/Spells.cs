@@ -11,6 +11,7 @@ public abstract class Spells : Card
 
     public override void PlayCard()
     {   
+        base.PlayCard();
         PlaySpell();
         
     }
