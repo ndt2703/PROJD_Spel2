@@ -12274,11 +12274,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c29f17cd43ab54fa7f01f695417f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allOpponentLandmarkSlots:
-  - {fileID: 1272383419}
-  - {fileID: 1881887249}
-  - {fileID: 779363723}
-  - {fileID: 707788607}
+  landmarkDisplays:
+  - {fileID: 1272383421}
+  - {fileID: 1881887251}
+  - {fileID: 779363725}
+  - {fileID: 707788609}
 --- !u!1 &1010750140
 GameObject:
   m_ObjectHideFlags: 0
