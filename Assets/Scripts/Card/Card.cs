@@ -88,10 +88,10 @@ public abstract class Card : ScriptableObject
             }
             else
             {
-                RequestOpponentDiscardCard request = new RequestOpponentDiscardCard();
-                request.whichPlayer = ClientConnection.Instance.playerId;
-                request.amountOfCardsToDiscard = amountOfCardsToDiscard;
-                ClientConnection.Instance.AddRequest(request, GameState.Instance.RequestDiscardCard);
+                RequestOpponentDiscardCard requesten = new RequestOpponentDiscardCard();
+                requesten.whichPlayer = ClientConnection.Instance.playerId;
+                requesten.amountOfCardsToDiscard = amountOfCardsToDiscard;
+                ClientConnection.Instance.AddRequest(requesten, GameState.Instance.RequestDiscardCard);
 
             }
         }
