@@ -1896,12 +1896,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 1587850527}
   shieldText: {fileID: 0}
   passiveEffect: {fileID: 872145451}
   artwork: {fileID: 328259046}
-  healEachRound: 0
 --- !u!1 &220195550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,12 +2016,10 @@ MonoBehaviour:
   health: 19
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 928276974}
   shieldText: {fileID: 0}
   passiveEffect: {fileID: 1645652658}
   artwork: {fileID: 1232275805}
-  healEachRound: 0
 --- !u!1 &236878358
 GameObject:
   m_ObjectHideFlags: 0
@@ -10093,66 +10089,17 @@ RectTransform:
   m_AnchoredPosition: {x: 1, y: 0.85}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &897437566
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 897437568}
-  - component: {fileID: 897437567}
-  m_Layer: 0
-  m_Name: GameState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &897437567
+--- !u!114 &897437567 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+  m_PrefabInstance: {fileID: 3291878524740978182}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897437566}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaed5eae6e9bbd44aaffe2d7492d2c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayerID: 0
-  hasPriority: 1
-  currentMana: 0
-  playedCardSpriteRenderer: {fileID: 1092010004}
-  playerChampion: {fileID: 0}
-  opponentChampion: {fileID: 0}
-  playerChampions:
-  - {fileID: 220195556}
-  - {fileID: 1104487796}
-  - {fileID: 1097853602}
-  opponentChampions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerLandmarks: []
-  opponentLandmarks: []
---- !u!4 &897437568
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897437566}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1398096, y: 2.0575128, z: -10.015965}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &905573999
 GameObject:
   m_ObjectHideFlags: 0
@@ -12005,12 +11952,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 67854294}
   shieldText: {fileID: 0}
   passiveEffect: {fileID: 1206689168}
   artwork: {fileID: 654849340}
-  healEachRound: 0
 --- !u!136 &1097853603
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12130,12 +12075,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 1191971256}
   shieldText: {fileID: 0}
   passiveEffect: {fileID: 2065338993}
   artwork: {fileID: 624008420}
-  healEachRound: 0
 --- !u!136 &1104487797
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13224,12 +13167,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 1274902211}
   shieldText: {fileID: 0}
   passiveEffect: {fileID: 689538487}
   artwork: {fileID: 725214113}
-  healEachRound: 0
 --- !u!136 &1248677192
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14914,12 +14855,10 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   shield: 0
-  landmarkEffect: 1
   healthText: {fileID: 2007933326}
   shieldText: {fileID: 0}
   passiveEffect: {fileID: 669069530}
   artwork: {fileID: 1116234670}
-  healEachRound: 0
 --- !u!136 &1492365356
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16722,7 +16661,6 @@ MonoBehaviour:
   handPlayer: {fileID: 236878360}
   handOpponent: {fileID: 1618785754}
   playerMana: 320
-  tauntPlaced: 0
 --- !u!1 &1634207076
 GameObject:
   m_ObjectHideFlags: 0
@@ -24604,3 +24542,76 @@ Transform:
   m_Father: {fileID: 2099152487}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3291878524740978182
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3291878523879393656, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_Name
+      value: GameState
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: playedCardSpriteRenderer
+      value: 
+      objectReference: {fileID: 1092010004}
+    - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: playerChampions.Array.data[0]
+      value: 
+      objectReference: {fileID: 220195556}
+    - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: playerChampions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1104487796}
+    - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: playerChampions.Array.data[2]
+      value: 
+      objectReference: {fileID: 1097853602}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.1398096
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0575128
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.015965
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}

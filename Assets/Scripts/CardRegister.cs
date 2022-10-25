@@ -28,12 +28,9 @@ public class CardRegister : MonoBehaviour
 
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach (Card card in cards)
+        {
+            cardRegister.Add(card.name, card);
+        }
     }
 }
