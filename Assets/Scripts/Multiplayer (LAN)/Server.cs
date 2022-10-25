@@ -164,10 +164,10 @@ public class Server
         }       
         if (requestToHandle is RequestPlayCard)
         {
-             RequestPlayCard castedRequestTest = (RequestPlayCard)requestToHandle;
-            RequestPlayCard castedRequest = new RequestPlayCard();
-            castedRequest.whichPlayer = requestToHandle.whichPlayer;
-            return HandlePlayCard(castedRequest);
+            RequestPlayCard castedRequestTest = (RequestPlayCard)requestToHandle;
+
+            castedRequestTest.whichPlayer = requestToHandle.whichPlayer;
+            return HandlePlayCard(castedRequestTest);
         }       
         if (requestToHandle is RequestAddSpecificCardToHand)
         {
