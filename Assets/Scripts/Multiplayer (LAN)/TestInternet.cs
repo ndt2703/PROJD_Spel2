@@ -155,7 +155,9 @@ public class TestInternet : MonoBehaviour
                 {
                     Graveyard.Instance.graveyardCardList.Add(cardPlayed);
                 }
-                
+
+                Graveyard.Instance.graveyardCardList.Add(cardPlayed);
+
                 //GameActionPlayCard theAction = (GameActionPlayCard)action;
 
                 //Draw card opponents
