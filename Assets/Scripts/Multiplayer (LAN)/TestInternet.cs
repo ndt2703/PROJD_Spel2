@@ -196,7 +196,7 @@ public class TestInternet : MonoBehaviour
 
                 RequestDiscardCard discardCardRequest = new RequestDiscardCard(discardedCards);
                 discardCardRequest.whichPlayer = ClientConnection.Instance.playerId;
-
+                print("vad ar which player " + discardCardRequest.whichPlayer);
                 clientConnection.AddRequest(discardCardRequest, gameState.RequestDiscardCard);
 
                 //bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
