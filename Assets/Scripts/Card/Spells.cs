@@ -4,43 +4,18 @@ using UnityEngine;
 
 public abstract class Spells : Card
 {
-    public int amountOfCardsToDraw;
-    public int amountOfCardsToDiscard;
-    public bool discardCardsYourself = true;
-    public override void PlayCard()
+    protected Spells()
     {
-        PlaySpell();
-        if (amountOfCardsToDraw != 0)
-            DrawCard();
-        if (amountOfCardsToDiscard != 0)
-            DiscardCard();
+        typeOfCard = CardType.Spell;
     }
 
-    private void DiscardCard()
-    {
-        GameState gameState = GameState.Instance;
-        for (int i = 0; i < amountOfCardsToDiscard; i++)
-        {
-            gameState.DiscardCard(discardCardsYourself);
-        }
-
-
+    public override void PlayCard()
+    {   
+        PlaySpell();
         
     }
 
-    private void DrawCard()
-    {
-        //  ActionOfPlayer.Instance.DrawCard(amountOfCardsToDraw);
-
-        RequestPlayCard playCardRequest = new RequestPlayCard();
-
-        RequestDrawCard request = new RequestDrawCard(amountOfCardsToDraw);
-
-        request.whichPlayer = ClientConnection.Instance.playerId;
-
-        ClientConnection.Instance.AddRequest(request, GameState.Instance.DrawCardRequest);
-        Debug.Log(request.Type);
-    }
+   
 
 
     public abstract void PlaySpell();

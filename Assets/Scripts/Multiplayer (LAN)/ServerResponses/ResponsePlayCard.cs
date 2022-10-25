@@ -4,16 +4,16 @@ using System;
 
 public class ResponsePlayCard : ServerResponse
 {
-    public Tuple<string, TargetInfo> cardToPlay = new Tuple<string, TargetInfo>("", new TargetInfo());
+    public CardAndPlacement cardAndPlacement = new CardAndPlacement();
 
     public ResponsePlayCard()
     {
         Type = 10;
     }
-    public ResponsePlayCard(Tuple<string, TargetInfo> cardToPlay)
+    public ResponsePlayCard(CardAndPlacement cardToPlay)
     {
         Type = 10;
 
-        this.cardToPlay = cardToPlay; 
+        this.cardAndPlacement = cardToPlay; 
     }
 }

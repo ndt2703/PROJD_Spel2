@@ -323,11 +323,11 @@ public class Server
     }
     private ServerResponse HandlePlayCard(RequestPlayCard requestToHandle)
     {
-        ResponsePlayCard response = new ResponsePlayCard(requestToHandle.cardToPlay);
+        ResponsePlayCard response = new ResponsePlayCard(requestToHandle.cardAndPlacement);
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
-        GameActionPlayCard gameAction = new GameActionPlayCard( requestToHandle.cardToPlay);
+        GameActionPlayCard gameAction = new GameActionPlayCard( requestToHandle.cardAndPlacement    );
 
         AddGameAction(response, gameAction);
         return response;

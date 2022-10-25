@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+public enum CardType
+{
+    Spell,
+    Landmark
+};
 
 public abstract class Card : ScriptableObject
 {
     public new string name;
+    public CardType typeOfCard;
     public string description;
 
     public Sprite artwork;
@@ -32,7 +38,24 @@ public abstract class Card : ScriptableObject
     public virtual void PlayCard()
     {
         //Playcardrequest
-        RequestPlayCard playCardRequest = new RequestPlayCard();
+        CardAndPlacement cardPlacement = new CardAndPlacement();
+
+        cardPlacement.cardName = name;
+        TargetInfo placement = new TargetInfo();
+
+        if (typeOfCard != CardType.Landmark)
+        {
+            placement.whichList = ListEnum.myGraveyard;
+            placement.index = -1;
+        }
+        RequestPlayCard playCardRequest = new RequestPlayCard(cardPlacement);
+        if (gameState.isOnline)
+        {
+            ClientConnection.Instance.AddRequest(playCardRequest, gameState.RequestPlayCard);
+        }
+
+
+        
         if (amountOfCardsToDraw != 0)
         {
             DrawCard();

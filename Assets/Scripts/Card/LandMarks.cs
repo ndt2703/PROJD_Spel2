@@ -14,6 +14,7 @@ public class Landmarks : Card
         this.artwork = art;
         this.manaCost = mana;
         this.tag = tag;
+        this.typeOfCard = CardType.Landmark;
     }
 
     public override void PlayCard()

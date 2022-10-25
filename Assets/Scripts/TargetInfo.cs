@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 public class TargetInfo : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
 {   
-    public string whichList = "";
+    public ListEnum whichList = ListEnum.myGraveyard;
     public int index = 0;
 
     public TargetInfo(){}
 
-    public TargetInfo(string list, int index)
+    public TargetInfo(ListEnum list, int index)
     {
         whichList = list;
         this.index = index;
