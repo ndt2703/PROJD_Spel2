@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class TargetInfo : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
 {   
-    public ListEnum whichList = ListEnum.myGraveyard;
+    public ListEnum whichList = new ListEnum();
     public int index = 0;
 
     public TargetInfo(){}

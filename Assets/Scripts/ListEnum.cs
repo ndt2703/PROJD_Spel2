@@ -1,8 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum ListEnum  
+public class ListEnum  
 {
-    myGraveyard,opponentGraveyard,myLandmarks,opponentLandmarks,myChampions,opponentChampions,
+   
+
+    public bool myGraveyard = false; 
+    public bool opponentGraveyard = false; 
+    public bool myLandmarks = false; 
+    public bool opponentLandmarks = false; 
+    public bool myChampions = false; 
+    public bool opponentChampions = false; 
 
 }

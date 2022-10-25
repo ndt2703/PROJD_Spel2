@@ -41,7 +41,9 @@ public abstract class Card : ScriptableObject
 
         if (typeOfCard != CardType.Landmark)
         {
-            placement.whichList = ListEnum.myGraveyard;
+            ListEnum tempEnum = new ListEnum();
+            tempEnum.myGraveyard = true;
+            placement.whichList = tempEnum;
             placement.index = -1;
         }
         RequestPlayCard playCardRequest = new RequestPlayCard(cardPlacement);

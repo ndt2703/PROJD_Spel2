@@ -151,7 +151,7 @@ public class TestInternet : MonoBehaviour
 
                 Card cardPlayed = CardRegister.Instance.cardRegister[castedAction.cardAndPlacement.cardName];
 
-                if (castedAction.cardAndPlacement.placement.whichList == ListEnum.myGraveyard)
+                if (castedAction.cardAndPlacement.placement.whichList.myGraveyard)
                 {
                     Graveyard.Instance.graveyardCardList.Add(cardPlayed);
                 }
