@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class TargetAndAmount : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Champion championTarget;
+    public LandmarkDisplay landmarkTarget;
+    public int damage;
+    public TargetAndAmount(Champion champTargeted, int damage) 
     {
-        
+        championTarget = champTargeted;
+        this.damage = damage;
     }
-
-    // Update is called once per frame
-    void Update()
+    public TargetAndAmount(LandmarkDisplay landmarkTargeted, int damage) 
     {
-        
+        landmarkTarget = landmarkTargeted;
+        this.damage = damage;
     }
 }
