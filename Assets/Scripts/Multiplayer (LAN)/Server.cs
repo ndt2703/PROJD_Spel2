@@ -175,6 +175,13 @@ public class Server
             RequestAddSpecificCardToHand testRequest = (RequestAddSpecificCardToHand)requestToHandle;
             testRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleAddSpecificCardToHand(testRequest);
+        }       
+        if (requestToHandle is RequestOpponentDiscardCard)
+        {
+            //RequestAddSpecificCardToHand castedRequest = (RequestAddSpecificCardToHand)requestToHandle;
+            RequestOpponentDiscardCard testRequest = (RequestOpponentDiscardCard)requestToHandle;
+            testRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandleDiscardCardOpponent(testRequest);
         }
 
         GameAction errorMessage = new GameAction();
@@ -240,6 +247,17 @@ public class Server
         response.whichPlayer = requestToHandle.whichPlayer;
 
         GameActionDrawCard gameAction = new GameActionDrawCard(requestToHandle.amountToDraw);
+        
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandleDiscardCardOpponent(RequestOpponentDiscardCard requestToHandle)
+    {
+        ResponseOpponentDiscardCard response = new ResponseOpponentDiscardCard(requestToHandle.amountOfCardsToDiscard);
+        
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionOpponentDiscardCard gameAction = new GameActionOpponentDiscardCard(requestToHandle.amountOfCardsToDiscard);
         
         AddGameAction(response, gameAction);
         return response;

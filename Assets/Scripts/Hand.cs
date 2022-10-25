@@ -29,13 +29,15 @@ public class Hand : MonoBehaviour
         }
     }
 
-    public void DiscardRandomCardInHand()
+    public Card DiscardRandomCardInHand()
     {
         
         int cardIndex = Random.Range(0, cardsInHand.Count);
         CardDisplay cardDisplay = cardsInHand[cardIndex].GetComponent<CardDisplay>();
         Graveyard.Instance.AddCardToGraveyard(cardDisplay.card);
+        Card c = cardDisplay.card;
         cardDisplay.card = null;
+        return c;
     }
 
 

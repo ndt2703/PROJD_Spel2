@@ -73,9 +73,27 @@ public abstract class Card : ScriptableObject
 
         if (GameState.Instance.isOnline)
         {
-            RequestDiscardCard request = new RequestDiscardCard();
-            request.whichPlayer = ClientConnection.Instance.playerId;
-            ClientConnection.Instance.AddRequest(request, GameState.Instance.DrawCardRequest);
+            if(discardCardsYourself)
+            {
+                RequestDiscardCard request = new RequestDiscardCard();
+                request.whichPlayer = ClientConnection.Instance.playerId;
+                List<string> cardsDiscarded = new List<string>();
+                for (int i = 0; i < amountOfCardsToDiscard; i++)
+                {
+                    cardsDiscarded.Add( GameState.Instance.DiscardCard(discardCardsYourself));
+                }
+                request.listOfCardsDiscarded = cardsDiscarded; 
+
+                ClientConnection.Instance.AddRequest(request, GameState.Instance.RequestDiscardCard);
+            }
+            else
+            {
+                RequestOpponentDiscardCard request = new RequestOpponentDiscardCard();
+                request.whichPlayer = ClientConnection.Instance.playerId;
+                request.amountOfCardsToDiscard = amountOfCardsToDiscard;
+                ClientConnection.Instance.AddRequest(request, GameState.Instance.RequestDiscardCard);
+
+            }
         }
         else
         {

@@ -88,7 +88,16 @@ public class TestInternet : MonoBehaviour
             if (action is GameActionDiscardCard)
             {
                 print("skickar den en gameAction discard");
-                //GameActionDiscardCard theAction = (GameActionDiscardCard)action;
+
+
+                GameActionDiscardCard theAction = (GameActionDiscardCard)action;
+
+                foreach(string card in theAction.listOfCardsDiscarded)
+                {
+                    Graveyard.Instance.AddCardToGraveyard(register.cardRegister[card]);
+                    gameState.actionOfPlayer.handOpponent.cardsInHand[0].GetComponent<CardDisplay>().card = null;
+
+                }
 
                 //gameState.DiscardCard(theAction.listOfCardsDiscarded);
                 //Draw card opponents
@@ -164,6 +173,31 @@ public class TestInternet : MonoBehaviour
                 Graveyard.Instance.graveyardCardList.Add(cardPlayed);
 
                 gameState.actionOfPlayer.handOpponent.cardsInHand[0].GetComponent<CardDisplay>().card = null;
+                //bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
+
+
+                //print("tog den bort kort fran handen " + test);
+                //GameActionPlayCard theAction = (GameActionPlayCard)action;
+
+                //Draw card opponents
+
+            }    
+            if (action  is GameActionOpponentDiscardCard)
+            {
+
+
+
+                GameActionOpponentDiscardCard castedAction = (GameActionOpponentDiscardCard)action;
+                List<string> discardedCards = new List<string>();
+                for(int i = 0; i < castedAction.amountOfCardsToDiscard; i++)
+                {
+                    discardedCards.Add(gameState.DiscardCard(true));
+                }
+
+                RequestDiscardCard discardCardRequest = new RequestDiscardCard(discardedCards);
+
+                clientConnection.AddRequest(discardCardRequest, gameState.RequestDiscardCard);
+
                 //bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
 
 

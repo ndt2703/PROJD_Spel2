@@ -161,12 +161,14 @@ public class GameState : MonoBehaviour
         StartCoroutine(DrawCardOpponent(amountOfCardsToStartWith, null));
     }
 
-    public void DiscardCard(bool yourself)
+    public string DiscardCard(bool yourself)
     {
+        string discardedCard = "";
         if (yourself)
-            actionOfPlayer.handPlayer.DiscardRandomCardInHand();
+           discardedCard = actionOfPlayer.handPlayer.DiscardRandomCardInHand().name;
         else
-            actionOfPlayer.handOpponent.DiscardRandomCardInHand();
+            discardedCard = actionOfPlayer.handOpponent.DiscardRandomCardInHand().name;
+        return discardedCard;
     }
 
     public void DrawCardRequest(ServerResponse response)
@@ -474,9 +476,9 @@ public class GameState : MonoBehaviour
 
     public void RequestDiscardCard(ServerResponse response)
     {
-        ResponseDiscardCard castedResponse = (ResponseDiscardCard)response;
+        //ResponseDiscardCard castedResponse = (ResponseDiscardCard)response;
 
-        DiscardCard(castedResponse.listOfCardsDiscarded);
+       // DiscardCard(castedResponse.listOfCardsDiscarded);
     }
     public void DiscardCard(List<string> listOfCardsDiscarded)
     {
@@ -484,14 +486,12 @@ public class GameState : MonoBehaviour
     }
     public void RequestHeal(ServerResponse response)
     {
-        ResponseDiscardCard castedResponse = (ResponseDiscardCard)response;
+        //ResponseDiscardCard castedResponse = (ResponseDiscardCard)response;
 
-        DiscardCard(castedResponse.listOfCardsDiscarded);
+        //DiscardCard(castedResponse.listOfCardsDiscarded);
     }
-    public void Heal(List<Tuple<TargetInfo, int>> targetsToHeal)
-    {
+ 
 
-    }
     public void RequestDamage(ServerResponse response)
     {
      //   ResponseDiscardCard castedResponse = (ResponseDiscardCard)response;
@@ -499,10 +499,6 @@ public class GameState : MonoBehaviour
     //    DiscardCard(castedResponse.listOfCardsDiscarded);
     }
     public void RequestPlayCard(ServerResponse response)
-    {
-
-    }
-    public void Damage(List<Tuple<TargetInfo, int>> targetsToDamage)
     {
 
     }
