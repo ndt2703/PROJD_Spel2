@@ -15,7 +15,7 @@ public abstract class Champion : ScriptableObject
     public string passiveEffect;
     public bool healEachRound = false;
     public int landmarkEffect = 1;
-    [NonSerialized] public int tenExtraDamage;
+    
     private GameState gameState;
 
     public Champion(string name, int health, int maxHealth, int shield, Sprite artwork, string passiveEffect)
@@ -32,21 +32,7 @@ public abstract class Champion : ScriptableObject
 
     public virtual void TakeDamage(int damage)
     {
-        damage += gameState.damageRamp;
-
-        if (gameState.slaughterhouse > 0)
-        {
-            for (int i = 0; i < gameState.playerLandmarks.Count; i++)
-            {
-                damage += 10 * gameState.slaughterhouse;
-            }
-        }
-
-
-        if (tenExtraDamage > 0)
-        {
-            damage += (10 * tenExtraDamage);
-        }
+        
         if (shield == 0)
         {
             health -= damage;

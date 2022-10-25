@@ -13,12 +13,12 @@ public class DamageLandmark : Landmarks
 
     public override void PlaceLandmark()
     {
-        Target.tenExtraDamage += 1;
+        GameState.Instance.tenExtraDamage += 1;
         LandmarkTarget.tenExtraDamage += 1;
     }
     public override void LandmarkEffectTakeBack()
     {
-        Target.tenExtraDamage -= 1;
+        GameState.Instance.tenExtraDamage -= 1;
         LandmarkTarget.tenExtraDamage -= 1;
     }
 
