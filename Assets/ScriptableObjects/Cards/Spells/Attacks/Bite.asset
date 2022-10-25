@@ -20,7 +20,7 @@ MonoBehaviour:
   tag: Spell
   amountOfCardsToDraw: 0
   amountOfCardsToDiscard: 1
-  discardCardsYourself: 1
+  discardCardsYourself: 0
   damage: 20
   destroyLandmark: 0
   damageEqualsToYourChampionHP: 0
