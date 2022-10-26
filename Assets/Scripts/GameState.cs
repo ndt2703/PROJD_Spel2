@@ -130,20 +130,88 @@ public class GameState : MonoBehaviour
         }
 
         TargetAndAmount tAA = null;
-
+        TargetInfo tI = null;
+        ListEnum listEnum = new ListEnum();
+         int index = 0;
+        // WIP
         if (cardUsed.Target != null)
-            tAA = new TargetAndAmount(cardUsed.Target, damage);
+        {                 
+            index = LookForChampionIndex(cardUsed, opponentChampions);
+            if (index == -1)
+            {
+                index = LookForChampionIndex(cardUsed, playerChampions);
+                listEnum.myChampions = true;                 
+            }               
+            else
+            {
+                listEnum.opponentChampions = true;                   
+            }
+        }
         else if (cardUsed.LandmarkTarget != null)
-            tAA = new TargetAndAmount(cardUsed.LandmarkTarget, damage);
+        {
+
+
+            index = LookForLandmarkIndex(cardUsed, opponentLandmarks);
+            if (index == -1)
+            {
+                index = LookForLandmarkIndex(cardUsed, playerLandmarks);
+                listEnum.myLandmarks = true;
+            }
+            else
+            {
+                listEnum.opponentLandmarks = true;
+            }
+        }
+        tI = new TargetInfo(listEnum, index);
+        tAA = new TargetAndAmount(tI, damage);
         DealDamage(tAA);
+    }
+
+    public int LookForChampionIndex(Card cardUsed, List<AvailableChampion> champ )
+    {
+        for (int i = 0; i < champ.Count; i++)
+        {
+            if (champ[i] == cardUsed.Target)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public int LookForLandmarkIndex(Card cardUsed, List<Landmarks> landmarks )
+    {
+        for (int i = 0; i < landmarks.Count; i++)
+        {
+            if (landmarks[i] == cardUsed.Target)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void DealDamage(TargetAndAmount targetAndAmount) // TargetAndAmount
     {
-        if (targetAndAmount.championTarget != null)
-            targetAndAmount.championTarget.TakeDamage(targetAndAmount.damage);
-        else if (targetAndAmount.landmarkTarget != null)
-            targetAndAmount.landmarkTarget.TakeDamage(targetAndAmount.damage);
+
+        ListEnum lE =  targetAndAmount.targetInfo.whichList;
+        
+        if(lE.myChampions)
+        {
+            playerChampions[targetAndAmount.targetInfo.index].champion.TakeDamage(targetAndAmount.amount);
+        }
+        if(lE.opponentChampions)
+        {
+            opponentChampions[targetAndAmount.targetInfo.index].champion.TakeDamage(targetAndAmount.amount);
+        }
+        if(lE.myLandmarks)
+        {
+            playerLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
+        }
+        if(lE.opponentLandmarks)
+        {
+            opponentLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
+        }
+
     }
 
     private void AddChampions(List<AvailableChampion> champions)

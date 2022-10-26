@@ -116,8 +116,25 @@ public class TestInternet : MonoBehaviour
             }
             if (action is GameActionDamage)
             {
+                GameActionDamage castedAction = (GameActionDamage)action;
 
-
+             /*   for(int i = 0; i < castedAction.targetsToDamage.Count; i++)
+                {
+                    //  GameState.Instance.DealDamage(castedAction.targetsToDamage[i]);
+                }
+               */ 
+                foreach(TargetAndAmount targetAndAmount in castedAction.targetsToDamage)
+                {
+                    if (targetAndAmount.targetInfo.whichList.opponentChampions)
+                    {
+                        GameState.Instance.playerChampions[targetAndAmount.targetInfo.index].champion.TakeDamage(targetAndAmount.amount);
+                    }
+                    if (targetAndAmount.targetInfo.whichList.opponentLandmarks)
+                    {
+                        GameState.Instance.playerLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
+                    }
+                }
+                
                 print("skickar den en gameAction damage");
                 //GameActionDamage theAction = (GameActionDamage)action;
 

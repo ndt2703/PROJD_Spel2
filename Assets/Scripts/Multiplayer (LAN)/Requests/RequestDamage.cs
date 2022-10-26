@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class RequestDamage : ClientRequest
 {
-    public List<Tuple<TargetInfo, int>> targetsToDamage = new List<Tuple<TargetInfo, int>>();
+    public List<TargetAndAmount> targetsToDamage = new List<TargetAndAmount>;
 
     public RequestDamage()
     {   
         
         Type = 6; 
     }
-    public RequestDamage(List<Tuple<TargetInfo,int>> targetsToDamage)
+    public RequestDamage(List<TargetAndAmount> targetsToDamage)
     {
         this.targetsToDamage = targetsToDamage;
         Type = 6; 

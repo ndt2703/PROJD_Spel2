@@ -292,7 +292,7 @@ public class Server
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
-        GameActionDamage gameAction = new GameActionDamage(new List<Tuple<TargetInfo, int>>(requestToHandle.targetsToDamage));
+        GameActionDamage gameAction = new GameActionDamage(new  List<TargetAndAmount>(requestToHandle.targetsToDamage));
 
         AddGameAction(response, gameAction);
         return response;
