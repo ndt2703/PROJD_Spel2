@@ -21,8 +21,8 @@ public class Graverobber : Spells
             int damage = 0;
             for (int i = 0; i < topCardsInGraveyard;i++)
             {
-                if (graveyard.graveyardCardList[i] == null) return;
-                Card cardToCheck = graveyard.graveyardCardList[i];
+                if (graveyard.graveyardPlayer[i] == null) return;
+                Card cardToCheck = graveyard.graveyardPlayer[i];
                 if (cardToCheck.GetType().Equals("AttackSpell"))
                 {
                     damage += 20;

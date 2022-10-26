@@ -24,7 +24,7 @@ public class OpponentLandmarks : MonoBehaviour
                 if (gameState.opponentLandmarks[i] == null)
                 {
                     landmarkDisplays[i].card = null;
-                    return;
+                    continue;
                 }
                 if (landmarkDisplays[i].card != null) continue;
                 

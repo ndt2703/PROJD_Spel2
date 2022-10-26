@@ -75,7 +75,7 @@ public class TestInternet : MonoBehaviour
                 
                 if(theAction.amountToDrawOpponent > 0)
                 {
-                    gameState.DrawCard(theAction.amountToDrawOpponent); 
+                    gameState.DrawCard(theAction.amountToDrawOpponent, null); 
                 }
                 if(theAction.amountToDraw > 0)
                 {
@@ -171,10 +171,10 @@ public class TestInternet : MonoBehaviour
 
                 if (castedAction.cardAndPlacement.placement.whichList.myGraveyard)
                 {
-                    Graveyard.Instance.graveyardCardList.Add(cardPlayed);
+                    Graveyard.Instance.graveyardPlayer.Add(cardPlayed);
                 }
 
-                Graveyard.Instance.graveyardCardList.Add(cardPlayed);
+                Graveyard.Instance.graveyardPlayer.Add(cardPlayed);
 
                 gameState.actionOfPlayer.handOpponent.cardsInHand[0].GetComponent<CardDisplay>().card = null;
                 //bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);

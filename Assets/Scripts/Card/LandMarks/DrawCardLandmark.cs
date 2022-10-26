@@ -14,7 +14,7 @@ public class DrawCardLandmark : Landmarks
 
     public override void PlaceLandmark()
     {
-        GameState.Instance.drawCardsEachTurn = true;
+        GameState.Instance.drawExtraCardsEachTurn = true;
 
         if (destroyOnRoundTen)
         {
@@ -26,7 +26,7 @@ public class DrawCardLandmark : Landmarks
     {
         base.LandmarkEffectTakeBack();
 
-        GameState.Instance.drawCardsEachTurn = false;
+        GameState.Instance.drawExtraCardsEachTurn = false;
 
         if (destroyOnRoundTen)
         {

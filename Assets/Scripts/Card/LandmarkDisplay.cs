@@ -22,7 +22,11 @@ public class LandmarkDisplay : MonoBehaviour
 
     private void UpdateTextOnCard()
     {
-        if (card == null) return;
+        if (card == null)
+        {
+            artworkSpriteRenderer.sprite = null;
+            return;
+        }
 
         artworkSpriteRenderer.sprite = card.artwork;
     }
@@ -51,15 +55,12 @@ public class LandmarkDisplay : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (card == null)
-            artworkSpriteRenderer.sprite = null;
-
         if (gameState.amountOfTurns == 10)
         {
             if (card.cardName.Equals("Mysterious Forest"))
             {
                 DestroyLandmark();
-                gameState.DrawCard(5);
+                gameState.DrawCard(5, null);
             }
         }
         UpdateTextOnCard();
