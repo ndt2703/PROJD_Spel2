@@ -9,11 +9,41 @@ public class ArmorEffect : MonoBehaviour
 
     private MaterialPropertyBlock m_PropetyBlock;
     private int currentArmor;
+    private bool isDamaging;
+    private bool timeToGo;
+    private float targetDiss;
+    private float currentDiss;
 
     private void Start()
     {
         m_PropetyBlock = new MaterialPropertyBlock();
         currentArmor = 0;
+        currentDiss=targetDiss = 1f;
+    }
+    private void Update()
+    {
+        if (isDamaging)
+        {
+            //the propety health starts with 1, when it is 0, armor disappears (0min,1max,1 default)
+            DamageArmor(10);
+            //from 1-0,9
+            currentDiss = Mathf.Lerp(currentDiss,targetDiss, Time.deltaTime);
+            m_PropetyBlock.SetFloat("_HealthC", currentDiss);
+            armorMaterial.SetPropertyBlock(m_PropetyBlock);
+            if(currentArmor==100 && m_PropetyBlock.GetFloat("_HealthC") <= 0.1f)
+            {
+                m_PropetyBlock.SetFloat("_HealthC", 0f);
+                armorMaterial.SetPropertyBlock(m_PropetyBlock);
+                isDamaging = false;
+                timeToGo = true;
+            
+            }
+            if (timeToGo)
+            {
+                Destroy(gameObject);
+            }
+           
+        }
     }
     // Start is called before the first frame update
     private void OnEnable()
@@ -21,51 +51,29 @@ public class ArmorEffect : MonoBehaviour
         VFXManager.OnArmorTriggrt += TriggerArmor;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
+        
         VFXManager.OnArmorTriggrt -= TriggerArmor;
+        Debug.Log("Lucky");
     }
-
-
 
 
     void TriggerArmor()
     {
         Debug.Log("aaaaaaaaaa");
-        //The propety Value statrs with -1, when the value is 0, armor disappears
-        //step 1, stop rolling effect
+        isDamaging = true;
+        //only needs to stop this once
         m_PropetyBlock.SetFloat("_T_ScrollSpeed", 0f);
-        m_PropetyBlock.SetFloat("_HealthC", 1f);
-
-       
-
-        //Debug.Log(m_PropetyBlock.GetFloat("_HealthC"));
-        for (int i = 1; i <= maxArmor; i++)
-        {
-
-          
-            DamageArmor(i * 10);
-            
-            //step 2 damage the armor 
-               //HealthC startas with 1 and armor disappears when the value is 0 (min 0, max 1, default 1)
-            m_PropetyBlock.SetFloat("_HealthC", Mathf.Lerp( m_PropetyBlock.GetFloat("_HealthC"), (float)((maxArmor-currentArmor) / maxArmor), Time.deltaTime));
-            //Debug.Log(m_PropetyBlock.GetFloat("_HealthC"));
-            armorMaterial.SetPropertyBlock(m_PropetyBlock);
-
-        }
-      
-        
-
-
-
     }
 
     private void DamageArmor(int dmg)
     {
-        SetArmor(Mathf.Min(dmg, 100));
+        SetArmor(Mathf.Min(currentArmor+dmg, 100));
     }
     private void SetArmor(int value)
     {
         currentArmor = value;
+        targetDiss = (float)(maxArmor-currentArmor) / maxArmor;
     }
 }

@@ -79,7 +79,7 @@ Material:
     - _DstBlend: 10
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
-    - _HealthC: 0.38
+    - _HealthC: 1
     - _OpaqueCullMode: 2
     - _RenderQueueType: 4
     - _ScrollSpeed: 0
@@ -95,7 +95,7 @@ Material:
     - _StencilWriteMaskGBuffer: 14
     - _StencilWriteMaskMV: 40
     - _SurfaceType: 1
-    - _T_ScrollSpeed: 0
+    - _T_ScrollSpeed: 0.02
     - _T_Tilling: 0.14
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
