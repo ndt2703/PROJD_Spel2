@@ -485,13 +485,12 @@ public class GameState : MonoBehaviour
             isItMyTurn = false;
             if (!didIStart)
             {
-                //DrawCard(1, null);
                 if (drawExtraCardsEachTurn)
                 {
                     DrawCard(1, null);
                 }
-                amountOfTurns++;
-                actionOfPlayer.playerMana++;
+                //amountOfTurns++;
+                //actionOfPlayer.playerMana++;
                 opponentChampion.champion.EndStep();
                 playerChampion.champion.UpKeep();
             }
