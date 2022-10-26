@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RequestDamage : ClientRequest
 {
-    public List<TargetAndAmount> targetsToDamage = new List<TargetAndAmount>;
+    public List<TargetAndAmount> targetsToDamage = new List<TargetAndAmount>();
 
     public RequestDamage()
     {   
