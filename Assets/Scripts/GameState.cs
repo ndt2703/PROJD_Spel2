@@ -104,7 +104,7 @@ public class GameState : MonoBehaviour
         {
             RequestEndTurn request = new RequestEndTurn();
             request.whichPlayer = ClientConnection.Instance.playerId;
-
+            print("asdasdasd");
             ClientConnection.Instance.AddRequest(request, RequestEndTurn);
         }
 
