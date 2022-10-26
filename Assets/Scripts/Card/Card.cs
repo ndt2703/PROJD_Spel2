@@ -49,10 +49,11 @@ public abstract class Card : ScriptableObject
             placement.whichList = tempEnum;
             placement.index = 100;
         }
-        RequestPlayCard playCardRequest = new RequestPlayCard(cardPlacement);
-        playCardRequest.whichPlayer = ClientConnection.Instance.playerId;
+
         if (GameState.Instance.isOnline)
         {
+            RequestPlayCard playCardRequest = new RequestPlayCard(cardPlacement);
+            playCardRequest.whichPlayer = ClientConnection.Instance.playerId;
             ClientConnection.Instance.AddRequest(playCardRequest, GameState.Instance.RequestPlayCard);
         }
 

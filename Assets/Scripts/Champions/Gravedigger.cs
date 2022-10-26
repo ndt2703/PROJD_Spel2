@@ -11,7 +11,6 @@ public class Gravedigger : Champion
 	public override void EndStep()
 	{
 		base.EndStep();
-		Card card = FindObjectOfType<Graveyard>().RandomizeCardFromGraveyard();
-		// Add the card to playerhand
+		FindObjectOfType<Graveyard>().RandomizeCardFromGraveyard();
 	}
 }

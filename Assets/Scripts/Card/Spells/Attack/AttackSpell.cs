@@ -13,20 +13,21 @@ public class AttackSpell : Spells
 
     public override void PlaySpell()
     {
+        int dmg = GameState.Instance.playerChampion.champion.DealDamageAttack(damage);
         if (damageEqualsToYourChampionHP)
             DamageAsYourChampionHP();
         if (Target != null)
-            Target.TakeDamage(damage);
+            Target.TakeDamage(dmg);
 
         if (LandmarkTarget != null)
-            LandmarkTarget.TakeDamage(damage);
+            LandmarkTarget.TakeDamage(dmg);
 
         if (destroyLandmark)
             GameState.Instance.DestroyLandmark();
         if (damageToBothActiveChampions)
         { // Funkar inte då inte någon åtkomst till ActiveChampion skriptet
-            GameState.Instance.playerChampion.champion.TakeDamage(damage);
-            GameState.Instance.opponentChampion.champion.TakeDamage(damage);
+            GameState.Instance.playerChampion.champion.TakeDamage(dmg);
+            GameState.Instance.opponentChampion.champion.TakeDamage(dmg);
         }
             
 

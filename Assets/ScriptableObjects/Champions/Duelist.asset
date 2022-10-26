@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Duelist
   m_EditorClassIdentifier: 
   name: Duelist
-  health: 100
+  health: 80
   maxHealth: 120
   shield: 0
   artwork: {fileID: 21300000, guid: 884e2b9ad119f034aaf796444eeda07d, type: 3}

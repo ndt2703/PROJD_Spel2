@@ -322,14 +322,23 @@ public class GameState : MonoBehaviour
 
         TriggerUpKeep(response);
         // spelaren med priority upkeep effects triggrar aka UpkeepEffects(Player player2)
+        EndTurn();
         hasPriority = false;
     }
 
     public void TriggerEndStep(ServerResponse response)
     {
         print("Den triggrar endstep");
-        //Trigger Champion EndStep
-        //Trigger Landmark EndStep
+        playerChampion.champion.EndStep();
+        //opponentChampion.champion.EndStep();
+        foreach (Landmarks landmark in playerLandmarks)
+        {
+            //Trigger landmark endstep
+        }
+        foreach (Landmarks landmark in opponentLandmarks)
+        {
+            //Trigger landmark endstep opponent
+        }
     }
 
 
@@ -380,14 +389,17 @@ public class GameState : MonoBehaviour
 
     public void TriggerUpKeep(ServerResponse response)
     {
-        //Trigger Champion Upkeep
-        //Trigger Landmark Upkeep
-
         print("Den triggrar upkeep");
-        EndTurn();
-
-        //Gain a mana
-        //Draw a card
+        playerChampion.champion.UpKeep();
+        //opponentChampion.champion.UpKeep();
+        foreach (Landmarks landmark in playerLandmarks)
+        {
+            //Trigger landmark endstep
+        }
+        foreach (Landmarks landmark in opponentLandmarks)
+        {
+            //Trigger landmark endstep opponent
+        }
     }
 
     public void OnChampionDeath(ServerResponse response)
