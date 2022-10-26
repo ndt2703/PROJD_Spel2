@@ -46,6 +46,7 @@ public class GameState : MonoBehaviour
     [NonSerialized] public int damageRamp = 0;
     [NonSerialized] public int slaughterhouse = 0;
     [NonSerialized] public int factory = 0;
+    [NonSerialized] public int landmarkEffect = 1;
 
     private static GameState instance;
     public static GameState Instance { get; set; }
@@ -224,6 +225,35 @@ public class GameState : MonoBehaviour
             ClientConnection.Instance.AddRequest(request, RequestDamage);
         }
     }
+
+    public void CalculateHealing(int amount, Card cardUsed)
+    {
+        int healingToDo = 0;
+        healingToDo += amount * landmarkEffect;
+
+        TargetAndAmount tAA = null;
+        TargetInfo tI = null;
+        ListEnum listEnum = new ListEnum();
+        int index = 0;
+        // WIP
+        if (cardUsed.Target != null)
+        {
+            index = LookForChampionIndex(cardUsed, opponentChampions);
+            if (index == -1)
+            {
+                index = LookForChampionIndex(cardUsed, playerChampions);
+                listEnum.myChampions = true;
+            }
+            else
+            {
+                listEnum.opponentChampions = true;
+            }
+        }
+        tI = new TargetInfo(listEnum, index);
+        tAA = new TargetAndAmount(tI, healingToDo);
+        HealTarget(tAA);
+    }
+
     public void HealTarget(TargetAndAmount targetAndAmount) // TargetAndAmount
     {
 

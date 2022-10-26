@@ -18,7 +18,7 @@ public class HealChampion : Spells
         }
         else
         {
-            Target.HealChampion(amountToHeal);
+            GameState.Instance.CalculateHealing(amountToHeal, this);
         }
     }
 }
