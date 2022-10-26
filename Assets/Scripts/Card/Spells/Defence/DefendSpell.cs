@@ -19,7 +19,7 @@ public class DefendSpell : Spells
         }
         else
         {
-            Target.GainShield(defence);
+            GameState.Instance.CalculateShield(defence,this);
         }       
     }
 }

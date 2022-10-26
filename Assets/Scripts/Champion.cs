@@ -76,7 +76,7 @@ public abstract class Champion : ScriptableObject
     }
     public virtual void GainShield(int amountToBlock)
     {
-        //shield += amountToBlock * landmarkEffect;
+        shield += amountToBlock;
     }
 
     public virtual void DrawCard() { }
