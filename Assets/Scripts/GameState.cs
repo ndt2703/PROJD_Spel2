@@ -268,14 +268,6 @@ public class GameState : MonoBehaviour
         {
             opponentChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
         }
-        if(lE.myLandmarks)
-        {
-            playerLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
-        }
-        if(lE.opponentLandmarks)
-        {
-            opponentLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
-        }
 
         if(isOnline)
         {
