@@ -75,7 +75,7 @@ public class TestInternet : MonoBehaviour
                 
                 if(theAction.amountToDrawOpponent > 0)
                 {
-                    gameState.DrawCard(theAction.amountToDrawOpponent); 
+                    gameState.DrawCard(theAction.amountToDrawOpponent, null); 
                 }
                 if(theAction.amountToDraw > 0)
                 {
@@ -90,7 +90,11 @@ public class TestInternet : MonoBehaviour
                 print("skickar den en gameAction discard");
 
 
+
+
                 GameActionDiscardCard theAction = (GameActionDiscardCard)action;
+
+
 
                 foreach(string card in theAction.listOfCardsDiscarded)
                 {
@@ -167,10 +171,10 @@ public class TestInternet : MonoBehaviour
 
                 if (castedAction.cardAndPlacement.placement.whichList.myGraveyard)
                 {
-                    Graveyard.Instance.graveyardCardList.Add(cardPlayed);
+                    Graveyard.Instance.graveyardPlayer.Add(cardPlayed);
                 }
 
-                Graveyard.Instance.graveyardCardList.Add(cardPlayed);
+                Graveyard.Instance.graveyardPlayer.Add(cardPlayed);
 
                 gameState.actionOfPlayer.handOpponent.cardsInHand[0].GetComponent<CardDisplay>().card = null;
                 //bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
@@ -183,7 +187,7 @@ public class TestInternet : MonoBehaviour
 
             }    
             if (action  is GameActionOpponentDiscardCard)
-            {
+            {   
 
                 print("Game action opponent discard card");
 
@@ -191,13 +195,13 @@ public class TestInternet : MonoBehaviour
                 List<string> discardedCards = new List<string>();
                 for(int i = 0; i < castedAction.amountOfCardsToDiscard; i++)
                 {
-                    discardedCards.Add(gameState.DiscardCard(true));
+                    discardedCards.Add(gameState.DiscardWhichCard(true));
                 }
 
                 RequestDiscardCard discardCardRequest = new RequestDiscardCard(discardedCards);
                 discardCardRequest.whichPlayer = ClientConnection.Instance.playerId;
                 print("vad ar which player " + discardCardRequest.whichPlayer);
-                clientConnection.AddRequest(discardCardRequest, gameState.RequestDiscardCard);
+                ClientConnection.Instance.AddRequest(discardCardRequest, gameState.RequestDiscardCard);
 
                 //bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
 

@@ -10,24 +10,25 @@ public class AttackSpell : Spells
     public bool damageEqualsToYourChampionHP = false;
     public bool damageToBothActiveChampions = false;
 
-
+    private GameState gameState;
     public override void PlaySpell()
     {
-        int dmg = GameState.Instance.playerChampion.champion.DealDamageAttack(damage);
+        gameState = GameState.Instance;
         if (damageEqualsToYourChampionHP)
             DamageAsYourChampionHP();
-        if (Target != null)
-            Target.TakeDamage(dmg);
-
-        if (LandmarkTarget != null)
-            LandmarkTarget.TakeDamage(dmg);
+        if (Target != null || LandmarkTarget)
+            gameState.CalculateBonusDamage(damage, this);
 
         if (destroyLandmark)
-            GameState.Instance.DestroyLandmark();
+            gameState.DestroyLandmark();
         if (damageToBothActiveChampions)
-        { // Funkar inte då inte någon åtkomst till ActiveChampion skriptet
-            GameState.Instance.playerChampion.champion.TakeDamage(dmg);
-            GameState.Instance.opponentChampion.champion.TakeDamage(dmg);
+        { 
+            if (Target == gameState.playerChampion.champion)
+                Target = gameState.opponentChampion.champion;
+            else if (Target == gameState.opponentChampion.champion)
+                Target = gameState.playerChampion.champion;
+
+            gameState.CalculateBonusDamage(damage, this);
         }
             
 

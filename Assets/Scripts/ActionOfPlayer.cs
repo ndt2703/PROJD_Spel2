@@ -43,7 +43,7 @@ public class ActionOfPlayer : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
-            GameState.Instance.DrawCard(1);
+            GameState.Instance.DrawCard(1, null);
         }
     }
 

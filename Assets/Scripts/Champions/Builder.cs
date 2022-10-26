@@ -26,28 +26,55 @@ public class Builder : Champion
 	public override void AmountOfCardsPlayed()
 	{
 		base.AmountOfCardsPlayed();
-		if (true /* if card played is a landmark */)
+
+		landmarkCount++;
+		passiveEffect = landmarkCount + "/" + landmarkNeeded;
+		if (landmarkCount >= landmarkNeeded)
 		{
-			landmarkCount++;
-			passiveEffect = landmarkCount + "/" + landmarkNeeded;
-			if (landmarkCount >= landmarkNeeded)
-			{
-				//every card in hand 
-				//minus two
-			}
-		}
+			LowerCostOfCardsInHand();
+
+            //every card in hand 
+            //minus two
+        }
+		
 	}
+
+	public void LowerCostOfCardsInHand()
+	{
+        foreach (GameObject gO in ActionOfPlayer.Instance.handPlayer.cardsInHand)
+        {
+			Card card = gO.GetComponent<CardDisplay>().card;
+            card.manaCost -= 2;
+			if (card.manaCost < 0)
+			{
+				card.manaCost = 0;
+            }
+        }
+    }
+
+	public void RaiseCostOfCardsInHand()
+	{
+        foreach (GameObject gO in ActionOfPlayer.Instance.handPlayer.cardsInHand)
+        {
+            Card card = gO.GetComponent<CardDisplay>().card;
+            card.manaCost += 2;
+            if (card.manaCost > card.maxManaCost)
+            {
+                card.manaCost = card.maxManaCost;
+
+            }
+        }
+    }
 
 	public override void WhenLandmarksDie()
 	{
 		base.WhenLandmarksDie();
-		if (landmarkCount == landmarkNeeded)
-		{
-			//every card in hand 
-			//plus two
-			cardCostReduce += 0;
-		}
 		landmarkCount--;
+		if (landmarkCount < landmarkNeeded)
+		{
+			RaiseCostOfCardsInHand();
+
+        }
 		passiveEffect = landmarkCount + "/" + landmarkNeeded;
 
 	}

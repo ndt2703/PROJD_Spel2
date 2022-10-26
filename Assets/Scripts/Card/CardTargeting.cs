@@ -103,13 +103,14 @@ public class CardTargeting : MonoBehaviour
         switch (card.tag)
         {
             case "DestroyLandmark":
+                card.PlayCard();
                 graveyard.AddCardToGraveyard(card);
-                landmarkSlot.card = null;
+                cardDisplay.card = null;
                 return;
             case "Spell":
                 card.LandmarkTarget = landmarkSlot;
 
-                graveyard.AddCardToGraveyard(card);
+                Graveyard.Instance.AddCardToGraveyard(card);
                 card.PlayCard();
                 cardDisplay.card = null;
                 return;
