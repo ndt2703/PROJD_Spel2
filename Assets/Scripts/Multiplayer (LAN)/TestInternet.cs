@@ -195,7 +195,7 @@ public class TestInternet : MonoBehaviour
                 List<string> discardedCards = new List<string>();
                 for(int i = 0; i < castedAction.amountOfCardsToDiscard; i++)
                 {
-                    discardedCards.Add(gameState.DiscardCard(true));
+                    discardedCards.Add(gameState.DiscardWhichCard(true));
                 }
 
                 RequestDiscardCard discardCardRequest = new RequestDiscardCard(discardedCards);

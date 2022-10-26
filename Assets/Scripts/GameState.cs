@@ -196,15 +196,7 @@ public class GameState : MonoBehaviour
         StartCoroutine(DrawCardOpponent(amountOfCardsToStartWith, null));
     }
 
-    public string DiscardCard(bool yourself)
-    {
-        string discardedCard = "";
-        if (yourself)
-           discardedCard = actionOfPlayer.handPlayer.DiscardRandomCardInHand().name;
-        else
-            discardedCard = actionOfPlayer.handOpponent.DiscardRandomCardInHand().name;
-        return discardedCard;
-    }
+  
 
     public void DrawCardRequest(ServerResponse response)
     {
@@ -212,11 +204,6 @@ public class GameState : MonoBehaviour
 
         DrawCard(castedReponse.amountToDraw, null);
     }
-
-    public void DrawCard(int amountToDraw, Card specificCard)
-    {
-		StartCoroutine(DrawCardPlayer(amountToDraw, specificCard));
-	}
 
     public void DrawRandomCardFromGraveyard(int amountOfCards)
     {
@@ -254,6 +241,67 @@ public class GameState : MonoBehaviour
                 opponentLandmarks[random] = null;
                 break;
             }
+        }
+    }
+
+    public string DiscardWhichCard(bool yourself)
+    {
+        string discardedCard = "";
+        if (yourself)
+            discardedCard = actionOfPlayer.handPlayer.DiscardRandomCardInHand().name;
+        else
+            discardedCard = actionOfPlayer.handOpponent.DiscardRandomCardInHand().name;
+        return discardedCard;
+    }
+
+    public void DiscardCard(int amountToDiscard, bool discardCardsYourself)
+    {
+
+        if (isOnline)
+        {
+            if (discardCardsYourself)
+            {
+                RequestDiscardCard request = new RequestDiscardCard();
+                request.whichPlayer = ClientConnection.Instance.playerId;
+                List<string> cardsDiscarded = new List<string>();
+                for (int i = 0; i < amountToDiscard; i++)
+                {
+                    cardsDiscarded.Add(DiscardWhichCard(discardCardsYourself));
+                }
+                request.listOfCardsDiscarded = cardsDiscarded;
+
+                ClientConnection.Instance.AddRequest(request, RequestDiscardCard);
+            }
+            else
+            {
+                RequestOpponentDiscardCard requesten = new RequestOpponentDiscardCard();
+                requesten.whichPlayer = ClientConnection.Instance.playerId;
+                requesten.amountOfCardsToDiscard = amountToDiscard;
+                ClientConnection.Instance.AddRequest(requesten, RequestDiscardCard);
+
+            }
+        }
+        else
+        {
+            for (int i = 0; i < amountToDiscard; i++)
+            {
+                DiscardWhichCard(discardCardsYourself);
+            }
+        }
+    }
+
+    public void DrawCard(int amountToDraw, Card specificCard)
+    {
+        //  ActionOfPlayer.Instance.DrawCard(amountOfCardsToDraw);
+        if (isOnline)
+        {
+            RequestDrawCard request = new RequestDrawCard(amountToDraw);
+            request.whichPlayer = ClientConnection.Instance.playerId;
+            ClientConnection.Instance.AddRequest(request, DrawCardRequest);
+        }
+        else
+        {
+            StartCoroutine(DrawCardPlayer(amountToDraw, specificCard));
         }
     }
 
@@ -388,7 +436,6 @@ public class GameState : MonoBehaviour
 
         TriggerUpKeep(response);
         // spelaren med priority upkeep effects triggrar aka UpkeepEffects(Player player2)
-        EndTurn();
         hasPriority = false;
     }
 
@@ -405,6 +452,7 @@ public class GameState : MonoBehaviour
         {
             //Trigger landmark endstep opponent
         }
+        EndTurn();
     }
 
 

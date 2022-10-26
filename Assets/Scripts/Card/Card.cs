@@ -64,64 +64,15 @@ public abstract class Card : ScriptableObject
         
         if (amountOfCardsToDraw != 0)
         {
-            DrawCard();
+            GameState.Instance.DrawCard(amountOfCardsToDraw, null);
         }
         if (amountOfCardsToDiscard != 0)
         {
-            DiscardCard();
+            GameState.Instance.DiscardCard(amountOfCardsToDiscard, discardCardsYourself);
         }
     }
 
-    private void DiscardCard()
-    {
-
-        if (GameState.Instance.isOnline)
-        {
-            if(discardCardsYourself)
-            {
-                RequestDiscardCard request = new RequestDiscardCard();
-                request.whichPlayer = ClientConnection.Instance.playerId;
-                List<string> cardsDiscarded = new List<string>();
-                for (int i = 0; i < amountOfCardsToDiscard; i++)
-                {
-                    cardsDiscarded.Add( GameState.Instance.DiscardCard(discardCardsYourself));
-                }
-                request.listOfCardsDiscarded = cardsDiscarded; 
-
-                ClientConnection.Instance.AddRequest(request, GameState.Instance.RequestDiscardCard);
-            }
-            else
-            {
-                RequestOpponentDiscardCard requesten = new RequestOpponentDiscardCard();
-                requesten.whichPlayer = ClientConnection.Instance.playerId;
-                requesten.amountOfCardsToDiscard = amountOfCardsToDiscard;
-                ClientConnection.Instance.AddRequest(requesten, GameState.Instance.RequestDiscardCard);
-
-            }
-        }
-        else
-        {
-            for (int i = 0; i < amountOfCardsToDiscard; i++)
-            {
-                GameState.Instance.DiscardCard(discardCardsYourself);
-            }
-        }
-    }
-
-    private void DrawCard()
-    {
-        //  ActionOfPlayer.Instance.DrawCard(amountOfCardsToDraw);
-        if (GameState.Instance.isOnline)
-        {
-            RequestDrawCard request = new RequestDrawCard(amountOfCardsToDraw);
-            request.whichPlayer = ClientConnection.Instance.playerId;
-            ClientConnection.Instance.AddRequest(request, GameState.Instance.DrawCardRequest);
-        }
-        else
-        {
-            GameState.Instance.DrawCard(amountOfCardsToDraw, null);
-        }
-    }
+    
 
 
 }
