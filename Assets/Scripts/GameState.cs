@@ -511,6 +511,7 @@ public class GameState : MonoBehaviour
                 actionOfPlayer.playerMana++;
                 playerChampion.champion.EndStep();
                 opponentChampion.champion.UpKeep();
+                actionOfPlayer.currentMana = actionOfPlayer.playerMana;
             }
         }
         cardsPlayedThisTurn.Clear();
