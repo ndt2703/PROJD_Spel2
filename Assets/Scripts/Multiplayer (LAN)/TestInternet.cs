@@ -154,9 +154,21 @@ public class TestInternet : MonoBehaviour
             if (action  is GameActionShield)
             {
                 print("skickar den en gameAction Shield");
-                //GameActionDamage theAction = (GameActionDamage)action;
 
-                //Draw card opponents
+                GameActionShield castedAction = (GameActionShield)action;
+
+                foreach (TargetAndAmount targetAndAmount in castedAction.targetsToShield)
+                {
+                    if (targetAndAmount.targetInfo.whichList.opponentChampions)
+                    {
+                        GameState.Instance.playerChampions[targetAndAmount.targetInfo.index].champion.GainShield(targetAndAmount.amount);
+                    }
+
+                    if (targetAndAmount.targetInfo.whichList.myChampions)
+                    {
+                        GameState.Instance.opponentChampions[targetAndAmount.targetInfo.index].champion.GainShield(targetAndAmount.amount);
+                    }
+                }
 
             }            
             if (action  is GameActionSwitchActiveChamp)
