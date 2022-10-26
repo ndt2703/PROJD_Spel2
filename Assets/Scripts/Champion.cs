@@ -67,10 +67,12 @@ public abstract class Champion : ScriptableObject
 
     public virtual void HealChampion(int amountToHeal)
     {
+        health += amountToHeal;
         if (health > maxHealth)
         {
             health = maxHealth;
         }
+
     }
     public virtual void GainShield(int amountToBlock)
     {
