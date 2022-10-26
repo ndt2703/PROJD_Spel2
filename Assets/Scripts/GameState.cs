@@ -299,6 +299,7 @@ public class GameState : MonoBehaviour
             request.whichPlayer = ClientConnection.Instance.playerId;
             print("Should draw card");
             ClientConnection.Instance.AddRequest(request, DrawCardRequest);
+            StartCoroutine(DrawCardPlayer(amountToDraw, specificCard));
         }
         else
         {
