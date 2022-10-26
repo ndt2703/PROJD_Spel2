@@ -192,7 +192,7 @@ public class GameState : MonoBehaviour
 
     private void DrawStartingCards()
     {
-        DrawCard(amountOfCardsToStartWith, null);
+        StartCoroutine(DrawCardPlayer(amountOfCardsToStartWith, null));
         StartCoroutine(DrawCardOpponent(amountOfCardsToStartWith, null));
     }
 
