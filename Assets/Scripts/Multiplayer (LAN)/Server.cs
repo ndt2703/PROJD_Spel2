@@ -229,11 +229,11 @@ public class Server
 
         return response;
     }
-    private ServerResponse HandleEndTurn(ClientRequest requestToHandle)
+    private ServerResponse HandleEndTurn(RequestEndTurn requestToHandle)
     {
         ResponseEndTurn response = new ResponseEndTurn(requestToHandle.whichPlayer);
 
-        response.whichPlayer = requestToHandle.whichPlayer;
+       
 
         GameActionEndTurn gameAction = new GameActionEndTurn(0);
 

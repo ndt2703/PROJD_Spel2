@@ -58,7 +58,7 @@ public class TestInternet : MonoBehaviour
                 Destroy(GameObject.Find("Card (1)"));
             }
 
-
+            print("vilket object typ ar grejen " + action.GetType());
             if (action is GameActionEndTurn )
             {
                 // print("skickar den en gameAction end turn");
