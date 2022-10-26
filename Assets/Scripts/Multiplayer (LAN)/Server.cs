@@ -112,7 +112,9 @@ public class Server
         }
         if(requestToHandle is RequestEndTurn)
         {
-            return HandleEndTurn(requestToHandle);
+            RequestEndTurn castedRequest = (RequestEndTurn)requestToHandle;
+
+            return HandleEndTurn(castedRequest);
         }
         if (requestToHandle is RequestDrawCard)
         {
