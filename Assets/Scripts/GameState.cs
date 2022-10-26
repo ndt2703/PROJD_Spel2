@@ -383,7 +383,7 @@ public class GameState : MonoBehaviour
     public void ShowPlayedCard(Card card)
     {
         playedCardSpriteRenderer.sprite = card.artwork;
-        Invoke(nameof(HideCardPlayed), 1.5f);
+        Invoke(nameof(HideCardPlayed), 3f);
     }
     private void HideCardPlayed()
     {
