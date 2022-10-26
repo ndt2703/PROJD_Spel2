@@ -303,7 +303,7 @@ public class Server
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
-        GameActionShield gameAction = new GameActionShield(new List<Tuple<TargetInfo, int>>(requestToHandle.targetsToShield));
+        GameActionShield gameAction = new GameActionShield(new List<TargetAndAmount>(requestToHandle.targetsToShield));
 
         AddGameAction(response, gameAction);
         return response;

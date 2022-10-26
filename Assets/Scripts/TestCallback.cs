@@ -23,13 +23,6 @@ public class TestCallback : MonoBehaviour
     public void shieldTest()
     {
 
-        
-        Tuple<TargetInfo, int> testTuple = new Tuple<TargetInfo, int>(new TargetInfo(), 10);
-        List<Tuple<TargetInfo, int>> testList = new List<Tuple<TargetInfo, int>>();
-        testList.Add(testTuple);
-        RequestShield testRequest = new RequestShield(testList);
-        testRequest.whichPlayer = ClientConnection.Instance.playerId;
-        ClientConnection.Instance.AddRequest(testRequest, DummyCallback);
     }
     public void discardTest()
     {
