@@ -490,7 +490,7 @@ public class GameState : MonoBehaviour
                     DrawCard(1, null);
                 }
                 //amountOfTurns++;
-                //actionOfPlayer.playerMana++;
+                actionOfPlayer.playerMana++;
                 opponentChampion.champion.EndStep();
                 playerChampion.champion.UpKeep();
             }
