@@ -104,7 +104,6 @@ public class GameState : MonoBehaviour
         {
             RequestEndTurn request = new RequestEndTurn();
             request.whichPlayer = ClientConnection.Instance.playerId;
-            print("asdasdasd");
             ClientConnection.Instance.AddRequest(request, RequestEndTurn);
         }
 
@@ -501,9 +500,9 @@ public class GameState : MonoBehaviour
         {
             ChangeInteractabiltyEndTurn();
             isItMyTurn = true;
+            DrawCard(1, null);
             if (didIStart)
             {
-                DrawCard(1, null);
                 if (drawExtraCardsEachTurn)
                 {
                     DrawCard(1, null);
