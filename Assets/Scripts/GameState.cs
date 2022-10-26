@@ -485,7 +485,7 @@ public class GameState : MonoBehaviour
             isItMyTurn = false;
             if (!didIStart)
             {
-                DrawCard(1, null);
+                //DrawCard(1, null);
                 if (drawExtraCardsEachTurn)
                 {
                     DrawCard(1, null);
