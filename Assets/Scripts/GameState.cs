@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using Unity.VisualScripting;
 
@@ -23,6 +24,8 @@ public class GameState : MonoBehaviour
     public int currentMana;
     public SpriteRenderer playedCardSpriteRenderer;
     public Sprite backfaceCard;
+
+    public GameObject EndTurnButton;
 
     public AvailableChampion playerChampion;
     public AvailableChampion opponentChampion;
@@ -460,8 +463,10 @@ public class GameState : MonoBehaviour
 
     public void EndTurn()
     {
+        
         if (isItMyTurn)
         {
+            EndTurnButton.GetComponent<Button>().interactable = true;
             isItMyTurn = false;
             if (!didIStart)
             {
@@ -476,6 +481,7 @@ public class GameState : MonoBehaviour
         }
         else
         {
+            EndTurnButton.GetComponent<Button>().interactable = false;
             isItMyTurn = true;
             if (didIStart)
             {
