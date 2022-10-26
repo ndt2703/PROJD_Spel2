@@ -11367,6 +11367,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eac1cb081b340344f867f49b471923fe, type: 2}
   - {fileID: 11400000, guid: 8bb3f9a8cffd4214ba7266d7ebe68d7a, type: 2}
   - {fileID: 11400000, guid: 1fbcd8c6383674344af538f9b08675fd, type: 2}
+  - {fileID: 11400000, guid: fd7d49e86d345ea44b367bbb19fd1827, type: 2}
 --- !u!1 &928276972
 GameObject:
   m_ObjectHideFlags: 0
@@ -18504,6 +18505,7 @@ MonoBehaviour:
   handPlayer: {fileID: 236878360}
   handOpponent: {fileID: 1618785754}
   playerMana: 1
+  currentMana: 1
 --- !u!1 &1634207076
 GameObject:
   m_ObjectHideFlags: 0
