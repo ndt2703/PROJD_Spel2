@@ -481,39 +481,30 @@ public class GameState : MonoBehaviour
         
         if (isItMyTurn)
         {
-            ChangeInteractabiltyEndTurn();
             isItMyTurn = false;
             if (!didIStart)
             {
-                if (drawExtraCardsEachTurn)
-                {
-                    DrawCard(1, null);
-                }
-                //amountOfTurns++;
-                actionOfPlayer.playerMana++;
                 opponentChampion.champion.EndStep();
                 playerChampion.champion.UpKeep();
-                actionOfPlayer.currentMana = actionOfPlayer.playerMana;
             }
         }
         else
         {
-            ChangeInteractabiltyEndTurn();
             isItMyTurn = true;
             DrawCard(1, null);
             if (didIStart)
             {
-                if (drawExtraCardsEachTurn)
-                {
-                    DrawCard(1, null);
-                }
                 amountOfTurns++;
-                actionOfPlayer.playerMana++;
                 playerChampion.champion.EndStep();
                 opponentChampion.champion.UpKeep();
-                actionOfPlayer.currentMana = actionOfPlayer.playerMana;
             }
         }
+
+        if (drawExtraCardsEachTurn)
+            DrawCard(1, null);
+        actionOfPlayer.playerMana++;
+        ChangeInteractabiltyEndTurn();
+        actionOfPlayer.currentMana = actionOfPlayer.playerMana;
         cardsPlayedThisTurn.Clear();
         damageRamp = 0;
     }
