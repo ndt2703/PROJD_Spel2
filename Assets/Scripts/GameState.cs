@@ -305,7 +305,7 @@ public class GameState : MonoBehaviour
         }
         tI = new TargetInfo(listEnum, index);
         tAA = new TargetAndAmount(tI, shieldingToDo);
-        HealTarget(tAA);
+        ShieldTarget(tAA);
     }
 
     public void ShieldTarget(TargetAndAmount targetAndAmount) // TargetAndAmount
