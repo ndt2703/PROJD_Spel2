@@ -252,7 +252,7 @@ public class GameState : MonoBehaviour
             List<TargetAndAmount> list = new List<TargetAndAmount>();
             list.Add(targetAndAmount);
 
-            RequestHeal request = new RequestHeal(list);
+            RequestHealing request = new RequestHealing(list);
             request.whichPlayer = ClientConnection.Instance.playerId;
             ClientConnection.Instance.AddRequest(request, RequestDamage);
         }
