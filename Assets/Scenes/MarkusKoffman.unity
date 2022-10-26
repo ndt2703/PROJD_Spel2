@@ -12348,8 +12348,8 @@ RectTransform:
   - {fileID: 1195888272}
   - {fileID: 1444728434}
   - {fileID: 16222161}
-  - {fileID: 509396908}
   - {fileID: 1656743311}
+  - {fileID: 509396908}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18503,7 +18503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handPlayer: {fileID: 236878360}
   handOpponent: {fileID: 1618785754}
-  playerMana: 320
+  playerMana: 1
 --- !u!1 &1634207076
 GameObject:
   m_ObjectHideFlags: 0
@@ -18842,7 +18842,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1064677994}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
