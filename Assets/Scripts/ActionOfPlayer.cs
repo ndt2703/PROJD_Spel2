@@ -11,8 +11,8 @@ public class ActionOfPlayer : MonoBehaviour
     public Hand handOpponent;
 
     private int cardCost;
-    public int playerMana;
-    public int currentMana;
+    public int playerMana = 1;
+    public int currentMana = 1;
     [System.NonSerialized] public int tauntPlaced = 0;
 
     private GameState gameState;
