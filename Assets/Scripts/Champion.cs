@@ -14,7 +14,7 @@ public abstract class Champion : ScriptableObject
     public Sprite artwork;
     public string passiveEffect;
     public bool healEachRound = false;
-    public int landmarkEffect = 1;
+
     
     private GameState gameState;
 
@@ -67,7 +67,6 @@ public abstract class Champion : ScriptableObject
 
     public virtual void HealChampion(int amountToHeal)
     {
-        health += amountToHeal * landmarkEffect;
         if (health > maxHealth)
         {
             health = maxHealth;
