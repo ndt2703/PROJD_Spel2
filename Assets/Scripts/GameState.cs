@@ -172,7 +172,7 @@ public class GameState : MonoBehaviour
     {
         for (int i = 0; i < champ.Count; i++)
         {
-            print(champ[i].champion + " vs " + cardUsed.Target);
+            
             if (champ[i].champion == cardUsed.Target)
             {
                 return i;
@@ -258,7 +258,7 @@ public class GameState : MonoBehaviour
     {
 
         ListEnum lE =  targetAndAmount.targetInfo.whichList;
-        print("vilket index " + targetAndAmount.targetInfo.index);
+        print("vilket index healing" + targetAndAmount.targetInfo.index);
         
         if(lE.myChampions)
         {
@@ -268,7 +268,7 @@ public class GameState : MonoBehaviour
         {
             opponentChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
         }
-
+                
         if(isOnline)
         {
             List<TargetAndAmount> list = new List<TargetAndAmount>();
@@ -449,7 +449,7 @@ public class GameState : MonoBehaviour
         {
             RequestDrawCard request = new RequestDrawCard(amountToDraw);
             request.whichPlayer = ClientConnection.Instance.playerId;
-            print("Should draw card");
+           
             ClientConnection.Instance.AddRequest(request, DrawCardRequest);
             StartCoroutine(DrawCardPlayer(amountToDraw, specificCard));
         }

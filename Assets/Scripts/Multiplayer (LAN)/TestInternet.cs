@@ -102,7 +102,7 @@ public class TestInternet : MonoBehaviour
                 }
 
             }
-            if (action  is GameActionHeal)
+            if (action is GameActionHeal)
             {
 
                 GameActionHeal castedAction = (GameActionHeal)action;
@@ -113,12 +113,13 @@ public class TestInternet : MonoBehaviour
                     {
                         GameState.Instance.playerChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
                     }
-                  
+
                     if (targetAndAmount.targetInfo.whichList.myChampions)
                     {
                         GameState.Instance.opponentChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
                     }
                 }
+                print("hur mycket skulle healen heala " + castedAction.targetsToHeal[0].amount);
             }
             if (action is GameActionDamage)
             {

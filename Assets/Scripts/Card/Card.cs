@@ -36,10 +36,10 @@ public abstract class Card : ScriptableObject
     public virtual void PlayCard()
     {
         maxManaCost = manaCost;
-        Debug.Log("kommer den till play card");
+
         CardAndPlacement cardPlacement = new CardAndPlacement();
         cardPlacement.cardName = cardName;
-        Debug.Log("Vilket namn hade kortet yo " + cardPlacement.cardName);
+    
         
         TargetInfo placement = new TargetInfo();
         placement.whichList = new ListEnum();
