@@ -7,6 +7,6 @@ public class DestroyLandmark : Spells
 {
     public override void PlaySpell()
     {
-        
+        LandmarkTarget.DestroyLandmark();
     }
 }

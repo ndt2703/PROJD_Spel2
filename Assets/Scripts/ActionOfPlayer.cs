@@ -13,6 +13,8 @@ public class ActionOfPlayer : MonoBehaviour
     public int playerMana;
     [System.NonSerialized] public int tauntPlaced = 0;
 
+    private GameState gameState;
+
     private static ActionOfPlayer instance;
 
     public static ActionOfPlayer Instance { get { return instance; } set { instance = value; } }
@@ -27,6 +29,8 @@ public class ActionOfPlayer : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        gameState = GameState.Instance;
     }
 
 
@@ -39,13 +43,18 @@ public class ActionOfPlayer : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
-            GameState.Instance.DrawCard(1);
+            GameState.Instance.DrawCard(1, null);
         }
     }
 
     public bool CheckIfCanPlayCard(Card card, bool shouldUseMana)
     {
         cardCost = card.manaCost;
+        if (gameState.factory > 0)        
+            if (gameState.playerLandmarks.Count >= 3)
+                cardCost -= (2 * gameState.factory);
+        
+        
         if (playerMana >= cardCost)
         {
             if (shouldUseMana)

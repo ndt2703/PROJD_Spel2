@@ -84,11 +84,11 @@ public class TestCallback : MonoBehaviour
     }
     public void playCardTest()
     {
-        Tuple<string,TargetInfo> testList = new Tuple<string,TargetInfo>("", new TargetInfo());
-        RequestPlayCard testRequest = new RequestPlayCard(testList);
-
-        testRequest.whichPlayer = ClientConnection.Instance.playerId;
-        ClientConnection.Instance.AddRequest(testRequest, DummyCallback);
+    //    Tuple<string,TargetInfo> testList = new Tuple<string,TargetInfo>("", new TargetInfo());
+    //    RequestPlayCard testRequest = new RequestPlayCard(testList);
+    //
+    //    testRequest.whichPlayer = ClientConnection.Instance.playerId;
+    //    ClientConnection.Instance.AddRequest(testRequest, DummyCallback);
     }
     public void addSpecificCardToHandTest()
     {

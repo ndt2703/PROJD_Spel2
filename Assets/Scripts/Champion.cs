@@ -15,6 +15,8 @@ public abstract class Champion : ScriptableObject
     public string passiveEffect;
     public bool healEachRound = false;
     public int landmarkEffect = 1;
+    
+    private GameState gameState;
 
     public Champion(string name, int health, int maxHealth, int shield, Sprite artwork, string passiveEffect)
     {
@@ -26,10 +28,11 @@ public abstract class Champion : ScriptableObject
         this.passiveEffect = passiveEffect;
     }
 
-    public virtual void Awake() { maxHealth = health; }
+    public virtual void Awake() { maxHealth = health; gameState = GameState.Instance; }
 
     public virtual void TakeDamage(int damage)
     {
+        
         if (shield == 0)
         {
             health -= damage;
@@ -50,7 +53,7 @@ public abstract class Champion : ScriptableObject
 
         if (health <= 0)
         {
-            Death();
+            //Death();
         }
     }
 

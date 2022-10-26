@@ -12,16 +12,16 @@ public class CardDisplay : MonoBehaviour
     public SpriteRenderer artworkSpriteRenderer;
 
     public GameObject border;
+    [System.NonSerialized] public bool opponentCard;
 
     private void UpdateTextOnCard()
     {
         if (card == null) return;
         
         
-        //if (!card.opponentCard)
-        //{
+        if (!opponentCard)
             artworkSpriteRenderer.sprite = card.artwork;
-        //}
+
        
         manaText.text = card.manaCost.ToString();
     }

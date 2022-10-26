@@ -74,6 +74,10 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
         {
             return (typeof(RequestAddSpecificCardToHand));
         }
+        if (IntegerToConvert == 13)
+        {
+            return (typeof(RequestOpponentDiscardCard));
+        }
 
         return (typeof(ClientRequest));
     }

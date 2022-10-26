@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c95b3c776c0a394b892ed1a7a5a4e37, type: 3}
   m_Name: Health Potion
   m_EditorClassIdentifier: 
-  name: Health Potion
+  cardName: Health Potion
+  typeOfCard: 0
   description: Heal 20 hp
   artwork: {fileID: 21300000, guid: b0e62d79637a6c24284433734bb2d775, type: 3}
   manaCost: 2
   tag: Spell
   amountOfCardsToDraw: 0
   amountOfCardsToDiscard: 0
+  discardCardsYourself: 1
   amountToHeal: 20
   allChampions: 0

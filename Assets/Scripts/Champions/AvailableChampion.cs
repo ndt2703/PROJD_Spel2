@@ -16,11 +16,11 @@ public class AvailableChampion : MonoBehaviour
     public int shield;
 
 
-    public TMP_Text healthText;
-    public TMP_Text shieldText;
-    public TMP_Text passiveEffect;
+    [SerializeField] private TMP_Text healthText;
+    [SerializeField] private TMP_Text shieldText;
+    [SerializeField] private TMP_Text passiveEffect;
 
-	public SpriteRenderer artwork;
+    public SpriteRenderer artwork;
 
 
 
@@ -59,6 +59,7 @@ public class AvailableChampion : MonoBehaviour
     {
         if (champion == null) return;
 
+        name = champion.name;
         health = champion.health;
         maxHealth = champion.maxHealth;
         shield = champion.shield;

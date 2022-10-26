@@ -42,8 +42,7 @@ public class Cultist : Champion
 
 	private void ChangeBonusDamage()
 	{
-		int difference = (health - FindObjectOfType<AvailableChampion>().health) / perMissingHP;
-		Mathf.Floor(difference);
+		int difference = (maxHealth - health) / perMissingHP;
 		currentBonusDamage = damagePerMissingHP * difference;
 		passiveEffect = currentBonusDamage + "+";
 		

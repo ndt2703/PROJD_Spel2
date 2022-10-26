@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff18907f8af932a45b18e0496e27c5c7, type: 3}
   m_Name: Bonk
   m_EditorClassIdentifier: 
-  name: Bonk
+  cardName: Bonk
+  typeOfCard: 0
   description: Deal 20 damage
   artwork: {fileID: 21300000, guid: e480d290328ef4642bf24943e7bc09db, type: 3}
   manaCost: 0
   tag: Spell
   amountOfCardsToDraw: 0
   amountOfCardsToDiscard: 0
+  discardCardsYourself: 1
   damage: 20
+  destroyLandmark: 0
+  damageEqualsToYourChampionHP: 0
+  damageToBothActiveChampions: 0

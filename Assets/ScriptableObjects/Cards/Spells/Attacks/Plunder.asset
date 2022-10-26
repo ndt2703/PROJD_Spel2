@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff18907f8af932a45b18e0496e27c5c7, type: 3}
   m_Name: Plunder
   m_EditorClassIdentifier: 
-  name: Plunder
+  cardName: Plunder
+  typeOfCard: 0
   description: Draw a Card
   artwork: {fileID: 21300000, guid: 76f64480b9c79ef4cb831748529885d1, type: 3}
   manaCost: 3
   tag: Spell
   amountOfCardsToDraw: 1
   amountOfCardsToDiscard: 0
+  discardCardsYourself: 1
   damage: 30
+  destroyLandmark: 0
+  damageEqualsToYourChampionHP: 0
+  damageToBothActiveChampions: 0

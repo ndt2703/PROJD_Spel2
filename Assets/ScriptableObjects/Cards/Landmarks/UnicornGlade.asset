@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1884dd6b9f4a2a24c9ea10adabc152fb, type: 3}
   m_Name: UnicornGlade
   m_EditorClassIdentifier: 
-  name: Unicorn Glade
+  cardName: Unicorn Glade
+  typeOfCard: 0
   description: All your healing and shielding effects are doubled
   artwork: {fileID: 21300000, guid: 7c7267406551dc04796d7ef88589346c, type: 3}
   manaCost: 5
   tag: HealingLandmark
+  amountOfCardsToDraw: 0
+  amountOfCardsToDiscard: 0
+  discardCardsYourself: 0
   minionHealth: 40
   doubleHealingEffect: 1
   healEachRound: 0

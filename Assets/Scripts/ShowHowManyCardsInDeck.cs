@@ -23,7 +23,7 @@ public class ShowHowManyCardsInDeck : MonoBehaviour
         if (deck != null)
             amountOfCardsText.text = "You have " + deck.deckOfCards.Count + " Cards in your deck";
         else
-            amountOfCardsText.text = "You have " + Graveyard.Instance.graveyardCardList.Count + " Cards in your graveyard";
+            amountOfCardsText.text = "You have " + Graveyard.Instance.graveyardPlayer.Count + " Cards in your graveyard";
         howManyCardsPanel.SetActive(true);
     }
 

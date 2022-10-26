@@ -65,6 +65,10 @@ public class ServerResponse : MBJson.JSONDeserializeable,MBJson.JSONTypeConverte
         {
             return (typeof(ResponseAddSpecificCardToHand));
         }
+        if (IntegerToConvert == 12)
+        {
+            return (typeof(ResponseOpponentDiscardCard));
+        }
         return (typeof(ServerResponse));
     }
     public ServerResponse() { } //Denna ska inte tas bort, behovs for parsingen 

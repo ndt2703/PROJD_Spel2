@@ -20,9 +20,10 @@ public class TestInternet : MonoBehaviour
     bool hasEstablishedEnemurator = false; 
 
 
-    public Dictionary<int, GameObject> cards  = new Dictionary<int, GameObject>();
 
-    public GameObject cardToPlay;
+    public GameState gameState;
+    public CardRegister register;
+
    public  bool hasJoinedLobby = false;
     //   public int LocalPlayerNumber; 
 
@@ -33,7 +34,7 @@ public class TestInternet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cards.Add(1, cardToPlay);
+
         // System.Threading.Thread.(sendRequest(new ClientRequest()));
 
         clientConnection = ClientConnection.Instance;
@@ -42,7 +43,9 @@ public class TestInternet : MonoBehaviour
 
 
     public void PerformOpponentsActions(ServerResponse response)
-    {
+    {   
+        gameState = GameState.Instance;
+        register = CardRegister.Instance;
 
         foreach (GameAction action in response.OpponentActions)
         {
@@ -58,10 +61,10 @@ public class TestInternet : MonoBehaviour
 
             if (action is GameActionEndTurn )
             {
-               // print("skickar den en gameAction end turn");
-                GameState.Instance.SwitchTurn(response);
+                // print("skickar den en gameAction end turn");
+                gameState.SwitchTurn(response);
 
-                GameState.Instance.hasPriority = true;
+                gameState.hasPriority = true;
 
             }
 
@@ -72,11 +75,12 @@ public class TestInternet : MonoBehaviour
                 
                 if(theAction.amountToDrawOpponent > 0)
                 {
-                    GameState.Instance.DrawCard(theAction.amountToDrawOpponent); 
+                    gameState.DrawCard(theAction.amountToDrawOpponent, null); 
                 }
                 if(theAction.amountToDraw > 0)
                 {
-                    StartCoroutine(GameState.Instance.DrawCardOpponent(theAction.amountToDraw,null));
+                    StartCoroutine(gameState.DrawCardOpponent(theAction.amountToDraw,null));
+
                 }
                 //Draw card opponents
 
@@ -84,9 +88,22 @@ public class TestInternet : MonoBehaviour
             if (action is GameActionDiscardCard)
             {
                 print("skickar den en gameAction discard");
-                //GameActionDiscardCard theAction = (GameActionDiscardCard)action;
 
-                //GameState.Instance.DiscardCard(theAction.listOfCardsDiscarded);
+
+
+
+                GameActionDiscardCard theAction = (GameActionDiscardCard)action;
+
+
+
+                foreach(string card in theAction.listOfCardsDiscarded)
+                {
+                    Graveyard.Instance.AddCardToGraveyard(register.cardRegister[card]);
+                    gameState.actionOfPlayer.handOpponent.cardsInHand[0].GetComponent<CardDisplay>().card = null;
+
+                }
+
+                //gameState.DiscardCard(theAction.listOfCardsDiscarded);
                 //Draw card opponents
 
             }
@@ -95,12 +112,14 @@ public class TestInternet : MonoBehaviour
                 print("skickar den en gameAction heal");
                 //GameActionHeal theAction = (GameActionHeal)action;
 
-                //GameState.Instance.Heal(theAction.targetsToHeal);
+                //gameState.Heal(theAction.targetsToHeal);
                 //Draw card opponents
 
             }
             if (action is GameActionDamage)
             {
+
+
                 print("skickar den en gameAction damage");
                 //GameActionDamage theAction = (GameActionDamage)action;
 
@@ -142,6 +161,52 @@ public class TestInternet : MonoBehaviour
             if (action  is GameActionPlayCard)
             {
                 print("skickar den en gameAction play card");
+
+
+                GameActionPlayCard castedAction = (GameActionPlayCard)action;
+
+                print("ar register null " + register);
+
+                Card cardPlayed = register.cardRegister[castedAction.cardAndPlacement.cardName];
+
+                if (castedAction.cardAndPlacement.placement.whichList.myGraveyard)
+                {
+                    Graveyard.Instance.graveyardPlayer.Add(cardPlayed);
+                }
+
+                Graveyard.Instance.graveyardPlayer.Add(cardPlayed);
+
+                gameState.actionOfPlayer.handOpponent.cardsInHand[0].GetComponent<CardDisplay>().card = null;
+                //bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
+
+
+                //print("tog den bort kort fran handen " + test);
+                //GameActionPlayCard theAction = (GameActionPlayCard)action;
+
+                //Draw card opponents
+
+            }    
+            if (action  is GameActionOpponentDiscardCard)
+            {   
+
+                print("Game action opponent discard card");
+
+                GameActionOpponentDiscardCard castedAction = (GameActionOpponentDiscardCard)action;
+                List<string> discardedCards = new List<string>();
+                for(int i = 0; i < castedAction.amountOfCardsToDiscard; i++)
+                {
+                    discardedCards.Add(gameState.DiscardWhichCard(true));
+                }
+
+                RequestDiscardCard discardCardRequest = new RequestDiscardCard(discardedCards);
+                discardCardRequest.whichPlayer = ClientConnection.Instance.playerId;
+                print("vad ar which player " + discardCardRequest.whichPlayer);
+                ClientConnection.Instance.AddRequest(discardCardRequest, gameState.RequestDiscardCard);
+
+                //bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
+
+
+                //print("tog den bort kort fran handen " + test);
                 //GameActionPlayCard theAction = (GameActionPlayCard)action;
 
                 //Draw card opponents
@@ -180,7 +245,7 @@ public class TestInternet : MonoBehaviour
     public void PlayCard(int cardId)
     {
 
-        Instantiate(cards[cardId], GameObject.Find("CardHolder").transform); //WIP
+      //  Instantiate(cards[cardId], GameObject.Find("CardHolder").transform); //WIP
        
     }
 
