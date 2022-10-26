@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class ResponseDamage : ServerResponse
 {
-    public List<Tuple<TargetInfo, int>> targetsToDamage = new List<Tuple<TargetInfo, int>>();
+    public List<TargetAndAmount> targetsToDamage = new List<TargetAndAmount>();
 
 
     public ResponseDamage()
     {
         Type = 5; 
     }
-    public ResponseDamage(List<Tuple<TargetInfo,int>> targetsToDamage)
+    public ResponseDamage(List<TargetAndAmount> targetsToDamage)
     {
         Type = 5;
 

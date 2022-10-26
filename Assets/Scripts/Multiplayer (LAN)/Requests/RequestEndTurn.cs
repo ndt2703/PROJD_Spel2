@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class RequestEndTurn : ClientRequest
 {   
-    public RequestEndTurn() { } // maste vara kvar
+    public RequestEndTurn() 
+    {
+
+        Type = 2; 
+    } // maste vara kvar
 
     public RequestEndTurn(int whichPlayer)
     {

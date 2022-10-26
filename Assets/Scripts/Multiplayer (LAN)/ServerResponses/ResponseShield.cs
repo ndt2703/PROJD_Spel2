@@ -5,13 +5,13 @@ using System;
 public class ResponseShield : ServerResponse
 {
 
-    public List<Tuple<TargetInfo, int>> targetsToShield = new List<Tuple<TargetInfo, int>>();
+    public  List<TargetAndAmount> targetsToShield = new List<TargetAndAmount>();
     public ResponseShield()
     {
         Type = 6;
     }
 
-    public ResponseShield(List<Tuple<TargetInfo, int>> targetsToShield)
+    public ResponseShield(List<TargetAndAmount> targetsToShield)
     {
         this.targetsToShield = targetsToShield;
         Type = 6; 

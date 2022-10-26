@@ -6,7 +6,10 @@ public class GameActionEndTurn : GameAction
 {   
 
      
-    public GameActionEndTurn() { }// ta ej bort
+    public GameActionEndTurn() 
+    {
+        Type = 1;
+    }// ta ej bort
 
     public GameActionEndTurn(int hej)
     {

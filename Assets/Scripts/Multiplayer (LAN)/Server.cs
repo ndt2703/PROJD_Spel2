@@ -110,9 +110,11 @@ public class Server
         {
             return HandleRequestActions(requestToHandle);
         }
-        if(requestToHandle.GetType(requestToHandle.Type) == typeof(RequestEndTurn))
+        if(requestToHandle is RequestEndTurn)
         {
-            return HandleEndTurn(requestToHandle);
+            RequestEndTurn castedRequest = (RequestEndTurn)requestToHandle;
+
+            return HandleEndTurn(castedRequest);
         }
         if (requestToHandle is RequestDrawCard)
         {
@@ -229,11 +231,11 @@ public class Server
 
         return response;
     }
-    private ServerResponse HandleEndTurn(ClientRequest requestToHandle)
+    private ServerResponse HandleEndTurn(RequestEndTurn requestToHandle)
     {
         ResponseEndTurn response = new ResponseEndTurn(requestToHandle.whichPlayer);
 
-        response.whichPlayer = requestToHandle.whichPlayer;
+       
 
         GameActionEndTurn gameAction = new GameActionEndTurn(0);
 
@@ -290,7 +292,7 @@ public class Server
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
-        GameActionDamage gameAction = new GameActionDamage(new List<Tuple<TargetInfo, int>>(requestToHandle.targetsToDamage));
+        GameActionDamage gameAction = new GameActionDamage(new  List<TargetAndAmount>(requestToHandle.targetsToDamage));
 
         AddGameAction(response, gameAction);
         return response;
@@ -301,7 +303,7 @@ public class Server
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
-        GameActionShield gameAction = new GameActionShield(new List<Tuple<TargetInfo, int>>(requestToHandle.targetsToShield));
+        GameActionShield gameAction = new GameActionShield(new List<TargetAndAmount>(requestToHandle.targetsToShield));
 
         AddGameAction(response, gameAction);
         return response;

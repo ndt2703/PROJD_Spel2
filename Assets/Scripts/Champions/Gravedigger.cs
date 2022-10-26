@@ -10,6 +10,7 @@ public class Gravedigger : Champion
 
 	public override void EndStep()
 	{
+		if (Graveyard.Instance.graveyardPlayer.Count == 0) return;
 		base.EndStep();
 		Card card = Graveyard.Instance.RandomizeCardFromGraveyard();
 		GameState.Instance.DrawCard(1, card);

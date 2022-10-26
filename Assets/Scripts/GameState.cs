@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 public class GameState : MonoBehaviour
 {
     public int currentPlayerID = 0;
     public bool hasPriority = true;
 
-    private bool isItMyTurn;
-    private bool didIStart;
+    public bool isItMyTurn;
+    public bool didIStart;
 
     public int amountOfTurns;
 
@@ -26,6 +27,7 @@ public class GameState : MonoBehaviour
     public Sprite backfaceCard;
 
     public GameObject EndTurnButton;
+    private UnityEngine.UI.Button endTurnBttn;
 
     public AvailableChampion playerChampion;
     public AvailableChampion opponentChampion;
@@ -44,6 +46,7 @@ public class GameState : MonoBehaviour
     [NonSerialized] public int damageRamp = 0;
     [NonSerialized] public int slaughterhouse = 0;
     [NonSerialized] public int factory = 0;
+    [NonSerialized] public int landmarkEffect = 1;
 
     private static GameState instance;
     public static GameState Instance { get; set; }
@@ -72,25 +75,46 @@ public class GameState : MonoBehaviour
     void Start()
     {
         actionOfPlayer = ActionOfPlayer.Instance;
-
-        int random = UnityEngine.Random.Range(0, 2);
-        if (random == 1)
+        endTurnBttn = EndTurnButton.GetComponent<UnityEngine.UI.Button>();
+        if (isOnline)
         {
-            didIStart = true;
-            isItMyTurn = true;
-        }
-
-        else if (random == 0)
-        {
-            didIStart = false;
-            isItMyTurn = false;
+            if (ClientConnection.Instance.playerId == 0)
+            {
+                isItMyTurn = true;
+                didIStart = true; 
+            }
+            else
+            {
+                isItMyTurn = false;
+                didIStart = false;
+                ChangeInteractabiltyEndTurn();
+            }
         }
 
         Invoke(nameof(DrawStartingCards), 0.01f);
     }
 
+    private void ChangeInteractabiltyEndTurn()
+    {
+        endTurnBttn.interactable = !endTurnBttn.interactable;
+    }
+
+    public  void EndTurnButtonClick()
+    {
+        if(isOnline)
+        {
+            RequestEndTurn request = new RequestEndTurn();
+            request.whichPlayer = ClientConnection.Instance.playerId;
+            ClientConnection.Instance.AddRequest(request, RequestEndTurn);
+        }
+
+        EndTurn();
+    }
+
     public void CalculateBonusDamage(int damage, Card cardUsed)
     {
+        damage = playerChampion.champion.DealDamageAttack(damage);
+
         damage += damageRamp;
 
         if (slaughterhouse > 0)
@@ -107,21 +131,209 @@ public class GameState : MonoBehaviour
         }
 
         TargetAndAmount tAA = null;
-
+        TargetInfo tI = null;
+        ListEnum listEnum = new ListEnum();
+         int index = 0;
+        // WIP
         if (cardUsed.Target != null)
-            tAA = new TargetAndAmount(cardUsed.Target, damage);
+        {                 
+            index = LookForChampionIndex(cardUsed, opponentChampions);
+            if (index == -1)
+            {
+                index = LookForChampionIndex(cardUsed, playerChampions);
+                listEnum.myChampions = true;                 
+            }               
+            else
+            {
+                listEnum.opponentChampions = true;                   
+            }
+        }
         else if (cardUsed.LandmarkTarget != null)
-            tAA = new TargetAndAmount(cardUsed.LandmarkTarget, damage);
+        {
+
+
+            index = LookForLandmarkIndex(cardUsed, opponentLandmarks);
+            if (index == -1)
+            {
+                index = LookForLandmarkIndex(cardUsed, playerLandmarks);
+                listEnum.myLandmarks = true;
+            }
+            else
+            {
+                listEnum.opponentLandmarks = true;
+            }
+        }
+        tI = new TargetInfo(listEnum, index);
+        tAA = new TargetAndAmount(tI, damage);
         DealDamage(tAA);
+    }
+
+    public int LookForChampionIndex(Card cardUsed, List<AvailableChampion> champ )
+    {
+        for (int i = 0; i < champ.Count; i++)
+        {
+            
+            if (champ[i].champion == cardUsed.Target)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public int LookForLandmarkIndex(Card cardUsed, List<Landmarks> landmarks )
+    {
+        for (int i = 0; i < landmarks.Count; i++)
+        {
+            if (landmarks[i] == cardUsed.Target)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void DealDamage(TargetAndAmount targetAndAmount) // TargetAndAmount
     {
-        if (targetAndAmount.championTarget != null)
-            targetAndAmount.championTarget.TakeDamage(targetAndAmount.damage);
-        else if (targetAndAmount.landmarkTarget != null)
-            targetAndAmount.landmarkTarget.TakeDamage(targetAndAmount.damage);
+
+        ListEnum lE =  targetAndAmount.targetInfo.whichList;
+        print("vilket index " + targetAndAmount.targetInfo.index);
+        
+        if(lE.myChampions)
+        {
+            playerChampions[targetAndAmount.targetInfo.index].champion.TakeDamage(targetAndAmount.amount);
+        }
+        if(lE.opponentChampions)
+        {
+            opponentChampions[targetAndAmount.targetInfo.index].champion.TakeDamage(targetAndAmount.amount);
+        }
+        if(lE.myLandmarks)
+        {
+            playerLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
+        }
+        if(lE.opponentLandmarks)
+        {
+            opponentLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
+        }
+
+        if(isOnline)
+        {
+            List<TargetAndAmount> list = new List<TargetAndAmount>();
+            list.Add(targetAndAmount);
+
+            RequestDamage request = new RequestDamage(list);
+            request.whichPlayer = ClientConnection.Instance.playerId;
+            ClientConnection.Instance.AddRequest(request, RequestDamage);
+        }
     }
+
+    public void CalculateHealing(int amount, Card cardUsed)
+    {
+        int healingToDo = 0;
+        healingToDo += amount * landmarkEffect;
+
+        TargetAndAmount tAA = null;
+        TargetInfo tI = null;
+        ListEnum listEnum = new ListEnum();
+        int index = 0;
+        // WIP
+        if (cardUsed.Target != null)
+        {
+            index = LookForChampionIndex(cardUsed, opponentChampions);
+            if (index == -1)
+            {
+                index = LookForChampionIndex(cardUsed, playerChampions);
+                listEnum.myChampions = true;
+            }
+            else
+            {
+                listEnum.opponentChampions = true;
+            }
+        }
+        tI = new TargetInfo(listEnum, index);
+        tAA = new TargetAndAmount(tI, healingToDo);
+        HealTarget(tAA);
+    }
+
+    public void HealTarget(TargetAndAmount targetAndAmount) // TargetAndAmount
+    {
+
+        ListEnum lE =  targetAndAmount.targetInfo.whichList;
+        print("vilket index healing" + targetAndAmount.targetInfo.index);
+        
+        if(lE.myChampions)
+        {
+            playerChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
+        }
+        if(lE.opponentChampions)
+        {
+            opponentChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
+        }
+                
+        if(isOnline)
+        {
+            List<TargetAndAmount> list = new List<TargetAndAmount>();
+            list.Add(targetAndAmount);
+
+            RequestHealing request = new RequestHealing(list);
+            request.whichPlayer = ClientConnection.Instance.playerId;
+            ClientConnection.Instance.AddRequest(request, RequestDamage);
+        }
+    }
+
+    public void CalculateShield(int amount, Card cardUsed)
+    {
+        int shieldingToDo = 0;
+        shieldingToDo += amount * landmarkEffect;
+
+        TargetAndAmount tAA = null;
+        TargetInfo tI = null;
+        ListEnum listEnum = new ListEnum();
+        int index = 0;
+        // WIP
+        if (cardUsed.Target != null)
+        {
+            index = LookForChampionIndex(cardUsed, opponentChampions);
+            if (index == -1)
+            {
+                index = LookForChampionIndex(cardUsed, playerChampions);
+                listEnum.myChampions = true;
+            }
+            else
+            {
+                listEnum.opponentChampions = true;
+            }
+        }
+        tI = new TargetInfo(listEnum, index);
+        tAA = new TargetAndAmount(tI, shieldingToDo);
+        ShieldTarget(tAA);
+    }
+
+    public void ShieldTarget(TargetAndAmount targetAndAmount) // TargetAndAmount
+    {
+
+        ListEnum lE = targetAndAmount.targetInfo.whichList;
+        print("vilket index shielding" + targetAndAmount.targetInfo.index);
+
+        if (lE.myChampions)
+        {
+            playerChampions[targetAndAmount.targetInfo.index].champion.GainShield(targetAndAmount.amount);
+        }
+        if (lE.opponentChampions)
+        {
+            opponentChampions[targetAndAmount.targetInfo.index].champion.GainShield(targetAndAmount.amount);
+        }
+
+        if (isOnline)
+        {
+            List<TargetAndAmount> list = new List<TargetAndAmount>();
+            list.Add(targetAndAmount);
+
+            RequestShield request = new RequestShield(list);
+            request.whichPlayer = ClientConnection.Instance.playerId;
+            ClientConnection.Instance.AddRequest(request, RequestDamage);
+        }
+    }
+
 
     private void AddChampions(List<AvailableChampion> champions)
     {
@@ -214,19 +426,11 @@ public class GameState : MonoBehaviour
         DrawCardPlayer(amountOfCards, randomCardFromGraveyard);
     }
 
-    public bool LegalEndTurn()
-    {
-        if(hasPriority && currentPlayerID == ClientConnection.Instance.playerId)
-        {
-            return true;
-        }
-        return false;
-    }
 
     public void ShowPlayedCard(Card card)
     {
         playedCardSpriteRenderer.sprite = card.artwork;
-        Invoke(nameof(HideCardPlayed), 1.5f);
+        Invoke(nameof(HideCardPlayed), 3f);
     }
     private void HideCardPlayed()
     {
@@ -300,7 +504,7 @@ public class GameState : MonoBehaviour
         {
             RequestDrawCard request = new RequestDrawCard(amountToDraw);
             request.whichPlayer = ClientConnection.Instance.playerId;
-            print("Should draw card");
+           
             ClientConnection.Instance.AddRequest(request, DrawCardRequest);
             StartCoroutine(DrawCardPlayer(amountToDraw, specificCard));
         }
@@ -315,7 +519,7 @@ public class GameState : MonoBehaviour
     {
         if (actionOfPlayer.handPlayer.cardsInHand.Count > 0)
         {
-            ChangeCardOrder();
+          //  ChangeCardOrder();
             yield return new WaitForSeconds(0.01f); 
         }
 
@@ -466,34 +670,31 @@ public class GameState : MonoBehaviour
         
         if (isItMyTurn)
         {
-            EndTurnButton.GetComponent<Button>().interactable = true;
             isItMyTurn = false;
             if (!didIStart)
             {
-                DrawCard(1, null);
-                if (drawExtraCardsEachTurn)
-                {
-                    DrawCard(1, null);
-                }
-                amountOfTurns++;
                 actionOfPlayer.playerMana++;
+              //  opponentChampion.champion.EndStep();
+              //  playerChampion.champion.UpKeep();
             }
         }
         else
         {
-            EndTurnButton.GetComponent<Button>().interactable = false;
             isItMyTurn = true;
+            DrawCard(1, null);
             if (didIStart)
             {
-                DrawCard(1, null);
-                if (drawExtraCardsEachTurn)
-                {
-                    DrawCard(1, null);
-                }
-                amountOfTurns++;
                 actionOfPlayer.playerMana++;
+                amountOfTurns++;
+              //  playerChampion.champion.EndStep();
+              //  opponentChampion.champion.UpKeep();
             }
         }
+
+        if (drawExtraCardsEachTurn)
+            DrawCard(1, null);
+        ChangeInteractabiltyEndTurn();
+        actionOfPlayer.currentMana = actionOfPlayer.playerMana;
         cardsPlayedThisTurn.Clear();
         damageRamp = 0;
     }
@@ -614,6 +815,10 @@ public class GameState : MonoBehaviour
     //    DiscardCard(castedResponse.listOfCardsDiscarded);
     }
     public void RequestPlayCard(ServerResponse response)
+    {
+
+    }
+    public void RequestEndTurn(ServerResponse response)
     {
 
     }

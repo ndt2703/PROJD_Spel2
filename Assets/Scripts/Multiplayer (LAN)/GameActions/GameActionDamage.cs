@@ -5,14 +5,14 @@ using System;
 public class GameActionDamage : GameAction
 {
     // Start is called before the first frame update
-    public List<Tuple<TargetInfo, int>> targetsToDamage = new List<Tuple<TargetInfo, int>>();
+    public List<TargetAndAmount> targetsToDamage = new List<TargetAndAmount>() ;
 
     public GameActionDamage()
     {
         Type = 5;
     }
 
-    public GameActionDamage(List<Tuple<TargetInfo,int>> targetsToDamage)
+    public GameActionDamage(List<TargetAndAmount> targetsToDamage)
     {
         Type = 5;
 

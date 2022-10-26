@@ -4,14 +4,14 @@ using UnityEngine;
 using System; 
 public class RequestHealing : ClientRequest
 {
-    public List<Tuple<TargetInfo, int>> targetsToHeal = new List<Tuple<TargetInfo, int>>(); 
+    public List<TargetAndAmount> targetsToHeal = new List<TargetAndAmount>(); 
     
     // Start is called before the first frame update
     public RequestHealing() 
     {
         Type = 4;
     }// ta ej bortr
-    public RequestHealing(List<Tuple<TargetInfo, int>> targetsToHeal)
+    public RequestHealing(List<TargetAndAmount> targetsToHeal)
     {
         this.targetsToHeal = targetsToHeal; 
         Type = 4; 

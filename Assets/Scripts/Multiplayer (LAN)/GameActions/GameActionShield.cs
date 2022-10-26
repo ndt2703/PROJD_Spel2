@@ -4,13 +4,13 @@ using System;
 
 public class GameActionShield : GameAction
 {
-    public List<Tuple<TargetInfo, int>> targetsToShield = new List<Tuple<TargetInfo, int>>();
+    public List<TargetAndAmount> targetsToShield = new List<TargetAndAmount>();
 
     public GameActionShield()
     {
         Type = 6;
     }
-    public GameActionShield(List<Tuple<TargetInfo, int>> targetsToShield)
+    public GameActionShield(List<TargetAndAmount> targetsToShield)
     {
         this.targetsToShield = targetsToShield;
 
