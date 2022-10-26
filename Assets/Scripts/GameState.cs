@@ -484,6 +484,7 @@ public class GameState : MonoBehaviour
             isItMyTurn = false;
             if (!didIStart)
             {
+                actionOfPlayer.playerMana++;
                 opponentChampion.champion.EndStep();
                 playerChampion.champion.UpKeep();
             }
@@ -494,6 +495,7 @@ public class GameState : MonoBehaviour
             DrawCard(1, null);
             if (didIStart)
             {
+                actionOfPlayer.playerMana++;
                 amountOfTurns++;
                 playerChampion.champion.EndStep();
                 opponentChampion.champion.UpKeep();
@@ -502,7 +504,6 @@ public class GameState : MonoBehaviour
 
         if (drawExtraCardsEachTurn)
             DrawCard(1, null);
-        actionOfPlayer.playerMana++;
         ChangeInteractabiltyEndTurn();
         actionOfPlayer.currentMana = actionOfPlayer.playerMana;
         cardsPlayedThisTurn.Clear();
