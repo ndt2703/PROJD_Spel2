@@ -62,9 +62,7 @@ public class TestInternet : MonoBehaviour
             if (action is GameActionEndTurn )
             {
                 // print("skickar den en gameAction end turn");
-                gameState.SwitchTurn(response);
-
-                gameState.hasPriority = true;
+                gameState.EndTurn();
 
             }
 

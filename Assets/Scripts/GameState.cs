@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 public class GameState : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class GameState : MonoBehaviour
     public Sprite backfaceCard;
 
     public GameObject EndTurnButton;
+    private UnityEngine.UI.Button endTurnBttn;
 
     public AvailableChampion playerChampion;
     public AvailableChampion opponentChampion;
@@ -72,21 +74,41 @@ public class GameState : MonoBehaviour
     void Start()
     {
         actionOfPlayer = ActionOfPlayer.Instance;
-
-        int random = UnityEngine.Random.Range(0, 2);
-        if (random == 1)
+        endTurnBttn = EndTurnButton.GetComponent<UnityEngine.UI.Button>();
+        if (isOnline)
         {
-            didIStart = true;
-            isItMyTurn = true;
-        }
-
-        else if (random == 0)
-        {
-            didIStart = false;
-            isItMyTurn = false;
+            if (ClientConnection.Instance.playerId == 0)
+            {
+                isItMyTurn = true;
+                didIStart = true; 
+            }
+            else
+            {
+                isItMyTurn = false;
+                didIStart = false;
+                ChangeInteractabiltyEndTurn();
+            }
         }
 
         Invoke(nameof(DrawStartingCards), 0.01f);
+    }
+
+    private void ChangeInteractabiltyEndTurn()
+    {
+        endTurnBttn.interactable = !endTurnBttn.interactable;
+    }
+
+    public  void EndTurnButtonClick()
+    {
+        if(isOnline)
+        {
+            RequestEndTurn request = new RequestEndTurn();
+            request.whichPlayer = ClientConnection.Instance.playerId;
+
+            ClientConnection.Instance.AddRequest(request, RequestEndTurn);
+        }
+
+        EndTurn();
     }
 
     public void CalculateBonusDamage(int damage, Card cardUsed)
@@ -216,14 +238,6 @@ public class GameState : MonoBehaviour
         DrawCardPlayer(amountOfCards, randomCardFromGraveyard);
     }
 
-    public bool LegalEndTurn()
-    {
-        if(hasPriority && currentPlayerID == ClientConnection.Instance.playerId)
-        {
-            return true;
-        }
-        return false;
-    }
 
     public void ShowPlayedCard(Card card)
     {
@@ -468,7 +482,7 @@ public class GameState : MonoBehaviour
         
         if (isItMyTurn)
         {
-            EndTurnButton.GetComponent<Button>().interactable = true;
+            endTurnBttn.interactable = true;
             isItMyTurn = false;
             if (!didIStart)
             {
@@ -479,11 +493,13 @@ public class GameState : MonoBehaviour
                 }
                 amountOfTurns++;
                 actionOfPlayer.playerMana++;
+                opponentChampion.champion.EndStep();
+                playerChampion.champion.UpKeep();
             }
         }
         else
         {
-            EndTurnButton.GetComponent<Button>().interactable = false;
+            endTurnBttn.interactable = false;
             isItMyTurn = true;
             if (didIStart)
             {
@@ -494,6 +510,8 @@ public class GameState : MonoBehaviour
                 }
                 amountOfTurns++;
                 actionOfPlayer.playerMana++;
+                playerChampion.champion.EndStep();
+                opponentChampion.champion.UpKeep();
             }
         }
         cardsPlayedThisTurn.Clear();
@@ -616,6 +634,10 @@ public class GameState : MonoBehaviour
     //    DiscardCard(castedResponse.listOfCardsDiscarded);
     }
     public void RequestPlayCard(ServerResponse response)
+    {
+
+    }
+    public void RequestEndTurn(ServerResponse response)
     {
 
     }
