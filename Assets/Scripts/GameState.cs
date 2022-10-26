@@ -493,6 +493,7 @@ public class GameState : MonoBehaviour
                 actionOfPlayer.playerMana++;
                 opponentChampion.champion.EndStep();
                 playerChampion.champion.UpKeep();
+                actionOfPlayer.currentMana = actionOfPlayer.playerMana;
             }
         }
         else
