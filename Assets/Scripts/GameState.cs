@@ -202,7 +202,7 @@ public class GameState : MonoBehaviour
     {
         ResponseDrawCard castedReponse = (ResponseDrawCard)response;
 
-        DrawCard(castedReponse.amountToDraw, null);
+        //DrawCard(castedReponse.amountToDraw, null);
     }
 
     public void DrawRandomCardFromGraveyard(int amountOfCards)
@@ -297,6 +297,7 @@ public class GameState : MonoBehaviour
         {
             RequestDrawCard request = new RequestDrawCard(amountToDraw);
             request.whichPlayer = ClientConnection.Instance.playerId;
+            print("Should draw card");
             ClientConnection.Instance.AddRequest(request, DrawCardRequest);
         }
         else
