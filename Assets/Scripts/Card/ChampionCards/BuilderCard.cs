@@ -13,7 +13,7 @@ public class BuilderCard : Spells
         for (int i = 0; i < gameState.playerLandmarks.Count; i++)
         {
             damage += 10;
-            gameState.DrawCard(1);
+            gameState.DrawCard(1, null);
         }       
         if (Target != null)
             Target.TakeDamage(damage);

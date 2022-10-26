@@ -18,6 +18,7 @@ public abstract class Card : ScriptableObject
     public Sprite artwork;
     public int manaCost;
 
+    public int maxManaCost;
     public string tag;   
 
     private Champion target;
@@ -30,9 +31,11 @@ public abstract class Card : ScriptableObject
     public Champion Target { get { return target; } set { target = value; } }
     public LandmarkDisplay LandmarkTarget { get { return landmarkTarget; } set { landmarkTarget = value; } }
 
+    protected Card() { maxManaCost = manaCost; }
+
     public virtual void PlayCard()
     {
-
+        maxManaCost = manaCost;
         Debug.Log("kommer den till play card");
         CardAndPlacement cardPlacement = new CardAndPlacement();
         cardPlacement.cardName = cardName;
@@ -116,7 +119,7 @@ public abstract class Card : ScriptableObject
         }
         else
         {
-            GameState.Instance.DrawCard(amountOfCardsToDraw);
+            GameState.Instance.DrawCard(amountOfCardsToDraw, null);
         }
     }
 
