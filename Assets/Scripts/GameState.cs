@@ -482,7 +482,7 @@ public class GameState : MonoBehaviour
         
         if (isItMyTurn)
         {
-            endTurnBttn.interactable = true;
+            ChangeInteractabiltyEndTurn();
             isItMyTurn = false;
             if (!didIStart)
             {
@@ -499,7 +499,7 @@ public class GameState : MonoBehaviour
         }
         else
         {
-            endTurnBttn.interactable = false;
+            ChangeInteractabiltyEndTurn();
             isItMyTurn = true;
             if (didIStart)
             {
