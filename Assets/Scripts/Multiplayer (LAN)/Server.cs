@@ -110,7 +110,7 @@ public class Server
         {
             return HandleRequestActions(requestToHandle);
         }
-        if(requestToHandle.GetType(requestToHandle.Type) == typeof(RequestEndTurn))
+        if(requestToHandle is RequestEndTurn)
         {
             return HandleEndTurn(requestToHandle);
         }
