@@ -133,6 +133,14 @@ public class TestInternet : MonoBehaviour
                     {
                         GameState.Instance.playerLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
                     }
+                    if (targetAndAmount.targetInfo.whichList.myChampions)
+                    {
+                        GameState.Instance.opponentChampions[targetAndAmount.targetInfo.index].champion.TakeDamage(targetAndAmount.amount);
+                    }
+                    if (targetAndAmount.targetInfo.whichList.myLandmarks)
+                    {
+                        GameState.Instance.opponentLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
+                    }
                 }
                 
                 print("skickar den en gameAction damage");

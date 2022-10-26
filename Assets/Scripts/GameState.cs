@@ -212,6 +212,16 @@ public class GameState : MonoBehaviour
             opponentLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
         }
 
+        if(isOnline)
+        {
+            List<TargetAndAmount> list = new List<TargetAndAmount>();
+            list.Add(targetAndAmount);
+
+            RequestDamage request = new RequestDamage(list);
+            request.whichPlayer = ClientConnection.Instance.playerId;
+            ClientConnection.Instance.AddRequest(request, RequestDamage);
+        }
+
     }
 
     private void AddChampions(List<AvailableChampion> champions)
