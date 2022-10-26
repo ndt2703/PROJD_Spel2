@@ -171,8 +171,8 @@ public class GameState : MonoBehaviour
     {
         for (int i = 0; i < champ.Count; i++)
         {
-            print(champ[i] + " vs " + cardUsed.Target);
-            if (champ[i] == cardUsed.Target)
+            print(champ[i].champion + " vs " + cardUsed.Target);
+            if (champ[i].champion == cardUsed.Target)
             {
                 return i;
             }
