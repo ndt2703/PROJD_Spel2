@@ -194,6 +194,7 @@ public class GameState : MonoBehaviour
     {
 
         ListEnum lE =  targetAndAmount.targetInfo.whichList;
+        print("vilket index " + targetAndAmount.targetInfo.index);
         
         if(lE.myChampions)
         {
