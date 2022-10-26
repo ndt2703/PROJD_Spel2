@@ -5,14 +5,14 @@ using System;
 public class GameActionHeal : GameAction
 {
 
-    public List<Tuple<TargetInfo,int>> targetsToHeal = new List<Tuple<TargetInfo, int>>(); 
+    public  List<TargetAndAmount> targetsToHeal = new List<TargetAndAmount>(); 
 
     public GameActionHeal() 
     {
         Type = 3; 
     } 
 
-    public GameActionHeal(List<Tuple<TargetInfo, int>> targetsToHeal)
+    public GameActionHeal(List<TargetAndAmount> targetsToHeal)
     {
         this.targetsToHeal = targetsToHeal;
 

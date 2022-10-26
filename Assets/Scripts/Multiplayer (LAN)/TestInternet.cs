@@ -101,28 +101,29 @@ public class TestInternet : MonoBehaviour
 
                 }
 
-                //gameState.DiscardCard(theAction.listOfCardsDiscarded);
-                //Draw card opponents
-
             }
             if (action  is GameActionHeal)
             {
-                print("skickar den en gameAction heal");
-                //GameActionHeal theAction = (GameActionHeal)action;
 
-                //gameState.Heal(theAction.targetsToHeal);
-                //Draw card opponents
+                GameActionHeal castedAction = (GameActionHeal)action;
 
+                foreach (TargetAndAmount targetAndAmount in castedAction.targetsToHeal)
+                {
+                    if (targetAndAmount.targetInfo.whichList.opponentChampions)
+                    {
+                        GameState.Instance.playerChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
+                    }
+                  
+                    if (targetAndAmount.targetInfo.whichList.myChampions)
+                    {
+                        GameState.Instance.opponentChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
+                    }
+                }
             }
             if (action is GameActionDamage)
             {
                 GameActionDamage castedAction = (GameActionDamage)action;
 
-             /*   for(int i = 0; i < castedAction.targetsToDamage.Count; i++)
-                {
-                    //  GameState.Instance.DealDamage(castedAction.targetsToDamage[i]);
-                }
-               */ 
                 foreach(TargetAndAmount targetAndAmount in castedAction.targetsToDamage)
                 {
                     if (targetAndAmount.targetInfo.whichList.opponentChampions)

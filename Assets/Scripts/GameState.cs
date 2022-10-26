@@ -223,7 +223,39 @@ public class GameState : MonoBehaviour
             request.whichPlayer = ClientConnection.Instance.playerId;
             ClientConnection.Instance.AddRequest(request, RequestDamage);
         }
+    }
+    public void HealTarget(TargetAndAmount targetAndAmount) // TargetAndAmount
+    {
 
+        ListEnum lE =  targetAndAmount.targetInfo.whichList;
+        print("vilket index " + targetAndAmount.targetInfo.index);
+        
+        if(lE.myChampions)
+        {
+            playerChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
+        }
+        if(lE.opponentChampions)
+        {
+            opponentChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
+        }
+        if(lE.myLandmarks)
+        {
+            playerLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
+        }
+        if(lE.opponentLandmarks)
+        {
+            opponentLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
+        }
+
+        if(isOnline)
+        {
+            List<TargetAndAmount> list = new List<TargetAndAmount>();
+            list.Add(targetAndAmount);
+
+            RequestHeal request = new RequestHeal(list);
+            request.whichPlayer = ClientConnection.Instance.playerId;
+            ClientConnection.Instance.AddRequest(request, RequestDamage);
+        }
     }
 
     private void AddChampions(List<AvailableChampion> champions)
