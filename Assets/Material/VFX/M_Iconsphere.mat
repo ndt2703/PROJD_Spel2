@@ -7,15 +7,17 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Test_MShader
-  m_Shader: {fileID: -6465566751694194690, guid: d9c0039ef06e5324c9ecf1978f8bcc45, type: 3}
+  m_Name: M_Iconsphere
+  m_Shader: {fileID: -6465566751694194690, guid: f021f0aec6d13e4459039d5f665dc5c5, type: 3}
   m_ValidKeywords:
-  - _ALPHATEST_ON
+  - _ENABLE_FOG_ON_TRANSPARENT
   - _SURFACE_TYPE_TRANSPARENT
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
+  - _DOUBLESIDED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
@@ -24,24 +26,13 @@ Material:
   - TransparentDepthPrepass
   - TransparentDepthPostpass
   - TransparentBackface
+  - RayTracingPrepass
   - MOTIONVECTORS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_92d0add5abd6433291c643fc61b3bc87:
-        m_Texture: {fileID: 2800000, guid: 001079d9e5166ba4c9e589fd22372c0c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _PatternShield:
-        m_Texture: {fileID: 2800000, guid: 001079d9e5166ba4c9e589fd22372c0c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_6545dde6ede6481e96151c67547aeb46_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 001079d9e5166ba4c9e589fd22372c0c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_bb88d48704574eb7af2c08a9b842beba_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 001079d9e5166ba4c9e589fd22372c0c, type: 3}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 600bace6b7d289a408b05a68b2f6d788, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -58,31 +49,31 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_c920e0e415e74df68e76c29da4a0ea43: 0
-    - Vector1_d9489324db7b46be88c803ade2859447: 1
     - _AddPrecomputedVelocity: 0
-    - _AlphaCutoffEnable: 1
-    - _AlphaDstBlend: 1
+    - _AlphaCutoffEnable: 0
+    - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
-    - _ArmorValue: 1
-    - _BlendMode: 1
+    - _BlendMode: 0
     - _ConservativeDepthOffsetEnable: 0
-    - _CullMode: 2
-    - _CullModeForward: 2
+    - _CullMode: 0
+    - _CullModeForward: 0
     - _DepthOffsetEnable: 0
-    - _DoubleSidedEnable: 0
+    - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
-    - _DstBlend: 1
-    - _EnableBlendModePreserveSpecularLighting: 0
-    - _EnableFogOnTransparent: 0
-    - _HealthC: 1
+    - _DstBlend: 10
+    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableFogOnTransparent: 1
+    - _FresenelPower: 3.88
     - _OpaqueCullMode: 2
-    - _PowerLight: 2.76
+    - _RayTracing: 0
+    - _ReceivesSSR: 1
+    - _ReceivesSSRTransparent: 0
+    - _RefractionModel: 0
     - _RenderQueueType: 4
-    - _ScrollSpeed: 0
+    - _RequireSplitLighting: 0
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
@@ -94,9 +85,8 @@ Material:
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 14
     - _StencilWriteMaskMV: 40
+    - _SupportDecals: 1
     - _SurfaceType: 1
-    - _T_ScrollSpeed: 0.02
-    - _T_Tilling: 0.18
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0
@@ -106,17 +96,17 @@ Material:
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 4
-    - _ZTestGBuffer: 3
+    - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - Color_0960b34b481746ac8f4e62f562dacb4f: {r: 0.6004361, g: 0.6968569, b: 0.9716981, a: 0}
-    - _Color: {r: 0, g: 0.4815501, b: 0.9622642, a: 0}
-    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EdgeColor: {r: 11.984314, g: 11.356863, b: 0.0627451, a: 0}
+    - _BackColor: {r: 1, g: 0, b: 0, a: 1}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FresenelColor: {r: 0.3537736, g: 0.41631156, b: 1, a: 1}
+    - _FrontColor: {r: 0, g: 8.041883, b: 31.999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &6835590342383508068
+--- !u!114 &6487780884822403207
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
