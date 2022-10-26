@@ -81,7 +81,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _HealthC: 1
     - _OpaqueCullMode: 2
-    - _PowerLight: 5
+    - _PowerLight: 2.76
     - _RenderQueueType: 4
     - _ScrollSpeed: 0
     - _SrcBlend: 1
