@@ -10,7 +10,7 @@ public class GameState : MonoBehaviour
     public int currentPlayerID = 0;
     public bool hasPriority = true;
 
-    private bool isItMyTurn;
+    public bool isItMyTurn;
     private bool didIStart;
 
     public int amountOfTurns;

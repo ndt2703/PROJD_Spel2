@@ -38,6 +38,12 @@ public class CardTargeting : MonoBehaviour
         mousePosition = cardMovement.mousePosition;
         card = cardDisplay.card;
 
+        if (!GameState.Instance.isItMyTurn)
+        {
+            CardGoBackToStartingPosition();
+            return;
+        }
+
         if (cardDisplay.opponentCard == true) return;
 
         RaycastHit hitEnemy;
@@ -49,6 +55,7 @@ public class CardTargeting : MonoBehaviour
             CardGoBackToStartingPosition();
             return;
         }
+        
         gameObjectHit = hitEnemy.transform.gameObject;
 
 
