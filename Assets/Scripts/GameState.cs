@@ -519,7 +519,7 @@ public class GameState : MonoBehaviour
     {
         if (actionOfPlayer.handPlayer.cardsInHand.Count > 0)
         {
-            ChangeCardOrder();
+          //  ChangeCardOrder();
             yield return new WaitForSeconds(0.01f); 
         }
 
