@@ -90,7 +90,11 @@ public class TestInternet : MonoBehaviour
                 print("skickar den en gameAction discard");
 
 
+
+
                 GameActionDiscardCard theAction = (GameActionDiscardCard)action;
+
+
 
                 foreach(string card in theAction.listOfCardsDiscarded)
                 {
@@ -183,7 +187,7 @@ public class TestInternet : MonoBehaviour
 
             }    
             if (action  is GameActionOpponentDiscardCard)
-            {
+            {   
 
                 print("Game action opponent discard card");
 
@@ -197,7 +201,7 @@ public class TestInternet : MonoBehaviour
                 RequestDiscardCard discardCardRequest = new RequestDiscardCard(discardedCards);
                 discardCardRequest.whichPlayer = ClientConnection.Instance.playerId;
                 print("vad ar which player " + discardCardRequest.whichPlayer);
-                clientConnection.AddRequest(discardCardRequest, gameState.RequestDiscardCard);
+                ClientConnection.Instance.AddRequest(discardCardRequest, gameState.RequestDiscardCard);
 
                 //bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
 
