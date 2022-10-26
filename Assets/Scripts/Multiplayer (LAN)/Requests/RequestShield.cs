@@ -6,13 +6,13 @@ public class RequestShield : ClientRequest
 {
 
 
-    public List<Tuple<TargetInfo, int>> targetsToShield = new List<Tuple<TargetInfo, int>>(); 
+    public List<TargetAndAmount> targetsToShield = new List<TargetAndAmount>(); 
     public RequestShield()
     {
         Type = 7; 
     }
 
-    public RequestShield(List<Tuple<TargetInfo, int>> targetsToShield)
+    public RequestShield(List<TargetAndAmount> targetsToShield)
     {
 
 

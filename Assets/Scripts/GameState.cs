@@ -280,6 +280,61 @@ public class GameState : MonoBehaviour
         }
     }
 
+    public void CalculateShield(int amount, Card cardUsed)
+    {
+        int shieldingToDo = 0;
+        shieldingToDo += amount * landmarkEffect;
+
+        TargetAndAmount tAA = null;
+        TargetInfo tI = null;
+        ListEnum listEnum = new ListEnum();
+        int index = 0;
+        // WIP
+        if (cardUsed.Target != null)
+        {
+            index = LookForChampionIndex(cardUsed, opponentChampions);
+            if (index == -1)
+            {
+                index = LookForChampionIndex(cardUsed, playerChampions);
+                listEnum.myChampions = true;
+            }
+            else
+            {
+                listEnum.opponentChampions = true;
+            }
+        }
+        tI = new TargetInfo(listEnum, index);
+        tAA = new TargetAndAmount(tI, shieldingToDo);
+        HealTarget(tAA);
+    }
+
+    public void ShieldTarget(TargetAndAmount targetAndAmount) // TargetAndAmount
+    {
+
+        ListEnum lE = targetAndAmount.targetInfo.whichList;
+        print("vilket index shielding" + targetAndAmount.targetInfo.index);
+
+        if (lE.myChampions)
+        {
+            playerChampions[targetAndAmount.targetInfo.index].champion.GainShield(targetAndAmount.amount);
+        }
+        if (lE.opponentChampions)
+        {
+            opponentChampions[targetAndAmount.targetInfo.index].champion.GainShield(targetAndAmount.amount);
+        }
+
+        if (isOnline)
+        {
+            List<TargetAndAmount> list = new List<TargetAndAmount>();
+            list.Add(targetAndAmount);
+
+            RequestShield request = new RequestShield(list);
+            request.whichPlayer = ClientConnection.Instance.playerId;
+            ClientConnection.Instance.AddRequest(request, RequestDamage);
+        }
+    }
+
+
     private void AddChampions(List<AvailableChampion> champions)
     {
         for (int i = 0; i < champions.Count; i++)
