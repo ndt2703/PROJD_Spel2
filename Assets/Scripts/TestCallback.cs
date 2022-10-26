@@ -10,16 +10,7 @@ public class TestCallback : MonoBehaviour
     public void damageTest()
     {
 
-        
-        Tuple<TargetInfo, int> testTuple = new Tuple<TargetInfo, int>(new TargetInfo(), 10);
-        List<Tuple<TargetInfo, int>> testList = new List<Tuple<TargetInfo, int>>();
-        testList.Add(testTuple);
-        RequestDamage testRequest = new RequestDamage(testList);
 
-
-        testRequest.whichPlayer = ClientConnection.Instance.playerId;
-
-        ClientConnection.Instance.AddRequest(testRequest, DummyCallback);
     }
     
 
