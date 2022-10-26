@@ -30,4 +30,13 @@ public class CardDisplay : MonoBehaviour
     {
         UpdateTextOnCard();
     }
+
+    private void OnMouseEnter()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 2); 
+    }
+    private void OnMouseExit()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
+    }
 }
