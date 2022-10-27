@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class GameState : MonoBehaviour
 {
@@ -583,7 +584,7 @@ public class GameState : MonoBehaviour
     {   
         if(targetInfo != null)
         {
-
+            SwapChampionWithTargetInfo(targetInfo);
             return;
         }
 
@@ -611,8 +612,30 @@ public class GameState : MonoBehaviour
         //playerChampion.champion = playerChampions[randomChamp].champion; 
     }
 
-    public void SwapActiveChampionEnemy()
+    private void SwapChampionWithTargetInfo(TargetInfo targetInfo)
     {
+        if (targetInfo.whichList.myChampions == true)
+        {
+            Champion champ = playerChampion.champion;
+            playerChampion.champion = playerChampions[targetInfo.index].champion;
+            playerChampions[targetInfo.index].champion = champ;
+        }
+        else if (targetInfo.whichList.opponentChampions == true)
+        {
+            Champion champ = opponentChampion.champion;
+            opponentChampion.champion = opponentChampions[targetInfo.index].champion;
+            opponentChampions[targetInfo.index].champion = champ;
+        }
+    }
+
+    public void SwapActiveChampionEnemy(TargetInfo targetInfo)
+    {
+        if (targetInfo != null)
+        {
+            SwapChampionWithTargetInfo(targetInfo);
+            return;
+        }
+
         for (int i = 0; i < 25; i++)
         {
             int randomChamp = UnityEngine.Random.Range(0, opponentChampions.Count);
@@ -686,11 +709,11 @@ public class GameState : MonoBehaviour
 
 
     public void EndTurn()
-    {
-        
+    {      
         if (isItMyTurn)
         {
-            isItMyTurn = false;
+            if (isOnline)
+                isItMyTurn = false;
             if (!didIStart)
             {
                 actionOfPlayer.playerMana++;
@@ -805,7 +828,7 @@ public class GameState : MonoBehaviour
         }
         else if (opponentChampion.champion.GetType() == deadChampion.GetType())
         {
-            SwapActiveChampionEnemy();
+            SwapActiveChampionEnemy(null);
         }
     }
 
