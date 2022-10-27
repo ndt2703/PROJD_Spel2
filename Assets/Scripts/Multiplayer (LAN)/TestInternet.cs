@@ -176,6 +176,10 @@ public class TestInternet : MonoBehaviour
                 print("skickar den en gameAction switch active champion");
                 //GameActionSwitchActiveChamp theAction = (GameActionSwitchActiveChamp)action;
 
+                GameActionSwitchActiveChamp castedAction = (GameActionSwitchActiveChamp)action;
+
+                
+
                 //Draw card opponents
 
             }            

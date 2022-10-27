@@ -36,11 +36,7 @@ public class TestCallback : MonoBehaviour
     
     public void switchActiveChampTest()
     {
-        Tuple<TargetInfo,TargetInfo> testList = new Tuple<TargetInfo,TargetInfo>(new TargetInfo(),new TargetInfo());
-        RequestSwitchActiveChamps testRequest = new RequestSwitchActiveChamps(testList);
 
-        testRequest.whichPlayer = ClientConnection.Instance.playerId;
-        ClientConnection.Instance.AddRequest(testRequest, DummyCallback);
     }
     
     

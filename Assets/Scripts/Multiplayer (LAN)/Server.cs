@@ -310,11 +310,11 @@ public class Server
     }
     private ServerResponse HandleSwitchActiveChamp(RequestSwitchActiveChamps requestToHandle)
     {
-        ResponseSwitchActiveChamp response = new ResponseSwitchActiveChamp(new Tuple<TargetInfo,TargetInfo>(requestToHandle.targetsToSwitch.Item1,requestToHandle.targetsToSwitch.Item2));
+        ResponseSwitchActiveChamp response = new ResponseSwitchActiveChamp(requestToHandle.targetToSwitch);
 
         response.whichPlayer = requestToHandle.whichPlayer;
 
-        GameActionSwitchActiveChamp gameAction = new GameActionSwitchActiveChamp(new Tuple<TargetInfo, TargetInfo>(requestToHandle.targetsToSwitch.Item1, requestToHandle.targetsToSwitch.Item2));
+        GameActionSwitchActiveChamp gameAction = new GameActionSwitchActiveChamp(requestToHandle.targetToSwitch);
 
         AddGameAction(response, gameAction);
         return response;

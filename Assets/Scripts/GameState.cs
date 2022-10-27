@@ -579,8 +579,15 @@ public class GameState : MonoBehaviour
 
     }
 
-    public void SwapActiveChampion()
-    {
+
+    public void SwapActiveChampion(TargetInfo targetInfo)
+    {   
+        if(targetInfo != null)
+        {
+
+            return;
+        }
+
         for (int i = 0; i < 25; i++)
         {
             int randomChamp = UnityEngine.Random.Range(0, playerChampions.Count);
@@ -589,8 +596,16 @@ public class GameState : MonoBehaviour
                 Champion champ = playerChampion.champion;
                 playerChampion.champion = playerChampions[randomChamp].champion;
                 playerChampions[randomChamp].champion = champ;
-                return; 
+                ListEnum lE = new ListEnum();
+                lE.myChampions = true;
+                TargetInfo tI = new TargetInfo(lE, randomChamp);
 
+                if(isOnline)
+                {
+                    RequestSwitchActiveChamps request = new RequestSwitchActiveChamps();
+                }
+
+                return; 
             }
         }
 
@@ -607,6 +622,10 @@ public class GameState : MonoBehaviour
                 Champion champ = opponentChampion.champion;
                 opponentChampion.champion = opponentChampions[randomChamp].champion;
                 opponentChampions[randomChamp].champion = champ;
+                
+                ListEnum lE = new ListEnum();
+                lE.opponentChampions = true;
+                TargetInfo tI = new TargetInfo(lE, randomChamp);
                 return;
 
             }
