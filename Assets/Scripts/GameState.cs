@@ -201,8 +201,12 @@ public class GameState : MonoBehaviour
     {
 
         ListEnum lE =  targetAndAmount.targetInfo.whichList;
-        print("vilket index " + targetAndAmount.targetInfo.index);
-        
+
+        if (targetAndAmount.targetInfo.index == -1)
+        {
+            print("ERROR INDEX -1, YOU STUPID");
+        }
+
         if(lE.myChampions)
         {
             playerChampions[targetAndAmount.targetInfo.index].champion.TakeDamage(targetAndAmount.amount);
@@ -614,9 +618,10 @@ public class GameState : MonoBehaviour
             return;
         }
 
+        int randomChamp = 0;
         for (int i = 0; i < 25; i++)
         {
-            int randomChamp = UnityEngine.Random.Range(0, playerChampions.Count);
+            randomChamp = UnityEngine.Random.Range(0, playerChampions.Count);
             if (playerChampion != playerChampions[randomChamp])
             {
                 Champion champ = playerChampion.champion;
@@ -634,11 +639,11 @@ public class GameState : MonoBehaviour
                     ClientConnection.Instance.AddRequest(request, RequestEmpty);
                 }
 
-                return; 
+                break; 
             }
         }
 
-        //playerChampion.champion = playerChampions[randomChamp].champion; 
+        playerChampion.champion = playerChampions[randomChamp].champion; 
     }
 
     private void SwapChampionWithTargetInfo(TargetInfo targetInfo)
