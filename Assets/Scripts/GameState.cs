@@ -613,7 +613,10 @@ public class GameState : MonoBehaviour
 
                 if(isOnline)
                 {
-                    RequestSwitchActiveChamps request = new RequestSwitchActiveChamps();
+                    RequestSwitchActiveChamps request = new RequestSwitchActiveChamps(tI);
+                    request.whichPlayer = ClientConnection.Instance.playerId;
+
+                    ClientConnection.Instance.AddRequest(request, RequestEmpty);
                 }
 
                 return; 
@@ -873,6 +876,10 @@ public class GameState : MonoBehaviour
 
     }
     public void RequestEndTurn(ServerResponse response)
+    {
+
+    }
+    public void RequestEmpty(ServerResponse response)
     {
 
     }
