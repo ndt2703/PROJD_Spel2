@@ -96,7 +96,7 @@ Material:
     - _StencilWriteMaskMV: 40
     - _SurfaceType: 1
     - _T_ScrollSpeed: 0.02
-    - _T_Tilling: 0.18
+    - _T_Tilling: 0.19
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0

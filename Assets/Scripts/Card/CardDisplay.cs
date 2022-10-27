@@ -11,6 +11,8 @@ public class CardDisplay : MonoBehaviour
 
     public SpriteRenderer artworkSpriteRenderer;
 
+    public GameObject cardPlayableEffect;
+
     public GameObject border;
     [System.NonSerialized] public bool opponentCard;
 
@@ -20,8 +22,17 @@ public class CardDisplay : MonoBehaviour
         
         
         if (!opponentCard)
+        {
             artworkSpriteRenderer.sprite = card.artwork;
 
+            if (ActionOfPlayer.Instance.currentMana >= card.manaCost)
+                cardPlayableEffect.SetActive(true);
+            else
+                cardPlayableEffect.SetActive(false);
+        }
+            
+
+        
        
         manaText.text = card.manaCost.ToString();
     }
