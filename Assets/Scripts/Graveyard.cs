@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Graveyard : MonoBehaviour
 {
@@ -27,20 +28,18 @@ public class Graveyard : MonoBehaviour
         graveyardPlayer.Add(cardToAdd);
     }
 
-    public Card RandomizeCardFromGraveyard()
+    public Tuple<Card,int> RandomizeCardFromGraveyard()
     {
-        return FindAndRemoveCardInGraveyard(graveyardPlayer[Random.Range(0, graveyardPlayer.Count)]);
+        int index = UnityEngine.Random.Range(0, graveyardPlayer.Count);
+        return new Tuple<Card, int>(FindAndRemoveCardInGraveyard(graveyardPlayer[index]), index);
     }
 
     public Card FindAndRemoveCardInGraveyard(Card cardToReturn)
-    {       
-        foreach (Card card in graveyardPlayer)
+    {
+        if (graveyardPlayer.Contains(cardToReturn))
         {
-            if (card == cardToReturn)
-            {
-                graveyardPlayer.Remove(card);
-                return card;
-            }
+            graveyardPlayer.Remove(cardToReturn);
+            return cardToReturn;
         }
         return null;
     }
@@ -52,7 +51,7 @@ public class Graveyard : MonoBehaviour
 
     public Card RandomizeCardFromGraveyardOpponent()
     {
-        return FindAndRemoveCardInGraveyardOpponent(graveyardOpponent[Random.Range(0, graveyardOpponent.Count)]);
+        return FindAndRemoveCardInGraveyardOpponent(graveyardOpponent[UnityEngine.Random.Range(0, graveyardOpponent.Count)]);
     }
 
     public Card FindAndRemoveCardInGraveyardOpponent(Card cardToReturn)

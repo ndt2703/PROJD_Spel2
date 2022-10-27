@@ -71,7 +71,7 @@ MonoBehaviour:
   playerLandmarks: []
   opponentLandmarks: []
   cardsPlayedThisTurn: []
-  isOnline: 0
+  isOnline: 1
 --- !u!114 &4853047340930969290
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -439,8 +439,8 @@ public class GameState : MonoBehaviour
 
     public void DrawRandomCardFromGraveyard(int amountOfCards)
     {
-        Card randomCardFromGraveyard = Graveyard.Instance.RandomizeCardFromGraveyard();
-        DrawCardPlayer(amountOfCards, randomCardFromGraveyard);
+        Tuple<Card, int> info = Graveyard.Instance.RandomizeCardFromGraveyard();
+        DrawCardPlayer(amountOfCards, info.Item1);
     }
 
 
@@ -734,8 +734,8 @@ public class GameState : MonoBehaviour
             if (!didIStart)
             {
                 actionOfPlayer.playerMana++;
-              //  opponentChampion.champion.EndStep();
-              //  playerChampion.champion.UpKeep();
+                playerChampion.champion.EndStep();
+              //  opponentChampion.champion.UpKeep();
             }
         }
         else
@@ -746,8 +746,8 @@ public class GameState : MonoBehaviour
             {
                 actionOfPlayer.playerMana++;
                 amountOfTurns++;
-              //  playerChampion.champion.EndStep();
-              //  opponentChampion.champion.UpKeep();
+                opponentChampion.champion.EndStep();
+              //  playerChampion.champion.UpKeep();
             }
         }
 
