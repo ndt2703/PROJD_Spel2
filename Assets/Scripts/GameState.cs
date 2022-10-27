@@ -834,6 +834,15 @@ public class GameState : MonoBehaviour
 
     private void SearchDeadChampion(Champion deadChampion)
     {
+
+        if (playerChampion.champion.GetType() == deadChampion.GetType())
+        {
+            SwapActiveChampion(null);
+        }
+        else if (opponentChampion.champion.GetType() == deadChampion.GetType())
+        {
+            SwapActiveChampionEnemy(null);
+        }
         foreach (AvailableChampion ac in playerChampions)
         {
             if (ac.champion == deadChampion)
@@ -851,14 +860,7 @@ public class GameState : MonoBehaviour
             }
         }
 
-        if (playerChampion.champion.GetType() == deadChampion.GetType())
-        {
-            SwapActiveChampion(null);
-        }
-        else if (opponentChampion.champion.GetType() == deadChampion.GetType())
-        {
-            SwapActiveChampionEnemy(null);
-        }
+
     }
 
 
