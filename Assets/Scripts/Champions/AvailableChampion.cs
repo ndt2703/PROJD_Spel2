@@ -16,6 +16,15 @@ public class AvailableChampion : MonoBehaviour
     public int shield;
 
     public GameObject meshToShow;
+    public GameObject builderMesh;
+    public GameObject cultistMesh;
+    public GameObject graverobberMesh;
+    private bool wantToSeInfoOnChamp = false;
+
+    private float timer = 0f;
+    private float timeBeforeShowing = 0.5f;
+
+    public SpriteRenderer champCard;
 
 
     [SerializeField] private TMP_Text healthText;
@@ -49,7 +58,19 @@ public class AvailableChampion : MonoBehaviour
     }
     */
 
-	private void UpdateTextOnCard()
+    private void OnMouseEnter()
+    {
+        wantToSeInfoOnChamp = true;
+    }
+
+    private void OnMouseExit()
+    {
+        wantToSeInfoOnChamp = false;
+        champCard.sprite = null;
+        timer = 0f;
+    }
+
+    private void UpdateTextOnCard()
     {
         if (champion == null) return;
 
@@ -65,5 +86,31 @@ public class AvailableChampion : MonoBehaviour
     public void FixedUpdate()
 	{
 		UpdateTextOnCard();
+
+        if (meshToShow.name != champion.name)
+            SwapMesh();
+
+        if (wantToSeInfoOnChamp)
+        {
+            timer += Time.fixedDeltaTime;
+            if (timer >= timeBeforeShowing)
+                champCard.sprite = champion.artwork;
+        }
 	}
+
+    private void SwapMesh()
+    {
+        switch (champion.name)
+        {
+            case "Builder":
+                meshToShow = builderMesh;
+                break;
+            case "Cultist":
+                meshToShow = cultistMesh;
+                break;
+            case "Gravedigger":
+                meshToShow = graverobberMesh;
+                break;
+        }
+    }
 }
