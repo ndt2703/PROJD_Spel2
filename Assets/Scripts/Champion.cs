@@ -55,7 +55,7 @@ public abstract class Champion : ScriptableObject
 
         if (health <= 0)
         {
-            //Death();
+            Death();
         }
     }
 

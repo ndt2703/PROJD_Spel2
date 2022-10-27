@@ -96,7 +96,7 @@ public class TestInternet : MonoBehaviour
 
                 foreach(string card in theAction.listOfCardsDiscarded)
                 {
-                    Graveyard.Instance.AddCardToGraveyard(register.cardRegister[card]);
+                    Graveyard.Instance.AddCardToGraveyardOpponent(register.cardRegister[card]);
                     gameState.actionOfPlayer.handOpponent.cardsInHand[0].GetComponent<CardDisplay>().card = null;
 
                 }
@@ -210,10 +210,10 @@ public class TestInternet : MonoBehaviour
 
                 if (castedAction.cardAndPlacement.placement.whichList.myGraveyard)
                 {
-                    Graveyard.Instance.graveyardPlayer.Add(cardPlayed);
+                    Graveyard.Instance.graveyardOpponent.Add(cardPlayed);
                 }
 
-                Graveyard.Instance.graveyardPlayer.Add(cardPlayed);
+                Graveyard.Instance.graveyardOpponent.Add(cardPlayed);
 
                 gameState.actionOfPlayer.handOpponent.cardsInHand[0].GetComponent<CardDisplay>().card = null;
 
