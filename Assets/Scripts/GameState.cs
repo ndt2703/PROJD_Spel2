@@ -628,13 +628,13 @@ public class GameState : MonoBehaviour
 
     private void SwapChampionWithTargetInfo(TargetInfo targetInfo)
     {
-        if (targetInfo.whichList.myChampions == true)
+        if (targetInfo.whichList.opponentChampions == true)
         {
             Champion champ = playerChampion.champion;
             playerChampion.champion = playerChampions[targetInfo.index].champion;
             playerChampions[targetInfo.index].champion = champ;
         }
-        else if (targetInfo.whichList.opponentChampions == true)
+        else if (targetInfo.whichList.myChampions == true)
         {
             Champion champ = opponentChampion.champion;
             opponentChampion.champion = opponentChampions[targetInfo.index].champion;
