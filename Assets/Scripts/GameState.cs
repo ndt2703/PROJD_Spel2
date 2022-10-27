@@ -618,9 +618,10 @@ public class GameState : MonoBehaviour
             return;
         }
 
+        int randomChamp = 0;
         for (int i = 0; i < 25; i++)
         {
-            int randomChamp = UnityEngine.Random.Range(0, playerChampions.Count);
+            randomChamp = UnityEngine.Random.Range(0, playerChampions.Count);
             if (playerChampion != playerChampions[randomChamp])
             {
                 Champion champ = playerChampion.champion;
@@ -642,7 +643,7 @@ public class GameState : MonoBehaviour
             }
         }
 
-        //playerChampion.champion = playerChampions[randomChamp].champion; 
+        playerChampion.champion = playerChampions[randomChamp].champion; 
     }
 
     private void SwapChampionWithTargetInfo(TargetInfo targetInfo)
