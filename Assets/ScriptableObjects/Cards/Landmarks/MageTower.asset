@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: MageTower
   m_EditorClassIdentifier: 
   cardName: Mage Tower
-  typeOfCard: 0
+  typeOfCard: 1
   description: All your attack spells deal 10 more damage
   artwork: {fileID: 21300000, guid: ee3167bbbe651b3489fa08b07af3fbd1, type: 3}
   manaCost: 3
+  maxManaCost: 0
   tag: DamageLandmark
   amountOfCardsToDraw: 0
   amountOfCardsToDiscard: 0
