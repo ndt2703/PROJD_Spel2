@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Builder
   m_EditorClassIdentifier: 
   name: Builder
-  description: 
-  health: 100
-  maxHealth: 100
+  health: 140
+  maxHealth: 140
   shield: 0
   artwork: {fileID: 21300000, guid: 6bfee3aa04d380c45b71cdf3100c9085, type: 3}
-  passiveEffect: 0/2
+  passiveEffect: 0/0
+  healEachRound: 0
