@@ -16,6 +16,9 @@ public class AvailableChampion : MonoBehaviour
     public int shield;
 
     public GameObject meshToShow;
+    public GameObject builderMesh;
+    public GameObject cultistMesh;
+    public GameObject graverobberMesh;
     private bool wantToSeInfoOnChamp = false;
 
     private float timer = 0f;
@@ -84,6 +87,9 @@ public class AvailableChampion : MonoBehaviour
 	{
 		UpdateTextOnCard();
 
+        if (meshToShow.name != champion.name)
+            SwapMesh();
+
         if (wantToSeInfoOnChamp)
         {
             timer += Time.fixedDeltaTime;
@@ -91,4 +97,20 @@ public class AvailableChampion : MonoBehaviour
                 champCard.sprite = champion.artwork;
         }
 	}
+
+    private void SwapMesh()
+    {
+        switch (champion.name)
+        {
+            case "Builder":
+                meshToShow = builderMesh;
+                break;
+            case "Cultist":
+                meshToShow = cultistMesh;
+                break;
+            case "Gravedigger":
+                meshToShow = graverobberMesh;
+                break;
+        }
+    }
 }

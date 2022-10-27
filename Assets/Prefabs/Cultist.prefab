@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 6668284428869207761}
   - component: {fileID: 5887379675756971252}
   m_Layer: 0
-  m_Name: cultist_lowpoly
+  m_Name: Cultist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
