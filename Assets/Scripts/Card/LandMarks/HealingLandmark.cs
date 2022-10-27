@@ -27,7 +27,7 @@ public class HealingLandmark : Landmarks
         {
             foreach (AvailableChampion champ in GameState.Instance.playerChampions)
             {
-                champ.champion.landmarkEffect *= 2;
+                GameState.Instance.landmarkEffect *= 2;
             }
         }
         
@@ -48,7 +48,7 @@ public class HealingLandmark : Landmarks
         {
             foreach (AvailableChampion champ in GameState.Instance.playerChampions)
             {
-                champ.champion.landmarkEffect /= 2;
+                GameState.Instance.landmarkEffect /= 2;
             }
         }
 

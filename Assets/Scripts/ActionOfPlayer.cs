@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.XR;
 
 public class ActionOfPlayer : MonoBehaviour
@@ -10,7 +11,8 @@ public class ActionOfPlayer : MonoBehaviour
     public Hand handOpponent;
 
     private int cardCost;
-    public int playerMana;
+    public int playerMana = 1;
+    public int currentMana = 1;
     [System.NonSerialized] public int tauntPlaced = 0;
 
     private GameState gameState;
@@ -55,10 +57,10 @@ public class ActionOfPlayer : MonoBehaviour
                 cardCost -= (2 * gameState.factory);
         
         
-        if (playerMana >= cardCost)
+        if (currentMana >= cardCost)
         {
             if (shouldUseMana)
-                playerMana -= cardCost;
+                currentMana -= cardCost;
             return true;
         }
         else

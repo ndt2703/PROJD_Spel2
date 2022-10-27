@@ -5,17 +5,17 @@ public class TargetAndAmount
 {
     public TargetInfo targetInfo;
     public int amount;
-    public Champion championTarget;
-    public LandmarkDisplay landmarkTarget;
-    public int damage;
-    public TargetAndAmount(Champion champTargeted, int damage) 
+   // public Champion championTarget;
+  //  public LandmarkDisplay landmarkTarget;
+ //   public int damage;
+    public TargetAndAmount(TargetInfo targetInfo,int amount)
     {
-        championTarget = champTargeted;
-        this.damage = damage;
+        this.targetInfo = targetInfo;
+        this.amount = amount;
     }
-    public TargetAndAmount(LandmarkDisplay landmarkTargeted, int damage) 
+    public TargetAndAmount()
     {
-        landmarkTarget = landmarkTargeted;
-        this.damage = damage;
+        this.targetInfo = new TargetInfo();
+        this.amount = 0;
     }
 }

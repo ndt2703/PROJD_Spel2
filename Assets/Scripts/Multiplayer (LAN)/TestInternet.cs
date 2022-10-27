@@ -58,13 +58,11 @@ public class TestInternet : MonoBehaviour
                 Destroy(GameObject.Find("Card (1)"));
             }
 
-
+            print("vilket object typ ar grejen " + action.GetType());
             if (action is GameActionEndTurn )
             {
                 // print("skickar den en gameAction end turn");
-                gameState.SwitchTurn(response);
-
-                gameState.hasPriority = true;
+                gameState.EndTurn();
 
             }
 
@@ -103,23 +101,50 @@ public class TestInternet : MonoBehaviour
 
                 }
 
-                //gameState.DiscardCard(theAction.listOfCardsDiscarded);
-                //Draw card opponents
-
             }
-            if (action  is GameActionHeal)
+            if (action is GameActionHeal)
             {
-                print("skickar den en gameAction heal");
-                //GameActionHeal theAction = (GameActionHeal)action;
 
-                //gameState.Heal(theAction.targetsToHeal);
-                //Draw card opponents
+                GameActionHeal castedAction = (GameActionHeal)action;
 
+                foreach (TargetAndAmount targetAndAmount in castedAction.targetsToHeal)
+                {
+                    if (targetAndAmount.targetInfo.whichList.opponentChampions)
+                    {
+                        GameState.Instance.playerChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
+                    }
+
+                    if (targetAndAmount.targetInfo.whichList.myChampions)
+                    {
+                        GameState.Instance.opponentChampions[targetAndAmount.targetInfo.index].champion.HealChampion(targetAndAmount.amount);
+                    }
+                }
+                print("hur mycket skulle healen heala " + castedAction.targetsToHeal[0].amount);
             }
             if (action is GameActionDamage)
             {
+                GameActionDamage castedAction = (GameActionDamage)action;
 
-
+                foreach(TargetAndAmount targetAndAmount in castedAction.targetsToDamage)
+                {
+                    if (targetAndAmount.targetInfo.whichList.opponentChampions)
+                    {
+                        GameState.Instance.playerChampions[targetAndAmount.targetInfo.index].champion.TakeDamage(targetAndAmount.amount);
+                    }
+                    if (targetAndAmount.targetInfo.whichList.opponentLandmarks)
+                    {
+                        GameState.Instance.playerLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
+                    }
+                    if (targetAndAmount.targetInfo.whichList.myChampions)
+                    {
+                        GameState.Instance.opponentChampions[targetAndAmount.targetInfo.index].champion.TakeDamage(targetAndAmount.amount);
+                    }
+                    if (targetAndAmount.targetInfo.whichList.myLandmarks)
+                    {
+                        GameState.Instance.opponentLandmarks[targetAndAmount.targetInfo.index].TakeDamage(targetAndAmount.amount);
+                    }
+                }
+                
                 print("skickar den en gameAction damage");
                 //GameActionDamage theAction = (GameActionDamage)action;
 
@@ -129,9 +154,21 @@ public class TestInternet : MonoBehaviour
             if (action  is GameActionShield)
             {
                 print("skickar den en gameAction Shield");
-                //GameActionDamage theAction = (GameActionDamage)action;
 
-                //Draw card opponents
+                GameActionShield castedAction = (GameActionShield)action;
+
+                foreach (TargetAndAmount targetAndAmount in castedAction.targetsToShield)
+                {
+                    if (targetAndAmount.targetInfo.whichList.opponentChampions)
+                    {
+                        GameState.Instance.playerChampions[targetAndAmount.targetInfo.index].champion.GainShield(targetAndAmount.amount);
+                    }
+
+                    if (targetAndAmount.targetInfo.whichList.myChampions)
+                    {
+                        GameState.Instance.opponentChampions[targetAndAmount.targetInfo.index].champion.GainShield(targetAndAmount.amount);
+                    }
+                }
 
             }            
             if (action  is GameActionSwitchActiveChamp)
@@ -177,6 +214,8 @@ public class TestInternet : MonoBehaviour
                 Graveyard.Instance.graveyardPlayer.Add(cardPlayed);
 
                 gameState.actionOfPlayer.handOpponent.cardsInHand[0].GetComponent<CardDisplay>().card = null;
+
+                GameState.Instance.ShowPlayedCard(cardPlayed);
                 //bool test =  gameState.actionOfPlayer.handOpponent.cardsInHand.Remove(gameState.actionOfPlayer.handOpponent.cardsInHand[0]);
 
 
