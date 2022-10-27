@@ -13,7 +13,8 @@ public class HealChampion : Spells
         {
             foreach (AvailableChampion champ in GameState.Instance.playerChampions)
             {
-                champ.champion.HealChampion(amountToHeal);
+                Target = champ.champion;
+                GameState.Instance.CalculateHealing(amountToHeal, this);
             }
         }
         else
