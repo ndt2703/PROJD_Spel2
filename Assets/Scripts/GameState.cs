@@ -639,7 +639,7 @@ public class GameState : MonoBehaviour
                     ClientConnection.Instance.AddRequest(request, RequestEmpty);
                 }
 
-                return; 
+                break; 
             }
         }
 
