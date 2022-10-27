@@ -192,8 +192,10 @@ public class TestInternet : MonoBehaviour
 
             }            
             if (action is GameActionRemoveCardsGraveyard)
-            {
+            {   
                 print("skickar den en gameAction remove card graveyard");
+
+
                 //GameActionRemoveCardsGraveyard theAction = (GameActionRemoveCardsGraveyard)action;
 
                 //Draw card opponents
@@ -257,6 +259,10 @@ public class TestInternet : MonoBehaviour
             if (action.GetType(action.Type).Equals(typeof(GameActionAddSpecificCardToHand)))
             {
                 print("skickar den en gameAction add specific card");
+                GameActionAddSpecificCardToHand castedAction = (GameActionAddSpecificCardToHand)action; 
+
+                GameState.Instance.DrawCardOpponent(1, CardRegister.Instance.cardRegister[castedAction.cardToAdd]);
+
                // GameActionAddSpecificCardToHand theAction = (GameActionAddSpecificCardToHand)action;
 
                 //Draw card opponents
