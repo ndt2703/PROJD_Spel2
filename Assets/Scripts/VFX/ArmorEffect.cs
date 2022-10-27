@@ -67,11 +67,11 @@ public class ArmorEffect : MonoBehaviour
         m_PropetyBlock.SetFloat("_T_ScrollSpeed", 0f);
     }
 
-    private void DamageArmor(int dmg)
+    public void DamageArmor(int dmg)
     {
         SetArmor(Mathf.Min(currentArmor+dmg, 100));
     }
-    private void SetArmor(int value)
+    public void SetArmor(int value)
     {
         currentArmor = value;
         targetDiss = (float)(maxArmor-currentArmor) / maxArmor;

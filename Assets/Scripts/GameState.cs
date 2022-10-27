@@ -318,6 +318,7 @@ public class GameState : MonoBehaviour
         }
         tI = new TargetInfo(listEnum, index);
         tAA = new TargetAndAmount(tI, shieldingToDo);
+
         ShieldTarget(tAA);
     }
 
