@@ -75,7 +75,7 @@ public abstract class Champion : ScriptableObject
 
     }
     public virtual void GainShield(int amountToBlock)
-    {
+    {        
         shield += amountToBlock;
     }
 

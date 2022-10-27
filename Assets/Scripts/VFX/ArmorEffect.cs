@@ -8,7 +8,7 @@ public class ArmorEffect : MonoBehaviour
     [SerializeField] private Renderer armorMaterial;
 
     private MaterialPropertyBlock m_PropetyBlock;
-    private int currentArmor;
+    [SerializeField] private int currentArmor;
     private bool isDamaging;
     private bool timeToGo;
     private float targetDiss;
@@ -22,6 +22,10 @@ public class ArmorEffect : MonoBehaviour
     }
     private void Update()
     {
+        if (currentArmor > 0)
+            armorMaterial.enabled = true;
+        else
+            armorMaterial.enabled = false;
         if (isDamaging)
         {
             //the propety health starts with 1, when it is 0, armor disappears (0min,1max,1 default)

@@ -38,11 +38,15 @@ public class CardTargeting : MonoBehaviour
         mousePosition = cardMovement.mousePosition;
         card = cardDisplay.card;
 
-        if (!GameState.Instance.isItMyTurn)
+        if (GameState.Instance.isOnline)
         {
-            CardGoBackToStartingPosition();
-            return;
+            if (!GameState.Instance.isItMyTurn)
+            {
+                CardGoBackToStartingPosition();
+                return;
+            }
         }
+            
 
         if (cardDisplay.opponentCard == true) return;
 
@@ -63,7 +67,9 @@ public class CardTargeting : MonoBehaviour
         {
             GameState.Instance.ShowPlayedCard(card);
             WhatToDoWhenTargeted();
-        }            
+        }
+        else
+            CardGoBackToStartingPosition();
     }
     private void CardGoBackToStartingPosition()
     {

@@ -316,8 +316,11 @@ public class GameState : MonoBehaviour
                 listEnum.opponentChampions = true;
             }
         }
+
         tI = new TargetInfo(listEnum, index);
         tAA = new TargetAndAmount(tI, shieldingToDo);
+
+        playerChampion.GetComponent<ArmorEffect>().SetArmor(shieldingToDo);
 
         ShieldTarget(tAA);
     }
