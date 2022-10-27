@@ -103,13 +103,19 @@ public class AvailableChampion : MonoBehaviour
         switch (champion.name)
         {
             case "Builder":
-                meshToShow = builderMesh;
+                builderMesh.SetActive(true);
+                cultistMesh.SetActive(false);
+                graverobberMesh.SetActive(false);
                 break;
             case "Cultist":
-                meshToShow = cultistMesh;
+                builderMesh.SetActive(false);
+                cultistMesh.SetActive(true);
+                graverobberMesh.SetActive(false);
                 break;
             case "Gravedigger":
-                meshToShow = graverobberMesh;
+                builderMesh.SetActive(false);               
+                cultistMesh.SetActive(false);
+                graverobberMesh.SetActive(true);
                 break;
         }
     }
