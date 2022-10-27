@@ -13,14 +13,18 @@ public class CultistCard : Spells
     public override void PlaySpell()
     {
         GameState gameState = GameState.Instance;
-        gameState.playerChampion.champion.TakeDamage(selfInflictDamage);
+        Target = gameState.playerChampion.champion;
+        gameState.CalculateBonusDamage(selfInflictDamage, this);
 
         if (damageToAllOpponentCards)
         {
-            gameState.opponentChampion.champion.TakeDamage(damageToDealToAllOpponent);
+            Target = gameState.opponentChampion.champion;
+            gameState.CalculateBonusDamage(damageToDealToAllOpponent, this);
+
+            /* MÅste fixa så att den targetar landmarks */
             foreach (Landmarks landmark in gameState.opponentLandmarks)
             {
-                landmark.TakeDamage(damageToDealToAllOpponent);
+                gameState.CalculateBonusDamage(damageToDealToAllOpponent, this);
             }           
         }
     }

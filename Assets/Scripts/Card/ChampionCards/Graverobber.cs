@@ -29,10 +29,7 @@ public class Graverobber : Spells
                 }
             }
 
-            if (Target != null)
-                Target.TakeDamage(damage);
-            if (LandmarkTarget != null)
-                LandmarkTarget.TakeDamage(damage);
+            GameState.Instance.CalculateBonusDamage(damage, this);
         }
 
     }

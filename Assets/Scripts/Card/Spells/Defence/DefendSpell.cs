@@ -14,7 +14,8 @@ public class DefendSpell : Spells
         {
             foreach (AvailableChampion champ in GameState.Instance.playerChampions)
             {
-                champ.champion.GainShield(defence);
+                Target = champ.champion;
+                GameState.Instance.CalculateShield(defence, this);
             }
         }
         else
