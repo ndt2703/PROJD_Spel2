@@ -32,7 +32,7 @@ public class Deck : MonoBehaviour
         Shuffle(allCardsAvailable);
         
 
-        while (deckOfCards.Count < 30)
+        while (deckOfCards.Count < 60)
         {
             foreach (Card card in allCardsAvailable)
             {
