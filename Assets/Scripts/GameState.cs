@@ -618,10 +618,9 @@ public class GameState : MonoBehaviour
             return;
         }
 
-        int randomChamp = 0;
         for (int i = 0; i < 25; i++)
         {
-            randomChamp = UnityEngine.Random.Range(0, playerChampions.Count);
+            int randomChamp = UnityEngine.Random.Range(0, playerChampions.Count);
             if (playerChampion != playerChampions[randomChamp])
             {
                 Champion champ = playerChampion.champion;
@@ -639,11 +638,11 @@ public class GameState : MonoBehaviour
                     ClientConnection.Instance.AddRequest(request, RequestEmpty);
                 }
 
-                break; 
+                return; 
             }
         }
 
-        playerChampion.champion = playerChampions[randomChamp].champion; 
+        //playerChampion.champion = playerChampions[randomChamp].champion; 
     }
 
     private void SwapChampionWithTargetInfo(TargetInfo targetInfo)
@@ -840,11 +839,11 @@ public class GameState : MonoBehaviour
     private void SearchDeadChampion(Champion deadChampion)
     {
 
-        if (playerChampion.champion.GetType() == deadChampion.GetType())
+        if (playerChampion.champion == deadChampion)
         {
             SwapActiveChampion(null);
         }
-        else if (opponentChampion.champion.GetType() == deadChampion.GetType())
+        else if (opponentChampion.champion == deadChampion)
         {
             SwapActiveChampionEnemy(null);
         }
