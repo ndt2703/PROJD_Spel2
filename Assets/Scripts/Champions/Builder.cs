@@ -10,7 +10,7 @@ public class Builder : Champion
 	private int landmarkNeeded = 2;
 	private int cardCostReduce = 2;
 
-	public Builder(Builder c) : base(c.name, c.health, c.maxHealth, c.shield, c.artwork, c.passiveEffect)
+	public Builder(Builder c) : base(c.name, c.health, c.maxHealth, c.shield, c.artwork, c.passiveEffect, c.mesh)
 	{
 		landmarkCount = c.landmarkCount;
 		landmarkNeeded = c.landmarkNeeded;
