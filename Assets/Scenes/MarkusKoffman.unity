@@ -2130,6 +2130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215213670}
   - component: {fileID: 215213671}
+  - component: {fileID: 215213672}
   m_Layer: 6
   m_Name: EnemyChampion
   m_TagString: Champion
@@ -2176,6 +2177,19 @@ MonoBehaviour:
   healthText: {fileID: 1587850527}
   shieldText: {fileID: 0}
   passiveEffect: {fileID: 872145451}
+--- !u!65 &215213672
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215213665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.9539943, y: 3.9797916, z: 0.3229375}
+  m_Center: {x: 0.0006864071, y: 1.4898958, z: 0.043444633}
 --- !u!1 &220195550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2186,6 +2200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 220195551}
   - component: {fileID: 220195556}
+  - component: {fileID: 220195557}
   m_Layer: 0
   m_Name: MyChampion
   m_TagString: Champion
@@ -2229,6 +2244,19 @@ MonoBehaviour:
   healthText: {fileID: 928276974}
   shieldText: {fileID: 0}
   passiveEffect: {fileID: 1645652658}
+--- !u!65 &220195557
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220195550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.4426413, z: 0.49519923}
+  m_Center: {x: 0, y: 0.7559931, z: -0.23731886}
 --- !u!1 &236878358
 GameObject:
   m_ObjectHideFlags: 0
@@ -11644,6 +11672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: graveRobber
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ecf88e1376d49d1408c54a1e80894d2a, type: 3}
+      propertyPath: m_TagString
+      value: Champion
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecf88e1376d49d1408c54a1e80894d2a, type: 3}
 --- !u!1 &959077802 stripped
@@ -11656,19 +11688,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ecf88e1376d49d1408c54a1e80894d2a, type: 3}
   m_PrefabInstance: {fileID: 959077801}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &959077804
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959077802}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.4426413, z: 0.49519923}
-  m_Center: {x: 0, y: 0.7559931, z: -0.23731886}
 --- !u!1 &971524924
 GameObject:
   m_ObjectHideFlags: 0
@@ -14831,6 +14850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Builer
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: efc365cb711fd2448a8918d2be20941d, type: 3}
+      propertyPath: m_TagString
+      value: Champion
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efc365cb711fd2448a8918d2be20941d, type: 3}
 --- !u!1 &1301588411 stripped
@@ -14843,19 +14866,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: efc365cb711fd2448a8918d2be20941d, type: 3}
   m_PrefabInstance: {fileID: 1301588410}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1301588413
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1301588411}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.9539943, y: 3.9797916, z: 0.3229375}
-  m_Center: {x: 0.0006864071, y: 1.4898958, z: 0.043444633}
 --- !u!1 &1306170314
 GameObject:
   m_ObjectHideFlags: 0
