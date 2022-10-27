@@ -47,7 +47,27 @@ public class AvailableChampion : MonoBehaviour
 	private void Start()
 	{
         maxHealth = health;
-	}
+
+        SetWichMeshToShowOnStart();
+
+    }
+
+    private void SetWichMeshToShowOnStart()
+    {
+        switch(meshToShow.name)
+        {
+            case "Builder":
+                builderMesh.SetActive(true);
+                break;
+            case "Cultist":
+                cultistMesh.SetActive(true);
+                break;
+            case "Gravedigger":
+                graverobberMesh.SetActive(true);
+                break;
+        }
+    }
+
     /*
     public void ChangeChampion(Champion champion, int currentHealth, int currentShield)
     {
@@ -106,16 +126,19 @@ public class AvailableChampion : MonoBehaviour
                 builderMesh.SetActive(true);
                 cultistMesh.SetActive(false);
                 graverobberMesh.SetActive(false);
+                meshToShow.name = builderMesh.name;
                 break;
             case "Cultist":
                 builderMesh.SetActive(false);
                 cultistMesh.SetActive(true);
                 graverobberMesh.SetActive(false);
+                meshToShow.name = cultistMesh.name;
                 break;
             case "Gravedigger":
                 builderMesh.SetActive(false);               
                 cultistMesh.SetActive(false);
                 graverobberMesh.SetActive(true);
+                meshToShow.name = graverobberMesh.name;
                 break;
         }
     }
