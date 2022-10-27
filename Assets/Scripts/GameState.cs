@@ -201,8 +201,12 @@ public class GameState : MonoBehaviour
     {
 
         ListEnum lE =  targetAndAmount.targetInfo.whichList;
-        print("vilket index " + targetAndAmount.targetInfo.index);
-        
+
+        if (targetAndAmount.targetInfo.index == -1)
+        {
+            print("ERROR INDEX -1, YOU STUPID");
+        }
+
         if(lE.myChampions)
         {
             playerChampions[targetAndAmount.targetInfo.index].champion.TakeDamage(targetAndAmount.amount);
