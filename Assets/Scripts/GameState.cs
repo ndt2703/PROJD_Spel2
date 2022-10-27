@@ -579,7 +579,6 @@ public class GameState : MonoBehaviour
 
     }
 
-
     public void SwapActiveChampion(TargetInfo targetInfo)
     {   
         if(targetInfo != null)
@@ -802,7 +801,7 @@ public class GameState : MonoBehaviour
 
         if (playerChampion.champion.GetType() == deadChampion.GetType())
         {
-            SwapActiveChampion();
+            SwapActiveChampion(null);
         }
         else if (opponentChampion.champion.GetType() == deadChampion.GetType())
         {
