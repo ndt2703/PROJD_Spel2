@@ -120,11 +120,17 @@ public class CardTargeting : MonoBehaviour
                 graveyard.AddCardToGraveyard(card);
                 cardDisplay.card = null;
                 return;
+            case "AttackSpell":
+                card.LandmarkTarget = landmarkSlot;
+                Graveyard.Instance.AddCardToGraveyard(card);
+                card.LandmarkTarget.DestroyLandmark();
+                cardDisplay.card = null;
+                break;
             case "Spell":
                 card.LandmarkTarget = landmarkSlot;
 
                 Graveyard.Instance.AddCardToGraveyard(card);
-                card.PlayCard();
+                card.LandmarkTarget.DestroyLandmark();
                 cardDisplay.card = null;
                 return;
             case "HealingLandmark":
