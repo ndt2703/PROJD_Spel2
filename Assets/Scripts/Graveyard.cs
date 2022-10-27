@@ -51,7 +51,7 @@ public class Graveyard : MonoBehaviour
 
     public Card RandomizeCardFromGraveyardOpponent()
     {
-        return FindAndRemoveCardInGraveyardOpponent(graveyardOpponent[Random.Range(0, graveyardOpponent.Count)]);
+        return FindAndRemoveCardInGraveyardOpponent(graveyardOpponent[UnityEngine.Random.Range(0, graveyardOpponent.Count)]);
     }
 
     public Card FindAndRemoveCardInGraveyardOpponent(Card cardToReturn)
