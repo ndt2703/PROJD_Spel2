@@ -457,6 +457,18 @@ public class GameState : MonoBehaviour
 
     public void DestroyLandmark()
     {
+        bool existLandmark = false;
+        for (int i = 0; i < opponentLandmarks.Count; i++)
+        {
+            if(opponentLandmarks[i] != null)
+            {
+                existLandmark = true;
+                break;
+            }
+        }
+
+        if(!existLandmark)return;
+
         for (int i = 0; i < 25; i++)
         {
             int random = UnityEngine.Random.Range(0, opponentLandmarks.Count);
