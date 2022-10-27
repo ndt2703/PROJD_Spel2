@@ -23,6 +23,8 @@ public class GameState : MonoBehaviour
     [SerializeField] private GameObject lostScreen;
     [SerializeField] private GameObject wonScreen;
 
+    [SerializeField] private GameObject healEffect;
+
     private readonly int maxMana = 10;
     public ActionOfPlayer actionOfPlayer;
     public int currentMana;
@@ -254,7 +256,15 @@ public class GameState : MonoBehaviour
         }
         tI = new TargetInfo(listEnum, index);
         tAA = new TargetAndAmount(tI, healingToDo);
+
+        healEffect.SetActive(true);
+        Invoke(nameof(TakeAwayHealEffect), 3f);
         HealTarget(tAA);
+    }
+
+    private void TakeAwayHealEffect()
+    {
+        healEffect.SetActive(false);
     }
 
     public void HealTarget(TargetAndAmount targetAndAmount) // TargetAndAmount
