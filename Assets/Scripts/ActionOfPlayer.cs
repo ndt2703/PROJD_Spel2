@@ -4,11 +4,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR;
+using TMPro;
 
 public class ActionOfPlayer : MonoBehaviour
 {
     public Hand handPlayer;
     public Hand handOpponent;
+
+    [SerializeField] private TMP_Text manaText;
 
     private int cardCost;
     public int playerMana = 1;
@@ -47,6 +50,7 @@ public class ActionOfPlayer : MonoBehaviour
         {
             GameState.Instance.DrawCard(1, null);
         }
+        manaText.text = "Mana: " + currentMana.ToString();
     }
 
     public bool CheckIfCanPlayCard(Card card, bool shouldUseMana)
