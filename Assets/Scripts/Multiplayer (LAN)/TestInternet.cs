@@ -206,8 +206,6 @@ public class TestInternet : MonoBehaviour
 
                 GameActionPlayCard castedAction = (GameActionPlayCard)action;
 
-                print("ar register null " + register);
-
                 Card cardPlayed = register.cardRegister[castedAction.cardAndPlacement.cardName];
 
                 if (castedAction.cardAndPlacement.placement.whichList.myGraveyard)
