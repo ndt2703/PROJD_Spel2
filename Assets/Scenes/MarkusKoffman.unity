@@ -18748,6 +18748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handPlayer: {fileID: 236878360}
   handOpponent: {fileID: 1618785754}
+  manaText: {fileID: 1656743312}
   playerMana: 1
   currentMana: 1
 --- !u!1 &1634207076
