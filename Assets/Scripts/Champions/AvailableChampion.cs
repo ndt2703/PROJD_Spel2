@@ -24,8 +24,6 @@ public class AvailableChampion : MonoBehaviour
 
     //public SpriteRenderer artwork;
 
-
-
 	private void Awake()
 	{
         name = champion.name;
@@ -41,12 +39,6 @@ public class AvailableChampion : MonoBehaviour
 	{
         maxHealth = health;
 	}
-
-	private void Deal5Damage()
-    {
-        champion.TakeDamage(5);
-    }
-
     /*
     public void ChangeChampion(Champion champion, int currentHealth, int currentShield)
     {

@@ -2353,8 +2353,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220195550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.39, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 832026172}
@@ -2392,8 +2392,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.4426413, z: 0.49519923}
-  m_Center: {x: 0, y: 0.7559931, z: -0.23731886}
+  m_Size: {x: 0.61354524, y: 1.0948716, z: 0.4831222}
+  m_Center: {x: 0.06644934, y: 0.118796885, z: 0.18563916}
 --- !u!23 &220195558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2457,7 +2457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxArmor: 100
-  armorMaterial: {fileID: 0}
+  armorMaterial: {fileID: 220195558}
+  currentArmor: 0
 --- !u!1 &236878358
 GameObject:
   m_ObjectHideFlags: 0
@@ -11986,6 +11987,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eac1cb081b340344f867f49b471923fe, type: 2}
   - {fileID: 11400000, guid: 8bb3f9a8cffd4214ba7266d7ebe68d7a, type: 2}
   - {fileID: 11400000, guid: fd7d49e86d345ea44b367bbb19fd1827, type: 2}
+  - {fileID: 11400000, guid: da194dbd2ebd2c249b56e20d07c57a3f, type: 2}
+  - {fileID: 11400000, guid: f3b66e6a645219449a82a9aaa3a491fa, type: 2}
 --- !u!1 &928276972
 GameObject:
   m_ObjectHideFlags: 0
@@ -19551,7 +19554,7 @@ MonoBehaviour:
   handPlayer: {fileID: 236878360}
   handOpponent: {fileID: 1618785754}
   manaText: {fileID: 1656743312}
-  playerMana: 1
+  playerMana: 24
   currentMana: 1
 --- !u!1 &1634207076
 GameObject:
