@@ -15,6 +15,8 @@ public class AvailableChampion : MonoBehaviour
 	public int maxHealth;
     public int shield;
 
+    public GameObject meshToShow;
+
 
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private TMP_Text shieldText;
