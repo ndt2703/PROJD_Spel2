@@ -22,14 +22,14 @@ public class AvailableChampion : MonoBehaviour
     [SerializeField] private TMP_Text shieldText;
     [SerializeField] private TMP_Text passiveEffect;
 
-    public SpriteRenderer artwork;
+    //public SpriteRenderer artwork;
 
 
 
 	private void Awake()
 	{
         name = champion.name;
-        artwork.sprite = champion.artwork;
+        //artwork.sprite = champion.artwork;
         passiveEffect.text = champion.passiveEffect;
         health = champion.health;
         maxHealth = champion.maxHealth;

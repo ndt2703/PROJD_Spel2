@@ -19,6 +19,8 @@ public class GameState : MonoBehaviour
    
     private int amountOfCardsToStartWith = 5;
 
+    [SerializeField] private GameObject lostScreen;
+    [SerializeField] private GameObject wonScreen;
 
     private readonly int maxMana = 10;
     public ActionOfPlayer actionOfPlayer;
@@ -750,13 +752,13 @@ public class GameState : MonoBehaviour
     {
         SearchDeadChampion(deadChampion);
 
-        if (playerChampion == null)
+        if (playerChampions.Count == 0)
         {
-            print("Defeat");
+            lostScreen.SetActive(true);
         }
-        else if (opponentChampion == null)
+        else if (opponentChampions.Count == 0)
         {
-            print("Victory");
+            wonScreen.SetActive(true);
         }
     }
 
