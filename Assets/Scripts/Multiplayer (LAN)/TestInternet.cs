@@ -195,6 +195,22 @@ public class TestInternet : MonoBehaviour
             {   
                 print("skickar den en gameAction remove card graveyard");
 
+                GameActionRemoveCardsGraveyard castedAction = (GameActionRemoveCardsGraveyard)action;
+                
+                foreach(TargetInfo targetInfo in castedAction.cardsToRemoveGraveyard)
+                {
+                    ListEnum listEnum = targetInfo.whichList; 
+
+                    if(listEnum.myGraveyard)
+                    {
+                        Graveyard.Instance.graveyardOpponent.RemoveAt(targetInfo.index);
+                    }
+                    if(listEnum.opponentGraveyard)
+                    {
+                        Graveyard.Instance.graveyardPlayer.RemoveAt(targetInfo.index);
+                    }
+                }
+                
 
                 //GameActionRemoveCardsGraveyard theAction = (GameActionRemoveCardsGraveyard)action;
 
