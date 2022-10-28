@@ -25,6 +25,7 @@ public class AvailableChampion : MonoBehaviour
     private float timeBeforeShowing = 0.5f;
 
     public SpriteRenderer champCard;
+    private ArmorEffect armorEffect;
 
 
     [SerializeField] private TMP_Text healthText;
@@ -47,7 +48,7 @@ public class AvailableChampion : MonoBehaviour
 	private void Start()
 	{
         maxHealth = health;
-
+        armorEffect = GetComponent<ArmorEffect>();
         SetWichMeshToShowOnStart();
 
     }
@@ -105,6 +106,12 @@ public class AvailableChampion : MonoBehaviour
 
     public void FixedUpdate()
 	{
+        if (champion.destroyShild)
+        {
+            armorEffect.DamageArmor(10);
+            print("RUns");
+        }
+            
 		UpdateTextOnCard();
 
         if (meshToShow.name != champion.name)

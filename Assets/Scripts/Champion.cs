@@ -16,6 +16,7 @@ public abstract class Champion : ScriptableObject
     public bool healEachRound = false;
     public GameObject mesh;
 
+    public bool destroyShild = false;
     
     private GameState gameState;
 
@@ -45,6 +46,7 @@ public abstract class Champion : ScriptableObject
             {
                 int differenceAfterShieldDamage = damage - shield;
                 shield = 0;
+                destroyShild = true;
                 health -= differenceAfterShieldDamage;
             }
             else
@@ -77,7 +79,8 @@ public abstract class Champion : ScriptableObject
 
     }
     public virtual void GainShield(int amountToBlock)
-    {        
+    {
+        destroyShild = false;
         shield += amountToBlock;
     }
 
