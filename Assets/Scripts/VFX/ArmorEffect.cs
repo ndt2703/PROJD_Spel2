@@ -42,10 +42,7 @@ public class ArmorEffect : MonoBehaviour
                 timeToGo = true;
             
             }
-            if (timeToGo)
-            {
-                Destroy(gameObject);
-            }
+
            
         }
     }
