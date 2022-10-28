@@ -62,7 +62,7 @@ public class CardTargeting : MonoBehaviour
         gameObjectHit = hitEnemy.transform.gameObject;
 
 
-        if (actionOfPlayer.CheckIfCanPlayCard(card, true))
+        if (actionOfPlayer.CheckIfCanPlayCard(card))
         {
             GameState.Instance.ShowPlayedCard(card);
             WhatToDoWhenTargeted();
