@@ -634,7 +634,6 @@ public class GameState : MonoBehaviour
                 {
                     RequestSwitchActiveChamps request = new RequestSwitchActiveChamps(tI);
                     request.whichPlayer = ClientConnection.Instance.playerId;
-
                     ClientConnection.Instance.AddRequest(request, RequestEmpty);
                 }
 
@@ -838,6 +837,18 @@ public class GameState : MonoBehaviour
 
     private void SearchDeadChampion(Champion deadChampion)
     {
+
+        if (playerChampion.champion == deadChampion)
+        {
+            SwapActiveChampion(null);
+        }
+        /*
+        else if (opponentChampion.champion == deadChampion)
+        {
+            SwapActiveChampionEnemy(null);
+        }
+        */
+
         foreach (AvailableChampion ac in playerChampions)
         {
             if (ac.champion == deadChampion)
@@ -846,6 +857,7 @@ public class GameState : MonoBehaviour
                 break;
             }
         }
+
         foreach (AvailableChampion ac in opponentChampions)
         {
             if (ac.champion == deadChampion)
@@ -855,15 +867,34 @@ public class GameState : MonoBehaviour
             }
         }
 
-        if (playerChampion.champion == deadChampion)
-        {
-            SwapActiveChampion(null);
-        }
-        else if (opponentChampion.champion == deadChampion)
-        {
-            SwapActiveChampionEnemy(null);
-        }
+    }
 
+    public void SwitchWhenChampionDead()
+    {
+        /*
+		if (targetInfo != null)
+		{
+			SwapChampionWithTargetInfo(targetInfo);
+			return;
+		}
+
+		for (int i = 0; i < 25; i++)
+		{
+			int randomChamp = UnityEngine.Random.Range(0, opponentChampions.Count);
+			if (opponentChampion != opponentChampions[randomChamp])
+			{
+				Champion champ = opponentChampion.champion;
+				opponentChampion.champion = opponentChampions[randomChamp].champion;
+				opponentChampions[randomChamp].champion = champ;
+
+				ListEnum lE = new ListEnum();
+				lE.opponentChampions = true;
+				TargetInfo tI = new TargetInfo(lE, randomChamp);
+				return;
+
+			}
+		}
+        */
     }
 
 
