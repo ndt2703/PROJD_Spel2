@@ -29,7 +29,7 @@ public class ArmorEffect : MonoBehaviour
         if (isDamaging)
         {
             //the propety health starts with 1, when it is 0, armor disappears (0min,1max,1 default)
-            //DamageArmor(10);
+            DamageArmor(10);
             //from 1-0,9
             currentDiss = Mathf.Lerp(currentDiss,targetDiss, Time.deltaTime);
             m_PropetyBlock.SetFloat("_HealthC", currentDiss);
