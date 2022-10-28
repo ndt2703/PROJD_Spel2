@@ -838,15 +838,6 @@ public class GameState : MonoBehaviour
 
     private void SearchDeadChampion(Champion deadChampion)
     {
-
-        if (playerChampion.champion == deadChampion)
-        {
-            SwapActiveChampion(null);
-        }
-        else if (opponentChampion.champion == deadChampion)
-        {
-            SwapActiveChampionEnemy(null);
-        }
         foreach (AvailableChampion ac in playerChampions)
         {
             if (ac.champion == deadChampion)
@@ -864,6 +855,14 @@ public class GameState : MonoBehaviour
             }
         }
 
+        if (playerChampion.champion == deadChampion)
+        {
+            SwapActiveChampion(null);
+        }
+        else if (opponentChampion.champion == deadChampion)
+        {
+            SwapActiveChampionEnemy(null);
+        }
 
     }
 
