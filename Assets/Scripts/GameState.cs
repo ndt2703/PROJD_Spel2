@@ -634,6 +634,7 @@ public class GameState : MonoBehaviour
                 {
                     RequestSwitchActiveChamps request = new RequestSwitchActiveChamps(tI);
                     request.whichPlayer = ClientConnection.Instance.playerId;
+                    request.targetToSwitch = tI;
                     ClientConnection.Instance.AddRequest(request, RequestEmpty);
                 }
 
