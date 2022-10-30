@@ -155,8 +155,6 @@ public class GameState : MonoBehaviour
         }
         else if (cardUsed.LandmarkTarget != null)
         {
-
-
             index = LookForLandmarkIndex(cardUsed, opponentLandmarks);
             if (index == -1)
             {
