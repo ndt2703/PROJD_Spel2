@@ -62,7 +62,6 @@ public class ArmorEffect : MonoBehaviour
 
     void TriggerArmor()
     {
-        Debug.Log("aaaaaaaaaa");
         isDamaging = true;
         //only needs to stop this once
         m_PropetyBlock.SetFloat("_T_ScrollSpeed", 0f);

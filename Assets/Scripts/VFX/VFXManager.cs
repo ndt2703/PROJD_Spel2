@@ -9,13 +9,13 @@ public class VFXManager : MonoBehaviour
     public static event ArmorAction OnArmorTriggrt;
 
 
-    void OnGUI()
-    {
-        if (GUI.Button(new Rect(Screen.width / 2 - 50, 5, 100, 30), "Click"))
-        {
-            if (OnArmorTriggrt != null)
+    //void OnGUI()
+    //{
+    //    if (GUI.Button(new Rect(Screen.width / 2 - 50, 5, 100, 30), "Click"))
+    //    {
+    //        if (OnArmorTriggrt != null)
  
-                OnArmorTriggrt();
-        }
-    }
+    //            OnArmorTriggrt();
+    //    }
+    //}
 }
