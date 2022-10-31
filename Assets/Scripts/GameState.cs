@@ -768,8 +768,15 @@ public class GameState : MonoBehaviour
         if (drawExtraCardsEachTurn)
             DrawCard(1, null);
 
-        if(isOnline)
-        ChangeInteractabiltyEndTurn();
+        if (isOnline)
+        {
+            ChangeInteractabiltyEndTurn();
+        }
+        else
+        {
+            actionOfPlayer.playerMana++;
+            isItMyTurn = false;
+        }
 
         actionOfPlayer.currentMana = actionOfPlayer.playerMana;
         cardsPlayedThisTurn.Clear();
@@ -844,12 +851,10 @@ public class GameState : MonoBehaviour
         {
             SwapActiveChampion(null);
         }
-        /*
         else if (opponentChampion.champion == deadChampion)
         {
             SwapActiveChampionEnemy(null);
         }
-        */
 
         foreach (AvailableChampion ac in playerChampions)
         {
