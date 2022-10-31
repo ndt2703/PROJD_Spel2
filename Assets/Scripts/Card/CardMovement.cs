@@ -29,7 +29,7 @@ public class CardMovement : MonoBehaviour
 
         transform.position = mousePosition + offset;
 
-        RaycastHit hit;
+/*        RaycastHit hit;
 
         Physics.Raycast(mousePosition, Vector3.forward * 1f, out hit, 10f);
         Debug.DrawRay(mousePosition, Vector3.forward * 1f, Color.red, 100f);
@@ -47,6 +47,6 @@ public class CardMovement : MonoBehaviour
         else
         {
            // cardDisplay.border.SetActive(false);
-        }
+        }*/
     }
 }
