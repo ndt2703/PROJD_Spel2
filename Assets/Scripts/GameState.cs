@@ -767,7 +767,10 @@ public class GameState : MonoBehaviour
 
         if (drawExtraCardsEachTurn)
             DrawCard(1, null);
+
+        if(isOnline)
         ChangeInteractabiltyEndTurn();
+
         actionOfPlayer.currentMana = actionOfPlayer.playerMana;
         cardsPlayedThisTurn.Clear();
         damageRamp = 0;
