@@ -14,8 +14,8 @@ public class ActionOfPlayer : MonoBehaviour
     [SerializeField] private TMP_Text manaText;
 
     private int cardCost;
-    public int playerMana = 1;
-    public int currentMana = 1;
+    public int playerMana = 0;
+    public int currentMana = 0;
     [System.NonSerialized] public int tauntPlaced = 0;
 
     private GameState gameState;
