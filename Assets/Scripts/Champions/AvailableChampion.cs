@@ -48,7 +48,8 @@ public class AvailableChampion : MonoBehaviour
 	private void Start()
 	{
         maxHealth = health;
-        armorEffect = GetComponent<ArmorEffect>();
+        if (transform.Find("ArmorEffect") != null)
+            armorEffect = transform.Find("ArmorEffect").GetComponent<ArmorEffect>();
         SetWichMeshToShowOnStart();
 
     }
