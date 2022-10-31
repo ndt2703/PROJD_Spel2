@@ -12762,6 +12762,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43c98b492d4d9b9488f45d0806be4fc3, type: 2}
   - {fileID: 11400000, guid: da194dbd2ebd2c249b56e20d07c57a3f, type: 2}
   - {fileID: 11400000, guid: da194dbd2ebd2c249b56e20d07c57a3f, type: 2}
+  - {fileID: 11400000, guid: fd7d49e86d345ea44b367bbb19fd1827, type: 2}
+  - {fileID: 11400000, guid: fd7d49e86d345ea44b367bbb19fd1827, type: 2}
 --- !u!1 &928276972
 GameObject:
   m_ObjectHideFlags: 0
@@ -29771,7 +29773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
       propertyPath: isOnline
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
       propertyPath: wonScreen
