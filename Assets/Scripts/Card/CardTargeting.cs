@@ -49,9 +49,13 @@ public class CardTargeting : MonoBehaviour
 
         if (cardDisplay.opponentCard == true) return;
 
+        //Quaternion angle = Quaternion.AxisAngle()
+
+        GameObject gO = GameObject.Find("Platform");
+
         RaycastHit hitEnemy;
-        Physics.Raycast(mousePosition, Vector3.forward * 5f, out hitEnemy, 10f);
-        Debug.DrawRay(mousePosition, Vector3.forward * 5f, Color.red, 100f);
+        Physics.Raycast(mousePosition, Vector3.forward * 100 + Vector3.down * 55, out hitEnemy, 10f);
+        Debug.DrawRay(mousePosition, Vector3.forward * 100 + Vector3.down * 55, Color.red, 100f);
 
         if (hitEnemy.collider == null)
         {
