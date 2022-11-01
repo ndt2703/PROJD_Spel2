@@ -68,8 +68,10 @@ public class CardTargeting : MonoBehaviour
 
         if (actionOfPlayer.CheckIfCanPlayCard(card))
         {
+
             GameState.Instance.ShowPlayedCard(card);
             WhatToDoWhenTargeted();
+            print(gameObjectHit);
         }
         else
             CardGoBackToStartingPosition();
