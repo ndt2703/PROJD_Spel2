@@ -72,6 +72,7 @@ public abstract class Card : ScriptableObject
         {
             GameState.Instance.DiscardCard(amountOfCardsToDiscard, discardCardsYourself);
         }
+        GameState.Instance.playerChampion.champion.AmountOfCardsPlayed(this);
     }
 
     

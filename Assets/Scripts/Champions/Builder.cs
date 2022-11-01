@@ -23,19 +23,22 @@ public class Builder : Champion
 		UpdatePassive();
 	}
 
-	public override void AmountOfCardsPlayed()
+	public override void AmountOfCardsPlayed(Card c)
 	{
-		base.AmountOfCardsPlayed();
+		base.AmountOfCardsPlayed(c);
 
-		landmarkCount++;
-		UpdatePassive();
-		if (landmarkCount >= landmarkNeeded)
+		if (c.typeOfCard == CardType.Landmark)
 		{
-			LowerCostOfCardsInHand();
+			landmarkCount++;
+			UpdatePassive();
+			if (landmarkCount >= landmarkNeeded)
+			{
+				LowerCostOfCardsInHand();
 
-            //every card in hand 
-            //minus two
-        }
+				//every card in hand 
+				//minus two
+			}
+		}
 		
 	}
 
