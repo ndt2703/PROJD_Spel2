@@ -7,8 +7,12 @@ public class RadialLayout : LayoutGroup
 {
     public float fDistance;
     [Range(0f, 360f)]
-    public float MinAngle, MaxAngle, StartAngle, defaultAngle;
-    protected override void OnEnable() { base.OnEnable(); CalculateRadial(); }
+    public float MinAngle, MaxAngle, StartAngle;
+    protected override void OnEnable() 
+    { 
+        base.OnEnable();    
+        CalculateRadial(); 
+    }
     public override void SetLayoutHorizontal()
     {
     }
@@ -19,10 +23,10 @@ public class RadialLayout : LayoutGroup
     {
         CalculateRadial();
     }
-    public override void CalculateLayoutInputHorizontal()
+/*    public override void CalculateLayoutInputHorizontal()
     {
         CalculateRadial();
-    }
+    }*/
 #if UNITY_EDITOR
     protected override void OnValidate()
     {
@@ -32,17 +36,23 @@ public class RadialLayout : LayoutGroup
 #endif
     void CalculateRadial()
     {
-        StartAngle = 90;
-        MinAngle = 0;
-        int activeChildCount = 0;
+        //fDistance = 15;
+        int activeChildCount = 5;
         for (int i = 0; i < transform.childCount; i++)
         {
             var child = transform.GetChild(i);
             if (child && child.gameObject.activeSelf)
             {
-                activeChildCount++;
-                MinAngle += 18; //tenth of 180
-                StartAngle += 9; //tenth of 90
+                if (activeChildCount >= 5)
+                {
+                    if (i == activeChildCount)
+                    {
+                        print("runs");
+                        fDistance += 3.4f;
+                        //GetComponent<RectTransform>().position = new Vector3(0f, -5f, 0f);
+                        activeChildCount++;
+                    }
+                }
             }
         }
 
