@@ -720,6 +720,7 @@ public class GameState : MonoBehaviour
         }
         else
         {
+            print("landmark index " + index);
             playerLandmarks[index].card = landmark; 
         }
     }
