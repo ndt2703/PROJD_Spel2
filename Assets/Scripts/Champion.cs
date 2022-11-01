@@ -86,7 +86,7 @@ public abstract class Champion : ScriptableObject
 
     public virtual void DrawCard() { }
 
-    public virtual void AmountOfCardsPlayed() { }
+    public virtual void AmountOfCardsPlayed(Card card) {}
 
     public virtual int DealDamageAttack(int damage) { return damage; }
 

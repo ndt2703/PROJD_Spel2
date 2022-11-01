@@ -14,9 +14,6 @@ public class TheOneWhoDraws : Champion
 	public override void EndStep()
 	{
 		base.EndStep();
-		if (true /*player chooses if he want to draw more */)
-		{
-			//Choice: do the player want to draw cards???
-		}
+		GameState.Instance.DrawCard(1, null);
 	}
 }

@@ -567,6 +567,7 @@ public class GameState : MonoBehaviour
                     cardDisplay.card = specificCard;
                 cardSlot.SetActive(true);
                 drawnCards++;
+                playerChampion.champion.DrawCard();
             }
         }
 
@@ -600,6 +601,7 @@ public class GameState : MonoBehaviour
                     cardDisplay.card = specificCard;
                 cardSlot.SetActive(true);
                 drawnCards++;
+                opponentChampion.champion.DrawCard();
             }
         }
 
@@ -634,10 +636,10 @@ public class GameState : MonoBehaviour
                     ClientConnection.Instance.AddRequest(request, RequestEmpty);
                 }
 
-                return; 
+                break; 
             }
         }
-
+        playerChampion.champion.WhenCurrentChampion();
         //playerChampion.champion = playerChampions[randomChamp].champion; 
     }
 
@@ -677,11 +679,11 @@ public class GameState : MonoBehaviour
                 ListEnum lE = new ListEnum();
                 lE.opponentChampions = true;
                 TargetInfo tI = new TargetInfo(lE, randomChamp);
-                return;
+                break;
 
             }
         }
-
+        opponentChampion.champion.WhenCurrentChampion();
         //playerChampion.champion = playerChampions[randomChamp].champion; 
     }
 
@@ -714,14 +716,11 @@ public class GameState : MonoBehaviour
         if (opponentPlayedLandmark)
         {
             opponentLandmarks[index].card = landmark;
-
-
-
         }
         else
         {
             print("landmark index " + index);
-            playerLandmarks[index].card = landmark; 
+            playerLandmarks[index].card = landmark;
         }
     }
 
@@ -808,11 +807,7 @@ public class GameState : MonoBehaviour
                 damageRamp += 10 * occultGathering;
             }
         }
-
-        if (cardPlayed.GetType().Equals("Landmark"))
-        {
-            playerChampion.champion.AmountOfCardsPlayed();
-        }
+        playerChampion.champion.AmountOfCardsPlayed(cardPlayed);
     }
 
     public void TriggerUpKeep(ServerResponse response)

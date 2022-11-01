@@ -42,5 +42,5 @@ public class Landmarks : Card
 
     public virtual void WhenCurrentChampion() { }
 
-    public virtual void WhenLandmarksDie() { }
+    public virtual void WhenLandmarksDie() { } // Behöver lägga in Gamestate.instance.playerChampion.WhenLandmarksDie() beroende på vilken spelare
 }
