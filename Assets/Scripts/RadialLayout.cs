@@ -48,7 +48,7 @@ public class RadialLayout : LayoutGroup
                     if (i == activeChildCount)
                     {
                         print("runs");
-                        fDistance += 3.4f;
+                        //fDistance += 3.4f;
                         //GetComponent<RectTransform>().position = new Vector3(0f, -5f, 0f);
                         activeChildCount++;
                     }
