@@ -54,9 +54,10 @@ public class CardTargeting : MonoBehaviour
         GameObject gO = GameObject.Find("Platform");
 
         RaycastHit hitEnemy;
-        Physics.Raycast(mousePosition, Vector3.forward * 100 + Vector3.down * 55, out hitEnemy, 10f);
+        Physics.Raycast(mousePosition, Vector3.forward * 100 + Vector3.down * 55, out hitEnemy, 75f);
         Debug.DrawRay(mousePosition, Vector3.forward * 100 + Vector3.down * 55, Color.red, 100f);
 
+        print(hitEnemy.collider);
         if (hitEnemy.collider == null)
         {
             CardGoBackToStartingPosition();
@@ -71,7 +72,7 @@ public class CardTargeting : MonoBehaviour
 
             GameState.Instance.ShowPlayedCard(card);
             WhatToDoWhenTargeted();
-            print(gameObjectHit);
+            print(gameObjectHit.name);
         }
         else
             CardGoBackToStartingPosition();
@@ -158,9 +159,15 @@ public class CardTargeting : MonoBehaviour
                 break;
         }
 
-        landmarkSlot.health = landmark.minionHealth;    
-        landmarkSlot.card = landmark;
+
+        if (landmark != null)
+        {
+            landmarkSlot.health = landmark.minionHealth;
+            landmarkSlot.card = landmark;            
+            GameState.Instance.LandmarkPlaced(landmarkSlot.index, landmark);
+        }
         cardDisplay.card = null;
+
     }
 
 

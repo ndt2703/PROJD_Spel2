@@ -124,10 +124,7 @@ public class GameState : MonoBehaviour
 
         if (slaughterhouse > 0)
         {
-            for (int i = 0; i < playerLandmarks.Count; i++)
-            {
-                damage += 10 * slaughterhouse;
-            }
+            damage += 10 * slaughterhouse;           
         }
 
         if (tenExtraDamage > 0)
@@ -711,6 +708,12 @@ public class GameState : MonoBehaviour
             }
         }
     }
+
+    public void LandmarkPlaced(int index, Landmarks landmark)
+    {
+
+    }
+
 
     public void SwitchTurn(ServerResponse response)
     {

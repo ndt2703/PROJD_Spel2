@@ -12,6 +12,7 @@ public class LandmarkDisplay : MonoBehaviour
     public bool occultGathering = false;
     [NonSerialized] public int tenExtraDamage;
     private GameState gameState;
+    public int index;
 
 
 
