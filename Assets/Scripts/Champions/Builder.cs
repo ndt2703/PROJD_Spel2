@@ -20,7 +20,7 @@ public class Builder : Champion
 	public override void Awake()
 	{
 		base.Awake();
-		passiveEffect = landmarkCount + "/" + landmarkNeeded;
+		UpdatePassive();
 	}
 
 	public override void AmountOfCardsPlayed()
@@ -28,7 +28,7 @@ public class Builder : Champion
 		base.AmountOfCardsPlayed();
 
 		landmarkCount++;
-		passiveEffect = landmarkCount + "/" + landmarkNeeded;
+		UpdatePassive();
 		if (landmarkCount >= landmarkNeeded)
 		{
 			LowerCostOfCardsInHand();
@@ -75,8 +75,7 @@ public class Builder : Champion
 			RaiseCostOfCardsInHand();
 
         }
-		passiveEffect = landmarkCount + "/" + landmarkNeeded;
-
+		UpdatePassive();
 	}
 
 	public override void DrawCard()
@@ -86,6 +85,12 @@ public class Builder : Champion
 		{
 			//reduce the card drawn by two
 		}
+	}
+
+	private void UpdatePassive()
+	{
+		passiveEffect = landmarkCount + "/" + landmarkNeeded;
+		
 	}
 
 }

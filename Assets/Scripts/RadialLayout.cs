@@ -36,7 +36,8 @@ public class RadialLayout : LayoutGroup
 #endif
     void CalculateRadial()
     {
-        //fDistance = 15;
+        StartAngle = 105;
+        MinAngle = 50;
         int activeChildCount = 5;
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -48,8 +49,8 @@ public class RadialLayout : LayoutGroup
                     if (i == activeChildCount)
                     {
                         print("runs");
-                      //  fDistance += 3.4f;
-                        //GetComponent<RectTransform>().position = new Vector3(0f, -5f, 0f);
+                        StartAngle += 2;
+                        MinAngle += 3;
                         activeChildCount++;
                     }
                 }
