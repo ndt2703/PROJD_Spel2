@@ -1583,6 +1583,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1607819213}
     - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: playerLandmarks.Array.data[0]
+      value: 
+      objectReference: {fileID: 754733039}
+    - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: playerLandmarks.Array.data[1]
+      value: 
+      objectReference: {fileID: 25945479}
+    - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: playerLandmarks.Array.data[2]
+      value: 
+      objectReference: {fileID: 1893497672}
+    - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: playerLandmarks.Array.data[3]
+      value: 
+      objectReference: {fileID: 1654315323}
+    - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
       propertyPath: opponentChampions.Array.data[0]
       value: 
       objectReference: {fileID: 34705486}
@@ -1607,13 +1623,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1044950340}
     - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: opponentLandmarks.Array.data[0]
+      value: 
+      objectReference: {fileID: 915619686}
+    - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
       propertyPath: opponentLandmarks.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 25945479}
     - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
       propertyPath: opponentLandmarks.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1893497672}
+    - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
+      propertyPath: opponentLandmarks.Array.data[3]
+      value: 
+      objectReference: {fileID: 1964712666}
     - target: {fileID: 3291878523879393670, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
       propertyPath: m_RootOrder
       value: 4
