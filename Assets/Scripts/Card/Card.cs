@@ -27,6 +27,8 @@ public abstract class Card : ScriptableObject
     public int amountOfCardsToDraw = 0;
     public int amountOfCardsToDiscard = 0;
     public bool discardCardsYourself = true;
+
+
   
     public Champion Target { get { return target; } set { target = value; } }
     public LandmarkDisplay LandmarkTarget { get { return landmarkTarget; } set { landmarkTarget = value; } }

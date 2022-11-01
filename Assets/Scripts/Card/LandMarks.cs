@@ -29,4 +29,18 @@ public class Landmarks : Card
 
     public virtual void PlaceLandmark() { }
     public virtual void LandmarkEffectTakeBack() { }
+
+    public virtual void DrawCard() { }
+
+    public virtual void AmountOfCardsPlayed() { }
+
+    public virtual int DealDamageAttack(int damage) { return damage; }
+
+    public virtual void UpKeep()  {} // Osäker på om jag gjort rätt när jag la in den här
+
+    public virtual void EndStep() { }
+
+    public virtual void WhenCurrentChampion() { }
+
+    public virtual void WhenLandmarksDie() { }
 }
