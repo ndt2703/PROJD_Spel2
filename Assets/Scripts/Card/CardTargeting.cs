@@ -164,7 +164,29 @@ public class CardTargeting : MonoBehaviour
         {
             landmarkSlot.health = landmark.minionHealth;
             landmarkSlot.card = landmark;            
-            GameState.Instance.LandmarkPlaced(landmarkSlot.index, landmark);
+            GameState.Instance.LandmarkPlaced(landmarkSlot.index, landmark,false);
+
+
+            if (GameState.Instance.isOnline)
+            {
+                RequestPlayLandmark request = new RequestPlayLandmark();
+                request.whichPlayer = ClientConnection.Instance.playerId;
+
+                CardAndPlacement cardAndPlacement = new CardAndPlacement();
+                cardAndPlacement.cardName = landmark.cardName;
+
+                TargetInfo targetInfo = new TargetInfo();
+                targetInfo.index = landmarkSlot.index;
+                ListEnum listEnum = new ListEnum();
+                listEnum.myLandmarks = true;
+                targetInfo.whichList = listEnum;
+
+                cardAndPlacement.placement = targetInfo;
+
+                request.landmarkToPlace = cardAndPlacement;
+
+                ClientConnection.Instance.AddRequest(request, GameState.Instance.RequestEmpty);
+            }
         }
         cardDisplay.card = null;
 

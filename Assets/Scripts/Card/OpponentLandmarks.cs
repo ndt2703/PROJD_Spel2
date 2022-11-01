@@ -28,7 +28,7 @@ public class OpponentLandmarks : MonoBehaviour
                 }
                 if (landmarkDisplays[i].card != null) continue;
                 
-                landmarkDisplays[i].card = gameState.opponentLandmarks[i];                  
+                landmarkDisplays[i].card = gameState.opponentLandmarks[i].card;                  
             }
         }
     }
