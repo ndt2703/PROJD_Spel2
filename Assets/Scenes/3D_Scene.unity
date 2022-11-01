@@ -304,12 +304,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17378483}
-  - component: {fileID: 17378482}
-  - component: {fileID: 17378481}
-  - component: {fileID: 17378480}
   - component: {fileID: 17378479}
   m_Layer: 0
-  m_Name: Graveyard
+  m_Name: Graveyards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -329,69 +326,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graveyardPlayer: []
   graveyardOpponent: []
---- !u!65 &17378480
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17378478}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &17378481
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17378478}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: ad002c403ccc4e445884ea51cb5eb0c8, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &17378482
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17378478}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &17378483
 Transform:
   m_ObjectHideFlags: 0
@@ -404,10 +338,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1541203776}
-  - {fileID: 1742906122}
+  - {fileID: 1692619723}
+  - {fileID: 670250808}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &21794131
 GameObject:
@@ -699,6 +633,7 @@ MonoBehaviour:
   artworkSpriteRenderer: {fileID: 2015904215}
   health: 0
   occultGathering: 0
+  index: 1
 --- !u!1 &34705480
 GameObject:
   m_ObjectHideFlags: 0
@@ -6826,13 +6761,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546446629}
   m_LocalRotation: {x: -0.0016378055, y: -0, z: -0, w: 0.9999987}
-  m_LocalPosition: {x: -54.8, y: 10.8, z: 21.2}
-  m_LocalScale: {x: 9.016045, y: 6.747826, z: 10.79652}
+  m_LocalPosition: {x: -54.800003, y: 10.8, z: 21.200008}
+  m_LocalScale: {x: 9.016045, y: 6.747826, z: 10.796517}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 876411961}
-  m_Father: {fileID: 1742906122}
-  m_RootOrder: 0
+  m_Father: {fileID: 1197088906}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -0.188, y: 0, z: 0}
 --- !u!114 &546446634
 MonoBehaviour:
@@ -9273,11 +9208,11 @@ Transform:
   m_GameObject: {fileID: 670250804}
   m_LocalRotation: {x: -0.0016378055, y: -0, z: -0, w: 0.9999987}
   m_LocalPosition: {x: 20.7, y: 8.1, z: 16}
-  m_LocalScale: {x: 9.016045, y: 6.747826, z: 10.79652}
+  m_LocalScale: {x: 9.016045, y: 6.747826, z: 10.796519}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 901029941}
-  m_Father: {fileID: 1742906122}
+  m_Father: {fileID: 17378483}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -0.188, y: 0, z: 0}
 --- !u!114 &670250809
@@ -9549,6 +9484,7 @@ MonoBehaviour:
   artworkSpriteRenderer: {fileID: 938537063}
   health: 0
   occultGathering: 0
+  index: 1
 --- !u!1001 &688718663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10722,6 +10658,7 @@ MonoBehaviour:
   artworkSpriteRenderer: {fileID: 513771068}
   health: 0
   occultGathering: 0
+  index: 0
 --- !u!1 &769812339
 GameObject:
   m_ObjectHideFlags: 0
@@ -10889,7 +10826,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1907014524}
-  m_Father: {fileID: 1197088906}
+  m_Father: {fileID: 1764185727}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11295,6 +11232,7 @@ MonoBehaviour:
   artworkSpriteRenderer: {fileID: 227892248}
   health: 0
   occultGathering: 0
+  index: 2
 --- !u!1 &806298577
 GameObject:
   m_ObjectHideFlags: 0
@@ -13843,6 +13781,7 @@ MonoBehaviour:
   artworkSpriteRenderer: {fileID: 614246231}
   health: 0
   occultGathering: 0
+  index: 0
 --- !u!1 &923356252
 GameObject:
   m_ObjectHideFlags: 0
@@ -18737,13 +18676,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1197088906}
-  - component: {fileID: 1197088905}
-  - component: {fileID: 1197088904}
-  - component: {fileID: 1197088903}
-  - component: {fileID: 1197088902}
   - component: {fileID: 1197088901}
   m_Layer: 0
-  m_Name: Deck
+  m_Name: Decks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18785,83 +18720,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43c98b492d4d9b9488f45d0806be4fc3, type: 2}
   - {fileID: 11400000, guid: da194dbd2ebd2c249b56e20d07c57a3f, type: 2}
   - {fileID: 11400000, guid: da194dbd2ebd2c249b56e20d07c57a3f, type: 2}
---- !u!114 &1197088902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197088900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd23dc9ab972f24abc21d65f7a67193, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  howManyCardsPanel: {fileID: 1907014523}
-  amountOfCardsText: {fileID: 1712868866}
---- !u!65 &1197088903
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197088900}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1197088904
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197088900}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 257
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1197088905
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197088900}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1197088906
 Transform:
   m_ObjectHideFlags: 0
@@ -18869,15 +18727,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197088900}
-  m_LocalRotation: {x: -0.0016378055, y: -0, z: -0, w: 0.9999987}
-  m_LocalPosition: {x: 17.5, y: 10.8, z: -37.2}
-  m_LocalScale: {x: 9.016045, y: 6.747826, z: 10.79652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 775713329}
-  m_Father: {fileID: 1541203776}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.188, y: 0, z: 0}
+  - {fileID: 1764185727}
+  - {fileID: 546446633}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214452974
 GameObject:
   m_ObjectHideFlags: 0
@@ -23572,39 +23431,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1541203775
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1541203776}
-  m_Layer: 0
-  m_Name: PlayerGraveyar/Deck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1541203776
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541203775}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1197088906}
-  - {fileID: 1692619723}
-  m_Father: {fileID: 17378483}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1546277707
 GameObject:
   m_ObjectHideFlags: 0
@@ -24454,6 +24280,7 @@ MonoBehaviour:
   artworkSpriteRenderer: {fileID: 210876986}
   health: 0
   occultGathering: 0
+  index: 3
 --- !u!1 &1665171277
 GameObject:
   m_ObjectHideFlags: 0
@@ -24669,7 +24496,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &1669881195
 GameObject:
@@ -24753,7 +24580,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &1670523640
 GameObject:
@@ -25054,8 +24881,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 248422103}
-  m_Father: {fileID: 1541203776}
-  m_RootOrder: 1
+  m_Father: {fileID: 17378483}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1692619724
 MonoBehaviour:
@@ -25944,39 +25771,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2.2981334, y: 1.9283627}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1742906121
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1742906122}
-  m_Layer: 0
-  m_Name: OpponentGraveyard/Deck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1742906122
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742906121}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 546446633}
-  - {fileID: 670250808}
-  m_Father: {fileID: 17378483}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1746634156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26294,6 +26088,119 @@ RectTransform:
   m_AnchoredPosition: {x: -2.0243952, y: 4.887323}
   m_SizeDelta: {x: 77.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1764185726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1764185727}
+  - component: {fileID: 1764185731}
+  - component: {fileID: 1764185730}
+  - component: {fileID: 1764185729}
+  - component: {fileID: 1764185728}
+  m_Layer: 0
+  m_Name: PlayerDeck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1764185727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764185726}
+  m_LocalRotation: {x: -0.0016378055, y: -0, z: -0, w: 0.9999987}
+  m_LocalPosition: {x: 17.5, y: 10.8, z: -37.2}
+  m_LocalScale: {x: 9.016045, y: 6.747826, z: 10.796519}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 775713329}
+  m_Father: {fileID: 1197088906}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.188, y: 0, z: 0}
+--- !u!33 &1764185728
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764185726}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1764185729
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764185726}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1764185730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764185726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1764185731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764185726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd23dc9ab972f24abc21d65f7a67193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  howManyCardsPanel: {fileID: 1907014523}
+  amountOfCardsText: {fileID: 1712868866}
 --- !u!1 &1768091135
 GameObject:
   m_ObjectHideFlags: 0
@@ -27814,6 +27721,7 @@ MonoBehaviour:
   artworkSpriteRenderer: {fileID: 576075037}
   health: 0
   occultGathering: 0
+  index: 2
 --- !u!1 &1907014523
 GameObject:
   m_ObjectHideFlags: 0
@@ -28650,6 +28558,7 @@ MonoBehaviour:
   artworkSpriteRenderer: {fileID: 806298578}
   health: 0
   occultGathering: 0
+  index: 3
 --- !u!4 &1964712667
 Transform:
   m_ObjectHideFlags: 0
