@@ -78,6 +78,10 @@ public class ClientRequest : MBJson.JSONDeserializeable,MBJson.JSONTypeConverter
         {
             return (typeof(RequestOpponentDiscardCard));
         }
+        if (IntegerToConvert == 14)
+        {
+            return (typeof(RequestPlayLandmark));
+        }
 
         return (typeof(ClientRequest));
     }

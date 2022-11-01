@@ -182,6 +182,13 @@ public class Server
             RequestOpponentDiscardCard testRequest = (RequestOpponentDiscardCard)requestToHandle;
             testRequest.whichPlayer = requestToHandle.whichPlayer;
             return HandleDiscardCardOpponent(testRequest);
+        }    
+        if (requestToHandle is RequestPlayLandmark)
+        {
+            //RequestAddSpecificCardToHand castedRequest = (RequestAddSpecificCardToHand)requestToHandle;
+            RequestPlayLandmark testRequest = (RequestPlayLandmark)requestToHandle;
+            testRequest.whichPlayer = requestToHandle.whichPlayer;
+            return HandlePlayLandmark(testRequest);
         }
 
         GameAction errorMessage = new GameAction();
@@ -247,6 +254,17 @@ public class Server
         response.whichPlayer = requestToHandle.whichPlayer;
 
         GameActionDrawCard gameAction = new GameActionDrawCard(requestToHandle.amountToDraw);
+        
+        AddGameAction(response, gameAction);
+        return response;
+    }
+    private ServerResponse HandlePlayLandmark(RequestPlayLandmark requestToHandle)
+    {
+        ResponsePlayLandmark response = new ResponsePlayLandmark(requestToHandle.landmarkToPlace);
+        
+        response.whichPlayer = requestToHandle.whichPlayer;
+
+        GameActionPlayLandmark gameAction = new GameActionPlayLandmark(requestToHandle.landmarkToPlace);
         
         AddGameAction(response, gameAction);
         return response;

@@ -67,6 +67,10 @@ public class GameAction : MBJson.JSONDeserializeable, MBJson.JSONTypeConverter
         if (IntegerToConvert == 12)
         {
             return typeof(GameActionOpponentDiscardCard);
+        }  
+        if (IntegerToConvert == 13)
+        {
+            return typeof(GameActionPlayLandmark);
         }
         return (typeof(GameAction));
     }

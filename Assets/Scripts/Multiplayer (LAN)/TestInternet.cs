@@ -287,6 +287,18 @@ public class TestInternet : MonoBehaviour
                 //Draw card opponents
 
             }
+            if (action.GetType(action.Type).Equals(typeof(GameActionPlayLandmark)))
+            {
+                print("skickar den en gameAction add specific card");
+                GameActionPlayLandmark castedAction = (GameActionPlayLandmark)action;
+
+                GameState.Instance.LandmarkPlaced(castedAction.landmarkToPlace.placement.index, (Landmarks)CardRegister.Instance.cardRegister[castedAction.landmarkToPlace.cardName], true);
+
+               //GameActionAddSpecificCardToHand theAction = (GameActionAddSpecificCardToHand)action;
+
+                //Draw card opponents
+
+            }
 
             
 

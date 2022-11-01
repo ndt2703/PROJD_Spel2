@@ -22,7 +22,7 @@ public class CultistCard : Spells
             gameState.CalculateBonusDamage(damageToDealToAllOpponent, this);
 
             /* MÅste fixa så att den targetar landmarks */
-            foreach (Landmarks landmark in gameState.opponentLandmarks)
+            foreach (LandmarkDisplay landmark in gameState.opponentLandmarks)
             {
                 gameState.CalculateBonusDamage(damageToDealToAllOpponent, this);
             }           

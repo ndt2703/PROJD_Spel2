@@ -42,8 +42,8 @@ public class GameState : MonoBehaviour
     public List<AvailableChampion> playerChampions = new List<AvailableChampion>();
     public List<AvailableChampion> opponentChampions = new List<AvailableChampion>();
 
-    public List<Landmarks> playerLandmarks = new List<Landmarks>();
-    public List<Landmarks> opponentLandmarks = new List<Landmarks>();
+    public List<LandmarkDisplay> playerLandmarks = new List<LandmarkDisplay>();
+    public List<LandmarkDisplay> opponentLandmarks = new List<LandmarkDisplay>();
 
     public List<Card> cardsPlayedThisTurn = new List<Card>();
 
@@ -180,7 +180,7 @@ public class GameState : MonoBehaviour
         }
         return -1;
     }
-    public int LookForLandmarkIndex(Card cardUsed, List<Landmarks> landmarks )
+    public int LookForLandmarkIndex(Card cardUsed, List<LandmarkDisplay> landmarks )
     {
         for (int i = 0; i < landmarks.Count; i++)
         {
@@ -709,9 +709,19 @@ public class GameState : MonoBehaviour
         }
     }
 
-    public void LandmarkPlaced(int index, Landmarks landmark)
+    public void LandmarkPlaced(int index, Landmarks landmark, bool opponentPlayedLandmark)
     {
+        if (opponentPlayedLandmark)
+        {
+            opponentLandmarks[index].card = landmark;
 
+
+
+        }
+        else
+        {
+            playerLandmarks[index].card = landmark; 
+        }
     }
 
 
@@ -731,11 +741,11 @@ public class GameState : MonoBehaviour
         print("Den triggrar endstep");
         playerChampion.champion.EndStep();
         //opponentChampion.champion.EndStep();
-        foreach (Landmarks landmark in playerLandmarks)
+        foreach (LandmarkDisplay landmark in playerLandmarks)
         {
             //Trigger landmark endstep
         }
-        foreach (Landmarks landmark in opponentLandmarks)
+        foreach (LandmarkDisplay landmark in opponentLandmarks)
         {
             //Trigger landmark endstep opponent
         }
@@ -809,11 +819,11 @@ public class GameState : MonoBehaviour
         print("Den triggrar upkeep");
         playerChampion.champion.UpKeep();
         //opponentChampion.champion.UpKeep();
-        foreach (Landmarks landmark in playerLandmarks)
+        foreach (LandmarkDisplay landmark in playerLandmarks)
         {
             //Trigger landmark endstep
         }
-        foreach (Landmarks landmark in opponentLandmarks)
+        foreach (LandmarkDisplay landmark in opponentLandmarks)
         {
             //Trigger landmark endstep opponent
         }
