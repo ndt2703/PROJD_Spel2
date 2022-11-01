@@ -3361,8 +3361,9 @@ MonoBehaviour:
   gameObjectToActivatePlayer1: {fileID: 559662397}
   gameObjectToActivatePlayer2: {fileID: 850264572}
   gameObjectToDeActivatePlayer2: {fileID: 176822259}
-  loadScene: MarkusKoffman
-  cardToPlay: {fileID: 700673075}
+  loadScene: 3D_Scene
+  gameState: {fileID: 0}
+  register: {fileID: 0}
   hasJoinedLobby: 0
 --- !u!4 &2127124445
 Transform:
