@@ -10,6 +10,11 @@ public class AttackSpell : Spells
     public bool damageEqualsToYourChampionHP = false;
     public bool damageToBothActiveChampions = false;
 
+    private AttackSpell()
+    {
+        typeOfCard = CardType.Attack;
+    }
+
     private GameState gameState;
     public override void PlaySpell()
     {

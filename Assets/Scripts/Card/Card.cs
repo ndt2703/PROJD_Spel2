@@ -6,7 +6,8 @@ using UnityEngine;
 public enum CardType
 {
     Spell,
-    Landmark
+    Landmark,
+    Attack
 };
 
 public abstract class Card : ScriptableObject
