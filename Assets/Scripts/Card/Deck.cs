@@ -51,6 +51,10 @@ public class Deck : MonoBehaviour
 
     public Card WhichCardToDraw()
     {
+        if(deckOfCards.Count > 0)
         return deckOfCards.Pop();
+
+        GameState.Instance.Defeat();
+        return null;
     }
 }

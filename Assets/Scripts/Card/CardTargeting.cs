@@ -57,7 +57,6 @@ public class CardTargeting : MonoBehaviour
         Physics.Raycast(mousePosition, Vector3.forward * 100 + Vector3.down * 55, out hitEnemy, 75f);
         Debug.DrawRay(mousePosition, Vector3.forward * 100 + Vector3.down * 55, Color.red, 100f);
 
-        print(hitEnemy.collider);
         if (hitEnemy.collider == null)
         {
             CardGoBackToStartingPosition();

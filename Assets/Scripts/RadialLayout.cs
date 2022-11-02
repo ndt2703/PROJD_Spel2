@@ -48,7 +48,6 @@ public class RadialLayout : LayoutGroup
                 {
                     if (i == activeChildCount)
                     {
-                        print("runs");
                         StartAngle += 2;
                         MinAngle += 3;
                         activeChildCount++;

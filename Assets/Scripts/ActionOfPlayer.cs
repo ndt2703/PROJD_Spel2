@@ -16,6 +16,7 @@ public class ActionOfPlayer : MonoBehaviour
     private int cardCost;
     public int playerMana = 0;
     public int currentMana = 0;
+    public readonly int maxMana = 10;
     [System.NonSerialized] public int tauntPlaced = 0;
 
     private GameState gameState;
@@ -71,6 +72,14 @@ public class ActionOfPlayer : MonoBehaviour
             Debug.Log("You don't have enough Mana");
             return false;
         }
+    }
+
+    public void IncreaseMana()
+    {
+        if(playerMana < maxMana)
+            playerMana++;
+
+        currentMana = playerMana;
     }
 
 }

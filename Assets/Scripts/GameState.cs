@@ -25,7 +25,6 @@ public class GameState : MonoBehaviour
 
     [SerializeField] private GameObject healEffect;
 
-    private readonly int maxMana = 10;
     public ActionOfPlayer actionOfPlayer;
     public int currentMana;
     public SpriteRenderer playedCardSpriteRenderer;
@@ -566,9 +565,19 @@ public class GameState : MonoBehaviour
                     cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
                 else
                     cardDisplay.card = specificCard;
+
                 cardSlot.SetActive(true);
                 drawnCards++;
                 playerChampion.champion.DrawCard();
+            }
+        }
+
+        if (drawnCards < amountToDraw)
+        {
+            for (; drawnCards < amountToDraw; drawnCards++)
+            {
+                Card c = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
+                Graveyard.Instance.AddCardToGraveyard(c);
             }
         }
 
@@ -606,6 +615,14 @@ public class GameState : MonoBehaviour
             }
         }
 
+        if (drawnCards < amountToDraw)
+        {
+            for (; drawnCards < amountToDraw; drawnCards++)
+            {
+                Card c = actionOfPlayer.handOpponent.deck.WhichCardToDraw();
+                Graveyard.Instance.AddCardToGraveyardOpponent(c);
+            }
+        }
     }
 
     public void SwapActiveChampion(TargetInfo targetInfo)
@@ -762,7 +779,7 @@ public class GameState : MonoBehaviour
                 isItMyTurn = false;
             if (!didIStart)
             {
-                actionOfPlayer.playerMana++;
+                actionOfPlayer.IncreaseMana();
                 playerChampion.champion.EndStep();
               //  opponentChampion.champion.UpKeep();
             }
@@ -773,7 +790,7 @@ public class GameState : MonoBehaviour
             DrawCard(1, null);
             if (didIStart)
             {
-                actionOfPlayer.playerMana++;
+                actionOfPlayer.IncreaseMana();
                 amountOfTurns++;
                 opponentChampion.champion.EndStep();
               //  playerChampion.champion.UpKeep();
@@ -789,7 +806,7 @@ public class GameState : MonoBehaviour
         }
         else
         {
-            actionOfPlayer.playerMana++;
+            actionOfPlayer.IncreaseMana();
             isItMyTurn = false;
         }
 
@@ -855,11 +872,11 @@ public class GameState : MonoBehaviour
 
         if (playerChampions.Count == 0)
         {
-            lostScreen.SetActive(true);
+            Defeat();
         }
         else if (opponentChampions.Count == 0)
         {
-            wonScreen.SetActive(true);
+            Victory();
         }
     }
 
@@ -959,5 +976,17 @@ public class GameState : MonoBehaviour
     public void RequestEmpty(ServerResponse response)
     {
 
+    }
+
+    public void Victory()
+    {
+        wonScreen.SetActive(true);
+        //Request defeat maybe????
+    }
+
+    public void Defeat()
+    {
+        lostScreen.SetActive(true);
+        //Request victory maybe????
     }
 }
