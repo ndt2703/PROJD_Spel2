@@ -9,6 +9,8 @@ public class EffectController : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject shieldPrefab;
     [SerializeField] private GameObject healingPrefab;
+  
+    
     private Dictionary<string, GameObject> shields; //sort champions name and it's shiled prefab ALT sort champion ist för name
     private GameObject shiledToGo;
     //for controlling propety in shader graph, for simulate a fade out effec
@@ -25,7 +27,7 @@ public class EffectController : MonoBehaviour
         targetDiss = currentDiss = 1f;
         shaderSlide = currentSilde = 0;
         //the slides max = 1, min = 0, default = 1,
-    }
+      }
 
     // Update is called once per frame
     void Update()
@@ -34,6 +36,12 @@ public class EffectController : MonoBehaviour
         {
             //if there is a current shiled should go 
 
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Get space");
+            Instantiate(healingPrefab);
+        
         }
     }
 
