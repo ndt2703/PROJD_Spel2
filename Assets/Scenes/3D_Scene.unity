@@ -1629,11 +1629,11 @@ PrefabInstance:
     - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
       propertyPath: opponentLandmarks.Array.data[1]
       value: 
-      objectReference: {fileID: 25945479}
+      objectReference: {fileID: 680852525}
     - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
       propertyPath: opponentLandmarks.Array.data[2]
       value: 
-      objectReference: {fileID: 1893497672}
+      objectReference: {fileID: 804525994}
     - target: {fileID: 3291878523879393657, guid: 4823a9b2203d6cb4f9447b6f56646fe4, type: 3}
       propertyPath: opponentLandmarks.Array.data[3]
       value: 
@@ -18899,9 +18899,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deckPlayer:
-  - {fileID: 11400000, guid: f933ffe8702820e4293d84356fe7924b, type: 2}
+  - {fileID: 11400000, guid: 43c98b492d4d9b9488f45d0806be4fc3, type: 2}
   deckOpponent:
-  - {fileID: 11400000, guid: f933ffe8702820e4293d84356fe7924b, type: 2}
+  - {fileID: 11400000, guid: 43c98b492d4d9b9488f45d0806be4fc3, type: 2}
 --- !u!4 &1197088906
 Transform:
   m_ObjectHideFlags: 0
