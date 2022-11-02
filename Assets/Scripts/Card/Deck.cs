@@ -6,9 +6,27 @@ public class Deck : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] public Stack<Card> deckOfCards = new Stack<Card>();
+    [SerializeField] public Stack<Card> deckOfCardsPlayer = new Stack<Card>();
+    [SerializeField] public Stack<Card> deckOfCardsOpponent = new Stack<Card>();
 
-    public List<Card> allCardsAvailable = new List<Card>();
+    public List<Card> deckPlayer = new List<Card>();
+    public List<Card> deckOpponent = new List<Card>();
+
+
+    private static Deck instance;
+    public static Deck Instance { get { return instance; } }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
 
 
@@ -26,35 +44,52 @@ public class Deck : MonoBehaviour
 
     private void Start()
     {
-        //string ha = "D:/Skola/PROJD/PROJD_Spel2/Assets/ScriptableObjects";
-        //
-        //
-        Shuffle(allCardsAvailable);
-        
-
-        while (deckOfCards.Count < 60)
+        Shuffle(deckPlayer);
+        while (deckOfCardsPlayer.Count < 30)
         {
-            foreach (Card card in allCardsAvailable)
+            foreach (Card card in deckPlayer)
             {
-                deckOfCards.Push(card);
+                deckOfCardsPlayer.Push(card);
             }
         }
 
+        Shuffle(deckOpponent);
+        while (deckOfCardsOpponent.Count < 30)
+        {
+            foreach (Card card in deckOpponent)
+            {
+                deckOfCardsOpponent.Push(card);
+            }
+        }
     }
 
 
 
-    public void AddCardToDeck(Card cardToAdd)
+    public void AddCardToDeckPlayer(Card cardToAdd)
     {
-        deckOfCards.Push(cardToAdd);
+        deckOfCardsPlayer.Push(cardToAdd);
     }
 
-    public Card WhichCardToDraw()
+    public void AddCardToDeckOpponent(Card cardToAdd)
     {
-        if(deckOfCards.Count > 0)
-        return deckOfCards.Pop();
+        deckOfCardsOpponent.Push(cardToAdd);
+    }
+
+    public Card WhichCardToDrawPlayer()
+    {
+        if(deckOfCardsPlayer.Count > 0)
+        return deckOfCardsPlayer.Pop();
 
         GameState.Instance.Defeat();
+        return null;
+    }
+
+    public Card WhichCardToDrawOpponent()
+    {
+        if (deckOfCardsPlayer.Count > 0)
+            return deckOfCardsOpponent.Pop();
+
+        GameState.Instance.Victory();
         return null;
     }
 }

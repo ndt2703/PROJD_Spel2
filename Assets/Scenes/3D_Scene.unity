@@ -18850,8 +18850,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87d8eced99e2d942b5ce2531ace0ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allCardsAvailable:
-  - {fileID: 11400000, guid: e382f1387090e1b4d996458174ac8c78, type: 2}
+  deckPlayer:
+  - {fileID: 11400000, guid: f933ffe8702820e4293d84356fe7924b, type: 2}
+  deckOpponent:
+  - {fileID: 11400000, guid: f933ffe8702820e4293d84356fe7924b, type: 2}
 --- !u!4 &1197088906
 Transform:
   m_ObjectHideFlags: 0
