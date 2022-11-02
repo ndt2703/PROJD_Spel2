@@ -44,10 +44,10 @@ public class CardDisplay : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 2); 
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1); 
     }
     private void OnMouseExit()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
     }
 }

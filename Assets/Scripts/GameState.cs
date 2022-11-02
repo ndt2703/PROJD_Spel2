@@ -562,7 +562,7 @@ public class GameState : MonoBehaviour
                 if (drawnCards >= amountToDraw) break;
 
                 if (specificCard == null)
-                    cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
+                    cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDrawPlayer();
                 else
                     cardDisplay.card = specificCard;
 
@@ -576,7 +576,7 @@ public class GameState : MonoBehaviour
         {
             for (; drawnCards < amountToDraw; drawnCards++)
             {
-                Card c = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
+                Card c = actionOfPlayer.handPlayer.deck.WhichCardToDrawPlayer();
                 Graveyard.Instance.AddCardToGraveyard(c);
             }
         }
@@ -602,7 +602,7 @@ public class GameState : MonoBehaviour
 
                 if (specificCard == null)
                 {
-                    cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDraw();
+                    cardDisplay.card = actionOfPlayer.handPlayer.deck.WhichCardToDrawPlayer();
                     cardDisplay.opponentCard = true;
                     cardDisplay.artworkSpriteRenderer.sprite = backfaceCard;
                 }
@@ -619,7 +619,7 @@ public class GameState : MonoBehaviour
         {
             for (; drawnCards < amountToDraw; drawnCards++)
             {
-                Card c = actionOfPlayer.handOpponent.deck.WhichCardToDraw();
+                Card c = actionOfPlayer.handOpponent.deck.WhichCardToDrawPlayer();
                 Graveyard.Instance.AddCardToGraveyardOpponent(c);
             }
         }
@@ -772,45 +772,40 @@ public class GameState : MonoBehaviour
 
 
     public void EndTurn()
-    {      
+    {
+        if (!isOnline)
+        {
+            amountOfTurns++;
+            actionOfPlayer.IncreaseMana();
+            playerChampion.champion.EndStep();
+            //playerChampion.champion.UpKeep();
+            return;
+        }
+        
+        if(!didIStart)
+        {
+            amountOfTurns++;
+        }
+
         if (isItMyTurn)
         {
-            if (isOnline)
-                isItMyTurn = false;
-            if (!didIStart)
-            {
-                actionOfPlayer.IncreaseMana();
-                playerChampion.champion.EndStep();
-              //  opponentChampion.champion.UpKeep();
-            }
+            isItMyTurn = false;
+            playerChampion.champion.EndStep();
+            //opponentChampion.champion.UpKeep();
         }
         else
         {
             isItMyTurn = true;
             DrawCard(1, null);
-            if (didIStart)
-            {
-                actionOfPlayer.IncreaseMana();
-                amountOfTurns++;
-                opponentChampion.champion.EndStep();
-              //  playerChampion.champion.UpKeep();
-            }
+            actionOfPlayer.IncreaseMana();
+            opponentChampion.champion.EndStep();
+            //playerChampion.champion.UpKeep();
         }
 
         if (drawExtraCardsEachTurn)
             DrawCard(1, null);
 
-        if (isOnline)
-        {
-            ChangeInteractabiltyEndTurn();
-        }
-        else
-        {
-            actionOfPlayer.IncreaseMana();
-            isItMyTurn = false;
-        }
-
-        actionOfPlayer.currentMana = actionOfPlayer.playerMana;
+        ChangeInteractabiltyEndTurn();
         cardsPlayedThisTurn.Clear();
         damageRamp = 0;
     }

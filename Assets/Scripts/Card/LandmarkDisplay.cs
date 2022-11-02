@@ -40,6 +40,7 @@ public class LandmarkDisplay : MonoBehaviour
     private void LandmarkDead()
     {
         card.LandmarkEffectTakeBack();
+        card.WhenLandmarksDie();
     }
 
     public void TakeDamage(int amount)
