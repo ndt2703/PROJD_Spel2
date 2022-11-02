@@ -18737,7 +18737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allCardsAvailable:
-  - {fileID: 11400000, guid: e382f1387090e1b4d996458174ac8c78, type: 2}
+  - {fileID: 11400000, guid: 43c98b492d4d9b9488f45d0806be4fc3, type: 2}
 --- !u!4 &1197088906
 Transform:
   m_ObjectHideFlags: 0
