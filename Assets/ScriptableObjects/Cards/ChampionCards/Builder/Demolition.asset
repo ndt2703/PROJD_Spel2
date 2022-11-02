@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Demolition
   m_EditorClassIdentifier: 
   cardName: Demolition
-  typeOfCard: 0
+  typeOfCard: 2
   description: 
   artwork: {fileID: 21300000, guid: a36d39a82fa5f2b45949683971c46a8e, type: 3}
   manaCost: 4
+  maxManaCost: 0
   tag: AttackSpell
   amountOfCardsToDraw: 0
   amountOfCardsToDiscard: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnGarde
   m_EditorClassIdentifier: 
   cardName: En garde
-  typeOfCard: 0
+  typeOfCard: 2
   description: Deal 30 damage then swap the active champion and deal 30 damage to
     it
   artwork: {fileID: 21300000, guid: 92d9c05163cad6d4b9d9288f2cf5decf, type: 3}

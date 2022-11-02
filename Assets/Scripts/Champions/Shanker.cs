@@ -22,7 +22,7 @@ public class Shanker : Champion
 		int attackCardsPlayed = 0;
 		foreach (Card c in gameState.cardsPlayedThisTurn)
 		{
-			if (c.typeOfCard == CardType.Spell)
+			if (c.typeOfCard == CardType.Attack)
 			{
 				attackCardsPlayed++;
 			}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RiskyStrike
   m_EditorClassIdentifier: 
   cardName: Risky Strike
-  typeOfCard: 0
+  typeOfCard: 2
   description: You can discard any number of cards and for each you discard this
     card deals 10 damage
   artwork: {fileID: 21300000, guid: c69e8e8e557d02e4bb53a1590a6adddc, type: 3}

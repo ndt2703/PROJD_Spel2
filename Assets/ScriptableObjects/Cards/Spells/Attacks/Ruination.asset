@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ruination
   m_EditorClassIdentifier: 
   cardName: Ruination
-  typeOfCard: 0
+  typeOfCard: 2
   description: Deal 50 damage to both active champions
   artwork: {fileID: 0}
   manaCost: 2
