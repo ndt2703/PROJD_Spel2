@@ -74,8 +74,4 @@ public abstract class Card : ScriptableObject
         }
         GameState.Instance.playerChampion.champion.AmountOfCardsPlayed(this);
     }
-
-    
-
-
 }

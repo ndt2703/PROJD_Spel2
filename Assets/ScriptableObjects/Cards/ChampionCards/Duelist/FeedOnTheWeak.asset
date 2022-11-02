@@ -9,20 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff18907f8af932a45b18e0496e27c5c7, type: 3}
-  m_Name: Assasinate
+  m_Script: {fileID: 11500000, guid: 20705536ddbb71e4bb972d3cd53553d2, type: 3}
+  m_Name: FeedOnTheWeak
   m_EditorClassIdentifier: 
-  cardName: Assasinate
+  cardName: Feed On The Weak
   typeOfCard: 0
-  description: Deal 150 damage
-  artwork: {fileID: 21300000, guid: 6a04690bd32d9474a8c2b74584271f9a, type: 3}
-  manaCost: 10
-  maxManaCost: 0
-  tag: AttackSpell
+  description: Set the opposing champion with the least amount of HP as active and
+    draw an attack card
+  artwork: {fileID: 21300000, guid: e33a7d4c3cb71e84b8a76202aa50e5c9, type: 3}
+  manaCost: 3
+  maxManaCost: 3
+  tag: Spell
   amountOfCardsToDraw: 0
   amountOfCardsToDiscard: 0
   discardCardsYourself: 1
-  damage: 150
-  destroyLandmark: 0
-  damageEqualsToYourChampionHP: 0
-  damageToBothActiveChampions: 0

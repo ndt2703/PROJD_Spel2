@@ -46,6 +46,7 @@ public class GameState : MonoBehaviour
     public List<LandmarkDisplay> opponentLandmarks = new List<LandmarkDisplay>();
 
     public List<Card> cardsPlayedThisTurn = new List<Card>();
+    public int attacksPlayedThisTurn;
 
     [NonSerialized] public int tenExtraDamage;
     [NonSerialized] public int damageRamp = 0;
@@ -800,6 +801,13 @@ public class GameState : MonoBehaviour
     public void AddCardToPlayedCardsThisTurn(Card cardPlayed)
     {
         cardsPlayedThisTurn.Add(cardPlayed);
+
+
+        if (cardPlayed.GetType().Equals("AttackSpell"))
+        {
+            attacksPlayedThisTurn++;
+        }
+
         if (occultGathering > 0)
         {
             if (cardPlayed.GetType().Equals("AttackSpell"))
@@ -807,6 +815,7 @@ public class GameState : MonoBehaviour
                 damageRamp += 10 * occultGathering;
             }
         }
+
         playerChampion.champion.AmountOfCardsPlayed(cardPlayed);
     }
 

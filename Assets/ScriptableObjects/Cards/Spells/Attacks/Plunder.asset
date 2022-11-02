@@ -17,7 +17,8 @@ MonoBehaviour:
   description: Draw a Card
   artwork: {fileID: 21300000, guid: 76f64480b9c79ef4cb831748529885d1, type: 3}
   manaCost: 3
-  tag: Spell
+  maxManaCost: 0
+  tag: AttackSpell
   amountOfCardsToDraw: 1
   amountOfCardsToDiscard: 0
   discardCardsYourself: 1
