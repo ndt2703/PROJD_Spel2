@@ -9,7 +9,7 @@ public class CardDisplay : MonoBehaviour
     public Card card;
     public TMP_Text manaText;
 
-    public SpriteRenderer artworkSpriteRenderer;
+    public MeshRenderer artworkMeshRenderer;
 
     public GameObject cardPlayableEffect;
 
@@ -23,7 +23,7 @@ public class CardDisplay : MonoBehaviour
         
         if (!opponentCard)
         {
-            artworkSpriteRenderer.sprite = card.artwork;
+            //artworkMeshRenderer.material = ;
 
             if (ActionOfPlayer.Instance.currentMana >= card.manaCost)
                 cardPlayableEffect.SetActive(true);
