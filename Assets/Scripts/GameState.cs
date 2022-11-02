@@ -640,7 +640,11 @@ public class GameState : MonoBehaviour
             {
                 Champion champ = playerChampion.champion;
                 playerChampion.champion = playerChampions[randomChamp].champion;
-                playerChampions[randomChamp].champion = champ;
+
+                if (champ.health > 0)
+                { 
+                    playerChampions[randomChamp].champion = champ;
+                }
 
                 if(isOnline)
                 {
@@ -692,11 +696,10 @@ public class GameState : MonoBehaviour
             {
                 Champion champ = opponentChampion.champion;
                 opponentChampion.champion = opponentChampions[randomChamp].champion;
-                opponentChampions[randomChamp].champion = champ;
-                
-                ListEnum lE = new ListEnum();
-                lE.opponentChampions = true;
-                TargetInfo tI = new TargetInfo(lE, randomChamp);
+                if (champ.health > 0)
+                {
+                    opponentChampions[randomChamp].champion = champ;
+                }
                 break;
 
             }
@@ -882,16 +885,6 @@ public class GameState : MonoBehaviour
 
     private void SearchDeadChampion(Champion deadChampion)
     {
-
-        if (playerChampion.champion == deadChampion)
-        {
-            SwapActiveChampion(null);
-        }
-        else if (opponentChampion.champion == deadChampion)
-        {
-            SwapActiveChampionEnemy(null);
-        }
-
         foreach (AvailableChampion ac in playerChampions)
         {
             if (ac.champion == deadChampion)
@@ -910,6 +903,14 @@ public class GameState : MonoBehaviour
             }
         }
 
+        if (playerChampion.champion == deadChampion)
+        {
+            SwapActiveChampion(null);
+        }
+        else if (!isOnline && opponentChampion.champion == deadChampion)
+        {
+            SwapActiveChampionEnemy(null);
+        }
     }
 
     public void SwitchWhenChampionDead()
